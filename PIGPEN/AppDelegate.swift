@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Init
     
     private func initTabBarControler() {
-        let homePage = PJHomeViewController()
+        let homePage = PJUserForgetViewController()
         let homeNav = UINavigationController(rootViewController: homePage)
         homeNav.tabBarItem.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0)
         homeNav.tabBarItem.image = UIImage(named: "tabBar_home")?.withRenderingMode(.alwaysOriginal)

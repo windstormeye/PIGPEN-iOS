@@ -16,6 +16,12 @@
 		0C55E2DD215A8055000D8815 /* TabBarReddot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2DC215A8055000D8815 /* TabBarReddot.swift */; };
 		0C55E2E2215A8422000D8815 /* PJStatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2E1215A8422000D8815 /* PJStatic.swift */; };
 		0C55E2E4215A84EA000D8815 /* UIViewPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2E3215A84EA000D8815 /* UIViewPosition.swift */; };
+		0C55E2E8215B703C000D8815 /* PJUserLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2E6215B703C000D8815 /* PJUserLoginViewController.swift */; };
+		0C55E2E9215B703C000D8815 /* PJUserLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C55E2E7215B703C000D8815 /* PJUserLoginViewController.xib */; };
+		0C55E2ED215B7DB0000D8815 /* PJUserForgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2EB215B7DB0000D8815 /* PJUserForgetViewController.swift */; };
+		0C55E2EE215B7DB0000D8815 /* PJUserForgetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C55E2EC215B7DB0000D8815 /* PJUserForgetViewController.xib */; };
+		0C55E2F2215D2D76000D8815 /* PJUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2F0215D2D76000D8815 /* PJUserInfoViewController.swift */; };
+		0C55E2F3215D2D76000D8815 /* PJUserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C55E2F1215D2D76000D8815 /* PJUserInfoViewController.xib */; };
 		0CE4F3F321592C7C003AD0F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4F3F221592C7C003AD0F5 /* AppDelegate.swift */; };
 		0CE4F3FB21592C7C003AD0F5 /* PIGPEN.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4F3F921592C7C003AD0F5 /* PIGPEN.xcdatamodeld */; };
 		0CE4F3FD21592C7D003AD0F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CE4F3FC21592C7D003AD0F5 /* Assets.xcassets */; };
@@ -33,6 +39,12 @@
 		0C55E2DC215A8055000D8815 /* TabBarReddot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarReddot.swift; sourceTree = "<group>"; };
 		0C55E2E1215A8422000D8815 /* PJStatic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJStatic.swift; sourceTree = "<group>"; };
 		0C55E2E3215A84EA000D8815 /* UIViewPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewPosition.swift; sourceTree = "<group>"; };
+		0C55E2E6215B703C000D8815 /* PJUserLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserLoginViewController.swift; sourceTree = "<group>"; };
+		0C55E2E7215B703C000D8815 /* PJUserLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJUserLoginViewController.xib; sourceTree = "<group>"; };
+		0C55E2EB215B7DB0000D8815 /* PJUserForgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserForgetViewController.swift; sourceTree = "<group>"; };
+		0C55E2EC215B7DB0000D8815 /* PJUserForgetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJUserForgetViewController.xib; sourceTree = "<group>"; };
+		0C55E2F0215D2D76000D8815 /* PJUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserInfoViewController.swift; sourceTree = "<group>"; };
+		0C55E2F1215D2D76000D8815 /* PJUserInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJUserInfoViewController.xib; sourceTree = "<group>"; };
 		0CE4F3EF21592C7C003AD0F5 /* PIGPEN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PIGPEN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CE4F3F221592C7C003AD0F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CE4F3FA21592C7C003AD0F5 /* PIGPEN.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PIGPEN.xcdatamodel; sourceTree = "<group>"; };
@@ -55,6 +67,9 @@
 		0C55E2C3215A61AD000D8815 /* Page */ = {
 			isa = PBXGroup;
 			children = (
+				0C55E2EF215D2BFC000D8815 /* User-Details */,
+				0C55E2EA215B7D5C000D8815 /* User-Forget */,
+				0C55E2E5215B7028000D8815 /* User-Login */,
 				0C55E2CA215A62A0000D8815 /* User */,
 				0C55E2C9215A61FC000D8815 /* Message */,
 				0C55E2C8215A61F5000D8815 /* Play */,
@@ -138,6 +153,33 @@
 				0C55E2E1215A8422000D8815 /* PJStatic.swift */,
 			);
 			path = Static;
+			sourceTree = "<group>";
+		};
+		0C55E2E5215B7028000D8815 /* User-Login */ = {
+			isa = PBXGroup;
+			children = (
+				0C55E2E6215B703C000D8815 /* PJUserLoginViewController.swift */,
+				0C55E2E7215B703C000D8815 /* PJUserLoginViewController.xib */,
+			);
+			path = "User-Login";
+			sourceTree = "<group>";
+		};
+		0C55E2EA215B7D5C000D8815 /* User-Forget */ = {
+			isa = PBXGroup;
+			children = (
+				0C55E2EB215B7DB0000D8815 /* PJUserForgetViewController.swift */,
+				0C55E2EC215B7DB0000D8815 /* PJUserForgetViewController.xib */,
+			);
+			path = "User-Forget";
+			sourceTree = "<group>";
+		};
+		0C55E2EF215D2BFC000D8815 /* User-Details */ = {
+			isa = PBXGroup;
+			children = (
+				0C55E2F0215D2D76000D8815 /* PJUserInfoViewController.swift */,
+				0C55E2F1215D2D76000D8815 /* PJUserInfoViewController.xib */,
+			);
+			path = "User-Details";
 			sourceTree = "<group>";
 		};
 		0CE4F3E621592C7C003AD0F5 = {
@@ -230,7 +272,10 @@
 			files = (
 				0CE4F40021592C7D003AD0F5 /* LaunchScreen.storyboard in Resources */,
 				0C55E2D7215A795A000D8815 /* Localizable.strings in Resources */,
+				0C55E2EE215B7DB0000D8815 /* PJUserForgetViewController.xib in Resources */,
 				0CE4F3FD21592C7D003AD0F5 /* Assets.xcassets in Resources */,
+				0C55E2E9215B703C000D8815 /* PJUserLoginViewController.xib in Resources */,
+				0C55E2F3215D2D76000D8815 /* PJUserInfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,13 +286,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C55E2E8215B703C000D8815 /* PJUserLoginViewController.swift in Sources */,
 				0C55E2E2215A8422000D8815 /* PJStatic.swift in Sources */,
 				0C55E2CE215A62BE000D8815 /* PJPlayViewController.swift in Sources */,
 				0C55E2CC215A62AF000D8815 /* PJChatViewController.swift in Sources */,
 				0CE4F3F321592C7C003AD0F5 /* AppDelegate.swift in Sources */,
+				0C55E2F2215D2D76000D8815 /* PJUserInfoViewController.swift in Sources */,
 				0C55E2DD215A8055000D8815 /* TabBarReddot.swift in Sources */,
 				0CE4F3FB21592C7C003AD0F5 /* PIGPEN.xcdatamodeld in Sources */,
 				0C55E2D2215A62CD000D8815 /* PJUserViewController.swift in Sources */,
+				0C55E2ED215B7DB0000D8815 /* PJUserForgetViewController.swift in Sources */,
 				0C55E2E4215A84EA000D8815 /* UIViewPosition.swift in Sources */,
 				0C55E2C5215A61E3000D8815 /* PJHomeViewController.swift in Sources */,
 				0C55E2D0215A62C7000D8815 /* PJMessageViewController.swift in Sources */,
