@@ -8,7 +8,12 @@
 
 import UIKit
 
-class PJUserForgetViewController: UIViewController {
+
+fileprivate extension Selector {
+    static let back = #selector(PJUserForgetViewController.back)
+}
+
+class PJUserForgetViewController: PJBaseViewController {
 
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var authCodeTextField: UITextField!
@@ -24,5 +29,19 @@ class PJUserForgetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initView()
+    }
+    
+    private func initView() {
+        title = "忘记密码"
+        backButtonTapped(backSel: .back)
+        
+        authCodeButton.layer.borderWidth = 1
+        authCodeButton.layer.borderColor = UIColor.black.cgColor
+    }
+    
+    // MARK: Action
+    @objc fileprivate func back() {
+        navigationController?.popViewController(animated: true)
     }
 }

@@ -11,6 +11,13 @@ import UIKit
 class PJBaseViewController: UIViewController {
 
     var headerView: UIView?
+    var lineView: UIView?
+    // default is false
+    var isHiddenBarBottomLineView: Bool? {
+        didSet {
+            didSetIsHiddenBarBottomLineView()
+        }
+    }
     
     
     // MARK: life cycle
@@ -21,16 +28,24 @@ class PJBaseViewController: UIViewController {
                                                                for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
+//        isHiddenBarBottomLineView = true
         
-        let titleTextAtt = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        let titleTextAtt = [NSAttributedString.Key.foregroundColor: UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = titleTextAtt
         
         headerView = UIView(frame: CGRect(x: 0, y: 0,
                                           width: view.width,
                                           height: navigationBarHeight))
+        headerView?.backgroundColor = .white
         view.addSubview(headerView!)
         
         
+        lineView = UIView(frame: CGRect(x: 0, y: headerView!.bottom,
+                                            width: view.width, height: 0.5))
+        lineView?.backgroundColor = PJRGB(r: 230, g: 230, b: 230)
+        view.addSubview(lineView!)
+        
+        // 解决自定义 leftBarButtonItem 后侧滑失效
         if navigationController?.responds(to: #selector(getter: UINavigationController.interactivePopGestureRecognizer)) ?? false {
             navigationController?.interactivePopGestureRecognizer?.delegate = nil
         }
@@ -48,6 +63,10 @@ class PJBaseViewController: UIViewController {
     }
     
 
+    private func didSetIsHiddenBarBottomLineView() {
+        lineView?.isHidden = isHiddenBarBottomLineView!
+    }
+    
     // MARK: setter and getter
     var statusBarHeight: CGFloat {
         get {

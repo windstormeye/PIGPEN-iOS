@@ -14,8 +14,17 @@ class PJWelcomeViewController: PJBaseViewController {
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var toHomeButton: UIButton!
     
+    
+    // MARK: life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        initView()
+    }
+    
+    
+    private func initView() {
+        isHiddenBarBottomLineView = true
+        headerView?.isHidden = true
     }
     
     

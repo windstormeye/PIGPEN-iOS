@@ -28,6 +28,10 @@
 		0C55E3012161B247000D8815 /* PJWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2FF2161B247000D8815 /* PJWelcomeViewController.swift */; };
 		0C55E3022161B247000D8815 /* PJWelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C55E3002161B247000D8815 /* PJWelcomeViewController.xib */; };
 		0C55E3082161BAB6000D8815 /* PJBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E3072161BAB6000D8815 /* PJBaseViewController.swift */; };
+		0C55E30A2162190B000D8815 /* CALayer_UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E3092162190B000D8815 /* CALayer_UIColor.swift */; };
+		0C5E6337216241CF00A90762 /* PJBaseTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E6336216241CF00A90762 /* PJBaseTipsView.swift */; };
+		0C5E63392162444400A90762 /* PJUserInfoSeleteAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E63382162444400A90762 /* PJUserInfoSeleteAvatarView.swift */; };
+		0C5E633B21624D1F00A90762 /* PJUserInfoAvatarSelectCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E633A21624D1F00A90762 /* PJUserInfoAvatarSelectCollectionView.swift */; };
 		0CE4F3F321592C7C003AD0F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4F3F221592C7C003AD0F5 /* AppDelegate.swift */; };
 		0CE4F3FB21592C7C003AD0F5 /* PIGPEN.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4F3F921592C7C003AD0F5 /* PIGPEN.xcdatamodeld */; };
 		0CE4F3FD21592C7D003AD0F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CE4F3FC21592C7D003AD0F5 /* Assets.xcassets */; };
@@ -58,6 +62,10 @@
 		0C55E2FF2161B247000D8815 /* PJWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJWelcomeViewController.swift; sourceTree = "<group>"; };
 		0C55E3002161B247000D8815 /* PJWelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJWelcomeViewController.xib; sourceTree = "<group>"; };
 		0C55E3072161BAB6000D8815 /* PJBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBaseViewController.swift; sourceTree = "<group>"; };
+		0C55E3092162190B000D8815 /* CALayer_UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayer_UIColor.swift; sourceTree = "<group>"; };
+		0C5E6336216241CF00A90762 /* PJBaseTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBaseTipsView.swift; sourceTree = "<group>"; };
+		0C5E63382162444400A90762 /* PJUserInfoSeleteAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserInfoSeleteAvatarView.swift; sourceTree = "<group>"; };
+		0C5E633A21624D1F00A90762 /* PJUserInfoAvatarSelectCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserInfoAvatarSelectCollectionView.swift; sourceTree = "<group>"; };
 		0CE4F3EF21592C7C003AD0F5 /* PIGPEN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PIGPEN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CE4F3F221592C7C003AD0F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CE4F3FA21592C7C003AD0F5 /* PIGPEN.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PIGPEN.xcdatamodel; sourceTree = "<group>"; };
@@ -163,6 +171,7 @@
 			children = (
 				0C55E2DC215A8055000D8815 /* TabBarReddot.swift */,
 				0C55E2E3215A84EA000D8815 /* UIViewPosition.swift */,
+				0C55E3092162190B000D8815 /* CALayer_UIColor.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -196,6 +205,7 @@
 		0C55E2EF215D2BFC000D8815 /* Info */ = {
 			isa = PBXGroup;
 			children = (
+				0C5E63342162415C00A90762 /* View */,
 				0C55E2F0215D2D76000D8815 /* PJUserInfoViewController.swift */,
 				0C55E2F1215D2D76000D8815 /* PJUserInfoViewController.xib */,
 			);
@@ -247,6 +257,7 @@
 		0C55E3052161BA9C000D8815 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				0C5E63352162417500A90762 /* UIView */,
 				0C55E3062161BAA6000D8815 /* UIViewController */,
 			);
 			path = Base;
@@ -258,6 +269,23 @@
 				0C55E3072161BAB6000D8815 /* PJBaseViewController.swift */,
 			);
 			path = UIViewController;
+			sourceTree = "<group>";
+		};
+		0C5E63342162415C00A90762 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0C5E63382162444400A90762 /* PJUserInfoSeleteAvatarView.swift */,
+				0C5E633A21624D1F00A90762 /* PJUserInfoAvatarSelectCollectionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0C5E63352162417500A90762 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				0C5E6336216241CF00A90762 /* PJBaseTipsView.swift */,
+			);
+			path = UIView;
 			sourceTree = "<group>";
 		};
 		0CE4F3E621592C7C003AD0F5 = {
@@ -320,6 +348,7 @@
 				0CE4F3EB21592C7C003AD0F5 /* Sources */,
 				0CE4F3EC21592C7C003AD0F5 /* Frameworks */,
 				0CE4F3ED21592C7C003AD0F5 /* Resources */,
+				B15239FD528C03CD78074F86 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -401,6 +430,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B15239FD528C03CD78074F86 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PIGPEN/Pods-PIGPEN-resources.sh",
+				"${PODS_ROOT}/IQKeyboardManagerSwift/IQKeyboardManagerSwift/Resources/IQKeyboardManager.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PIGPEN/Pods-PIGPEN-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -416,15 +463,19 @@
 				0C55E2F2215D2D76000D8815 /* PJUserInfoViewController.swift in Sources */,
 				0C55E3082161BAB6000D8815 /* PJBaseViewController.swift in Sources */,
 				0C55E2DD215A8055000D8815 /* TabBarReddot.swift in Sources */,
+				0C5E633B21624D1F00A90762 /* PJUserInfoAvatarSelectCollectionView.swift in Sources */,
+				0C5E63392162444400A90762 /* PJUserInfoSeleteAvatarView.swift in Sources */,
 				0CE4F3FB21592C7C003AD0F5 /* PIGPEN.xcdatamodeld in Sources */,
 				0C55E2FC215F5EA9000D8815 /* PJUser.swift in Sources */,
 				0C55E2F7215F570D000D8815 /* PJUserRegisterViewController.swift in Sources */,
+				0C55E30A2162190B000D8815 /* CALayer_UIColor.swift in Sources */,
 				0C55E2D2215A62CD000D8815 /* PJUserDetailsViewController.swift in Sources */,
 				0C55E2ED215B7DB0000D8815 /* PJUserForgetViewController.swift in Sources */,
 				0C55E2E4215A84EA000D8815 /* UIViewPosition.swift in Sources */,
 				0C55E3012161B247000D8815 /* PJWelcomeViewController.swift in Sources */,
 				0C55E2C5215A61E3000D8815 /* PJHomeViewController.swift in Sources */,
 				0C55E2D0215A62C7000D8815 /* PJMessageViewController.swift in Sources */,
+				0C5E6337216241CF00A90762 /* PJBaseTipsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

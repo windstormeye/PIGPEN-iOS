@@ -14,8 +14,7 @@ class PJUserLoginViewController: PJBaseViewController {
     // MARK: life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "登入"
-        headerView?.backgroundColor = .white
+        title = "登入"
         backButtonTapped(backSel: .back)
     }
     
@@ -23,6 +22,15 @@ class PJUserLoginViewController: PJBaseViewController {
     // MARK: Action
     @objc fileprivate func back() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func forgetButtonTapped(_ sender: UIButton) {
+        navigationController?.pushViewController(PJUserForgetViewController(),
+                                                 animated: true)
+    }
+    
+    @IBAction func loginButtonTapped(_ sender: UIButton) {
+        
     }
 }
 
