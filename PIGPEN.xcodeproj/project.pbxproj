@@ -11,7 +11,7 @@
 		0C55E2CC215A62AF000D8815 /* PJChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2CB215A62AF000D8815 /* PJChatViewController.swift */; };
 		0C55E2CE215A62BE000D8815 /* PJPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2CD215A62BE000D8815 /* PJPlayViewController.swift */; };
 		0C55E2D0215A62C7000D8815 /* PJMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2CF215A62C7000D8815 /* PJMessageViewController.swift */; };
-		0C55E2D2215A62CD000D8815 /* PJUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2D1215A62CD000D8815 /* PJUserViewController.swift */; };
+		0C55E2D2215A62CD000D8815 /* PJUserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2D1215A62CD000D8815 /* PJUserDetailsViewController.swift */; };
 		0C55E2D7215A795A000D8815 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0C55E2D9215A795A000D8815 /* Localizable.strings */; };
 		0C55E2DD215A8055000D8815 /* TabBarReddot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2DC215A8055000D8815 /* TabBarReddot.swift */; };
 		0C55E2E2215A8422000D8815 /* PJStatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2E1215A8422000D8815 /* PJStatic.swift */; };
@@ -22,10 +22,17 @@
 		0C55E2EE215B7DB0000D8815 /* PJUserForgetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C55E2EC215B7DB0000D8815 /* PJUserForgetViewController.xib */; };
 		0C55E2F2215D2D76000D8815 /* PJUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2F0215D2D76000D8815 /* PJUserInfoViewController.swift */; };
 		0C55E2F3215D2D76000D8815 /* PJUserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C55E2F1215D2D76000D8815 /* PJUserInfoViewController.xib */; };
+		0C55E2F7215F570D000D8815 /* PJUserRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2F5215F570D000D8815 /* PJUserRegisterViewController.swift */; };
+		0C55E2F8215F570D000D8815 /* PJUserRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C55E2F6215F570D000D8815 /* PJUserRegisterViewController.xib */; };
+		0C55E2FC215F5EA9000D8815 /* PJUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2FB215F5EA9000D8815 /* PJUser.swift */; };
+		0C55E3012161B247000D8815 /* PJWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2FF2161B247000D8815 /* PJWelcomeViewController.swift */; };
+		0C55E3022161B247000D8815 /* PJWelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C55E3002161B247000D8815 /* PJWelcomeViewController.xib */; };
+		0C55E3082161BAB6000D8815 /* PJBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E3072161BAB6000D8815 /* PJBaseViewController.swift */; };
 		0CE4F3F321592C7C003AD0F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4F3F221592C7C003AD0F5 /* AppDelegate.swift */; };
 		0CE4F3FB21592C7C003AD0F5 /* PIGPEN.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4F3F921592C7C003AD0F5 /* PIGPEN.xcdatamodeld */; };
 		0CE4F3FD21592C7D003AD0F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CE4F3FC21592C7D003AD0F5 /* Assets.xcassets */; };
 		0CE4F40021592C7D003AD0F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CE4F3FE21592C7D003AD0F5 /* LaunchScreen.storyboard */; };
+		6155BC9AE80D9BE2A10BEB45 /* libPods-PIGPEN.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3155F10B4EB7E5C66A26C91 /* libPods-PIGPEN.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +40,7 @@
 		0C55E2CB215A62AF000D8815 /* PJChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJChatViewController.swift; sourceTree = "<group>"; };
 		0C55E2CD215A62BE000D8815 /* PJPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJPlayViewController.swift; sourceTree = "<group>"; };
 		0C55E2CF215A62C7000D8815 /* PJMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJMessageViewController.swift; sourceTree = "<group>"; };
-		0C55E2D1215A62CD000D8815 /* PJUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserViewController.swift; sourceTree = "<group>"; };
+		0C55E2D1215A62CD000D8815 /* PJUserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserDetailsViewController.swift; sourceTree = "<group>"; };
 		0C55E2D8215A795A000D8815 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0C55E2DA215A79A9000D8815 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		0C55E2DC215A8055000D8815 /* TabBarReddot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarReddot.swift; sourceTree = "<group>"; };
@@ -45,12 +52,21 @@
 		0C55E2EC215B7DB0000D8815 /* PJUserForgetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJUserForgetViewController.xib; sourceTree = "<group>"; };
 		0C55E2F0215D2D76000D8815 /* PJUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserInfoViewController.swift; sourceTree = "<group>"; };
 		0C55E2F1215D2D76000D8815 /* PJUserInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJUserInfoViewController.xib; sourceTree = "<group>"; };
+		0C55E2F5215F570D000D8815 /* PJUserRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserRegisterViewController.swift; sourceTree = "<group>"; };
+		0C55E2F6215F570D000D8815 /* PJUserRegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJUserRegisterViewController.xib; sourceTree = "<group>"; };
+		0C55E2FB215F5EA9000D8815 /* PJUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUser.swift; sourceTree = "<group>"; };
+		0C55E2FF2161B247000D8815 /* PJWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJWelcomeViewController.swift; sourceTree = "<group>"; };
+		0C55E3002161B247000D8815 /* PJWelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJWelcomeViewController.xib; sourceTree = "<group>"; };
+		0C55E3072161BAB6000D8815 /* PJBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBaseViewController.swift; sourceTree = "<group>"; };
 		0CE4F3EF21592C7C003AD0F5 /* PIGPEN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PIGPEN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CE4F3F221592C7C003AD0F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CE4F3FA21592C7C003AD0F5 /* PIGPEN.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PIGPEN.xcdatamodel; sourceTree = "<group>"; };
 		0CE4F3FC21592C7D003AD0F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CE4F3FF21592C7D003AD0F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CE4F40121592C7D003AD0F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6472681005EABAD7037BD786 /* Pods-PIGPEN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PIGPEN.release.xcconfig"; path = "Pods/Target Support Files/Pods-PIGPEN/Pods-PIGPEN.release.xcconfig"; sourceTree = "<group>"; };
+		8BD192072D34D432799FE1CF /* Pods-PIGPEN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PIGPEN.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PIGPEN/Pods-PIGPEN.debug.xcconfig"; sourceTree = "<group>"; };
+		D3155F10B4EB7E5C66A26C91 /* libPods-PIGPEN.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PIGPEN.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6155BC9AE80D9BE2A10BEB45 /* libPods-PIGPEN.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,9 +84,7 @@
 		0C55E2C3215A61AD000D8815 /* Page */ = {
 			isa = PBXGroup;
 			children = (
-				0C55E2EF215D2BFC000D8815 /* User-Details */,
-				0C55E2EA215B7D5C000D8815 /* User-Forget */,
-				0C55E2E5215B7028000D8815 /* User-Login */,
+				0C55E3052161BA9C000D8815 /* Base */,
 				0C55E2CA215A62A0000D8815 /* User */,
 				0C55E2C9215A61FC000D8815 /* Message */,
 				0C55E2C8215A61F5000D8815 /* Play */,
@@ -114,7 +129,12 @@
 		0C55E2CA215A62A0000D8815 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				0C55E2D1215A62CD000D8815 /* PJUserViewController.swift */,
+				0C55E2FE2161B1D0000D8815 /* Welcome */,
+				0C55E2FD2161B1A3000D8815 /* Details */,
+				0C55E2F4215F5653000D8815 /* Register */,
+				0C55E2EF215D2BFC000D8815 /* Info */,
+				0C55E2EA215B7D5C000D8815 /* Forget */,
+				0C55E2E5215B7028000D8815 /* Login */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -155,31 +175,89 @@
 			path = Static;
 			sourceTree = "<group>";
 		};
-		0C55E2E5215B7028000D8815 /* User-Login */ = {
+		0C55E2E5215B7028000D8815 /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				0C55E2E6215B703C000D8815 /* PJUserLoginViewController.swift */,
 				0C55E2E7215B703C000D8815 /* PJUserLoginViewController.xib */,
 			);
-			path = "User-Login";
+			path = Login;
 			sourceTree = "<group>";
 		};
-		0C55E2EA215B7D5C000D8815 /* User-Forget */ = {
+		0C55E2EA215B7D5C000D8815 /* Forget */ = {
 			isa = PBXGroup;
 			children = (
 				0C55E2EB215B7DB0000D8815 /* PJUserForgetViewController.swift */,
 				0C55E2EC215B7DB0000D8815 /* PJUserForgetViewController.xib */,
 			);
-			path = "User-Forget";
+			path = Forget;
 			sourceTree = "<group>";
 		};
-		0C55E2EF215D2BFC000D8815 /* User-Details */ = {
+		0C55E2EF215D2BFC000D8815 /* Info */ = {
 			isa = PBXGroup;
 			children = (
 				0C55E2F0215D2D76000D8815 /* PJUserInfoViewController.swift */,
 				0C55E2F1215D2D76000D8815 /* PJUserInfoViewController.xib */,
 			);
-			path = "User-Details";
+			path = Info;
+			sourceTree = "<group>";
+		};
+		0C55E2F4215F5653000D8815 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				0C55E2F5215F570D000D8815 /* PJUserRegisterViewController.swift */,
+				0C55E2F6215F570D000D8815 /* PJUserRegisterViewController.xib */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		0C55E2F9215F5E14000D8815 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0C55E2FA215F5E94000D8815 /* User */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0C55E2FA215F5E94000D8815 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				0C55E2FB215F5EA9000D8815 /* PJUser.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		0C55E2FD2161B1A3000D8815 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				0C55E2D1215A62CD000D8815 /* PJUserDetailsViewController.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		0C55E2FE2161B1D0000D8815 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				0C55E2FF2161B247000D8815 /* PJWelcomeViewController.swift */,
+				0C55E3002161B247000D8815 /* PJWelcomeViewController.xib */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		0C55E3052161BA9C000D8815 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				0C55E3062161BAA6000D8815 /* UIViewController */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		0C55E3062161BAA6000D8815 /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0C55E3072161BAB6000D8815 /* PJBaseViewController.swift */,
+			);
+			path = UIViewController;
 			sourceTree = "<group>";
 		};
 		0CE4F3E621592C7C003AD0F5 = {
@@ -187,6 +265,8 @@
 			children = (
 				0CE4F3F121592C7C003AD0F5 /* PIGPEN */,
 				0CE4F3F021592C7C003AD0F5 /* Products */,
+				71C7822EAE774E46944FBDC6 /* Pods */,
+				772C67EFF054D7CA74FF8656 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -205,10 +285,28 @@
 				0CE4F3FE21592C7D003AD0F5 /* LaunchScreen.storyboard */,
 				0C55E2E0215A840C000D8815 /* Static */,
 				0C55E2DB215A801F000D8815 /* Extension */,
+				0C55E2F9215F5E14000D8815 /* Model */,
 				0C55E2C3215A61AD000D8815 /* Page */,
 				0C55E2D3215A78F4000D8815 /* Config */,
 			);
 			path = PIGPEN;
+			sourceTree = "<group>";
+		};
+		71C7822EAE774E46944FBDC6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8BD192072D34D432799FE1CF /* Pods-PIGPEN.debug.xcconfig */,
+				6472681005EABAD7037BD786 /* Pods-PIGPEN.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		772C67EFF054D7CA74FF8656 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D3155F10B4EB7E5C66A26C91 /* libPods-PIGPEN.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +316,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0CE4F40421592C7D003AD0F5 /* Build configuration list for PBXNativeTarget "PIGPEN" */;
 			buildPhases = (
+				41E817E1EBBFF2D22596A6B6 /* [CP] Check Pods Manifest.lock */,
 				0CE4F3EB21592C7C003AD0F5 /* Sources */,
 				0CE4F3EC21592C7C003AD0F5 /* Frameworks */,
 				0CE4F3ED21592C7C003AD0F5 /* Resources */,
@@ -271,7 +370,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CE4F40021592C7D003AD0F5 /* LaunchScreen.storyboard in Resources */,
+				0C55E3022161B247000D8815 /* PJWelcomeViewController.xib in Resources */,
 				0C55E2D7215A795A000D8815 /* Localizable.strings in Resources */,
+				0C55E2F8215F570D000D8815 /* PJUserRegisterViewController.xib in Resources */,
 				0C55E2EE215B7DB0000D8815 /* PJUserForgetViewController.xib in Resources */,
 				0CE4F3FD21592C7D003AD0F5 /* Assets.xcassets in Resources */,
 				0C55E2E9215B703C000D8815 /* PJUserLoginViewController.xib in Resources */,
@@ -280,6 +381,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		41E817E1EBBFF2D22596A6B6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PIGPEN-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0CE4F3EB21592C7C003AD0F5 /* Sources */ = {
@@ -292,11 +414,15 @@
 				0C55E2CC215A62AF000D8815 /* PJChatViewController.swift in Sources */,
 				0CE4F3F321592C7C003AD0F5 /* AppDelegate.swift in Sources */,
 				0C55E2F2215D2D76000D8815 /* PJUserInfoViewController.swift in Sources */,
+				0C55E3082161BAB6000D8815 /* PJBaseViewController.swift in Sources */,
 				0C55E2DD215A8055000D8815 /* TabBarReddot.swift in Sources */,
 				0CE4F3FB21592C7C003AD0F5 /* PIGPEN.xcdatamodeld in Sources */,
-				0C55E2D2215A62CD000D8815 /* PJUserViewController.swift in Sources */,
+				0C55E2FC215F5EA9000D8815 /* PJUser.swift in Sources */,
+				0C55E2F7215F570D000D8815 /* PJUserRegisterViewController.swift in Sources */,
+				0C55E2D2215A62CD000D8815 /* PJUserDetailsViewController.swift in Sources */,
 				0C55E2ED215B7DB0000D8815 /* PJUserForgetViewController.swift in Sources */,
 				0C55E2E4215A84EA000D8815 /* UIViewPosition.swift in Sources */,
+				0C55E3012161B247000D8815 /* PJWelcomeViewController.swift in Sources */,
 				0C55E2C5215A61E3000D8815 /* PJHomeViewController.swift in Sources */,
 				0C55E2D0215A62C7000D8815 /* PJMessageViewController.swift in Sources */,
 			);
@@ -443,6 +569,7 @@
 		};
 		0CE4F40521592C7D003AD0F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BD192072D34D432799FE1CF /* Pods-PIGPEN.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -455,13 +582,14 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pjhubs.PIGPEN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		0CE4F40621592C7D003AD0F5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6472681005EABAD7037BD786 /* Pods-PIGPEN.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -474,7 +602,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pjhubs.PIGPEN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

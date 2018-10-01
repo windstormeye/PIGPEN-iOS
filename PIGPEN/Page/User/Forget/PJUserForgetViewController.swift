@@ -13,9 +13,13 @@ class PJUserForgetViewController: UIViewController {
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var authCodeTextField: UITextField!
     @IBOutlet weak var newPasswordTextField: UITextField!
+    
     @IBOutlet weak var errorAuthCodeLabel: UILabel!
     @IBOutlet weak var errorPasswordLabel: UILabel!
+    
     @IBOutlet weak var commitButton: UIButton!
+    @IBOutlet weak var authCodeButton: UIButton!
+    
     
     
     override func viewDidLoad() {

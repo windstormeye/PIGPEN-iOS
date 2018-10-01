@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var window: UIWindow?
     private var rootTabBar: UITabBarController?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         rootTabBar = UITabBarController()
         rootTabBar?.tabBar.isTranslucent = false
@@ -51,29 +51,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Init
     
     private func initTabBarControler() {
-        let homePage = PJUserForgetViewController()
+        let homePage = PJHomeViewController()
         let homeNav = UINavigationController(rootViewController: homePage)
-        homeNav.tabBarItem.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0)
+        homeNav.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0,
+                                                      bottom: -5, right: 0)
         homeNav.tabBarItem.image = UIImage(named: "tabBar_home")?.withRenderingMode(.alwaysOriginal)
         
         let chatPage = PJChatViewController()
         let chatNav = UINavigationController(rootViewController: chatPage)
-        chatNav.tabBarItem.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0)
+        chatNav.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0,
+                                                      bottom: -5, right: 0)
         chatNav.tabBarItem.image = UIImage(named: "tabBar_chat")?.withRenderingMode(.alwaysOriginal)
         
         let playPage = PJPlayViewController()
         let playNav = UINavigationController(rootViewController: playPage)
-        playNav.tabBarItem.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0)
+        playNav.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0,
+                                                      bottom: -5, right: 0)
         playNav.tabBarItem.image = UIImage(named: "tabBar_play")?.withRenderingMode(.alwaysOriginal)
         
         let messagePage = PJMessageViewController()
         let messageNav = UINavigationController(rootViewController: messagePage)
-        messageNav.tabBarItem.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0)
+        messageNav.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0,
+                                                         bottom: -5, right: 0)
         messageNav.tabBarItem.image = UIImage(named: "tabBar_message")?.withRenderingMode(.alwaysOriginal)
         
-        let userPage = PJUserViewController()
+        let userPage = PJUserDetailsViewController()
         let userNav = UINavigationController(rootViewController: userPage)
-        userNav.tabBarItem.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0)
+        userNav.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0,
+                                                      bottom: -5, right: 0)
         userNav.tabBarItem.image = UIImage(named: "tabBar_user")?.withRenderingMode(.alwaysOriginal)
         
         

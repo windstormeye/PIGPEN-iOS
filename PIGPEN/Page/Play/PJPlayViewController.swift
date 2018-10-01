@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PJPlayViewController: UIViewController {
+class PJPlayViewController: PJBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

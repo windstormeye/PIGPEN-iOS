@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PJMessageViewController: UIViewController {
+class PJMessageViewController: PJBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

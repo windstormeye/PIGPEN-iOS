@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PJUserForgetViewController" customModule="PIGPEN" customModuleProvider="target">
             <connections>
+                <outlet property="authCodeButton" destination="Mo3-LU-YX8" id="g9d-9P-RpY"/>
                 <outlet property="authCodeTextField" destination="x2n-ik-g5q" id="bpq-4Z-4QT"/>
                 <outlet property="commitButton" destination="eTZ-O4-9y7" id="bML-AA-PCz"/>
                 <outlet property="errorAuthCodeLabel" destination="tUL-as-IGW" id="sDs-O6-4xv"/>
@@ -23,44 +24,44 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的手机号码" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="krR-hz-cAO">
-                    <rect key="frame" x="109" y="70" width="157" height="30"/>
+                    <rect key="frame" x="87.5" y="50" width="200" height="40"/>
                     <color key="backgroundColor" red="0.90191346406936646" green="0.90199369192123413" blue="0.90184646844863892" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="TJI-Vo-ejX"/>
-                        <constraint firstAttribute="width" constant="157" id="t15-IJ-9xj"/>
+                        <constraint firstAttribute="height" constant="40" id="TJI-Vo-ejX"/>
+                        <constraint firstAttribute="width" constant="200" id="t15-IJ-9xj"/>
                     </constraints>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x2n-ik-g5q">
-                    <rect key="frame" x="109" y="110" width="157" height="30"/>
+                    <rect key="frame" x="87.5" y="100" width="200" height="40"/>
                     <color key="backgroundColor" red="0.90191346406936646" green="0.90199369192123413" blue="0.90184646844863892" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="157" id="DvQ-B4-Vwa"/>
-                        <constraint firstAttribute="height" constant="30" id="Hku-ld-6bu"/>
+                        <constraint firstAttribute="width" constant="200" id="DvQ-B4-Vwa"/>
+                        <constraint firstAttribute="height" constant="40" id="Hku-ld-6bu"/>
                     </constraints>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入新密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i38-Yh-w75">
-                    <rect key="frame" x="109" y="187" width="157" height="30"/>
+                    <rect key="frame" x="87.5" y="187" width="200" height="40"/>
                     <color key="backgroundColor" red="0.90191346406936646" green="0.90199369192123413" blue="0.90184646844863892" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="GCg-oD-5Qq"/>
-                        <constraint firstAttribute="width" constant="157" id="WLC-fR-2fY"/>
+                        <constraint firstAttribute="height" constant="40" id="GCg-oD-5Qq"/>
+                        <constraint firstAttribute="width" constant="200" id="WLC-fR-2fY"/>
                     </constraints>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mo3-LU-YX8">
-                    <rect key="frame" x="204" y="150" width="62" height="27"/>
+                    <rect key="frame" x="225.5" y="150" width="62" height="27"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="62" id="9mX-KB-pqJ"/>
                         <constraint firstAttribute="height" constant="27" id="GVL-sA-IDo"/>
@@ -71,7 +72,7 @@
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eTZ-O4-9y7">
-                    <rect key="frame" x="133" y="251" width="109" height="30"/>
+                    <rect key="frame" x="133" y="261" width="109" height="30"/>
                     <color key="backgroundColor" red="0.23227176070213318" green="0.59908026456832886" blue="0.98771435022354126" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="109" id="FZ9-3m-cWq"/>
@@ -82,7 +83,7 @@
                     </state>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入6位以上密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9g0-R2-O1i">
-                    <rect key="frame" x="168" y="227" width="98" height="14"/>
+                    <rect key="frame" x="189.5" y="237" width="98" height="14"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="14" id="Mks-rG-pZW"/>
                         <constraint firstAttribute="width" constant="98" id="wGP-O4-G6f"/>
@@ -92,7 +93,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="验证码输入错误" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUL-as-IGW">
-                    <rect key="frame" x="187" y="150" width="79" height="14"/>
+                    <rect key="frame" x="208.5" y="150" width="79" height="14"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="79" id="BgC-TJ-b9T"/>
                         <constraint firstAttribute="height" constant="14" id="qlQ-4a-QbC"/>
@@ -119,6 +120,7 @@
                 <constraint firstItem="i38-Yh-w75" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wlZ-f8-PCt"/>
                 <constraint firstItem="krR-hz-cAO" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="xpN-tb-swA"/>
             </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="53.600000000000001" y="48.125937031484263"/>
         </view>

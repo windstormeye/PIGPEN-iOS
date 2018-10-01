@@ -1,14 +1,14 @@
 //
-//  PJUserLoginViewController.swift
+//  PJUserRegisterViewController.swift
 //  PIGPEN
 //
-//  Created by PJHubs on 2018/9/26.
+//  Created by PJHubs on 2018/9/29.
 //  Copyright © 2018 PJHubs. All rights reserved.
 //
 
 import UIKit
 
-class PJUserLoginViewController: UIViewController {
+class PJUserRegisterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

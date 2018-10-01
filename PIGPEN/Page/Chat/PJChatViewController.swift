@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PJChatViewController: UIViewController {
+class PJChatViewController: PJBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

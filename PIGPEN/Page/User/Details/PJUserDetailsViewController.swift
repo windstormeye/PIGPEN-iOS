@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PJUserViewController: UIViewController {
+class PJUserDetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
