@@ -39,7 +39,7 @@
                     <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x2n-ik-g5q">
-                    <rect key="frame" x="87.5" y="220" width="200" height="30"/>
+                    <rect key="frame" x="87.5" y="210" width="200" height="30"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="DvQ-B4-Vwa"/>
@@ -50,7 +50,7 @@
                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入新密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i38-Yh-w75">
-                    <rect key="frame" x="87.5" y="310" width="200" height="30"/>
+                    <rect key="frame" x="87.5" y="300" width="200" height="30"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="GCg-oD-5Qq"/>
@@ -61,12 +61,12 @@
                     <textInputTraits key="textInputTraits" keyboardType="alphabet" secureTextEntry="YES"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mo3-LU-YX8">
-                    <rect key="frame" x="137.5" y="260" width="150" height="40"/>
+                    <rect key="frame" x="157.5" y="250" width="130" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="150" id="9mX-KB-pqJ"/>
+                        <constraint firstAttribute="width" constant="130" id="9mX-KB-pqJ"/>
                         <constraint firstAttribute="height" constant="40" id="GVL-sA-IDo"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="获取验证码">
                         <color key="titleColor" red="0.45095533132553101" green="0.45099771022796631" blue="0.45091992616653442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
@@ -77,12 +77,13 @@
                     </userDefinedRuntimeAttributes>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eTZ-O4-9y7">
-                    <rect key="frame" x="133" y="434" width="109" height="40"/>
+                    <rect key="frame" x="122.5" y="424" width="130" height="40"/>
                     <color key="backgroundColor" red="0.23227176070213318" green="0.59908026456832886" blue="0.98771435022354126" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="109" id="FZ9-3m-cWq"/>
+                        <constraint firstAttribute="width" constant="130" id="FZ9-3m-cWq"/>
                         <constraint firstAttribute="height" constant="40" id="aTA-Ep-gyR"/>
                     </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                     <state key="normal" title="确认提交">
                         <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
@@ -93,7 +94,7 @@
                     </userDefinedRuntimeAttributes>
                 </button>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入6位以上密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9g0-R2-O1i">
-                    <rect key="frame" x="189.5" y="350" width="98" height="14"/>
+                    <rect key="frame" x="189.5" y="340" width="98" height="14"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="14" id="Mks-rG-pZW"/>
                         <constraint firstAttribute="width" constant="98" id="wGP-O4-G6f"/>
@@ -103,7 +104,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="验证码输入错误" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUL-as-IGW">
-                    <rect key="frame" x="208.5" y="260" width="79" height="14"/>
+                    <rect key="frame" x="208.5" y="250" width="79" height="14"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="79" id="BgC-TJ-b9T"/>
                         <constraint firstAttribute="height" constant="14" id="qlQ-4a-QbC"/>
@@ -121,7 +122,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lY5-lX-Hzk">
-                    <rect key="frame" x="87.5" y="250" width="200" height="1.5"/>
+                    <rect key="frame" x="87.5" y="240" width="200" height="1.5"/>
                     <color key="backgroundColor" red="0.43526989220000001" green="0.43531095980000001" blue="0.43523555990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1.5" id="hfl-ex-gKX"/>
@@ -129,7 +130,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hAZ-Yr-Ice">
-                    <rect key="frame" x="87.5" y="340" width="200" height="1.5"/>
+                    <rect key="frame" x="87.5" y="330" width="200" height="1.5"/>
                     <color key="backgroundColor" red="0.43526989220000001" green="0.43531095980000001" blue="0.43523555990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="200" id="Zmx-cI-I1j"/>
@@ -144,7 +145,7 @@
                 <constraint firstItem="9g0-R2-O1i" firstAttribute="trailing" secondItem="i38-Yh-w75" secondAttribute="trailing" id="GrC-xV-iVy"/>
                 <constraint firstItem="tUL-as-IGW" firstAttribute="top" secondItem="x2n-ik-g5q" secondAttribute="bottom" constant="10" id="NC2-Hy-xaM"/>
                 <constraint firstItem="tUL-as-IGW" firstAttribute="trailing" secondItem="x2n-ik-g5q" secondAttribute="trailing" id="OsI-3i-nMO"/>
-                <constraint firstItem="x2n-ik-g5q" firstAttribute="top" secondItem="krR-hz-cAO" secondAttribute="bottom" constant="40" id="Q2D-wd-Qvb"/>
+                <constraint firstItem="x2n-ik-g5q" firstAttribute="top" secondItem="krR-hz-cAO" secondAttribute="bottom" constant="30" id="Q2D-wd-Qvb"/>
                 <constraint firstItem="lY5-lX-Hzk" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="WJn-s5-jH8"/>
                 <constraint firstItem="i38-Yh-w75" firstAttribute="top" secondItem="Mo3-LU-YX8" secondAttribute="bottom" constant="10" id="XoI-xr-A0P"/>
                 <constraint firstItem="x2n-ik-g5q" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ZOO-Uh-u3e"/>

@@ -23,11 +23,11 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="inJ-FD-Fqp">
-                    <rect key="frame" x="50" y="527" width="275" height="40"/>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="inJ-FD-Fqp">
+                    <rect key="frame" x="47.5" y="527" width="280" height="40"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="paH-WX-tS7">
-                            <rect key="frame" x="0.0" y="0.0" width="112.5" height="40"/>
+                            <rect key="frame" x="0.0" y="0.0" width="130" height="40"/>
                             <color key="backgroundColor" red="0.97736936807632446" green="0.63559168577194214" blue="0.63533246517181396" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="登入">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -42,7 +42,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rp2-ED-EhQ">
-                            <rect key="frame" x="162.5" y="0.0" width="112.5" height="40"/>
+                            <rect key="frame" x="150" y="0.0" width="130" height="40"/>
                             <color key="backgroundColor" red="0.0011946939630433917" green="0.6069452166557312" blue="0.9798768162727356" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="注册">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -59,10 +59,11 @@
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="3MQ-g0-94g"/>
+                        <constraint firstAttribute="width" constant="280" id="DAN-fb-cXn"/>
                     </constraints>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVN-CL-djb">
-                    <rect key="frame" x="275" y="567" width="50" height="27"/>
+                    <rect key="frame" x="277.5" y="567" width="50" height="27"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="27" id="VJC-Dv-FbG"/>
                         <constraint firstAttribute="width" constant="50" id="imx-uo-cOj"/>
@@ -78,14 +79,13 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="inJ-FD-Fqp" secondAttribute="bottom" constant="100" id="8Ve-kO-F9B"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="inJ-FD-Fqp" secondAttribute="trailing" constant="50" id="cyo-xU-Fwo"/>
-                <constraint firstItem="inJ-FD-Fqp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="50" id="foK-tC-gyx"/>
-                <constraint firstItem="fVN-CL-djb" firstAttribute="top" secondItem="inJ-FD-Fqp" secondAttribute="bottom" id="lwg-hm-E5D"/>
-                <constraint firstItem="fVN-CL-djb" firstAttribute="trailing" secondItem="inJ-FD-Fqp" secondAttribute="trailing" id="msR-ir-TQI"/>
+                <constraint firstItem="inJ-FD-Fqp" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7m3-Dc-ldt"/>
+                <constraint firstItem="fVN-CL-djb" firstAttribute="trailing" secondItem="inJ-FD-Fqp" secondAttribute="trailing" id="7q6-Qv-yJ7"/>
+                <constraint firstItem="fVN-CL-djb" firstAttribute="top" secondItem="inJ-FD-Fqp" secondAttribute="bottom" id="9vM-V7-W1N"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="inJ-FD-Fqp" secondAttribute="bottom" constant="100" id="Nsk-KF-Pg1"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="138.40000000000001" y="153.37331334332833"/>
+            <point key="canvasLocation" x="138.40000000000001" y="152.47376311844079"/>
         </view>
     </objects>
 </document>

@@ -32,6 +32,8 @@
 		0C5E6337216241CF00A90762 /* PJBaseTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E6336216241CF00A90762 /* PJBaseTipsView.swift */; };
 		0C5E63392162444400A90762 /* PJUserInfoSeleteAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E63382162444400A90762 /* PJUserInfoSeleteAvatarView.swift */; };
 		0C5E633B21624D1F00A90762 /* PJUserInfoAvatarSelectCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E633A21624D1F00A90762 /* PJUserInfoAvatarSelectCollectionView.swift */; };
+		0C5E633E216309C300A90762 /* PJNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E633D216309C300A90762 /* PJNetwork.swift */; };
+		0C5E634021635FA500A90762 /* PJNetworkUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E633F21635FA500A90762 /* PJNetworkUrls.swift */; };
 		0CE4F3F321592C7C003AD0F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4F3F221592C7C003AD0F5 /* AppDelegate.swift */; };
 		0CE4F3FB21592C7C003AD0F5 /* PIGPEN.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4F3F921592C7C003AD0F5 /* PIGPEN.xcdatamodeld */; };
 		0CE4F3FD21592C7D003AD0F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CE4F3FC21592C7D003AD0F5 /* Assets.xcassets */; };
@@ -66,6 +68,9 @@
 		0C5E6336216241CF00A90762 /* PJBaseTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBaseTipsView.swift; sourceTree = "<group>"; };
 		0C5E63382162444400A90762 /* PJUserInfoSeleteAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserInfoSeleteAvatarView.swift; sourceTree = "<group>"; };
 		0C5E633A21624D1F00A90762 /* PJUserInfoAvatarSelectCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserInfoAvatarSelectCollectionView.swift; sourceTree = "<group>"; };
+		0C5E633D216309C300A90762 /* PJNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJNetwork.swift; sourceTree = "<group>"; };
+		0C5E633F21635FA500A90762 /* PJNetworkUrls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJNetworkUrls.swift; sourceTree = "<group>"; };
+		0C5E63412163696F00A90762 /* style.data */ = {isa = PBXFileReference; lastKnownFileType = file; path = style.data; sourceTree = "<group>"; };
 		0CE4F3EF21592C7C003AD0F5 /* PIGPEN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PIGPEN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CE4F3F221592C7C003AD0F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CE4F3FA21592C7C003AD0F5 /* PIGPEN.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PIGPEN.xcdatamodel; sourceTree = "<group>"; };
@@ -150,6 +155,7 @@
 		0C55E2D3215A78F4000D8815 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				0C5E63412163696F00A90762 /* style.data */,
 				0C55E2D4215A792F000D8815 /* Muti-Language */,
 				0CE4F3FC21592C7D003AD0F5 /* Assets.xcassets */,
 				0CE4F40121592C7D003AD0F5 /* Info.plist */,
@@ -224,6 +230,7 @@
 		0C55E2F9215F5E14000D8815 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0C5E633C216309A900A90762 /* NetworkManager */,
 				0C55E2FA215F5E94000D8815 /* User */,
 			);
 			path = Model;
@@ -286,6 +293,15 @@
 				0C5E6336216241CF00A90762 /* PJBaseTipsView.swift */,
 			);
 			path = UIView;
+			sourceTree = "<group>";
+		};
+		0C5E633C216309A900A90762 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				0C5E633D216309C300A90762 /* PJNetwork.swift */,
+				0C5E633F21635FA500A90762 /* PJNetworkUrls.swift */,
+			);
+			path = NetworkManager;
 			sourceTree = "<group>";
 		};
 		0CE4F3E621592C7C003AD0F5 = {
@@ -461,10 +477,12 @@
 				0C55E2CC215A62AF000D8815 /* PJChatViewController.swift in Sources */,
 				0CE4F3F321592C7C003AD0F5 /* AppDelegate.swift in Sources */,
 				0C55E2F2215D2D76000D8815 /* PJUserInfoViewController.swift in Sources */,
+				0C5E634021635FA500A90762 /* PJNetworkUrls.swift in Sources */,
 				0C55E3082161BAB6000D8815 /* PJBaseViewController.swift in Sources */,
 				0C55E2DD215A8055000D8815 /* TabBarReddot.swift in Sources */,
 				0C5E633B21624D1F00A90762 /* PJUserInfoAvatarSelectCollectionView.swift in Sources */,
 				0C5E63392162444400A90762 /* PJUserInfoSeleteAvatarView.swift in Sources */,
+				0C5E633E216309C300A90762 /* PJNetwork.swift in Sources */,
 				0CE4F3FB21592C7C003AD0F5 /* PIGPEN.xcdatamodeld in Sources */,
 				0C55E2FC215F5EA9000D8815 /* PJUser.swift in Sources */,
 				0C55E2F7215F570D000D8815 /* PJUserRegisterViewController.swift in Sources */,
