@@ -9,11 +9,4 @@
 import Foundation
 
 
-enum UserUrl: String {
-    case register = "masuser/createmasuser"
-    case logIn = "masuser/login"
-    case update = "masuser/logout"
-    case logOut = "masuser/update"
-    case updateToken = "masuser/updateToken"
-    case details = "masuser/getUserDetails"
-}
+

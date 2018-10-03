@@ -11,24 +11,26 @@ import Alamofire
 import SwiftyJSON
 
 
+struct PJError {
+    let errorCode: Int?
+    let errorMsg: String?
+}
+
+
 class PJNetwork {
     static let shared = PJNetwork()
     
-    let hostName = "http://localhost:8000"
+    let hostName = "http://127.0.0.1:8000/"
     
     
-    func requstWithGet(parametes: [String: String],
-                       complement: @escaping ([JSON]) -> Void,
+    func requstWithGet(path: String,
+                       parameters: [String: String],
+                       complement: @escaping ([String: JSON]) -> Void,
                        failed: @escaping (String) -> Void) {
-        
-        var pa = Parameters()
-        for (k ,v) in parametes {
-            pa[k] = v
-        }
-        
-        Alamofire.request(hostName,
+        let parametes = parametersHandler(parameters: parameters)
+        Alamofire.request(hostName + path,
                           method: .get,
-                          parameters: pa,
+                          parameters: parametes,
                           encoding: URLEncoding.default,
                           headers: nil).responseJSON { (response) in
                             switch response.result {
@@ -41,10 +43,12 @@ class PJNetwork {
     }
     
     
-    func requstWithPost(parametes: Parameters,
-                       complement: @escaping ([JSON]) -> Void,
-                       failed: @escaping (String) -> Void) {
-        Alamofire.request(hostName,
+    func requstWithPost(path: String,
+                        parameters: [String: String],
+                        complement: @escaping ([String: JSON]) -> Void,
+                        failed: @escaping (String) -> Void) {
+        let parametes = parametersHandler(parameters: parameters)
+        Alamofire.request(hostName + path,
                           method: .post,
                           parameters: parametes,
                           encoding: URLEncoding.default,
@@ -59,13 +63,26 @@ class PJNetwork {
     }
     
     
-    private func handleSuccess(_ data: Data?) -> [JSON] {
+    private func handleSuccess(_ data: Data?) -> [String: JSON] {
         if let data = data {
-            if let jsonData = try? JSON(data: data).array {
+            if let jsonData = try? JSON(data: data).dictionary {
                 return jsonData!
             }
         }
-        return []
+        return [:]
+    }
+    
+    
+    private func parametersHandler(parameters: [String: String]) -> Parameters {
+        var pa = Parameters()
+        for (k ,v) in parameters {
+            pa[k] = v
+        }
+        pa["timestamp"] = String.timestape()
+        pa["nick_name"] = PJUser.shared.nickName ?? ""
+        pa["masuser_id"] = PJUser.shared.nickName ?? ""
+        
+        return pa
     }
     
 }

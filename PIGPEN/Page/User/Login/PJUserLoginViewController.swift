@@ -9,13 +9,29 @@
 import UIKit
 
 class PJUserLoginViewController: PJBaseViewController {
-
+    @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var passwdTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+    
     
     // MARK: life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "登入"
+        initView()
+    }
+    
+    
+    private func initView() {
+        title = "登录"
         backButtonTapped(backSel: .back)
+        
+        loginButton.backgroundColor = .unFocusColor()
+        loginButton.isEnabled = false
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: .textFieldTextChange,
+                                               name: UITextField.textDidChangeNotification,
+                                               object: nil)
     }
     
     
@@ -24,17 +40,39 @@ class PJUserLoginViewController: PJBaseViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    
     @IBAction func forgetButtonTapped(_ sender: UIButton) {
         navigationController?.pushViewController(PJUserForgetViewController(),
                                                  animated: true)
     }
     
+    
     @IBAction func loginButtonTapped(_ sender: UIButton) {
-        
+        let phone = phoneTextField.text
+        let passwd = passwdTextField.text
+        PJUser.shared.login(phone: phone!, passwd: passwd!, completeHandler: {
+            
+        }) { (error) in
+            print(error.errorMsg ?? "2333")
+        }
     }
+    
+    
+    // MARK: Notification
+    @objc func textFieldTextChange(notification: Notification) {
+        if phoneTextField.text?.count != 0 && passwdTextField.text?.count != 0 {
+            loginButton.backgroundColor = .focusColor()
+            loginButton.isEnabled = true
+        } else {
+            loginButton.backgroundColor = .unFocusColor()
+            loginButton.isEnabled = false
+        }
+    }
+    
 }
 
 
 fileprivate extension Selector {
     static let back = #selector(PJUserLoginViewController.back)
+    static let textFieldTextChange = #selector(PJUserLoginViewController.textFieldTextChange(notification:))
 }

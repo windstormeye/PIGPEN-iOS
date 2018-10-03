@@ -29,7 +29,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="paH-WX-tS7">
                             <rect key="frame" x="0.0" y="0.0" width="130" height="40"/>
                             <color key="backgroundColor" red="0.97736936807632446" green="0.63559168577194214" blue="0.63533246517181396" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <state key="normal" title="登入">
+                            <state key="normal" title="登录">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <userDefinedRuntimeAttributes>

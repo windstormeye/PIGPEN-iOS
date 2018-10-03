@@ -36,6 +36,7 @@ class PJWelcomeViewController: PJBaseViewController {
     @IBAction func registerButtonTapped(_ sender: UIButton) {
         navigationController?.pushViewController(PJUserRegisterViewController(),
                                                  animated: true)
+        print(PJUser.shared.token)
     }
     
     @IBAction func toHomeButtonTapped(_ sender: UIButton) {
