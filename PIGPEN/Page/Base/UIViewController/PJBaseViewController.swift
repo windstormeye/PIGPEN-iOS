@@ -28,7 +28,6 @@ class PJBaseViewController: UIViewController {
                                                                for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
-//        isHiddenBarBottomLineView = true
         
         let titleTextAtt = [NSAttributedString.Key.foregroundColor: UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = titleTextAtt
@@ -42,7 +41,7 @@ class PJBaseViewController: UIViewController {
         
         lineView = UIView(frame: CGRect(x: 0, y: headerView!.bottom,
                                             width: view.width, height: 0.5))
-        lineView?.backgroundColor = PJRGB(r: 230, g: 230, b: 230)
+        lineView?.backgroundColor = .boderColor()
         view.addSubview(lineView!)
         
         // 解决自定义 leftBarButtonItem 后侧滑失效
@@ -56,7 +55,7 @@ class PJBaseViewController: UIViewController {
     // MARK: Action
     func backButtonTapped(backSel: Selector) {
         let leftButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        leftButton.setImage(UIImage(named: "backButton"), for: .normal)
+        leftButton.setImage(UIImage(named: "nav_back"), for: .normal)
         leftButton.addTarget(self, action: backSel, for: .touchUpInside)
         let leftBarButtonItem = UIBarButtonItem.init(customView: leftButton)
         navigationItem.setLeftBarButton(leftBarButtonItem, animated: true)

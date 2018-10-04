@@ -13,10 +13,11 @@ import CryptoSwift
 enum UserUrl: String {
     case register = "masuser/createmasuser"
     case logIn = "masuser/login"
-    case update = "masuser/logout"
-    case logOut = "masuser/update"
+    case logOut = "masuser/logout"
+    case update = "masuser/update"
     case updateToken = "masuser/updateToken"
     case details = "masuser/getUserDetails"
+    case checkPhone = "masuser/checkPhone"
 }
 
 
@@ -24,6 +25,23 @@ struct PJUserModel {
     let nickName: String?
     let gender: Int?
     let avatar: Int?
+}
+
+struct PJUserRegisterModel {
+    var nickName: String
+    var phone: String
+    var passwd: String
+    var gender: Int
+    var avatar: Int
+}
+
+struct PJUserDetailsModel {
+    var avatar: Int
+    var gender: Int
+    var status: Int
+    var level: Double
+    var follow: Int
+    var star: Int
 }
 
 
@@ -116,19 +134,15 @@ class PJUser: Codable {
     }
     
     
-    func register(phone: String,
-                  passwd: String,
-                  nickName: String,
-                  avatar: Int,
-                  gender: Int,
+    func register(registerModel: PJUserRegisterModel,
                   completeHandler: @escaping () -> Void,
                   failedHandler: @escaping (PJError) -> Void) {
-        let salt = String(phone.reversed())
-        var psd = passwd + salt
+        let salt = String(registerModel.phone.reversed())
+        var psd = registerModel.passwd + salt
         psd = psd.md5()
         
         let parameters = [
-            "username": phone,
+            "username": registerModel.phone,
             "password": psd
         ]
         PJNetwork.shared.requstWithPost(path: UserUrl.register.rawValue,
@@ -198,6 +212,28 @@ class PJUser: Codable {
         })
     }
     
+    func checkPhone(phoneString: String,
+                    completeHandler: @escaping () -> Void,
+                    failedHandler: @escaping (PJError) -> Void) {
+        let parameters = [
+            "phone": phoneString
+        ]
+        
+        PJNetwork.shared.requstWithGet(path: UserUrl.checkPhone.rawValue,
+                                       parameters: parameters,
+                                       complement: { (dataDic) in
+                                        if dataDic["msgCode"]?.intValue == 666 {
+                                            completeHandler()
+                                        } else {
+                                            let error = PJError(errorCode: dataDic["msgCode"]?.intValue,
+                                                                errorMsg: dataDic["msg"]?.string)
+                                            failedHandler(error)
+                                        }
+        }, failed: { (errorString) in
+            failedHandler(PJError(errorCode: 0,
+                                  errorMsg: "未知错误"))
+        })
+    }
     
     func logout() {
         nickName = ""

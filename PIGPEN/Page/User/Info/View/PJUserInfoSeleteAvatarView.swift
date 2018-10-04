@@ -62,7 +62,7 @@ class PJUserInfoSeleteAvatarView: UIView, PJUserInfoAvatarSelectCollectionViewDe
         closeButton = UIButton(frame: CGRect(x: 0, y: backView.bottom + 20,
                                              width: 30, height: 30))
         closeButton.centerX = centerX
-        closeButton.setImage(UIImage(named: "temp_1"), for: .normal)
+        closeButton.setImage(UIImage(named: "close"), for: .normal)
         closeButton.addTarget(self, action: .closeButtonTapped,
                               for: .touchUpInside)
         addSubview(closeButton)

@@ -8,6 +8,10 @@
 
 import UIKit
 
+fileprivate extension Selector {
+    static let dis = #selector(PJWelcomeViewController.dis)
+}
+
 class PJWelcomeViewController: PJBaseViewController {
 
     @IBOutlet weak var loginButton: UIButton!
@@ -25,9 +29,15 @@ class PJWelcomeViewController: PJBaseViewController {
     private func initView() {
         isHiddenBarBottomLineView = true
         headerView?.isHidden = true
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: .dis,
+                                               name: .loginSuccess(),
+                                               object: nil)
     }
     
     
+    // MARK: Action
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         navigationController?.pushViewController(PJUserLoginViewController(),
                                                  animated: true)
@@ -36,11 +46,13 @@ class PJWelcomeViewController: PJBaseViewController {
     @IBAction func registerButtonTapped(_ sender: UIButton) {
         navigationController?.pushViewController(PJUserRegisterViewController(),
                                                  animated: true)
-        print(PJUser.shared.token)
     }
     
     @IBAction func toHomeButtonTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
     
+    @objc fileprivate func dis() {
+        dismiss(animated: true, completion: nil)
+    }
 }

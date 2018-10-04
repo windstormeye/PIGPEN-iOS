@@ -64,7 +64,8 @@ class PJUserInfoAvatarSelectCollectionView: UICollectionView, UICollectionViewDe
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PJUserInfoAvatarSelectCollectionView.cellIdentifierString, for: indexPath)
         let cellImage = UIImage(named: "\(indexPath.row)")
         cell.backgroundView = UIImageView(image: cellImage!)
-        cell.selectedBackgroundView = UIImageView(image: UIImage(named: "temp_1"))
+        let backImage = UIImage(named: "user_info_avatar_selected")
+        cell.selectedBackgroundView = UIImageView(image: backImage)
         return cell
     }
     

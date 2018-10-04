@@ -16,4 +16,8 @@ extension UIColor {
     class func unFocusColor() -> UIColor {
         return PJRGB(r: 230, g: 230, b: 230)
     }
+    
+    class func boderColor() -> UIColor {
+        return PJRGB(r: 230, g: 230, b: 230)
+    }
 }

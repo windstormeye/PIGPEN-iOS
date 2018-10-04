@@ -51,9 +51,11 @@ class PJUserLoginViewController: PJBaseViewController {
         let phone = phoneTextField.text
         let passwd = passwdTextField.text
         PJUser.shared.login(phone: phone!, passwd: passwd!, completeHandler: {
-            
+            PJTapic.succee()
+            NotificationCenter.default.post(name: .loginSuccess(), object: nil)
         }) { (error) in
-            print(error.errorMsg ?? "2333")
+            PJTapic.error()
+            print(error.errorMsg ?? "未知错误")
         }
     }
     
