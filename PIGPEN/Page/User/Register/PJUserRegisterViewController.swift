@@ -111,23 +111,28 @@ class PJUserRegisterViewController: PJBaseViewController {
         let phoneString = phoneTextField.text!
         let authCodeString = authCodeTextField.text!
         let passwordString = passwordTextField.text!
-        SMSSDK.commitVerificationCode(authCodeString,
-                                      phoneNumber: phoneString,
-                                      zone: "86") { (error) in
-                                        if error != nil {
-                                            PJTapic.error()
-                                            print(error!.localizedDescription)
-                                        } else {
-                                            let registerModel = PJUserRegisterModel(nickName: "",
-                                                                                    phone: phoneString,
-                                                                                    passwd: passwordString,
-                                                                                    gender: 1,
-                                                                                    avatar: -1)
-                                            let vc = PJUserInfoViewController()
-                                            vc.userRegisterModel = registerModel
-                                            self.navigationController?.pushViewController(vc,
-                                                                                          animated: true)
-                                        }
+        
+        PJUser.shared.checkPhone(phoneString: phoneString, completeHandler: {
+            SMSSDK.commitVerificationCode(authCodeString,
+                                          phoneNumber: phoneString,
+                                          zone: "86") { (error) in
+                                            if error != nil {
+                                                PJTapic.error()
+                                                print(error!.localizedDescription)
+                                            } else {
+                                                let registerModel = PJUserRegisterModel(nickName: "",
+                                                                                        phone: phoneString,
+                                                                                        passwd: passwordString,
+                                                                                        gender: 1,
+                                                                                        avatar: -1)
+                                                let vc = PJUserInfoViewController()
+                                                vc.userRegisterModel = registerModel
+                                                self.navigationController?.pushViewController(vc,
+                                                                                              animated: true)
+                                            }
+            }
+        }) { (error) in
+            print(error.errorMsg!)
         }
     }
     

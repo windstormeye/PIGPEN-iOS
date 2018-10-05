@@ -78,10 +78,6 @@ class PJNetwork {
         for (k ,v) in parameters {
             pa[k] = v
         }
-        pa["timestamp"] = String.timestape()
-        pa["nick_name"] = PJUser.shared.nickName ?? ""
-        pa["masuser_id"] = PJUser.shared.nickName ?? ""
-        
         return pa
     }
     

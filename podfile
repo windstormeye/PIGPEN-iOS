@@ -1,0 +1,12 @@
+platform :ios, '10.0'
+target 'PIGPEN' do
+
+pod 'mob_smssdk'
+pod 'IQKeyboardManagerSwift'
+pod 'Alamofire'
+pod 'SwiftyJSON'
+pod 'CryptoSwift'
+pod 'Schedule'
+
+end
+ 

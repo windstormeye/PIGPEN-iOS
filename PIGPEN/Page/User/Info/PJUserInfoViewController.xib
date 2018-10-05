@@ -99,14 +99,14 @@
                         <constraint firstAttribute="height" constant="1.5" id="vsI-e9-WyJ"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_info_female" translatesAutoresizingMaskIntoConstraints="NO" id="pv3-Rn-H8p">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_info_gender_1" translatesAutoresizingMaskIntoConstraints="NO" id="pv3-Rn-H8p">
                     <rect key="frame" x="137.5" y="300" width="13" height="13"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="13" id="49r-HQ-aXp"/>
                         <constraint firstAttribute="width" constant="13" id="TjO-e4-pbx"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_info_male" translatesAutoresizingMaskIntoConstraints="NO" id="t6D-T6-ofi">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_info_gender_0" translatesAutoresizingMaskIntoConstraints="NO" id="t6D-T6-ofi">
                     <rect key="frame" x="274.5" y="300" width="13" height="13"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="13" id="xPl-j9-DLt"/>
@@ -161,9 +161,9 @@
     </objects>
     <resources>
         <image name="user_info_avatar" width="90" height="90"/>
-        <image name="user_info_female" width="14" height="14"/>
         <image name="user_info_female_selected" width="15" height="15"/>
-        <image name="user_info_male" width="14" height="14"/>
+        <image name="user_info_gender_0" width="14" height="14"/>
+        <image name="user_info_gender_1" width="14" height="14"/>
         <image name="user_info_select" width="15" height="15"/>
         <image name="user_info_selected" width="15" height="15"/>
     </resources>

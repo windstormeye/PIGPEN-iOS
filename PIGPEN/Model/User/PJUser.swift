@@ -75,6 +75,7 @@ class PJUser: Codable {
                  failedHandler: @escaping (PJError) -> Void) {
         let parameters = [
             "nick_name": nickName,
+            "timestamp": String.timestape(),
         ]
         PJNetwork.shared.requstWithPost(path: UserUrl.details.rawValue,
                                         parameters: parameters,
@@ -107,7 +108,9 @@ class PJUser: Codable {
                 failedHandler: @escaping (PJError) -> Void) {
         let parameters = [
             "avatar": String(avatar),
-            "gender": String(gender)
+            "gender": String(gender),
+            "timestamp": String.timestape(),
+            "nick_name": PJUser.shared.nickName ?? ""
         ]
         PJNetwork.shared.requstWithPost(path: UserUrl.update.rawValue,
                                         parameters: parameters,
@@ -143,7 +146,11 @@ class PJUser: Codable {
         
         let parameters = [
             "username": registerModel.phone,
-            "password": psd
+            "password": psd,
+            "nick_name": registerModel.nickName,
+            "avatar": String(registerModel.avatar),
+            "gender": String(registerModel.gender),
+            "timestamp": String.timestape()
         ]
         PJNetwork.shared.requstWithPost(path: UserUrl.register.rawValue,
                                         parameters: parameters,
@@ -185,6 +192,8 @@ class PJUser: Codable {
         let parameters = [
             "username": phone,
             "sign": sign,
+            "timestamp": String.timestape(),
+            "nick_name": PJUser.shared.nickName ?? ""
         ]
         PJNetwork.shared.requstWithPost(path: UserUrl.logIn.rawValue,
                                         parameters: parameters,
@@ -216,7 +225,9 @@ class PJUser: Codable {
                     completeHandler: @escaping () -> Void,
                     failedHandler: @escaping (PJError) -> Void) {
         let parameters = [
-            "phone": phoneString
+            "phone": phoneString,
+            "timestamp": String.timestape(),
+            "nick_name": PJUser.shared.nickName ?? ""
         ]
         
         PJNetwork.shared.requstWithGet(path: UserUrl.checkPhone.rawValue,

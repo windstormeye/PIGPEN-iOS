@@ -40,8 +40,10 @@
 		0C5E634D2165A5F800A90762 /* PJSmallHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E634C2165A5F800A90762 /* PJSmallHUD.swift */; };
 		0C5E634F2165AB8C00A90762 /* PJTapic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E634E2165AB8C00A90762 /* PJTapic.swift */; };
 		0C5E63532165ADF500A90762 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E63522165ADF500A90762 /* NotificationName.swift */; };
-		0C5E635A2166331E00A90762 /* PJUserSelfTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E63582166331E00A90762 /* PJUserSelfTableViewCell.swift */; };
-		0C5E635B2166331E00A90762 /* PJUserSelfTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C5E63592166331E00A90762 /* PJUserSelfTableViewCell.xib */; };
+		0CDB0C8F216705B000669331 /* PJUserSelfTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CDB0C8D216705B000669331 /* PJUserSelfTableViewCell.xib */; };
+		0CDB0C90216705B000669331 /* PJUserSelfTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0C8E216705B000669331 /* PJUserSelfTableViewCell.swift */; };
+		0CDB0C93216727A400669331 /* PJUserDetailPetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0C91216727A400669331 /* PJUserDetailPetTableViewCell.swift */; };
+		0CDB0C972167299A00669331 /* PJUserDetailsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0C962167299A00669331 /* PJUserDetailsTableView.swift */; };
 		0CE4F3F321592C7C003AD0F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4F3F221592C7C003AD0F5 /* AppDelegate.swift */; };
 		0CE4F3FB21592C7C003AD0F5 /* PIGPEN.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4F3F921592C7C003AD0F5 /* PIGPEN.xcdatamodeld */; };
 		0CE4F3FD21592C7D003AD0F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CE4F3FC21592C7D003AD0F5 /* Assets.xcassets */; };
@@ -86,8 +88,10 @@
 		0C5E634E2165AB8C00A90762 /* PJTapic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PJTapic.swift; sourceTree = "<group>"; };
 		0C5E63522165ADF500A90762 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		0C5E63542165B6D400A90762 /* PIGPEN_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIGPEN_bridge.h; sourceTree = "<group>"; };
-		0C5E63582166331E00A90762 /* PJUserSelfTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PJUserSelfTableViewCell.swift; path = PIGPEN/Page/User/Details/Status/Self/PJUserSelfTableViewCell.swift; sourceTree = SOURCE_ROOT; };
-		0C5E63592166331E00A90762 /* PJUserSelfTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = PJUserSelfTableViewCell.xib; path = PIGPEN/Page/User/Details/Status/Self/PJUserSelfTableViewCell.xib; sourceTree = SOURCE_ROOT; };
+		0CDB0C8D216705B000669331 /* PJUserSelfTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PJUserSelfTableViewCell.xib; sourceTree = "<group>"; };
+		0CDB0C8E216705B000669331 /* PJUserSelfTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PJUserSelfTableViewCell.swift; sourceTree = "<group>"; };
+		0CDB0C91216727A400669331 /* PJUserDetailPetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserDetailPetTableViewCell.swift; sourceTree = "<group>"; };
+		0CDB0C962167299A00669331 /* PJUserDetailsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserDetailsTableView.swift; sourceTree = "<group>"; };
 		0CE4F3EF21592C7C003AD0F5 /* PIGPEN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PIGPEN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CE4F3F221592C7C003AD0F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CE4F3FA21592C7C003AD0F5 /* PIGPEN.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PIGPEN.xcdatamodel; sourceTree = "<group>"; };
@@ -268,7 +272,7 @@
 		0C55E2FD2161B1A3000D8815 /* Details */ = {
 			isa = PBXGroup;
 			children = (
-				0C5E63572166296D00A90762 /* Status */,
+				0CDB0C8A2167055900669331 /* View */,
 				0C55E2D1215A62CD000D8815 /* PJUserDetailsViewController.swift */,
 			);
 			path = Details;
@@ -352,20 +356,20 @@
 			path = Tapic;
 			sourceTree = "<group>";
 		};
-		0C5E63572166296D00A90762 /* Status */ = {
+		0C5E63572166296D00A90762 /* User */ = {
 			isa = PBXGroup;
 			children = (
 				0C5E635D2166333000A90762 /* Others */,
 				0C5E635C2166332A00A90762 /* Self */,
 			);
-			path = Status;
+			path = User;
 			sourceTree = "<group>";
 		};
 		0C5E635C2166332A00A90762 /* Self */ = {
 			isa = PBXGroup;
 			children = (
-				0C5E63582166331E00A90762 /* PJUserSelfTableViewCell.swift */,
-				0C5E63592166331E00A90762 /* PJUserSelfTableViewCell.xib */,
+				0CDB0C8E216705B000669331 /* PJUserSelfTableViewCell.swift */,
+				0CDB0C8D216705B000669331 /* PJUserSelfTableViewCell.xib */,
 			);
 			path = Self;
 			sourceTree = "<group>";
@@ -375,6 +379,40 @@
 			children = (
 			);
 			path = Others;
+			sourceTree = "<group>";
+		};
+		0CDB0C8A2167055900669331 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0CDB0C952167298000669331 /* TableView */,
+				0CDB0C8C2167057400669331 /* VirtualPet */,
+				0CDB0C8B2167056700669331 /* RealPet */,
+				0C5E63572166296D00A90762 /* User */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0CDB0C8B2167056700669331 /* RealPet */ = {
+			isa = PBXGroup;
+			children = (
+				0CDB0C91216727A400669331 /* PJUserDetailPetTableViewCell.swift */,
+			);
+			path = RealPet;
+			sourceTree = "<group>";
+		};
+		0CDB0C8C2167057400669331 /* VirtualPet */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = VirtualPet;
+			sourceTree = "<group>";
+		};
+		0CDB0C952167298000669331 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				0CDB0C962167299A00669331 /* PJUserDetailsTableView.swift */,
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 		0CE4F3E621592C7C003AD0F5 = {
@@ -496,7 +534,7 @@
 				0CE4F3FD21592C7D003AD0F5 /* Assets.xcassets in Resources */,
 				0C55E2E9215B703C000D8815 /* PJUserLoginViewController.xib in Resources */,
 				0C55E2F3215D2D76000D8815 /* PJUserInfoViewController.xib in Resources */,
-				0C5E635B2166331E00A90762 /* PJUserSelfTableViewCell.xib in Resources */,
+				0CDB0C8F216705B000669331 /* PJUserSelfTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -554,8 +592,9 @@
 				0CE4F3F321592C7C003AD0F5 /* AppDelegate.swift in Sources */,
 				0C55E2F2215D2D76000D8815 /* PJUserInfoViewController.swift in Sources */,
 				0C5E634021635FA500A90762 /* PJNetworkUrls.swift in Sources */,
-				0C5E635A2166331E00A90762 /* PJUserSelfTableViewCell.swift in Sources */,
+				0CDB0C90216705B000669331 /* PJUserSelfTableViewCell.swift in Sources */,
 				0C55E3082161BAB6000D8815 /* PJBaseViewController.swift in Sources */,
+				0CDB0C93216727A400669331 /* PJUserDetailPetTableViewCell.swift in Sources */,
 				0C55E2DD215A8055000D8815 /* TabBarReddot.swift in Sources */,
 				0C5E634D2165A5F800A90762 /* PJSmallHUD.swift in Sources */,
 				0C5E633B21624D1F00A90762 /* PJUserInfoAvatarSelectCollectionView.swift in Sources */,
@@ -570,6 +609,7 @@
 				0C5E634F2165AB8C00A90762 /* PJTapic.swift in Sources */,
 				0C5E634321644F7900A90762 /* String_time.swift in Sources */,
 				0C55E2ED215B7DB0000D8815 /* PJUserForgetViewController.swift in Sources */,
+				0CDB0C972167299A00669331 /* PJUserDetailsTableView.swift in Sources */,
 				0C55E2E4215A84EA000D8815 /* UIViewPosition.swift in Sources */,
 				0C5E634B2165A57200A90762 /* PJBigHUD.swift in Sources */,
 				0C55E3012161B247000D8815 /* PJWelcomeViewController.swift in Sources */,
