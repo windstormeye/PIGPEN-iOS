@@ -44,6 +44,8 @@
 		0CDB0C90216705B000669331 /* PJUserSelfTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0C8E216705B000669331 /* PJUserSelfTableViewCell.swift */; };
 		0CDB0C93216727A400669331 /* PJUserDetailPetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0C91216727A400669331 /* PJUserDetailPetTableViewCell.swift */; };
 		0CDB0C972167299A00669331 /* PJUserDetailsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0C962167299A00669331 /* PJUserDetailsTableView.swift */; };
+		0CDB0C9B21675F6E00669331 /* PJUserDetailsMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0C9A21675F6E00669331 /* PJUserDetailsMenuView.swift */; };
+		0CDB0C9D21675F7400669331 /* PJUserDetailsMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CDB0C9C21675F7400669331 /* PJUserDetailsMenuView.xib */; };
 		0CE4F3F321592C7C003AD0F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4F3F221592C7C003AD0F5 /* AppDelegate.swift */; };
 		0CE4F3FB21592C7C003AD0F5 /* PIGPEN.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4F3F921592C7C003AD0F5 /* PIGPEN.xcdatamodeld */; };
 		0CE4F3FD21592C7D003AD0F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CE4F3FC21592C7D003AD0F5 /* Assets.xcassets */; };
@@ -92,6 +94,8 @@
 		0CDB0C8E216705B000669331 /* PJUserSelfTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PJUserSelfTableViewCell.swift; sourceTree = "<group>"; };
 		0CDB0C91216727A400669331 /* PJUserDetailPetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserDetailPetTableViewCell.swift; sourceTree = "<group>"; };
 		0CDB0C962167299A00669331 /* PJUserDetailsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserDetailsTableView.swift; sourceTree = "<group>"; };
+		0CDB0C9A21675F6E00669331 /* PJUserDetailsMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserDetailsMenuView.swift; sourceTree = "<group>"; };
+		0CDB0C9C21675F7400669331 /* PJUserDetailsMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJUserDetailsMenuView.xib; sourceTree = "<group>"; };
 		0CE4F3EF21592C7C003AD0F5 /* PIGPEN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PIGPEN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CE4F3F221592C7C003AD0F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CE4F3FA21592C7C003AD0F5 /* PIGPEN.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PIGPEN.xcdatamodel; sourceTree = "<group>"; };
@@ -384,9 +388,9 @@
 		0CDB0C8A2167055900669331 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0CDB0C9921675F2900669331 /* Menu */,
+				0CDB0C9821675F1C00669331 /* Pet */,
 				0CDB0C952167298000669331 /* TableView */,
-				0CDB0C8C2167057400669331 /* VirtualPet */,
-				0CDB0C8B2167056700669331 /* RealPet */,
 				0C5E63572166296D00A90762 /* User */,
 			);
 			path = View;
@@ -413,6 +417,24 @@
 				0CDB0C962167299A00669331 /* PJUserDetailsTableView.swift */,
 			);
 			path = TableView;
+			sourceTree = "<group>";
+		};
+		0CDB0C9821675F1C00669331 /* Pet */ = {
+			isa = PBXGroup;
+			children = (
+				0CDB0C8C2167057400669331 /* VirtualPet */,
+				0CDB0C8B2167056700669331 /* RealPet */,
+			);
+			path = Pet;
+			sourceTree = "<group>";
+		};
+		0CDB0C9921675F2900669331 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				0CDB0C9A21675F6E00669331 /* PJUserDetailsMenuView.swift */,
+				0CDB0C9C21675F7400669331 /* PJUserDetailsMenuView.xib */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		0CE4F3E621592C7C003AD0F5 = {
@@ -535,6 +557,7 @@
 				0C55E2E9215B703C000D8815 /* PJUserLoginViewController.xib in Resources */,
 				0C55E2F3215D2D76000D8815 /* PJUserInfoViewController.xib in Resources */,
 				0CDB0C8F216705B000669331 /* PJUserSelfTableViewCell.xib in Resources */,
+				0CDB0C9D21675F7400669331 /* PJUserDetailsMenuView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,6 +608,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C55E2E8215B703C000D8815 /* PJUserLoginViewController.swift in Sources */,
+				0CDB0C9B21675F6E00669331 /* PJUserDetailsMenuView.swift in Sources */,
 				0C55E2E2215A8422000D8815 /* PJStatic.swift in Sources */,
 				0C5E63532165ADF500A90762 /* NotificationName.swift in Sources */,
 				0C55E2CE215A62BE000D8815 /* PJPlayViewController.swift in Sources */,

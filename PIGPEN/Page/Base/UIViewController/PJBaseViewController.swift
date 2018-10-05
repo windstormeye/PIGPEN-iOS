@@ -39,7 +39,7 @@ class PJBaseViewController: UIViewController {
         view.addSubview(headerView!)
         
         
-        lineView = UIView(frame: CGRect(x: 0, y: headerView!.bottom,
+        lineView = UIView(frame: CGRect(x: 0, y: headerView!.bottom - 0.5,
                                             width: view.width, height: 0.5))
         lineView?.backgroundColor = .boderColor()
         view.addSubview(lineView!)
@@ -61,7 +61,14 @@ class PJBaseViewController: UIViewController {
         navigationItem.setLeftBarButton(leftBarButtonItem, animated: true)
     }
     
-
+    func rightBarButtonItem(imageName: String, rightSel: Selector) {
+        let rightButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        rightButton.setImage(UIImage(named: imageName), for: .normal)
+        rightButton.addTarget(self, action: rightSel, for: .touchUpInside)
+        let leftBarButtonItem = UIBarButtonItem.init(customView: rightButton)
+        navigationItem.setRightBarButton(leftBarButtonItem, animated: true)
+    }
+    
     private func didSetIsHiddenBarBottomLineView() {
         lineView?.isHidden = isHiddenBarBottomLineView!
     }
