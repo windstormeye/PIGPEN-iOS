@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C0A54A3216B962100195DF1 /* PJUserDateilsRealPetColletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0A54A2216B962100195DF1 /* PJUserDateilsRealPetColletionView.swift */; };
+		0C0A54A6216B977E00195DF1 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0A54A5216B977E00195DF1 /* Pet.swift */; };
 		0C55E2C5215A61E3000D8815 /* PJHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2C4215A61E3000D8815 /* PJHomeViewController.swift */; };
 		0C55E2CC215A62AF000D8815 /* PJChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2CB215A62AF000D8815 /* PJChatViewController.swift */; };
 		0C55E2CE215A62BE000D8815 /* PJPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2CD215A62BE000D8815 /* PJPlayViewController.swift */; };
@@ -54,6 +56,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C0A54A2216B962100195DF1 /* PJUserDateilsRealPetColletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserDateilsRealPetColletionView.swift; sourceTree = "<group>"; };
+		0C0A54A5216B977E00195DF1 /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
 		0C55E2C4215A61E3000D8815 /* PJHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJHomeViewController.swift; sourceTree = "<group>"; };
 		0C55E2CB215A62AF000D8815 /* PJChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJChatViewController.swift; sourceTree = "<group>"; };
 		0C55E2CD215A62BE000D8815 /* PJPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJPlayViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +123,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C0A54A7216B990500195DF1 /* Pet */ = {
+			isa = PBXGroup;
+			children = (
+				0C0A54A5216B977E00195DF1 /* Pet.swift */,
+			);
+			path = Pet;
+			sourceTree = "<group>";
+		};
 		0C55E2C3215A61AD000D8815 /* Page */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				0C5E633C216309A900A90762 /* NetworkManager */,
+				0C0A54A7216B990500195DF1 /* Pet */,
 				0C55E2FA215F5E94000D8815 /* User */,
 			);
 			path = Model;
@@ -400,6 +413,7 @@
 			isa = PBXGroup;
 			children = (
 				0CDB0C91216727A400669331 /* PJUserDetailPetTableViewCell.swift */,
+				0C0A54A2216B962100195DF1 /* PJUserDateilsRealPetColletionView.swift */,
 			);
 			path = RealPet;
 			sourceTree = "<group>";
@@ -607,6 +621,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C0A54A6216B977E00195DF1 /* Pet.swift in Sources */,
 				0C55E2E8215B703C000D8815 /* PJUserLoginViewController.swift in Sources */,
 				0CDB0C9B21675F6E00669331 /* PJUserDetailsMenuView.swift in Sources */,
 				0C55E2E2215A8422000D8815 /* PJStatic.swift in Sources */,
@@ -635,6 +650,7 @@
 				0C55E2ED215B7DB0000D8815 /* PJUserForgetViewController.swift in Sources */,
 				0CDB0C972167299A00669331 /* PJUserDetailsTableView.swift in Sources */,
 				0C55E2E4215A84EA000D8815 /* UIViewPosition.swift in Sources */,
+				0C0A54A3216B962100195DF1 /* PJUserDateilsRealPetColletionView.swift in Sources */,
 				0C5E634B2165A57200A90762 /* PJBigHUD.swift in Sources */,
 				0C55E3012161B247000D8815 /* PJWelcomeViewController.swift in Sources */,
 				0C55E2C5215A61E3000D8815 /* PJHomeViewController.swift in Sources */,

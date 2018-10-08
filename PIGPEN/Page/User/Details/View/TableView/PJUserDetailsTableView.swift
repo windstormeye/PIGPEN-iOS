@@ -12,6 +12,7 @@ class PJUserDetailsTableView: UITableView, UITableViewDelegate,
 UITableViewDataSource {
     
     static let userIdentifier = "PJUserSelfTableViewCell"
+    static let realPetIdentifier = "PJUserDetailPetTableViewCell"
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -30,6 +31,8 @@ UITableViewDataSource {
         
         register(UINib(nibName: "PJUserSelfTableViewCell", bundle: nil),
                  forCellReuseIdentifier: PJUserDetailsTableView.userIdentifier)
+        register(PJUserDetailPetTableViewCell.self,
+                 forCellReuseIdentifier: PJUserDetailsTableView.realPetIdentifier)
     }
     
     // MARK: - tableView delegate
@@ -95,6 +98,10 @@ UITableViewDataSource {
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: PJUserDetailsTableView.userIdentifier,
+                                                     for: indexPath)
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: PJUserDetailsTableView.realPetIdentifier,
                                                      for: indexPath)
             return cell
         default:
