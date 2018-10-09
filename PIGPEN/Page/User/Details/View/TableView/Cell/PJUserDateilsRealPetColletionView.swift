@@ -8,10 +8,19 @@
 
 import UIKit
 
+protocol PJUserDateilsRealPetColletionViewDelegate {
+    func PJUserDateilsRealPetColletionViewDidSelectedIndex(collectionView: PJUserDateilsRealPetColletionView, index: Int)
+}
+
+extension PJUserDateilsRealPetColletionViewDelegate {
+    func PJUserDateilsRealPetColletionViewDidSelectedIndex(collectionView: PJUserDateilsRealPetColletionView, index: Int) {}
+}
+
 class PJUserDateilsRealPetColletionView: UICollectionView,
 UICollectionViewDelegate, UICollectionViewDataSource {
     static let cellIdentifier = "PJUserDateilsRealPetColletionViewCell"
     
+    var viewDelegate: PJUserDateilsRealPetColletionViewDelegate?
     var dataArray = [Pet]()
     
     override init(frame: CGRect,
@@ -69,4 +78,9 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         return cell
     }
 
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        viewDelegate?.PJUserDateilsRealPetColletionViewDidSelectedIndex(collectionView: self,
+                                                                        index: indexPath.row)
+    }
 }

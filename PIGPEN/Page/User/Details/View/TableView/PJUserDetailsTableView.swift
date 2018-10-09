@@ -8,11 +8,23 @@
 
 import UIKit
 
+protocol PJUserDetailsTableViewDelegate {
+    func PJUserDetailsTableViewToPetDetails()
+    func PJUserDetailsTableViewToNewPet()
+}
+
+extension PJUserDetailsTableViewDelegate {
+    func PJUserDetailsTableViewToPetDetails() {}
+    func PJUserDetailsTableViewToNewPet() {}
+}
+
 class PJUserDetailsTableView: UITableView, UITableViewDelegate,
-UITableViewDataSource {
+UITableViewDataSource, PJUserDetailPetTableViewCellDelegate {
     
     static let userIdentifier = "PJUserSelfTableViewCell"
     static let realPetIdentifier = "PJUserDetailPetTableViewCell"
+    
+    var viewDelegate: PJUserDetailsTableViewDelegate?
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -102,11 +114,20 @@ UITableViewDataSource {
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: PJUserDetailsTableView.realPetIdentifier,
-                                                     for: indexPath)
+                                                     for: indexPath) as! PJUserDetailPetTableViewCell
+            cell.viewDelegate = self
             return cell
         default:
             return UITableViewCell()
         }
     }
+ 
+    // MARK: Delegate
+    func PJUserDetailPetTableViewCellAvatarTapped() {
+        viewDelegate?.PJUserDetailsTableViewToPetDetails()
+    }
     
+    func PJUserDetailPetTableViewCellNewPetTapped() {
+        viewDelegate?.PJUserDetailsTableViewToNewPet()
+    }
 }

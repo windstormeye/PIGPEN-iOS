@@ -13,7 +13,8 @@ fileprivate extension Selector {
     static let menu = #selector(PJUserDetailsViewController.menu)
 }
 
-class PJUserDetailsViewController: PJBaseViewController, PJUserDetailsMenuViewDelegate {
+class PJUserDetailsViewController: PJBaseViewController,
+PJUserDetailsMenuViewDelegate, PJUserDetailsTableViewDelegate {
 
     var tableView: PJUserDetailsTableView?
     var menuBackViewButton: UIButton?
@@ -35,6 +36,7 @@ class PJUserDetailsViewController: PJBaseViewController, PJUserDetailsMenuViewDe
                                                          width: view.width,
                                                          height: view.height - headerView!.height),
                                            style: .plain)
+        tableView?.viewDelegate = self
         view.addSubview(tableView!)
         
         menuBackViewButton = UIButton(frame: view.frame)
@@ -57,6 +59,21 @@ class PJUserDetailsViewController: PJBaseViewController, PJUserDetailsMenuViewDe
     @objc fileprivate func menu() {
         menuView.isHidden = !menuView.isHidden
         menuBackViewButton?.isHidden = !menuBackViewButton!.isHidden
+    }
+    
+    // MARK: Delegate
+    func PJUserDetailsTableViewToPetDetails() {
+        let vc = PJRealPetDetailsViewController.init(nibName: "PJRealPetDetailsViewController",
+                                                     bundle: nil)
+        navigationController?.pushViewController(vc,
+                                                 animated: true)
+    }
+    
+    func PJUserDetailsTableViewToNewPet() {
+        let vc = PJPetCreateViewController.init(nibName: "PJPetCreateViewController",
+                                                     bundle: nil)
+        navigationController?.pushViewController(vc,
+                                                 animated: true)
     }
     
     // MARK: lazy load

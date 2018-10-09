@@ -12,7 +12,6 @@ import Schedule
 fileprivate extension Selector {
     static let back = #selector(PJUserRegisterViewController.back)
     static let textFieldTextChange = #selector(PJUserRegisterViewController.textFieldTextChange(notification:))
-
 }
 
 class PJUserRegisterViewController: PJBaseViewController {

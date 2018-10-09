@@ -8,7 +8,20 @@
 
 import UIKit
 
-class PJUserDetailPetTableViewCell: UITableViewCell {
+protocol PJUserDetailPetTableViewCellDelegate {
+    func PJUserDetailPetTableViewCellAvatarTapped()
+    func PJUserDetailPetTableViewCellNewPetTapped()
+}
+
+extension PJUserDetailPetTableViewCellDelegate {
+    func PJUserDetailPetTableViewCellAvatarTapped() {}
+    func PJUserDetailPetTableViewCellNewPetTapped() {}
+}
+
+class PJUserDetailPetTableViewCell: UITableViewCell,
+PJUserDateilsRealPetColletionViewDelegate {
+    
+    var viewDelegate: PJUserDetailPetTableViewCellDelegate?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -20,6 +33,7 @@ class PJUserDetailPetTableViewCell: UITableViewCell {
     }
     
     private func initView() {
+        selectionStyle = .none
         
         let petArray = [Pet(), Pet(), Pet(), Pet()]
         
@@ -36,9 +50,19 @@ class PJUserDetailPetTableViewCell: UITableViewCell {
         let avatarCollectionView = PJUserDateilsRealPetColletionView(frame: collectionViewRect,
                                                                     collectionViewLayout: collectionViewLayout)
         avatarCollectionView.alwaysBounceHorizontal = true
+        avatarCollectionView.viewDelegate = self
         contentView.addSubview(avatarCollectionView)
         
         avatarCollectionView.dataArray = petArray
         avatarCollectionView.reloadData()
+    }
+    
+    func PJUserDateilsRealPetColletionViewDidSelectedIndex(collectionView: PJUserDateilsRealPetColletionView, index: Int) {
+        let count = collectionView.dataArray.count  - 1
+        if index == (count < 0 ? 0 : count) {
+            viewDelegate?.PJUserDetailPetTableViewCellNewPetTapped()
+        } else {
+            viewDelegate?.PJUserDetailPetTableViewCellAvatarTapped()
+        }
     }
 }
