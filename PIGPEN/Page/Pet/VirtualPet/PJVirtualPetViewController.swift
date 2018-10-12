@@ -1,18 +1,18 @@
 //
-//  PJRealPetDetailsViewController.swift
+//  PJVirtualPetViewController.swift
 //  PIGPEN
 //
-//  Created by PJHubs on 2018/10/9.
+//  Created by PJHubs on 2018/10/12.
 //  Copyright © 2018 PJHubs. All rights reserved.
 //
 
 import UIKit
 
 fileprivate extension Selector {
-    static let back = #selector(PJRealPetDetailsViewController.back)
+    static let back = #selector(PJVirtualPetViewController.back)
 }
 
-class PJRealPetDetailsViewController: PJBaseViewController {
+class PJVirtualPetViewController: PJBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,4 +30,6 @@ class PJRealPetDetailsViewController: PJBaseViewController {
     @objc fileprivate func back() {
         navigationController?.popViewController(animated: true)
     }
+    
+
 }

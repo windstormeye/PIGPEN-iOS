@@ -63,17 +63,35 @@ PJUserDetailsMenuViewDelegate, PJUserDetailsTableViewDelegate {
     
     // MARK: Delegate
     func PJUserDetailsTableViewToPetDetails() {
-        let vc = PJRealPetDetailsViewController.init(nibName: "PJRealPetDetailsViewController",
-                                                     bundle: nil)
-        navigationController?.pushViewController(vc,
-                                                 animated: true)
+        let vc = PJRealPetDetailsViewController()
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func PJUserDetailsTableViewToNewPet() {
-        let vc = PJPetCreateViewController.init(nibName: "PJPetCreateViewController",
-                                                     bundle: nil)
-        navigationController?.pushViewController(vc,
-                                                 animated: true)
+        let vc = PJCreateRealPetViewController()
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func PJUserDetailsTableViewVirtualPetToNewPet() {
+        let vc = PJCreateVirtualPetViewController()
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func PJUserDetailsTableViewVirtualPetToDetails() {
+        let vc = PJCreateRealPetViewController()
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func PJUserDetailsTableViewMoneyLook() {
+        
+    }
+    
+    func PJUserDetailsTableViewMoneySteal() {
+        
     }
     
     // MARK: lazy load

@@ -11,18 +11,27 @@ import UIKit
 protocol PJUserDetailsTableViewDelegate {
     func PJUserDetailsTableViewToPetDetails()
     func PJUserDetailsTableViewToNewPet()
+    func PJUserDetailsTableViewVirtualPetToDetails()
+    func PJUserDetailsTableViewVirtualPetToNewPet()
+    func PJUserDetailsTableViewMoneyLook()
+    func PJUserDetailsTableViewMoneySteal()
 }
 
 extension PJUserDetailsTableViewDelegate {
     func PJUserDetailsTableViewToPetDetails() {}
     func PJUserDetailsTableViewToNewPet() {}
+    func PJUserDetailsTableViewVirtualPetToDetails() {}
+    func PJUserDetailsTableViewVirtualPetToNewPet() {}
+    func PJUserDetailsTableViewMoneyLook() {}
+    func PJUserDetailsTableViewMoneySteal() {}
 }
 
-class PJUserDetailsTableView: UITableView, UITableViewDelegate,
-UITableViewDataSource, PJUserDetailPetTableViewCellDelegate {
+class PJUserDetailsTableView: UITableView, UITableViewDelegate, UITableViewDataSource, PJUserDetailRealPetTableViewCellDelegate, PJUserDetailsVirtualPetTableViewCellDelegate, PJUserDetailsMoneyTableViewCellDelegate {
     
     static let userIdentifier = "PJUserSelfTableViewCell"
     static let realPetIdentifier = "PJUserDetailPetTableViewCell"
+    static let virtualPetIdentifier = "PJUserDetailsVirtualPetTableViewCell"
+    static let moneyIndentifier = "PJUserDetailsMoneyTableViewCell"
     
     var viewDelegate: PJUserDetailsTableViewDelegate?
     
@@ -37,20 +46,28 @@ UITableViewDataSource, PJUserDetailPetTableViewCellDelegate {
     
     private func initView() {
         tableFooterView = UIView()
+        separatorStyle = .none
         
         delegate = self
         dataSource = self
         
         register(UINib(nibName: "PJUserSelfTableViewCell", bundle: nil),
                  forCellReuseIdentifier: PJUserDetailsTableView.userIdentifier)
-        register(PJUserDetailPetTableViewCell.self,
+        register(PJUserDetailRealPetTableViewCell.self,
                  forCellReuseIdentifier: PJUserDetailsTableView.realPetIdentifier)
+        register(PJUserDetailsVirtualPetTableViewCell.self,
+                 forCellReuseIdentifier: PJUserDetailsTableView.virtualPetIdentifier)
+        register(UINib(nibName: "PJUserDetailsMoneyTableViewCell", bundle: nil), forCellReuseIdentifier: PJUserDetailsTableView.moneyIndentifier)
     }
     
     // MARK: - tableView delegate
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        if indexPath.section == 3 {
+            return 50
+        } else {
+            return 100
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -59,24 +76,14 @@ UITableViewDataSource, PJUserDetailPetTableViewCellDelegate {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 1
-        case 1:
-            return 1
-        case 2:
-            return 1
-        case 3:
-            return 1
-        default:
-            return 0
-        }
+        return 1
     }
     
     func tableView(_ tableView: UITableView,
                    heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case 0: return 0
+        case 3: return 1
         default: return 28
         }
     }
@@ -85,6 +92,7 @@ UITableViewDataSource, PJUserDetailPetTableViewCellDelegate {
                    viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: CGRect(x: 0, y: 2,
                                               width: width, height: 30 - 2))
+        headerView.backgroundColor = .white
         let titleLabel = UILabel(frame: CGRect(x: 15, y: 0,
                                                width: headerView.width,
                                                height: headerView.height))
@@ -93,13 +101,16 @@ UITableViewDataSource, PJUserDetailPetTableViewCellDelegate {
         titleLabel.textAlignment = .left
         headerView.addSubview(titleLabel)
         
+        let topLineView = UIView(frame: CGRect(x: 15, y: 0,
+                                               width: width - 15, height: 1))
+        topLineView.backgroundColor = .boderColor()
+        headerView.addSubview(topLineView)
+        
         switch section {
         case 1:
             titleLabel.text = "我的真实宠物"
         case 2:
             titleLabel.text = "我的iDOG"
-        case 3:
-            titleLabel.text = "我的猪饲料"
         default: break
         }
         return headerView
@@ -109,13 +120,18 @@ UITableViewDataSource, PJUserDetailPetTableViewCellDelegate {
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: PJUserDetailsTableView.userIdentifier,
-                                                     for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: PJUserDetailsTableView.userIdentifier, for: indexPath)
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: PJUserDetailsTableView.realPetIdentifier,
-                                                     for: indexPath) as! PJUserDetailPetTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: PJUserDetailsTableView.realPetIdentifier, for: indexPath) as! PJUserDetailRealPetTableViewCell
             cell.viewDelegate = self
+            return cell
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: PJUserDetailsTableView.virtualPetIdentifier, for: indexPath) as! PJUserDetailsVirtualPetTableViewCell
+            cell.viewDelegate = self
+            return cell
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: PJUserDetailsTableView.moneyIndentifier, for: indexPath) as! PJUserDetailsMoneyTableViewCell
             return cell
         default:
             return UITableViewCell()
@@ -129,5 +145,21 @@ UITableViewDataSource, PJUserDetailPetTableViewCellDelegate {
     
     func PJUserDetailPetTableViewCellNewPetTapped() {
         viewDelegate?.PJUserDetailsTableViewToNewPet()
+    }
+    
+    func PJUserDetailVirtualPetTableViewCellAvatarTapped() {
+        viewDelegate?.PJUserDetailsTableViewVirtualPetToDetails()
+    }
+    
+    func PJUserDetailVirtualPetTableViewCellNewPetTapped() {
+        viewDelegate?.PJUserDetailsTableViewVirtualPetToNewPet()
+    }
+    
+    func PJUserDetailsMoneyTableViewCellStealButtonTapped() {
+        viewDelegate?.PJUserDetailsTableViewMoneySteal()
+    }
+    
+    func PJUserDetailsMoneyTableViewCellLookButtonTapped() {
+        viewDelegate?.PJUserDetailsTableViewMoneyLook()
     }
 }

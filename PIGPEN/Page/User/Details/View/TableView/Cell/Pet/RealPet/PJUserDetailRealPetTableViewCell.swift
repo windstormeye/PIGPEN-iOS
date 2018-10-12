@@ -8,20 +8,20 @@
 
 import UIKit
 
-protocol PJUserDetailPetTableViewCellDelegate {
+protocol PJUserDetailRealPetTableViewCellDelegate {
     func PJUserDetailPetTableViewCellAvatarTapped()
     func PJUserDetailPetTableViewCellNewPetTapped()
 }
 
-extension PJUserDetailPetTableViewCellDelegate {
+extension PJUserDetailRealPetTableViewCellDelegate {
     func PJUserDetailPetTableViewCellAvatarTapped() {}
     func PJUserDetailPetTableViewCellNewPetTapped() {}
 }
 
-class PJUserDetailPetTableViewCell: UITableViewCell,
+class PJUserDetailRealPetTableViewCell: UITableViewCell,
 PJUserDateilsRealPetColletionViewDelegate {
     
-    var viewDelegate: PJUserDetailPetTableViewCellDelegate?
+    var viewDelegate: PJUserDetailRealPetTableViewCellDelegate?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
