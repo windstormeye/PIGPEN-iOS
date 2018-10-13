@@ -46,10 +46,9 @@ class PJUserCreateVirtualPetChoiceNameViewController: PJBaseViewController {
     
     @IBAction func okButtonTapped(_ sender: UIButton) {
         model?.nick_name = nameTextField.text!
-        print(model)
         
         PJVirtualPet.create(model: model!, complateHandler: {
-            
+            self.navigationController?.popToRootViewController(animated: true)
         }) { (error) in
             print(error)
         }
