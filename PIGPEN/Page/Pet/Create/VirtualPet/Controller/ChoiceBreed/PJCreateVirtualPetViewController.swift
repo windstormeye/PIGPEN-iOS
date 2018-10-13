@@ -28,6 +28,9 @@ class PJCreateVirtualPetViewController: PJBaseViewController {
         navigationItem.title = "请选择iDOG品种"
         backButtonTapped(backSel: .back)
         isHiddenBarBottomLineView = false
+        
+        okButton.isEnabled = false
+        okButton.backgroundColor = .unFocusColor()
     }
 
     // MARK: Action
@@ -35,8 +38,46 @@ class PJCreateVirtualPetViewController: PJBaseViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func bullDogButton(_ sender: UIButton) {
+        frenchBulldogButton.isSelected = !frenchBulldogButton.isSelected
+        welshCorgiButton.isSelected = false
+        weimaRunnerButton.isSelected = false
+        
+        okButton.isEnabled = true
+        okButton.backgroundColor = .focusColor()
+    }
+    
+    @IBAction func weishCorgiButton(_ sender: UIButton) {
+        welshCorgiButton.isSelected = !welshCorgiButton.isSelected
+        frenchBulldogButton.isSelected = false
+        weimaRunnerButton.isSelected = false
+        
+        okButton.isEnabled = true
+        okButton.backgroundColor = .focusColor()
+    }
+    
+    @IBAction func weimaRunnerButton(_ sender: UIButton) {
+        weimaRunnerButton.isSelected = !weimaRunnerButton.isSelected
+        frenchBulldogButton.isSelected = false
+        frenchBulldogButton.isSelected = false
+        
+        okButton.isEnabled = true
+        okButton.backgroundColor = .focusColor()
+    }
+    
+    
     @IBAction func okButtonTapped(_ sender: UIButton) {
+        var tag = 0
+        if frenchBulldogButton.isSelected {
+            tag = 0
+        } else if welshCorgiButton.isSelected {
+            tag = 1
+        } else if weimaRunnerButton.isSelected {
+            tag = 2
+        }
         let vc = PJCreateVirtualPetChoiceGenderViewController()
+        let model = VirtualPetModel(nick_name: "", gender: 1, breed: tag)
+        vc.model = model
         navigationController?.pushViewController(vc, animated: true)
     }
     

@@ -35,7 +35,7 @@ PJUserDateilsRealPetColletionViewDelegate {
     private func initView() {
         selectionStyle = .none
         
-        let petArray = [Pet(), Pet(), Pet(), Pet()]
+        let petArray = [RealPet(), RealPet(), RealPet(), RealPet()]
         
         let collectionViewLayout = UICollectionViewFlowLayout()
         let itemW = 80

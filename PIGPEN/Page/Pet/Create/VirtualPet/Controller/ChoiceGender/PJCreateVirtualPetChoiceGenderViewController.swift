@@ -16,7 +16,9 @@ class PJCreateVirtualPetChoiceGenderViewController: PJBaseViewController {
 
     @IBOutlet weak var femaleButton: UIButton!
     @IBOutlet weak var maleButton: UIButton!
+    @IBOutlet weak var okButton: UIButton!
     
+    var model: VirtualPetModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +29,9 @@ class PJCreateVirtualPetChoiceGenderViewController: PJBaseViewController {
         navigationItem.title = "请选择iDOG性别"
         backButtonTapped(backSel: .back)
         isHiddenBarBottomLineView = false
+        
+        okButton.isEnabled = false
+        okButton.backgroundColor = .unFocusColor()
     }
 
     // MARK: Action
@@ -34,8 +39,32 @@ class PJCreateVirtualPetChoiceGenderViewController: PJBaseViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func femaleButton(_ sender: UIButton) {
+        femaleButton.isSelected = !femaleButton.isSelected
+        maleButton.isSelected = false
+        
+        okButton.isEnabled = true
+        okButton.backgroundColor = .focusColor()
+    }
+    
+    @IBAction func maleButton(_ sender: UIButton) {
+        maleButton.isSelected = !maleButton.isSelected
+        femaleButton.isSelected = false
+        
+        okButton.isEnabled = true
+        okButton.backgroundColor = .focusColor()
+    }
+    
     @IBAction func okButton(_ sender: UIButton) {
+        var tag = 0
+        if femaleButton.isSelected {
+            tag = 1
+        } else {
+            tag = 0
+        }
         let vc = PJUserCreateVirtualPetChoiceNameViewController()
+        model?.gender = tag
+        vc.model = model!
         navigationController?.pushViewController(vc, animated: true)
     }
 }

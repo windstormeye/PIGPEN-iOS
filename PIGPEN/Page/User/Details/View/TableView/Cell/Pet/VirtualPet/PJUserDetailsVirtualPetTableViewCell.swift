@@ -34,7 +34,7 @@ class PJUserDetailsVirtualPetTableViewCell: UITableViewCell, PJUserDateilsVirtua
     private func initView() {
         selectionStyle = .none
         
-//        let petArray = [Pet()]
+//        let petArray = [VirtualPet()]
         
         let collectionViewLayout = UICollectionViewFlowLayout()
         let itemW = 80

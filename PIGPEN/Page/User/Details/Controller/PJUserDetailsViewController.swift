@@ -81,7 +81,7 @@ PJUserDetailsMenuViewDelegate, PJUserDetailsTableViewDelegate {
     }
     
     func PJUserDetailsTableViewVirtualPetToDetails() {
-        let vc = PJCreateRealPetViewController()
+        let vc = PJVirtualPetViewController()
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }

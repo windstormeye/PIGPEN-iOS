@@ -28,11 +28,15 @@ class PJNetwork {
                        complement: @escaping ([String: JSON]) -> Void,
                        failed: @escaping (String) -> Void) {
         let parametes = parametersHandler(parameters: parameters)
+        let headerParameters: HTTPHeaders = [
+            "user_token": PJUser.shared.token ?? "",
+            "timestamp": String.timestape()
+        ]
         Alamofire.request(hostName + path,
                           method: .get,
                           parameters: parametes,
                           encoding: URLEncoding.default,
-                          headers: nil).responseJSON { (response) in
+                          headers: headerParameters).responseJSON { (response) in
                             switch response.result {
                             case .success(_):
                                 complement(self.handleSuccess(response.data))
@@ -48,11 +52,15 @@ class PJNetwork {
                         complement: @escaping ([String: JSON]) -> Void,
                         failed: @escaping (String) -> Void) {
         let parametes = parametersHandler(parameters: parameters)
+        let headerParameters: HTTPHeaders = [
+            "usertoken": PJUser.shared.token ?? "",
+            "timestamp": String.timestape()
+        ]
         Alamofire.request(hostName + path,
                           method: .post,
                           parameters: parametes,
                           encoding: URLEncoding.default,
-                          headers: nil).responseJSON { (response) in
+                          headers: headerParameters).responseJSON { (response) in
                             switch response.result {
                             case .success(_):
                                 complement(self.handleSuccess(response.data))

@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="femaleButton" destination="sfW-TO-HKh" id="tAQ-yq-Cb6"/>
                 <outlet property="maleButton" destination="fnV-ZM-jIc" id="s2p-8e-1g3"/>
+                <outlet property="okButton" destination="dYF-qM-Wb1" id="dVm-tx-LBi"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -41,6 +42,9 @@
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <state key="selected" image="user_info_selected"/>
+                    <connections>
+                        <action selector="maleButton:" destination="-1" eventType="touchUpInside" id="3jI-BH-qC6"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfW-TO-HKh">
                     <rect key="frame" x="94" y="160" width="45" height="30"/>
@@ -54,6 +58,9 @@
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <state key="selected" image="user_info_female_selected"/>
+                    <connections>
+                        <action selector="femaleButton:" destination="-1" eventType="touchUpInside" id="uwn-HJ-l5J"/>
+                    </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_info_gender_1" translatesAutoresizingMaskIntoConstraints="NO" id="epN-gp-jgq">
                     <rect key="frame" x="144" y="168.5" width="13" height="13"/>

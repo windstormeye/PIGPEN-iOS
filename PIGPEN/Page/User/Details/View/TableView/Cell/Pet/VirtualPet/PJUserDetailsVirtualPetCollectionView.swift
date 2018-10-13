@@ -22,7 +22,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     static let cellIdentifier = "PJUserDateilsVirtualPetColletionViewCell"
     
     var viewDelegate: PJUserDateilsVirtualPetCollectionViewDelegate?
-    var dataArray = [Pet]()
+    var dataArray = [PJVirtualPet]()
     
     override init(frame: CGRect,
                   collectionViewLayout layout: UICollectionViewLayout) {

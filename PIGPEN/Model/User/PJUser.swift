@@ -74,8 +74,7 @@ class PJUser: Codable {
                  completeHandler: @escaping (PJUserModel) -> Void,
                  failedHandler: @escaping (PJError) -> Void) {
         let parameters = [
-            "nick_name": nickName,
-            "timestamp": String.timestape(),
+            "user_nick_name": nickName,
         ]
         PJNetwork.shared.requstWithPost(path: UserUrl.details.rawValue,
                                         parameters: parameters,
@@ -109,8 +108,7 @@ class PJUser: Codable {
         let parameters = [
             "avatar": String(avatar),
             "gender": String(gender),
-            "timestamp": String.timestape(),
-            "nick_name": PJUser.shared.nickName ?? ""
+            "user_nick_name": PJUser.shared.nickName ?? ""
         ]
         PJNetwork.shared.requstWithPost(path: UserUrl.update.rawValue,
                                         parameters: parameters,
@@ -147,7 +145,7 @@ class PJUser: Codable {
         let parameters = [
             "username": registerModel.phone,
             "password": psd,
-            "nick_name": registerModel.nickName,
+            "user_nick_name": registerModel.nickName,
             "avatar": String(registerModel.avatar),
             "gender": String(registerModel.gender),
             "timestamp": String.timestape()
@@ -193,7 +191,7 @@ class PJUser: Codable {
             "username": phone,
             "sign": sign,
             "timestamp": String.timestape(),
-            "nick_name": PJUser.shared.nickName ?? ""
+            "user_nick_name": PJUser.shared.nickName ?? ""
         ]
         PJNetwork.shared.requstWithPost(path: UserUrl.logIn.rawValue,
                                         parameters: parameters,
@@ -227,7 +225,7 @@ class PJUser: Codable {
         let parameters = [
             "phone": phoneString,
             "timestamp": String.timestape(),
-            "nick_name": PJUser.shared.nickName ?? ""
+            "user_nick_name": PJUser.shared.nickName ?? ""
         ]
         
         PJNetwork.shared.requstWithGet(path: UserUrl.checkPhone.rawValue,

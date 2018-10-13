@@ -21,7 +21,7 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     static let cellIdentifier = "PJUserDateilsRealPetColletionViewCell"
     
     var viewDelegate: PJUserDateilsRealPetColletionViewDelegate?
-    var dataArray = [Pet]()
+    var dataArray = [RealPet]()
     
     override init(frame: CGRect,
                   collectionViewLayout layout: UICollectionViewLayout) {

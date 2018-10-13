@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Pet: Codable {
+struct RealPetModel: Codable {
     var user_name: String?
     var nick_name: String?
     var gender: Int?
@@ -21,7 +21,7 @@ struct Pet: Codable {
 }
 
 class RealPet {
-    var model: Pet?
+    var model: RealPetModel?
     
     
 }
