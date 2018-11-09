@@ -8,6 +8,10 @@
 
 import UIKit
 
+fileprivate extension Selector {
+    static let gotoLogin = #selector(PJBaseViewController.gotoLoginPage)
+}
+
 class PJBaseViewController: UIViewController {
 
     var headerView: UIView?
@@ -44,17 +48,31 @@ class PJBaseViewController: UIViewController {
         lineView?.backgroundColor = .boderColor()
         view.addSubview(lineView!)
         
-        // 解决自定义 leftBarButtonItem 后侧滑失效
+        // 解决自定义 leftBarButtonItem 后侧滑失效，除非自定义 backBarButtonItem
         if navigationController?.responds(to: #selector(getter: UINavigationController.interactivePopGestureRecognizer)) ?? false {
             navigationController?.interactivePopGestureRecognizer?.delegate = nil
         }
         
+        NotificationCenter.default.addObserver(self,
+                                               selector: .gotoLogin,
+                                               name: .gotoLogin(),
+                                               object: nil)
     }
     
     
     // MARK: Action
+    func leftBarButtonItemTapped(leftTapped: Selector, imageName: String) {
+        let leftButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40,
+                                                height: 40))
+        leftButton.setImage(UIImage(named: imageName), for: .normal)
+        leftButton.addTarget(self, action: leftTapped, for: .touchUpInside)
+        let leftBarButtonItem = UIBarButtonItem.init(customView: leftButton)
+        navigationItem.setLeftBarButton(leftBarButtonItem, animated: true)
+    }
+    
     func backButtonTapped(backSel: Selector) {
-        let leftButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        let leftButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40,
+                                                height: 40))
         leftButton.setImage(UIImage(named: "nav_back"), for: .normal)
         leftButton.addTarget(self, action: backSel, for: .touchUpInside)
         let leftBarButtonItem = UIBarButtonItem.init(customView: leftButton)
@@ -62,7 +80,8 @@ class PJBaseViewController: UIViewController {
     }
     
     func rightBarButtonItem(imageName: String, rightSel: Selector) {
-        let rightButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        let rightButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40,
+                                                 height: 40))
         rightButton.setImage(UIImage(named: imageName), for: .normal)
         rightButton.addTarget(self, action: rightSel, for: .touchUpInside)
         let leftBarButtonItem = UIBarButtonItem.init(customView: rightButton)
@@ -71,6 +90,11 @@ class PJBaseViewController: UIViewController {
     
     private func didSetIsHiddenBarBottomLineView() {
         lineView?.isHidden = isHiddenBarBottomLineView!
+    }
+    
+    @objc fileprivate func gotoLoginPage() {
+        let navVC = UINavigationController(rootViewController: PJUserLoginViewController())
+        present(navVC, animated: true, completion: nil)
     }
     
     // MARK: setter and getter

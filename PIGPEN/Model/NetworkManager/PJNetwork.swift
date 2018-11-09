@@ -17,6 +17,14 @@ struct PJError {
 }
 
 
+enum NetworkError {
+    case token
+    case timeout
+    case parameters
+    case methon
+}
+
+
 class PJNetwork {
     static let shared = PJNetwork()
     
@@ -28,8 +36,14 @@ class PJNetwork {
                        complement: @escaping ([String: JSON]) -> Void,
                        failed: @escaping (String) -> Void) {
         let parametes = parametersHandler(parameters: parameters)
+        // token 为空需要登录
+        if PJUser.shared.token == "" {
+            NotificationCenter.default.post(name: .gotoLogin(), object: nil)
+            return
+        }
+        
         let headerParameters: HTTPHeaders = [
-            "user_token": PJUser.shared.token ?? "",
+            "usertoken": PJUser.shared.token ?? "",
             "timestamp": String.timestape()
         ]
         Alamofire.request(hostName + path,
@@ -52,6 +66,12 @@ class PJNetwork {
                         complement: @escaping ([String: JSON]) -> Void,
                         failed: @escaping (String) -> Void) {
         let parametes = parametersHandler(parameters: parameters)
+        // token 为空需要登录
+        if PJUser.shared.token == "" {
+            NotificationCenter.default.post(name: .gotoLogin(), object: nil)
+            return
+        }
+        
         let headerParameters: HTTPHeaders = [
             "usertoken": PJUser.shared.token ?? "",
             "timestamp": String.timestape()
@@ -74,6 +94,7 @@ class PJNetwork {
     private func handleSuccess(_ data: Data?) -> [String: JSON] {
         if let data = data {
             if let jsonData = try? JSON(data: data).dictionary {
+                handleNetworkError(dict: jsonData!)
                 return jsonData!
             }
         }
@@ -87,6 +108,17 @@ class PJNetwork {
             pa[k] = v
         }
         return pa
+    }
+    
+    private func handleNetworkError(dict: [String: JSON]) {
+        switch dict["msgCode"] {
+        case 2333: break
+        case 1001:
+            NotificationCenter.default.post(name: .gotoLogin(), object: nil)
+        case 1002: break
+        case 2001: break
+        default: break
+        }
     }
     
 }

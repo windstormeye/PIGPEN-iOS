@@ -12,4 +12,8 @@ extension NSNotification.Name {
     static func loginSuccess() -> NSNotification.Name {
         return NSNotification.Name("PJNotificationLoginSuccess")
     }
+    
+    static func gotoLogin() -> NSNotification.Name {
+        return NSNotification.Name("PJNotificationGotoLogin")
+    }
 }

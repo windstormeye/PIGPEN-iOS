@@ -13,17 +13,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PJCreateRealPetViewController" customModule="PIGPEN" customModuleProvider="target">
             <connections>
                 <outlet property="avatarImageView" destination="OJN-ar-1w6" id="hQF-Dd-K1R"/>
-                <outlet property="birthButton" destination="EkM-bc-FiO" id="HWc-zg-ksM"/>
+                <outlet property="birthTextField" destination="EkM-bc-FiO" id="kbm-SO-cLj"/>
                 <outlet property="breedTextField" destination="2ws-LJ-5DJ" id="Zur-Yb-LDv"/>
                 <outlet property="femaleButton" destination="OIi-qO-BjI" id="IqC-kn-3SI"/>
-                <outlet property="loveButton" destination="1Lz-5s-S7e" id="lgP-pW-s8A"/>
+                <outlet property="loveTextField" destination="1Lz-5s-S7e" id="COd-IA-MKO"/>
                 <outlet property="maleButton" destination="DaX-0L-P1Q" id="pX5-pF-Ovy"/>
                 <outlet property="nameTextField" destination="mX8-3i-vNh" id="KGu-k2-FWz"/>
                 <outlet property="okButton" destination="mWV-x1-Nr7" id="ozg-Z8-hFj"/>
                 <outlet property="pppTextField" destination="WRH-oM-msp" id="9uo-3j-yhW"/>
-                <outlet property="relationshipButton" destination="dgo-32-ilq" id="Lmp-mZ-HHx"/>
+                <outlet property="relationshipTextField" destination="dgo-32-ilq" id="6FF-cH-JsA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outlet property="weightButton" destination="KHt-yD-VRF" id="ix6-eW-zv5"/>
+                <outlet property="weightTextField" destination="KHt-yD-VRF" id="FTz-nk-Jvt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -48,7 +48,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="宠物的品种 ▾" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2ws-LJ-5DJ">
+                <textField opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="宠物的品种 ▾" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2ws-LJ-5DJ">
                     <rect key="frame" x="94.5" y="231.5" width="186" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="186" id="d4q-Jm-nIh"/>
@@ -74,7 +74,7 @@
                         <constraint firstAttribute="height" constant="1.5" id="lQ8-0V-zAa"/>
                     </constraints>
                 </view>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="宠物的生日 ▾" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EkM-bc-FiO">
+                <textField opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="宠物的生日 ▾" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EkM-bc-FiO">
                     <rect key="frame" x="94.5" y="283" width="186" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="186" id="3LM-3Y-KSW"/>
@@ -92,7 +92,7 @@
                         <constraint firstAttribute="width" constant="186" id="oxr-Yy-ahp"/>
                     </constraints>
                 </view>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="宠物的感情状态 ▾" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Lz-5s-S7e">
+                <textField opaque="NO" tag="1004" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="宠物的感情状态 ▾" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Lz-5s-S7e">
                     <rect key="frame" x="94.5" y="386" width="186" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="8Lf-wr-76v"/>
@@ -110,7 +110,7 @@
                         <constraint firstAttribute="width" constant="186" id="Szu-7n-o09"/>
                     </constraints>
                 </view>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="宠物与您的关系 ▾" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dgo-32-ilq">
+                <textField opaque="NO" tag="1005" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="宠物与您的关系 ▾" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dgo-32-ilq">
                     <rect key="frame" x="94.5" y="437.5" width="186" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="iXA-JJ-WBq"/>
@@ -128,7 +128,7 @@
                         <constraint firstAttribute="height" constant="1.5" id="Zz8-9D-Ycu"/>
                     </constraints>
                 </view>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="宠物体重 ▾" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KHt-yD-VRF">
+                <textField opaque="NO" tag="1002" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="宠物体重 ▾" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KHt-yD-VRF">
                     <rect key="frame" x="94.5" y="334.5" width="87" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="87" id="O99-0V-krQ"/>
@@ -146,7 +146,7 @@
                         <constraint firstAttribute="width" constant="87" id="XS7-Dq-ieA"/>
                     </constraints>
                 </view>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="绝育情况 ▾" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WRH-oM-msp">
+                <textField opaque="NO" tag="1003" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="绝育情况 ▾" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WRH-oM-msp">
                     <rect key="frame" x="193.5" y="334.5" width="87" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="87" id="6qG-85-FfD"/>

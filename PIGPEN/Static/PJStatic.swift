@@ -31,3 +31,32 @@ func isPhoneNumber(phoneString: String) -> Bool {
     let predicate = NSPredicate(format: "SELF MATCHES %@", mobile)
     return predicate.evaluate(with: phoneString)
 }
+
+
+// 当前 vc 如果是 push 则 pop，反之 dismiss
+func dissmisCurrentVC(navc: UINavigationController?,
+                      currenVC: UIViewController) {
+    guard navc != nil else {
+        currenVC.dismiss(animated: true, completion: nil)
+        return
+    }
+    let vcs = navc!.viewControllers
+    if vcs.count > 1 && vcs[vcs.count - 1] === currenVC {
+        navc!.popViewController(animated: true)
+    } else {
+        currenVC.dismiss(animated: true, completion: nil)
+    }
+}
+
+func currenVCFromPush(navc: UINavigationController?,
+                      currenVC: UIViewController) -> Bool {
+    guard navc != nil else {
+        return false
+    }
+    let vcs = navc!.viewControllers
+    if vcs.count > 1 && vcs[vcs.count - 1] === currenVC {
+        return true
+    } else {
+        return false
+    }
+}

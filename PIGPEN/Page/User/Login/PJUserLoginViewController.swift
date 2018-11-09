@@ -23,7 +23,12 @@ class PJUserLoginViewController: PJBaseViewController {
     
     private func initView() {
         title = "登录"
-        backButtonTapped(backSel: .back)
+        if currenVCFromPush(navc: navigationController ?? nil, currenVC: self) {
+            backButtonTapped(backSel: .back)
+        } else {
+            leftBarButtonItemTapped(leftTapped: .back, imageName: "close")
+        }
+        
         
         loginButton.backgroundColor = .unFocusColor()
         loginButton.isEnabled = false
@@ -37,9 +42,8 @@ class PJUserLoginViewController: PJBaseViewController {
     
     // MARK: Action
     @objc fileprivate func back() {
-        navigationController?.popViewController(animated: true)
+        dissmisCurrentVC(navc: navigationController ?? nil, currenVC: self)
     }
-    
     
     @IBAction func forgetButtonTapped(_ sender: UIButton) {
         navigationController?.pushViewController(PJUserForgetViewController(),

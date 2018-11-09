@@ -13,7 +13,7 @@
 		0C55E2C5215A61E3000D8815 /* PJHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2C4215A61E3000D8815 /* PJHomeViewController.swift */; };
 		0C55E2CC215A62AF000D8815 /* PJChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2CB215A62AF000D8815 /* PJChatViewController.swift */; };
 		0C55E2CE215A62BE000D8815 /* PJPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2CD215A62BE000D8815 /* PJPlayViewController.swift */; };
-		0C55E2D0215A62C7000D8815 /* PJMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2CF215A62C7000D8815 /* PJMessageViewController.swift */; };
+		0C55E2D0215A62C7000D8815 /* PJBreedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2CF215A62C7000D8815 /* PJBreedsViewController.swift */; };
 		0C55E2D2215A62CD000D8815 /* PJUserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2D1215A62CD000D8815 /* PJUserDetailsViewController.swift */; };
 		0C55E2D7215A795A000D8815 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0C55E2D9215A795A000D8815 /* Localizable.strings */; };
 		0C55E2DD215A8055000D8815 /* TabBarReddot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2DC215A8055000D8815 /* TabBarReddot.swift */; };
@@ -79,7 +79,7 @@
 		0C55E2C4215A61E3000D8815 /* PJHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJHomeViewController.swift; sourceTree = "<group>"; };
 		0C55E2CB215A62AF000D8815 /* PJChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJChatViewController.swift; sourceTree = "<group>"; };
 		0C55E2CD215A62BE000D8815 /* PJPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJPlayViewController.swift; sourceTree = "<group>"; };
-		0C55E2CF215A62C7000D8815 /* PJMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJMessageViewController.swift; sourceTree = "<group>"; };
+		0C55E2CF215A62C7000D8815 /* PJBreedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBreedsViewController.swift; sourceTree = "<group>"; };
 		0C55E2D1215A62CD000D8815 /* PJUserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserDetailsViewController.swift; sourceTree = "<group>"; };
 		0C55E2D8215A795A000D8815 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0C55E2DA215A79A9000D8815 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -206,7 +206,7 @@
 				0CDB0C9821675F1C00669331 /* Pet */,
 				0C55E3052161BA9C000D8815 /* Base */,
 				0C55E2CA215A62A0000D8815 /* User */,
-				0C55E2C9215A61FC000D8815 /* Message */,
+				0C55E2C9215A61FC000D8815 /* Breeds */,
 				0C55E2C8215A61F5000D8815 /* Play */,
 				0C55E2C7215A61EE000D8815 /* Chat */,
 				0C55E2C6215A61E8000D8815 /* Home */,
@@ -238,12 +238,12 @@
 			path = Play;
 			sourceTree = "<group>";
 		};
-		0C55E2C9215A61FC000D8815 /* Message */ = {
+		0C55E2C9215A61FC000D8815 /* Breeds */ = {
 			isa = PBXGroup;
 			children = (
-				0C55E2CF215A62C7000D8815 /* PJMessageViewController.swift */,
+				0C55E2CF215A62C7000D8815 /* PJBreedsViewController.swift */,
 			);
-			path = Message;
+			path = Breeds;
 			sourceTree = "<group>";
 		};
 		0C55E2CA215A62A0000D8815 /* User */ = {
@@ -866,7 +866,7 @@
 				0C599EE4217099E900FC2E37 /* PJUserCreateVirtualPetChoiceNameViewController.swift in Sources */,
 				0C599EC72170354100FC2E37 /* PJUserDetailsVirtualPetCollectionView.swift in Sources */,
 				0C55E2C5215A61E3000D8815 /* PJHomeViewController.swift in Sources */,
-				0C55E2D0215A62C7000D8815 /* PJMessageViewController.swift in Sources */,
+				0C55E2D0215A62C7000D8815 /* PJBreedsViewController.swift in Sources */,
 				0C5E6337216241CF00A90762 /* PJBaseTipsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
