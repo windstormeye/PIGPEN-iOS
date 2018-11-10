@@ -20,4 +20,8 @@ extension UIColor {
     class func boderColor() -> UIColor {
         return PJRGB(r: 230, g: 230, b: 230)
     }
+    
+    class func pinkColor() -> UIColor {
+        return PJRGB(r: 249, g: 162, b: 162)
+    }
 }

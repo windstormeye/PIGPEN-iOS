@@ -73,11 +73,8 @@ class PJUser: Codable {
     func details(nickName: String,
                  completeHandler: @escaping (PJUserModel) -> Void,
                  failedHandler: @escaping (PJError) -> Void) {
-        let parameters = [
-            "user_nick_name": nickName,
-        ]
         PJNetwork.shared.requstWithPost(path: UserUrl.details.rawValue,
-                                        parameters: parameters,
+                                        parameters: [String: String](),
                                         complement: { (dataDic) in
                                             if dataDic["msgCode"]?.intValue == 666 {
                                                 var dataDic = dataDic["msg"]!
@@ -108,7 +105,6 @@ class PJUser: Codable {
         let parameters = [
             "avatar": String(avatar),
             "gender": String(gender),
-            "user_nick_name": PJUser.shared.nickName ?? ""
         ]
         PJNetwork.shared.requstWithPost(path: UserUrl.update.rawValue,
                                         parameters: parameters,
@@ -145,10 +141,9 @@ class PJUser: Codable {
         let parameters = [
             "username": registerModel.phone,
             "password": psd,
-            "user_nick_name": registerModel.nickName,
             "avatar": String(registerModel.avatar),
             "gender": String(registerModel.gender),
-            "timestamp": String.timestape()
+            "nick_name": registerModel.nickName,
         ]
         PJNetwork.shared.requstWithPost(path: UserUrl.register.rawValue,
                                         parameters: parameters,
@@ -190,8 +185,6 @@ class PJUser: Codable {
         let parameters = [
             "username": phone,
             "sign": sign,
-            "timestamp": String.timestape(),
-            "user_nick_name": PJUser.shared.nickName ?? ""
         ]
         PJNetwork.shared.requstWithPost(path: UserUrl.logIn.rawValue,
                                         parameters: parameters,
@@ -224,8 +217,6 @@ class PJUser: Codable {
                     failedHandler: @escaping (PJError) -> Void) {
         let parameters = [
             "phone": phoneString,
-            "timestamp": String.timestape(),
-            "user_nick_name": PJUser.shared.nickName ?? ""
         ]
         
         PJNetwork.shared.requstWithGet(path: UserUrl.checkPhone.rawValue,

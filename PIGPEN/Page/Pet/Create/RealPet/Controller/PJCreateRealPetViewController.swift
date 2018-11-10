@@ -33,7 +33,7 @@ class PJCreateRealPetViewController: PJBaseViewController, UITextFieldDelegate {
     // tag = 1005
     @IBOutlet weak var relationshipTextField: UITextField!
     
-    
+    var tempBreedModel: RealPetBreedModel?
     
     
     override func viewDidLoad() {
@@ -84,7 +84,17 @@ class PJCreateRealPetViewController: PJBaseViewController, UITextFieldDelegate {
         
         switch textField.tag {
         case 1000:
-            navigationController?.pushViewController(PJBreedsViewController(),
+            let vc = PJBreedsViewController()
+            vc.selectComplation = { [weak self] model in
+                if let `self` = self {
+                    self.breedTextField.text = model.zh_name ?? ""
+                    self.tempBreedModel = model
+                }
+            }
+            if tempBreedModel != nil {
+                vc.selectedModel = tempBreedModel
+            }
+            navigationController?.pushViewController(vc,
                                                      animated: true)
         case 1001: break
         case 1002: break

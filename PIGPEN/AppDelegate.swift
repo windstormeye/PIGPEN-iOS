@@ -72,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                       bottom: -5, right: 0)
         playNav.tabBarItem.image = UIImage(named: "tabBar_play")?.withRenderingMode(.alwaysOriginal)
         
-        let messagePage = PJBreedsViewController()
+        let messagePage = PJMessageViewController()
         let messageNav = UINavigationController(rootViewController: messagePage)
         messageNav.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0,
                                                          bottom: -5, right: 0)

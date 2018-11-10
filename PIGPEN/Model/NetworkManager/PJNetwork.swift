@@ -35,20 +35,19 @@ class PJNetwork {
                        parameters: [String: String],
                        complement: @escaping ([String: JSON]) -> Void,
                        failed: @escaping (String) -> Void) {
-        let parametes = parametersHandler(parameters: parameters)
-        // token 为空需要登录
-        if PJUser.shared.token == "" {
-            NotificationCenter.default.post(name: .gotoLogin(), object: nil)
-            return
+        var parameters = parameters
+        if parameters["nick_name"] == nil {
+            parameters["nick_name"] = PJUser.shared.nickName ?? ""
         }
         
+        let params = parametersHandler(parameters: parameters)
         let headerParameters: HTTPHeaders = [
             "usertoken": PJUser.shared.token ?? "",
-            "timestamp": String.timestape()
+            "timestamp": String.timestape(),
         ]
         Alamofire.request(hostName + path,
                           method: .get,
-                          parameters: parametes,
+                          parameters: params,
                           encoding: URLEncoding.default,
                           headers: headerParameters).responseJSON { (response) in
                             switch response.result {
@@ -65,27 +64,30 @@ class PJNetwork {
                         parameters: [String: String],
                         complement: @escaping ([String: JSON]) -> Void,
                         failed: @escaping (String) -> Void) {
-        let parametes = parametersHandler(parameters: parameters)
-        // token 为空需要登录
-        if PJUser.shared.token == "" {
-            NotificationCenter.default.post(name: .gotoLogin(), object: nil)
-            return
+        var parameters = parameters
+        if parameters["nick_name"] == nil {
+            parameters["nick_name"] = PJUser.shared.nickName ?? ""
         }
         
+        let params = parametersHandler(parameters: parameters)
         let headerParameters: HTTPHeaders = [
             "usertoken": PJUser.shared.token ?? "",
-            "timestamp": String.timestape()
+            "timestamp": String.timestape(),
         ]
         Alamofire.request(hostName + path,
                           method: .post,
-                          parameters: parametes,
+                          parameters: params,
                           encoding: URLEncoding.default,
                           headers: headerParameters).responseJSON { (response) in
                             switch response.result {
                             case .success(_):
                                 complement(self.handleSuccess(response.data))
                             case .failure(_):
-                                failed(response.result.error?.localizedDescription ?? "发生错误")
+                                let errorString = response.result.error?.localizedDescription ?? "发生错误"
+                                debugOnly {
+                                    print(errorString)
+                                }
+                                failed(errorString)
                             }
         }
     }
@@ -95,6 +97,9 @@ class PJNetwork {
         if let data = data {
             if let jsonData = try? JSON(data: data).dictionary {
                 handleNetworkError(dict: jsonData!)
+                debugOnly {
+                    print(jsonData!)
+                }
                 return jsonData!
             }
         }

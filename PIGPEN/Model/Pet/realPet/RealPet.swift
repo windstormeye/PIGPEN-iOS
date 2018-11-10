@@ -29,10 +29,17 @@ struct RealPetBreedModel: Codable {
     var zh_name: String?
 }
 
+struct RealPetBreedGroupModel: Codable {
+    var group: String?
+    var breeds: [RealPetBreedModel]?
+}
+
 class RealPet {
     var model: RealPetModel?
     
-    class func breedList(petType: String) {
+    class func breedList(petType: String,
+                         complationHandler: @escaping ([RealPetBreedGroupModel]) -> Void,
+                         failedHandler: @escaping (PJError) -> Void) {
         let parameters = [
             "nick_name": PJUser.shared.nickName ?? "",
             "pet_type": petType
@@ -40,9 +47,22 @@ class RealPet {
         PJNetwork.shared.requstWithGet(path: RealPetUrl.breeds.rawValue,
                                        parameters: parameters,
                                        complement: { (dataDic) in
-                                      print(dataDic)
+                                        if dataDic["msgCode"]?.intValue == 666 {
+                                            var models = [RealPetBreedGroupModel]()
+                                            let dicts = dataDic["msg"]!["breeds"].arrayValue
+                                            for dict in dicts {
+                                                if let model = try? JSONDecoder().decode(RealPetBreedGroupModel.self, from: dict.rawData()) {
+                                                    models.append(model)
+                                                }
+                                            }
+                                            complationHandler(models)
+                                        } else {
+                                            let error = PJError(errorCode: dataDic["msgCode"]?.intValue, errorMsg: dataDic["msg"]?.string)
+                                            failedHandler(error)
+                                        }
         }) { (errorString) in
-            
+            failedHandler(PJError(errorCode: 0,
+                                  errorMsg: "未知错误"))
         }
     }
 }
