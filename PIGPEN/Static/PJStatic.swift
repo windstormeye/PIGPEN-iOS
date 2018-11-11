@@ -14,6 +14,9 @@ let PJSCREEN_WIDTH = Double(UIScreen.main.bounds.width)
 let NavigationItemMargin = CGFloat(8)
 let PJTABBAR_HEIGHT = CGFloat(48)
 
+let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
+let navBarHeight = statusBarHeight + 64
+
 // 颜色相关
 func PJRGB(r: CGFloat, g:CGFloat, b:CGFloat) -> UIColor {
     return UIColor.init(red: r/255.0, green: g/255.0, blue: b/255.0, alpha: 1)
@@ -56,4 +59,14 @@ func currenVCFromPush(navc: UINavigationController?,
     } else {
         return false
     }
+}
+
+func windowFromLevel(level: UIWindow.Level) -> UIWindow? {
+    let windows = UIApplication.shared.windows
+    for window in windows {
+        if (level == window.windowLevel) {
+            return window
+        }
+    }
+    return nil
 }

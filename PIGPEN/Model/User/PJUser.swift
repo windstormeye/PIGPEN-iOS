@@ -185,6 +185,8 @@ class PJUser: Codable {
         let parameters = [
             "username": phone,
             "sign": sign,
+            // 因为登录接口要做 md5 验证，所以 body 要带上
+            "timestamp": String.timestape(),
         ]
         PJNetwork.shared.requstWithPost(path: UserUrl.logIn.rawValue,
                                         parameters: parameters,

@@ -24,4 +24,8 @@ extension UIColor {
     class func pinkColor() -> UIColor {
         return PJRGB(r: 249, g: 162, b: 162)
     }
+    
+    class func backgroundColor() -> UIColor {
+        return UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.4)
+    }
 }

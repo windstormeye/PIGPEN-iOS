@@ -51,7 +51,7 @@ class PJCreateRealPetViewController: PJBaseViewController, UITextFieldDelegate {
         breedTextField.delegate = self
         pppTextField.delegate = self
         breedTextField.delegate = self
-        breedTextField.delegate = self
+        birthTextField.delegate = self
         relationshipTextField.delegate = self
         weightTextField.delegate = self
         loveTextField.delegate = self
@@ -96,10 +96,72 @@ class PJCreateRealPetViewController: PJBaseViewController, UITextFieldDelegate {
             }
             navigationController?.pushViewController(vc,
                                                      animated: true)
-        case 1001: break
-        case 1002: break
-        case 1003: break
-        case 1004: break
+        case 1001:
+            PJPickerView.showPickerView(viewModel: { (viewModel) in
+                viewModel.titleString = "猫咪的生日"
+                viewModel.pickerType = .time
+            }) { [weak self] finalString in
+                if let `self` = self {
+                    self.birthTextField.text = finalString
+                }
+            }
+        case 1002:
+            PJPickerView.showPickerView(viewModel: { (viewModel) in
+                viewModel.titleString = "猫咪体重"
+                var weightArray = [String]()
+                for item in 0...100 {
+                    weightArray.append("\(item)")
+                }
+                var o_weightArray = [String]()
+                for item in 0..<10 {
+                    o_weightArray.append("\(item)")
+                }
+                viewModel.dataArray = [weightArray, o_weightArray, ["kg"]]
+                viewModel.pickerType = .custom
+            }) { [weak self] finalString in
+                if let `self` = self {
+                    guard finalString != "00" else {
+                        return
+                    }
+                    var finalString = finalString
+                    if (finalString[finalString.startIndex] == "0") {
+                        finalString.remove(at: finalString.startIndex)
+                    }
+                    self.weightTextField.text = finalString + "00g"
+                }
+            }
+        case 1003:
+            PJPickerView.showPickerView(viewModel: { (viewModel) in
+                viewModel.titleString = "绝育情况"
+                viewModel.pickerType = .custom
+                viewModel.dataArray = [["已绝育", "未绝育"]]
+            }) { [weak self] finalString in
+                if let `self` = self {
+                    self.pppTextField.text = finalString
+                }
+            }
+        case 1004:
+            PJPickerView.showPickerView(viewModel: { (viewModel) in
+                viewModel.titleString = "感情状态"
+                viewModel.pickerType = .custom
+                viewModel.dataArray = [["单身", "约会中", "已婚"]]
+            }) { [weak self] finalString in
+                if let `self` = self {
+                    self.loveTextField.text = finalString
+                }
+            }
+        case 1005:
+            PJPickerView.showPickerView(viewModel: { (viewModel) in
+                viewModel.titleString = "猫咪与您的关系"
+                viewModel.pickerType = .custom
+                viewModel.dataArray = [["我是妈咪", "我是爸比", "我是爷爷", "我是奶奶",
+                                        "我是姐姐", "我是哥哥", "我是弟弟", "我是妹妹",
+                                        "我是干爸", "我是干妈", "我是叔叔", "我是阿姨",]]
+            }) { [weak self] finalString in
+                if let `self` = self {
+                    self.relationshipTextField.text = finalString
+                }
+            }
         default: break
         }
         
