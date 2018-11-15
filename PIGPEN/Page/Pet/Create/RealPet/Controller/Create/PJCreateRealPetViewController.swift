@@ -14,6 +14,11 @@ fileprivate extension Selector {
 
 class PJCreateRealPetViewController: PJBaseViewController, UITextFieldDelegate {
 
+    enum petType {
+        case cat
+        case dog
+    }
+    
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var femaleButton: UIButton!
     @IBOutlet weak var maleButton: UIButton!
@@ -32,10 +37,16 @@ class PJCreateRealPetViewController: PJBaseViewController, UITextFieldDelegate {
     @IBOutlet weak var loveTextField: UITextField!
     // tag = 1005
     @IBOutlet weak var relationshipTextField: UITextField!
+    // tag = 1006
+    @IBOutlet weak var dogEatTextField: UITextField!
+    @IBOutlet weak var dogEatLineView: UIView!
+    @IBOutlet weak var loveStatusConstraint: NSLayoutConstraint!
     
     var tempBreedModel: RealPetBreedModel?
+    // defual = cat, false == cat
+    var catOrDog: petType = .cat
     
-    
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
@@ -55,6 +66,16 @@ class PJCreateRealPetViewController: PJBaseViewController, UITextFieldDelegate {
         relationshipTextField.delegate = self
         weightTextField.delegate = self
         loveTextField.delegate = self
+        dogEatTextField.delegate = self
+        
+        // 该段代码不能放入 `viewWillLayoutSubviews`，PJAlertView dismiss 后会再调用一次
+        switch catOrDog {
+        case .dog:
+            loveStatusConstraint.constant += 50
+        case .cat:
+            dogEatTextField.isHidden = true
+            dogEatLineView.isHidden = true
+        }
     }
     
     // MARK: Action
@@ -161,6 +182,26 @@ class PJCreateRealPetViewController: PJBaseViewController, UITextFieldDelegate {
                 if let `self` = self {
                     self.relationshipTextField.text = finalString
                 }
+            }
+        case 1006:
+            let picker = PJPickerView.showPickerView(viewModel: { (viewModel) in
+                var items = [String]()
+                for item in 1...1000 {
+                    items.append("\(item)")
+                }
+                viewModel.titleString = "每日进食量"
+                viewModel.pickerType = .custom
+                viewModel.leftButtonName = "每日进食量参考值"
+                viewModel.dataArray = [items, ["g"]]
+            }) { [weak self] finalString in
+                if let `self` = self {
+                    self.dogEatTextField.text = finalString
+                }
+            }
+            picker!.leftButtonTappedHandler = { [weak self] in
+                guard let `self` = self else {return}
+                self.navigationController?.pushViewController(PJDogFoodViewController(),
+                                                              animated: true)
             }
         default: break
         }

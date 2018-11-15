@@ -35,8 +35,8 @@ class PJHUD: PJBaseTipsView {
     }
     
     convenience init(_ hudType: type, hudText: String) {
-        let rect = CGRect(x: (PJSCREEN_WIDTH - hudHeight)/2,
-                          y: (PJSCREEN_HEIGHT - hudHeight)/2,
+        let rect = CGRect(x: (Double(PJSCREEN_WIDTH) - hudHeight)/2,
+                          y: (Double(PJSCREEN_HEIGHT) - hudHeight)/2,
                           width: hudWidth, height: hudHeight)
         self.init(frame: rect)
         initView()

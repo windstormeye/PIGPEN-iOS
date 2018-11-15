@@ -9,8 +9,8 @@
 import UIKit
 
 // 屏幕相关
-let PJSCREEN_HEIGHT = Double(UIScreen.main.bounds.height)
-let PJSCREEN_WIDTH = Double(UIScreen.main.bounds.width)
+let PJSCREEN_HEIGHT = CGFloat(UIScreen.main.bounds.height)
+let PJSCREEN_WIDTH = CGFloat(UIScreen.main.bounds.width)
 let NavigationItemMargin = CGFloat(8)
 let PJTABBAR_HEIGHT = CGFloat(48)
 

@@ -11,22 +11,26 @@ import UIKit
 fileprivate extension Selector {
     static let ok = #selector(PJPickerView.okButtonTapped)
     static let dismissView = #selector(PJPickerView.dismissView)
+    static let leftButtonTapped = #selector(PJPickerView.leftButtonTapped)
 }
 
-class PJPickerView: UIViewController, UIPickerViewDelegate,
+class PJPickerView: PJBaseAlertViewController, UIPickerViewDelegate,
 UIPickerViewDataSource {
     
     struct PickerModel {
         var pickerType: pickerType = .time
         var dataArray = [[String]]()
         var titleString = ""
+        var leftButtonName: String? = nil
+        var rightButtonName = "完成"
     }
-    
+
     enum pickerType {
         case time
         case custom
     }
 
+    var leftButtonTappedHandler: (() -> Void)?
     private var complationHandler: ((String) -> Void)?
     private var viewModel: PickerModel?
     private var backgroundView: UIView?
@@ -35,12 +39,26 @@ UIPickerViewDataSource {
     private var okButton: UIButton?
     private var topViewBottomLine: UIView?
     private var pickerBackView: UIView?
-    private var pickerWindow: UIWindow?
-    private var mainWindow: UIWindow?
     private var picker: UIPickerView?
     private var datePicker: UIDatePicker?
     private var firstTitle = ""
     private var secondTitle = ""
+    
+    // MARK: - Public
+    class func showPickerView(viewModel: ((_ model: inout PickerModel) -> Void)?,
+                              complationHandler: @escaping (String) -> Void) -> PJPickerView? {
+        let picker = PJPickerView()
+        picker.viewModel = PickerModel()
+        if viewModel != nil {
+            viewModel!(&picker.viewModel!)
+            picker.initView()
+        }
+        
+        picker.complationHandler = complationHandler
+        picker.showPicker()
+        
+        return picker
+    }
     
     // MARK: - Life Cycle
     override func viewWillLayoutSubviews() {
@@ -52,17 +70,6 @@ UIPickerViewDataSource {
     }
     
     private func initView() {
-        mainWindow = windowFromLevel(level: .normal)
-        pickerWindow = windowFromLevel(level: .alert)
-        
-        if pickerWindow == nil {
-            pickerWindow = UIWindow(frame: UIScreen.main.bounds)
-            pickerWindow?.windowLevel = .alert
-            pickerWindow?.backgroundColor = .clear
-        }
-        pickerWindow?.rootViewController = self
-        pickerWindow?.isUserInteractionEnabled = true
-        
         backgroundView = UIView(frame: view.frame)
         view.addSubview(backgroundView!)
         backgroundView?.alpha = 0
@@ -98,6 +105,21 @@ UIPickerViewDataSource {
             pickerBackView?.addSubview(picker!)
             picker?.delegate = self
             picker?.dataSource = self
+            
+            if viewModel?.leftButtonName != nil {
+                let leftButton = UIButton(frame: CGRect(x: 15, y: 0,
+                                                        width: 100,
+                                                        height: topView!.height))
+                topView?.addSubview(leftButton)
+                leftButton.titleLabel?.textAlignment = .left
+                leftButton.setTitle(viewModel?.leftButtonName, for: .normal)
+                leftButton.setTitleColor(PJRGB(r: 102, g: 102, b: 102),
+                                         for: .normal)
+                leftButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+                leftButton.addTarget(self,
+                                     action: .leftButtonTapped,
+                                     for: .touchUpInside)
+            }
         case .time:
             datePicker = UIDatePicker(frame: CGRect(x: 0, y: topView!.bottom,
                                                     width: view.width,
@@ -126,20 +148,6 @@ UIPickerViewDataSource {
         okButton?.addTarget(self, action: .ok, for: .touchUpInside)
     }
     
-    // MARK: - Public
-    class func showPickerView(viewModel: ((_ model: inout PickerModel) -> Void)?,
-                              complationHandler: @escaping (String) -> Void) {
-        let picker = PJPickerView()
-        picker.viewModel = PickerModel()
-        if viewModel != nil {
-            viewModel!(&picker.viewModel!)
-            picker.initView()
-        }
-        
-        picker.complationHandler = complationHandler
-        picker.showPicker()
-    }
-    
     // MARK: - Actions
     @objc fileprivate func dismissView() {
         UIView.animate(withDuration: 0.25, animations: {
@@ -147,29 +155,13 @@ UIPickerViewDataSource {
             self.pickerBackView?.top += 200
         }) { (finished) in
             if finished {
-                UIView.animate(withDuration: 0.25, animations: {
-                    self.pickerWindow?.isHidden = true
-                    self.pickerWindow?.removeFromSuperview()
-                    self.pickerWindow?.rootViewController = nil
-                    self.pickerWindow = nil
-                }, completion: { (finished) in
-                    if finished {
-                        self.mainWindow?.tintAdjustmentMode = .automatic
-                        self.mainWindow?.tintColorDidChange()
-                        self.mainWindow?.makeKeyAndVisible()
-                    }
-                })
+                self.dismissAlert()
             }
         }
     }
     
     private func showPicker() {
-        pickerWindow?.addSubview(view)
-        pickerWindow?.makeKeyAndVisible()
-        
-        mainWindow?.tintAdjustmentMode = .dimmed
-        mainWindow?.tintColorDidChange()
-        
+        showAlert()
         UIView.animate(withDuration: 0.25, animations: {
             self.backgroundView?.alpha = 1
             self.pickerBackView?.top -= 200
@@ -207,6 +199,11 @@ UIPickerViewDataSource {
             complationHandler!(finalString)
             dismissView()
         }
+    }
+    
+    @objc fileprivate func leftButtonTapped() {
+        leftButtonTappedHandler?()
+        dismissView()
     }
     
     // MARK: - Delegate

@@ -71,6 +71,7 @@ PJUserDetailsMenuViewDelegate, PJUserDetailsTableViewDelegate {
     func PJUserDetailsTableViewToNewPet() {
         let vc = PJCreateRealPetViewController()
         vc.hidesBottomBarWhenPushed = true
+        vc.catOrDog = .dog
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -101,7 +102,7 @@ PJUserDetailsMenuViewDelegate, PJUserDetailsTableViewDelegate {
         menu?.isHidden = true
         let menuWidth = 120.0
         let menuHeight = 180.0
-        menu?.frame = CGRect(x: PJSCREEN_WIDTH - menuWidth - 15,
+        menu?.frame = CGRect(x: Double(PJSCREEN_WIDTH) - menuWidth - 15,
                              y: Double(headerView!.bottom),
                              width: menuWidth, height: menuHeight)
         view.addSubview(menu!)

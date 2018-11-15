@@ -72,6 +72,10 @@
 		0CE4F3FB21592C7C003AD0F5 /* PIGPEN.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4F3F921592C7C003AD0F5 /* PIGPEN.xcdatamodeld */; };
 		0CE4F3FD21592C7D003AD0F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CE4F3FC21592C7D003AD0F5 /* Assets.xcassets */; };
 		0CE4F40021592C7D003AD0F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CE4F3FE21592C7D003AD0F5 /* LaunchScreen.storyboard */; };
+		0CED02E2219D45AC00294033 /* PJDogFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CED02E0219D45AC00294033 /* PJDogFoodViewController.swift */; };
+		0CED02E3219D45AC00294033 /* PJDogFoodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CED02E1219D45AC00294033 /* PJDogFoodViewController.xib */; };
+		0CED02E6219D510F00294033 /* PJBaseAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CED02E5219D510F00294033 /* PJBaseAlertViewController.swift */; };
+		0CED02E9219D5A8400294033 /* PJAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CED02E8219D5A8400294033 /* PJAlertView.swift */; };
 		6155BC9AE80D9BE2A10BEB45 /* libPods-PIGPEN.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3155F10B4EB7E5C66A26C91 /* libPods-PIGPEN.a */; };
 /* End PBXBuildFile section */
 
@@ -146,6 +150,10 @@
 		0CE4F3FC21592C7D003AD0F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CE4F3FF21592C7D003AD0F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CE4F40121592C7D003AD0F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CED02E0219D45AC00294033 /* PJDogFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJDogFoodViewController.swift; sourceTree = "<group>"; };
+		0CED02E1219D45AC00294033 /* PJDogFoodViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJDogFoodViewController.xib; sourceTree = "<group>"; };
+		0CED02E5219D510F00294033 /* PJBaseAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBaseAlertViewController.swift; sourceTree = "<group>"; };
+		0CED02E8219D5A8400294033 /* PJAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJAlertView.swift; sourceTree = "<group>"; };
 		6472681005EABAD7037BD786 /* Pods-PIGPEN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PIGPEN.release.xcconfig"; path = "Pods/Target Support Files/Pods-PIGPEN/Pods-PIGPEN.release.xcconfig"; sourceTree = "<group>"; };
 		8BD192072D34D432799FE1CF /* Pods-PIGPEN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PIGPEN.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PIGPEN/Pods-PIGPEN.debug.xcconfig"; sourceTree = "<group>"; };
 		D3155F10B4EB7E5C66A26C91 /* libPods-PIGPEN.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PIGPEN.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,7 +217,6 @@
 		0C55E2C3215A61AD000D8815 /* Page */ = {
 			isa = PBXGroup;
 			children = (
-				0C8B755E2197C1FC00353842 /* Picker */,
 				0C8B75572196932C00353842 /* Message */,
 				0CDB0C9821675F1C00669331 /* Pet */,
 				0C55E3052161BA9C000D8815 /* Base */,
@@ -412,8 +419,8 @@
 		0C599EB4216CFE4700FC2E37 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0C599ECC21703C5200FC2E37 /* PJCreateRealPetViewController.swift */,
-				0C599ECD21703C5200FC2E37 /* PJCreateRealPetViewController.xib */,
+				0CED02DF219D457100294033 /* DogFood */,
+				0CED02DE219D456500294033 /* Create */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -561,6 +568,9 @@
 		0C5E63502165AB9300A90762 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				0CED02E7219D585700294033 /* Alert */,
+				0CED02E4219D50DE00294033 /* BaseAlertWindow */,
+				0C8B755E2197C1FC00353842 /* Picker */,
 				0C5E63512165ABB300A90762 /* Tapic */,
 				0C5E63492165A56800A90762 /* HUD */,
 			);
@@ -720,6 +730,40 @@
 			path = PIGPEN;
 			sourceTree = "<group>";
 		};
+		0CED02DE219D456500294033 /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				0C599ECC21703C5200FC2E37 /* PJCreateRealPetViewController.swift */,
+				0C599ECD21703C5200FC2E37 /* PJCreateRealPetViewController.xib */,
+			);
+			path = Create;
+			sourceTree = "<group>";
+		};
+		0CED02DF219D457100294033 /* DogFood */ = {
+			isa = PBXGroup;
+			children = (
+				0CED02E0219D45AC00294033 /* PJDogFoodViewController.swift */,
+				0CED02E1219D45AC00294033 /* PJDogFoodViewController.xib */,
+			);
+			path = DogFood;
+			sourceTree = "<group>";
+		};
+		0CED02E4219D50DE00294033 /* BaseAlertWindow */ = {
+			isa = PBXGroup;
+			children = (
+				0CED02E5219D510F00294033 /* PJBaseAlertViewController.swift */,
+			);
+			path = BaseAlertWindow;
+			sourceTree = "<group>";
+		};
+		0CED02E7219D585700294033 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				0CED02E8219D5A8400294033 /* PJAlertView.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
 		71C7822EAE774E46944FBDC6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -803,6 +847,7 @@
 				0C599EDA2170407500FC2E37 /* PJUserDetailsMoneyTableViewCell.xib in Resources */,
 				0C599EB8216CFE7A00FC2E37 /* PJRealPetDetailsViewController.xib in Resources */,
 				0C599ECF21703C5200FC2E37 /* PJCreateRealPetViewController.xib in Resources */,
+				0CED02E3219D45AC00294033 /* PJDogFoodViewController.xib in Resources */,
 				0C599ECB21703BCB00FC2E37 /* PJVirtualPetViewController.xib in Resources */,
 				0C55E2D7215A795A000D8815 /* Localizable.strings in Resources */,
 				0C55E2F8215F570D000D8815 /* PJUserRegisterViewController.xib in Resources */,
@@ -865,6 +910,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C599ECA21703BCB00FC2E37 /* PJVirtualPetViewController.swift in Sources */,
+				0CED02E9219D5A8400294033 /* PJAlertView.swift in Sources */,
 				0C0A54A6216B977E00195DF1 /* RealPet.swift in Sources */,
 				0C55E2E8215B703C000D8815 /* PJUserLoginViewController.swift in Sources */,
 				0CDB0C9B21675F6E00669331 /* PJUserDetailsMenuView.swift in Sources */,
@@ -888,7 +934,9 @@
 				0C5E633B21624D1F00A90762 /* PJUserInfoAvatarSelectCollectionView.swift in Sources */,
 				0C5E63392162444400A90762 /* PJUserInfoSeleteAvatarView.swift in Sources */,
 				0C599EC3217032A000FC2E37 /* PJUserDetailsVirtualPetTableViewCell.swift in Sources */,
+				0CED02E2219D45AC00294033 /* PJDogFoodViewController.swift in Sources */,
 				0C5E633E216309C300A90762 /* PJNetwork.swift in Sources */,
+				0CED02E6219D510F00294033 /* PJBaseAlertViewController.swift in Sources */,
 				0C8B75592196934000353842 /* PJMessageViewController.swift in Sources */,
 				0CE4F3FB21592C7C003AD0F5 /* PIGPEN.xcdatamodeld in Sources */,
 				0C55E2FC215F5EA9000D8815 /* PJUser.swift in Sources */,
