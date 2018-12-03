@@ -10,6 +10,13 @@
 		0C0A54A6216B977E00195DF1 /* RealPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0A54A5216B977E00195DF1 /* RealPet.swift */; };
 		0C0A54AC216CF64600195DF1 /* PJUserDetailRealPetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0A54AA216CF64600195DF1 /* PJUserDetailRealPetTableViewCell.swift */; };
 		0C0A54AD216CF64600195DF1 /* PJUserDateilsRealPetColletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0A54AB216CF64600195DF1 /* PJUserDateilsRealPetColletionView.swift */; };
+		0C1F6FA421B391E500304CD8 /* PJAlbumTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1F6FA321B391E500304CD8 /* PJAlbumTableView.swift */; };
+		0C1F6FA621B3920500304CD8 /* PJAlbumDetailCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1F6FA521B3920500304CD8 /* PJAlbumDetailCollectionView.swift */; };
+		0C1F6FAA21B3924400304CD8 /* PJAlbumDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1F6FA821B3924400304CD8 /* PJAlbumDetailCollectionViewCell.swift */; };
+		0C1F6FAB21B3924400304CD8 /* PJAlbumDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C1F6FA921B3924400304CD8 /* PJAlbumDetailCollectionViewCell.xib */; };
+		0C1F6FAF21B3925E00304CD8 /* PJAlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1F6FAD21B3925E00304CD8 /* PJAlbumTableViewCell.swift */; };
+		0C1F6FB021B3925E00304CD8 /* PJAlbumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C1F6FAE21B3925E00304CD8 /* PJAlbumTableViewCell.xib */; };
+		0C1F6FB421B392EF00304CD8 /* PJAlbumDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1F6FB321B392EF00304CD8 /* PJAlbumDataController.swift */; };
 		0C55E2C5215A61E3000D8815 /* PJHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2C4215A61E3000D8815 /* PJHomeViewController.swift */; };
 		0C55E2CC215A62AF000D8815 /* PJChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2CB215A62AF000D8815 /* PJChatViewController.swift */; };
 		0C55E2CE215A62BE000D8815 /* PJPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2CD215A62BE000D8815 /* PJPlayViewController.swift */; };
@@ -63,6 +70,7 @@
 		0C8B75592196934000353842 /* PJMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8B75582196934000353842 /* PJMessageViewController.swift */; };
 		0C8B755D2196FF8B00353842 /* PJBreedsSideSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8B755C2196FF8B00353842 /* PJBreedsSideSliderView.swift */; };
 		0C8B75622198126D00353842 /* PJPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8B75612198126D00353842 /* PJPickerView.swift */; };
+		0CA365F821B26CF300E7D2F7 /* PJAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA365F721B26CF300E7D2F7 /* PJAlbumViewController.swift */; };
 		0CDB0C8F216705B000669331 /* PJUserSelfTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CDB0C8D216705B000669331 /* PJUserSelfTableViewCell.xib */; };
 		0CDB0C90216705B000669331 /* PJUserSelfTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0C8E216705B000669331 /* PJUserSelfTableViewCell.swift */; };
 		0CDB0C972167299A00669331 /* PJUserDetailsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0C962167299A00669331 /* PJUserDetailsTableView.swift */; };
@@ -83,6 +91,13 @@
 		0C0A54A5216B977E00195DF1 /* RealPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealPet.swift; sourceTree = "<group>"; };
 		0C0A54AA216CF64600195DF1 /* PJUserDetailRealPetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PJUserDetailRealPetTableViewCell.swift; sourceTree = "<group>"; };
 		0C0A54AB216CF64600195DF1 /* PJUserDateilsRealPetColletionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PJUserDateilsRealPetColletionView.swift; sourceTree = "<group>"; };
+		0C1F6FA321B391E500304CD8 /* PJAlbumTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJAlbumTableView.swift; sourceTree = "<group>"; };
+		0C1F6FA521B3920500304CD8 /* PJAlbumDetailCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJAlbumDetailCollectionView.swift; sourceTree = "<group>"; };
+		0C1F6FA821B3924400304CD8 /* PJAlbumDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJAlbumDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		0C1F6FA921B3924400304CD8 /* PJAlbumDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJAlbumDetailCollectionViewCell.xib; sourceTree = "<group>"; };
+		0C1F6FAD21B3925E00304CD8 /* PJAlbumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJAlbumTableViewCell.swift; sourceTree = "<group>"; };
+		0C1F6FAE21B3925E00304CD8 /* PJAlbumTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJAlbumTableViewCell.xib; sourceTree = "<group>"; };
+		0C1F6FB321B392EF00304CD8 /* PJAlbumDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJAlbumDataController.swift; sourceTree = "<group>"; };
 		0C55E2C4215A61E3000D8815 /* PJHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJHomeViewController.swift; sourceTree = "<group>"; };
 		0C55E2CB215A62AF000D8815 /* PJChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJChatViewController.swift; sourceTree = "<group>"; };
 		0C55E2CD215A62BE000D8815 /* PJPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJPlayViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +154,7 @@
 		0C8B75582196934000353842 /* PJMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJMessageViewController.swift; sourceTree = "<group>"; };
 		0C8B755C2196FF8B00353842 /* PJBreedsSideSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBreedsSideSliderView.swift; sourceTree = "<group>"; };
 		0C8B75612198126D00353842 /* PJPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PJPickerView.swift; sourceTree = "<group>"; };
+		0CA365F721B26CF300E7D2F7 /* PJAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJAlbumViewController.swift; sourceTree = "<group>"; };
 		0CDB0C8D216705B000669331 /* PJUserSelfTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PJUserSelfTableViewCell.xib; sourceTree = "<group>"; };
 		0CDB0C8E216705B000669331 /* PJUserSelfTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PJUserSelfTableViewCell.swift; sourceTree = "<group>"; };
 		0CDB0C962167299A00669331 /* PJUserDetailsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserDetailsTableView.swift; sourceTree = "<group>"; };
@@ -212,6 +228,83 @@
 				0C599EB9216E444D00FC2E37 /* Pet */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		0C1F6F9E21B3912900304CD8 /* AlbumTableView */ = {
+			isa = PBXGroup;
+			children = (
+				0C1F6FAC21B3924C00304CD8 /* Cell */,
+				0C1F6FA321B391E500304CD8 /* PJAlbumTableView.swift */,
+			);
+			path = AlbumTableView;
+			sourceTree = "<group>";
+		};
+		0C1F6F9F21B3914600304CD8 /* AlbumCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				0C1F6FA721B3922600304CD8 /* Cell */,
+				0C1F6FA521B3920500304CD8 /* PJAlbumDetailCollectionView.swift */,
+			);
+			path = AlbumCollectionView;
+			sourceTree = "<group>";
+		};
+		0C1F6FA021B3918200304CD8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0C1F6FA121B3918900304CD8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0C1F6F9F21B3914600304CD8 /* AlbumCollectionView */,
+				0C1F6F9E21B3912900304CD8 /* AlbumTableView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0C1F6FA221B3918E00304CD8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0C1F6FB221B392BE00304CD8 /* DataController */,
+				0C1F6FB121B3926E00304CD8 /* ViewController */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0C1F6FA721B3922600304CD8 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0C1F6FA821B3924400304CD8 /* PJAlbumDetailCollectionViewCell.swift */,
+				0C1F6FA921B3924400304CD8 /* PJAlbumDetailCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		0C1F6FAC21B3924C00304CD8 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0C1F6FAD21B3925E00304CD8 /* PJAlbumTableViewCell.swift */,
+				0C1F6FAE21B3925E00304CD8 /* PJAlbumTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		0C1F6FB121B3926E00304CD8 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0CA365F721B26CF300E7D2F7 /* PJAlbumViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		0C1F6FB221B392BE00304CD8 /* DataController */ = {
+			isa = PBXGroup;
+			children = (
+				0C1F6FB321B392EF00304CD8 /* PJAlbumDataController.swift */,
+			);
+			path = DataController;
 			sourceTree = "<group>";
 		};
 		0C55E2C3215A61AD000D8815 /* Page */ = {
@@ -568,6 +661,7 @@
 		0C5E63502165AB9300A90762 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				0CA365F621B26CB600E7D2F7 /* Album */,
 				0CED02E7219D585700294033 /* Alert */,
 				0CED02E4219D50DE00294033 /* BaseAlertWindow */,
 				0C8B755E2197C1FC00353842 /* Picker */,
@@ -640,6 +734,16 @@
 				0C8B75612198126D00353842 /* PJPickerView.swift */,
 			);
 			path = Picker;
+			sourceTree = "<group>";
+		};
+		0CA365F621B26CB600E7D2F7 /* Album */ = {
+			isa = PBXGroup;
+			children = (
+				0C1F6FA221B3918E00304CD8 /* Controller */,
+				0C1F6FA121B3918900304CD8 /* View */,
+				0C1F6FA021B3918200304CD8 /* Model */,
+			);
+			path = Album;
 			sourceTree = "<group>";
 		};
 		0CDB0C8A2167055900669331 /* View */ = {
@@ -851,7 +955,9 @@
 				0C599ECB21703BCB00FC2E37 /* PJVirtualPetViewController.xib in Resources */,
 				0C55E2D7215A795A000D8815 /* Localizable.strings in Resources */,
 				0C55E2F8215F570D000D8815 /* PJUserRegisterViewController.xib in Resources */,
+				0C1F6FAB21B3924400304CD8 /* PJAlbumDetailCollectionViewCell.xib in Resources */,
 				0C55E2EE215B7DB0000D8815 /* PJUserForgetViewController.xib in Resources */,
+				0C1F6FB021B3925E00304CD8 /* PJAlbumTableViewCell.xib in Resources */,
 				0CE4F3FD21592C7D003AD0F5 /* Assets.xcassets in Resources */,
 				0C55E2E9215B703C000D8815 /* PJUserLoginViewController.xib in Resources */,
 				0C599ED621703CDA00FC2E37 /* PJCreateVirtualPetViewController.xib in Resources */,
@@ -920,12 +1026,15 @@
 				0C8B755D2196FF8B00353842 /* PJBreedsSideSliderView.swift in Sources */,
 				0C55E2E2215A8422000D8815 /* PJStatic.swift in Sources */,
 				0C5E63532165ADF500A90762 /* NotificationName.swift in Sources */,
+				0C1F6FAF21B3925E00304CD8 /* PJAlbumTableViewCell.swift in Sources */,
 				0C599ECE21703C5200FC2E37 /* PJCreateRealPetViewController.swift in Sources */,
 				0C55E2CE215A62BE000D8815 /* PJPlayViewController.swift in Sources */,
 				0C55E2CC215A62AF000D8815 /* PJChatViewController.swift in Sources */,
 				0CE4F3F321592C7C003AD0F5 /* AppDelegate.swift in Sources */,
 				0C55E2F2215D2D76000D8815 /* PJUserInfoViewController.swift in Sources */,
 				0C5E634021635FA500A90762 /* PJNetworkUrls.swift in Sources */,
+				0C1F6FAA21B3924400304CD8 /* PJAlbumDetailCollectionViewCell.swift in Sources */,
+				0C1F6FB421B392EF00304CD8 /* PJAlbumDataController.swift in Sources */,
 				0CDB0C90216705B000669331 /* PJUserSelfTableViewCell.swift in Sources */,
 				0C55E3082161BAB6000D8815 /* PJBaseViewController.swift in Sources */,
 				0C599ED521703CDA00FC2E37 /* PJCreateVirtualPetViewController.swift in Sources */,
@@ -937,6 +1046,7 @@
 				0CED02E2219D45AC00294033 /* PJDogFoodViewController.swift in Sources */,
 				0C5E633E216309C300A90762 /* PJNetwork.swift in Sources */,
 				0CED02E6219D510F00294033 /* PJBaseAlertViewController.swift in Sources */,
+				0CA365F821B26CF300E7D2F7 /* PJAlbumViewController.swift in Sources */,
 				0C8B75592196934000353842 /* PJMessageViewController.swift in Sources */,
 				0CE4F3FB21592C7C003AD0F5 /* PIGPEN.xcdatamodeld in Sources */,
 				0C55E2FC215F5EA9000D8815 /* PJUser.swift in Sources */,
@@ -952,10 +1062,12 @@
 				0C55E2ED215B7DB0000D8815 /* PJUserForgetViewController.swift in Sources */,
 				0CDB0C972167299A00669331 /* PJUserDetailsTableView.swift in Sources */,
 				0C55E2E4215A84EA000D8815 /* UIViewPosition.swift in Sources */,
+				0C1F6FA421B391E500304CD8 /* PJAlbumTableView.swift in Sources */,
 				0C0A54AD216CF64600195DF1 /* PJUserDateilsRealPetColletionView.swift in Sources */,
 				0C5E634B2165A57200A90762 /* PJBigHUD.swift in Sources */,
 				0C55E3012161B247000D8815 /* PJWelcomeViewController.swift in Sources */,
 				0C599EE4217099E900FC2E37 /* PJUserCreateVirtualPetChoiceNameViewController.swift in Sources */,
+				0C1F6FA621B3920500304CD8 /* PJAlbumDetailCollectionView.swift in Sources */,
 				0C599EC72170354100FC2E37 /* PJUserDetailsVirtualPetCollectionView.swift in Sources */,
 				0C55E2C5215A61E3000D8815 /* PJHomeViewController.swift in Sources */,
 				0C55E2D0215A62C7000D8815 /* PJBreedsViewController.swift in Sources */,

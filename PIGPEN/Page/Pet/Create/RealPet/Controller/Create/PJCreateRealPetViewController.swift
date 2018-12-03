@@ -97,6 +97,10 @@ class PJCreateRealPetViewController: PJBaseViewController, UITextFieldDelegate {
         
     }
     
+    @IBAction func avatarTapped(_ sender: UITapGestureRecognizer) {
+        navigationController?.pushViewController(PJAlbumViewController(), animated: true)
+    }
+    
     // MARK: - Delegate
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         guard textField.tag >= 1000 else {
