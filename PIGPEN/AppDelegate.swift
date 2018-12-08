@@ -27,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initTabBarControler()
         
         IQKeyboardManager.shared.enable = true
+        // 预加载相册资源
+        let _ = PJAlbumDataManager.manager()
         
         return true
     }
