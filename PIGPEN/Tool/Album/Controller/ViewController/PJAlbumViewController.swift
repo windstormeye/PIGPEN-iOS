@@ -13,13 +13,7 @@ class PJAlbumViewController: PJBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let dataManager = PJAlbumDataManager()
-        dataManager.allAlbums()
-        
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: PJSCREEN_WIDTH, height: PJSCREEN_WIDTH))
-        view.addSubview(imageView)
-        imageView.image = dataManager.albumCover(album: dataManager.assetResults[0])
-        
+        let r = PJAlbumDataManager.manager().albums
     }
 
 }
