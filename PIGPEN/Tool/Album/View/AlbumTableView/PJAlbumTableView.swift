@@ -55,8 +55,8 @@ extension PJAlbumTableView: UITableViewDelegate, UITableViewDataSource {
                                                  for: indexPath) as! PJAlbumTableViewCell
         let photoModel = tableModels.albumCoverPhoto[indexPath.row]
         let albumPhotosCount = tableModels.albumPhotosCount[indexPath.row]
-        let cellModel = PJAlbumTableViewCell.PJAlbumTableViewCellModel(coverImage: photoModel.photoImage,
-                                                                       albumTitleString: photoModel.photoTitle,
+        let cellModel = PJAlbumTableViewCell.PJAlbumTableViewCellModel(coverImage: photoModel.photoImage ?? UIImage(),
+                                                                       albumTitleString: photoModel.photoTitle ?? "",
                                                                        albumPhotosCountString: String(albumPhotosCount))
         cell.setModel(cellModel)
         return cell

@@ -25,22 +25,24 @@ class PJAlbumViewController: PJBaseViewController {
         navigationItem.title = "选择照片"
         backButtonTapped(backSel: .back)
         isHiddenBarBottomLineView = false
-        
-        let albumCoverPhotos = PJAlbumDataManager.manager().albumCovers
-        var albumPhtosCounts = [Int]()
-        for album in PJAlbumDataManager.manager().albums {
-            albumPhtosCounts.append(album.photos.count)
-        }
+
+        PHPhotoLibrary.shared().register(self)
         
         albumTableView = PJAlbumTableView(frame: CGRect(x: 0, y: headerView!.bottom,
                                                         width: PJSCREEN_WIDTH,
                                                         height: PJSCREEN_HEIGHT - headerView!.height),
                                           style: .plain)
         view.addSubview(albumTableView!)
-        let tableModels = PJAlbumTableView.PJAlbumTableViewModel.init(albumCoverPhoto: albumCoverPhotos,
-                                                                      albumPhotosCount: albumPhtosCounts)
-        albumTableView?.tableModels = tableModels
-        albumTableView?.reloadData()
+
+        
+        PJAlbumDataManager.manager().getAlbumCovers { [weak self] coverPhotos, albumPhotosCounts  in
+            guard let `self` = self else { return }
+        
+            let tableModels = PJAlbumTableView.PJAlbumTableViewModel.init(albumCoverPhoto: coverPhotos,
+                                                                          albumPhotosCount: albumPhotosCounts)
+            self.albumTableView?.tableModels = tableModels
+            self.albumTableView?.reloadData()
+        }
     }
 
     @objc fileprivate func back() {
@@ -50,4 +52,12 @@ class PJAlbumViewController: PJBaseViewController {
 
 fileprivate extension Selector {
     static let back = #selector(PJAlbumViewController.back)
+}
+
+
+extension PJAlbumViewController: PHPhotoLibraryChangeObserver {
+    func photoLibraryDidChange(_ changeInstance: PHChange) {
+        
+    }
+    
 }
