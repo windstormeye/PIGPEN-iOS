@@ -34,6 +34,10 @@ class PJAlbumViewController: PJBaseViewController {
                                           style: .plain)
         view.addSubview(albumTableView!)
 
+        albumTableView?.didSelectedCell = { [weak self] selectedIndex in
+            guard let `self` = self else { return }
+            
+        }
         
         PJAlbumDataManager.manager().getAlbumCovers { [weak self] coverPhotos, albumPhotosCounts  in
             guard let `self` = self else { return }

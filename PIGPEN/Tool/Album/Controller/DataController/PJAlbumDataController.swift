@@ -53,6 +53,26 @@ class PJAlbumDataManager {
         }
     }
     
+    /// 获取某一相册的所有照片
+    func getAlbumPhotos(albumCollection: PHAssetCollection,
+                        complateHandler: @escaping (([Photo]) -> Void)) {
+        let assets = albumPHAssets(albumCollection)
+        var photos = [Photo]()
+        
+        for a_index in 0..<assets.count {
+            var photo = Photo()
+            convertPHAssetToUIImage(asset: assets[a_index]) { (photoImage) in
+                photo.photoImage = photoImage
+                photo.photoTitle = albumCollection.localizedTitle ?? ""
+                photos.append(photo)
+                
+                if a_index == assets.count - 1 {
+                    complateHandler(photos)
+                }
+            }
+        }
+    }
+    
     // MARK: - Private Methods
     /// 获取所有相册
     private func allAlbumCollection() -> [PHAssetCollection] {
@@ -94,7 +114,7 @@ class PJAlbumDataManager {
         }
     }
     
-    /// 当前相册的所有照片
+    /// 当前相册的所有 PJAsset
     private func albumPHAssets(_ collection: PHAssetCollection) -> PHFetchResult<PHAsset> {
         let options = PHFetchOptions()
         options.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)

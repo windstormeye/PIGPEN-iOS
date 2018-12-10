@@ -8,10 +8,14 @@
 
 import UIKit
 
+
 class PJAlbumTableView: UITableView {
     
     // MARK: - Public Property
     var tableModels: PJAlbumTableViewModel?
+    
+    // MARK: - Public Closure
+    var didSelectedCell: ((Int) -> Void)?
     
     // MARK: - Private Property
     private static let cellIndentifier = "PJAlbumTableViewCell"
@@ -55,15 +59,16 @@ extension PJAlbumTableView: UITableViewDelegate, UITableViewDataSource {
                                                  for: indexPath) as! PJAlbumTableViewCell
         let photoModel = tableModels.albumCoverPhoto[indexPath.row]
         let albumPhotosCount = tableModels.albumPhotosCount[indexPath.row]
-        let cellModel = PJAlbumTableViewCell.PJAlbumTableViewCellModel(coverImage: photoModel.photoImage ?? UIImage(),
-                                                                       albumTitleString: photoModel.photoTitle ?? "",
-                                                                       albumPhotosCountString: String(albumPhotosCount))
+        let cellModel = PJAlbumTableViewCell.cellModel(coverImage: photoModel.photoImage ?? UIImage(),
+                                                       albumTitleString: photoModel.photoTitle ?? "",
+                                                       albumPhotosCountString: String(albumPhotosCount))
         cell.setModel(cellModel)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        guard didSelectedCell != nil else { return }
+        didSelectedCell!(indexPath.row)
     }
 }
 

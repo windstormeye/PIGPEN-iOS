@@ -15,7 +15,7 @@ class PJAlbumTableViewCell: UITableViewCell {
     @IBOutlet weak var albumPhotosLabel: UILabel!
     
     // MARK: - Public Methods
-    func setModel(_ model: PJAlbumTableViewCellModel) {
+    func setModel(_ model: cellModel) {
         coverImageView.image = model.coverImage
         albumTitleLabel.text = model.albumTitleString
         albumPhotosLabel.text = model.albumPhotosCountString
@@ -23,7 +23,7 @@ class PJAlbumTableViewCell: UITableViewCell {
 }
 
 extension PJAlbumTableViewCell {
-    struct PJAlbumTableViewCellModel {
+    struct cellModel {
         let coverImage: UIImage
         let albumTitleString: String
         let albumPhotosCountString: String

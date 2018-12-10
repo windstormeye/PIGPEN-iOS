@@ -10,9 +10,18 @@ import UIKit
 
 class PJAlbumDetailCollectionViewCell: UICollectionViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    // MARK: - Private Propertys
+    @IBOutlet private weak var avatarImageView: UIImageView!
+    
+    // MARK: - Public Methods
+    func setModel(model: cellModel) {
+        avatarImageView.image = model.avatarImage
     }
 
+}
+
+extension PJAlbumDetailCollectionViewCell {
+    struct cellModel {
+        let avatarImage: UIImage
+    }
 }
