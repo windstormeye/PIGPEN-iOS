@@ -80,12 +80,24 @@
 		0CE4F3FB21592C7C003AD0F5 /* PIGPEN.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4F3F921592C7C003AD0F5 /* PIGPEN.xcdatamodeld */; };
 		0CE4F3FD21592C7D003AD0F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CE4F3FC21592C7D003AD0F5 /* Assets.xcassets */; };
 		0CE4F40021592C7D003AD0F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CE4F3FE21592C7D003AD0F5 /* LaunchScreen.storyboard */; };
+		0CE5C07821C00D7400A98566 /* PIGPENTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE5C07721C00D7400A98566 /* PIGPENTests.swift */; };
+		0CE5C07F21C00D8800A98566 /* PJAlbumDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1F6FB321B392EF00304CD8 /* PJAlbumDataController.swift */; };
 		0CED02E2219D45AC00294033 /* PJDogFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CED02E0219D45AC00294033 /* PJDogFoodViewController.swift */; };
 		0CED02E3219D45AC00294033 /* PJDogFoodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CED02E1219D45AC00294033 /* PJDogFoodViewController.xib */; };
 		0CED02E6219D510F00294033 /* PJBaseAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CED02E5219D510F00294033 /* PJBaseAlertViewController.swift */; };
 		0CED02E9219D5A8400294033 /* PJAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CED02E8219D5A8400294033 /* PJAlertView.swift */; };
 		6155BC9AE80D9BE2A10BEB45 /* libPods-PIGPEN.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3155F10B4EB7E5C66A26C91 /* libPods-PIGPEN.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0CE5C07A21C00D7400A98566 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0CE4F3E721592C7C003AD0F5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0CE4F3EE21592C7C003AD0F5;
+			remoteInfo = PIGPEN;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0C0A54A5216B977E00195DF1 /* RealPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealPet.swift; sourceTree = "<group>"; };
@@ -166,6 +178,9 @@
 		0CE4F3FC21592C7D003AD0F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CE4F3FF21592C7D003AD0F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CE4F40121592C7D003AD0F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CE5C07521C00D7400A98566 /* PIGPENTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PIGPENTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CE5C07721C00D7400A98566 /* PIGPENTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIGPENTests.swift; sourceTree = "<group>"; };
+		0CE5C07921C00D7400A98566 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CED02E0219D45AC00294033 /* PJDogFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJDogFoodViewController.swift; sourceTree = "<group>"; };
 		0CED02E1219D45AC00294033 /* PJDogFoodViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJDogFoodViewController.xib; sourceTree = "<group>"; };
 		0CED02E5219D510F00294033 /* PJBaseAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBaseAlertViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +196,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6155BC9AE80D9BE2A10BEB45 /* libPods-PIGPEN.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0CE5C07221C00D7400A98566 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -805,6 +827,7 @@
 			isa = PBXGroup;
 			children = (
 				0CE4F3F121592C7C003AD0F5 /* PIGPEN */,
+				0CE5C07621C00D7400A98566 /* PIGPENTests */,
 				0CE4F3F021592C7C003AD0F5 /* Products */,
 				71C7822EAE774E46944FBDC6 /* Pods */,
 				772C67EFF054D7CA74FF8656 /* Frameworks */,
@@ -815,6 +838,7 @@
 			isa = PBXGroup;
 			children = (
 				0CE4F3EF21592C7C003AD0F5 /* PIGPEN.app */,
+				0CE5C07521C00D7400A98566 /* PIGPENTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -832,6 +856,15 @@
 				0C55E2D3215A78F4000D8815 /* Config */,
 			);
 			path = PIGPEN;
+			sourceTree = "<group>";
+		};
+		0CE5C07621C00D7400A98566 /* PIGPENTests */ = {
+			isa = PBXGroup;
+			children = (
+				0CE5C07721C00D7400A98566 /* PIGPENTests.swift */,
+				0CE5C07921C00D7400A98566 /* Info.plist */,
+			);
+			path = PIGPENTests;
 			sourceTree = "<group>";
 		};
 		0CED02DE219D456500294033 /* Create */ = {
@@ -907,18 +940,40 @@
 			productReference = 0CE4F3EF21592C7C003AD0F5 /* PIGPEN.app */;
 			productType = "com.apple.product-type.application";
 		};
+		0CE5C07421C00D7400A98566 /* PIGPENTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0CE5C07E21C00D7400A98566 /* Build configuration list for PBXNativeTarget "PIGPENTests" */;
+			buildPhases = (
+				0CE5C07121C00D7400A98566 /* Sources */,
+				0CE5C07221C00D7400A98566 /* Frameworks */,
+				0CE5C07321C00D7400A98566 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0CE5C07B21C00D7400A98566 /* PBXTargetDependency */,
+			);
+			name = PIGPENTests;
+			productName = PIGPENTests;
+			productReference = 0CE5C07521C00D7400A98566 /* PIGPENTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		0CE4F3E721592C7C003AD0F5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0940;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = PJHubs;
 				TargetAttributes = {
 					0CE4F3EE21592C7C003AD0F5 = {
 						CreatedOnToolsVersion = 9.4;
+					};
+					0CE5C07421C00D7400A98566 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 0CE4F3EE21592C7C003AD0F5;
 					};
 				};
 			};
@@ -937,6 +992,7 @@
 			projectRoot = "";
 			targets = (
 				0CE4F3EE21592C7C003AD0F5 /* PIGPEN */,
+				0CE5C07421C00D7400A98566 /* PIGPENTests */,
 			);
 		};
 /* End PBXProject section */
@@ -966,6 +1022,13 @@
 				0C599EE02170983D00FC2E37 /* PJCreateVirtualPetChoiceGenderViewController.xib in Resources */,
 				0C599EE5217099E900FC2E37 /* PJUserCreateVirtualPetChoiceNameViewController.xib in Resources */,
 				0CDB0C9D21675F7400669331 /* PJUserDetailsMenuView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0CE5C07321C00D7400A98566 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1075,7 +1138,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0CE5C07121C00D7400A98566 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CE5C07821C00D7400A98566 /* PIGPENTests.swift in Sources */,
+				0CE5C07F21C00D8800A98566 /* PJAlbumDataController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0CE5C07B21C00D7400A98566 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0CE4F3EE21592C7C003AD0F5 /* PIGPEN */;
+			targetProxy = 0CE5C07A21C00D7400A98566 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0C55E2D9215A795A000D8815 /* Localizable.strings */ = {
@@ -1256,6 +1336,51 @@
 			};
 			name = Release;
 		};
+		0CE5C07C21C00D7400A98566 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84786A7HGQ;
+				INFOPLIST_FILE = PIGPENTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pjhubs.PIGPENTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PIGPEN.app/PIGPEN";
+			};
+			name = Debug;
+		};
+		0CE5C07D21C00D7400A98566 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84786A7HGQ;
+				INFOPLIST_FILE = PIGPENTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pjhubs.PIGPENTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PIGPEN.app/PIGPEN";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1273,6 +1398,15 @@
 			buildConfigurations = (
 				0CE4F40521592C7D003AD0F5 /* Debug */,
 				0CE4F40621592C7D003AD0F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0CE5C07E21C00D7400A98566 /* Build configuration list for PBXNativeTarget "PIGPENTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0CE5C07C21C00D7400A98566 /* Debug */,
+				0CE5C07D21C00D7400A98566 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
