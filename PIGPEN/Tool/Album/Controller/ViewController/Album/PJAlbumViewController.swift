@@ -21,8 +21,19 @@ class PJAlbumViewController: PJBaseViewController {
         initView()
     }
     
+    // MARK: - Life Cycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let indexPath = albumTableView?.indexPathForSelectedRow
+        if indexPath != nil {
+            let cell = albumTableView?.cellForRow(at: indexPath!)
+            cell?.setSelected(false, animated: true)
+        }
+    }
+    
     private func initView() {
-        navigationItem.title = "选择照片"
+        title = "选择照片"
         backButtonTapped(backSel: .back)
         isHiddenBarBottomLineView = false
 
@@ -36,7 +47,12 @@ class PJAlbumViewController: PJBaseViewController {
 
         albumTableView?.didSelectedCell = { [weak self] selectedIndex in
             guard let `self` = self else { return }
-            
+            let album = PJAlbumDataManager.manager().albums[selectedIndex]
+            let vc = PJAlbumDetailsViewController()
+            PJAlbumDataManager.manager().getAlbumPhotos(albumCollection: album, complateHandler: { (photos) in
+                vc.models = photos
+                self.navigationController?.pushViewController(vc, animated: true)
+            })
         }
         
         PJAlbumDataManager.manager().getAlbumCovers { [weak self] coverPhotos, albumPhotosCounts  in

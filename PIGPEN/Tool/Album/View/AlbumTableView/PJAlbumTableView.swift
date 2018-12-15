@@ -21,6 +21,7 @@ class PJAlbumTableView: UITableView {
     private static let cellIndentifier = "PJAlbumTableViewCell"
     
     // MARK: - Public Methods
+    // MARK: - Life Cycle
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         initView()
@@ -43,7 +44,6 @@ class PJAlbumTableView: UITableView {
         register(UINib(nibName: "PJAlbumTableViewCell", bundle: nil),
                  forCellReuseIdentifier: "PJAlbumTableViewCell")
     }
-
 }
 
 // MARK: - UITableViewDelegate & UITableViewDataSource

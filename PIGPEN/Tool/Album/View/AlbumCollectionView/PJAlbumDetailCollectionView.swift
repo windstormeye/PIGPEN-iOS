@@ -10,7 +10,7 @@ import UIKit
 
 class PJAlbumDetailCollectionView: UICollectionView {
     // MARK: - Public Properties
-    var cellModel: [PJAlbumDetailCollectionViewCell.cellModel]?
+    var collectionModel: [PJAlbumDataManager.Photo]?
     
     // MARK: - Private Properties
     private static let cellIndetifier = "PJAlbumDetailCollectionViewCell"
@@ -23,6 +23,11 @@ class PJAlbumDetailCollectionView: UICollectionView {
         initView()
     }
     
+    convenience init(frame: CGRect) {
+        self.init(frame: frame, collectionViewLayout: PJAlbumCollectiionFlowLayout())
+        initView()
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -31,6 +36,7 @@ class PJAlbumDetailCollectionView: UICollectionView {
     private func initView() {
         delegate = self
         dataSource = self
+        backgroundColor = .clear
         
         register(UINib(nibName :"PJAlbumDetailCollectionViewCell", bundle: nil),
                  forCellWithReuseIdentifier: PJAlbumDetailCollectionView.cellIndetifier)
@@ -41,24 +47,20 @@ class PJAlbumDetailCollectionView: UICollectionView {
 extension PJAlbumDetailCollectionView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        guard let cellModel = cellModel else { return 0 }
-        return cellModel.count
+        guard let collectionModel = collectionModel else { return 0 }
+        return collectionModel.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cellModel = cellModel else { return UICollectionViewCell() }
+        guard let collectionModel = collectionModel else { return UICollectionViewCell() }
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PJAlbumDetailCollectionView.cellIndetifier,
                                                       for: indexPath) as! PJAlbumDetailCollectionViewCell
-        cell.setModel(model: cellModel[indexPath.row])
+        let cellModel = PJAlbumDetailCollectionViewCell.cellModel(avatarImage: collectionModel[indexPath.row].photoImage ?? UIImage())
+        cell.setModel(model: cellModel)
         return cell
     }
     
     
 }
-
-// TODO: 怎么优雅的给 `UICollectionView` 写 Layout
-//extension PJAlbumDetailCollectionView: UICollectionViewFlowLayout {
-//
-//}

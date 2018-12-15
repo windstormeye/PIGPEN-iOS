@@ -15,6 +15,9 @@ class PJAlbumDataManager {
         return instance
     }
     
+    var albums: [PHAssetCollection] {
+        return allAlbumCollection()
+    }
     
     // MARK: - Private Property
     private static let instance: PJAlbumDataManager = {
@@ -24,7 +27,7 @@ class PJAlbumDataManager {
     // MARK: - Public Methonds
     /// 获取所有相册封面及照片数
     func getAlbumCovers(complateHandler: @escaping (_ coverPhotos: [Photo], _ albumPhotosCounts: [Int]) -> Void) {
-        let albumCollections = allAlbumCollection()
+        let albumCollections = albums
         var photos = [Photo]()
         var photosCount = [Int]()
         // 获取单张照片资源是异步过程，需要等待所有相册的封面图片一起 append 完后再统一通过逃逸闭包进行返回
@@ -41,7 +44,7 @@ class PJAlbumDataManager {
             
             var photo = Photo()
             photo.photoTitle = collection.localizedTitle
-            convertPHAssetToUIImage(asset: assets[0]) { (photoImage) in
+            convertPHAssetToUIImage(asset: assets[0], mode: .fastFormat) { (photoImage) in
                 photo.photoImage = photoImage
                 photos.append(photo)
                 c_index += 1
@@ -61,7 +64,7 @@ class PJAlbumDataManager {
         
         for a_index in 0..<assets.count {
             var photo = Photo()
-            convertPHAssetToUIImage(asset: assets[a_index]) { (photoImage) in
+            convertPHAssetToUIImage(asset: assets[a_index], mode: .highQualityFormat) { (photoImage) in
                 photo.photoImage = photoImage
                 photo.photoTitle = albumCollection.localizedTitle ?? ""
                 photos.append(photo)
@@ -99,11 +102,12 @@ class PJAlbumDataManager {
     }
     
     private func convertPHAssetToUIImage(asset: PHAsset,
+                                         mode: PHImageRequestOptionsDeliveryMode,
                                          complateHandler: @escaping (_ photo: UIImage?) -> Void) {
         let coverSize = CGSize(width: 150, height: 150)
         let options = PHImageRequestOptions()
         options.isSynchronous = false
-        options.deliveryMode = .fastFormat
+        options.deliveryMode = mode
         options.isNetworkAccessAllowed = true
         PHImageManager.default().requestImage(for: asset,
                                               targetSize: coverSize,

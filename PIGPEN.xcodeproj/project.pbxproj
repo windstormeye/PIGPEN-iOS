@@ -76,6 +76,10 @@
 		0CDB0C972167299A00669331 /* PJUserDetailsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0C962167299A00669331 /* PJUserDetailsTableView.swift */; };
 		0CDB0C9B21675F6E00669331 /* PJUserDetailsMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0C9A21675F6E00669331 /* PJUserDetailsMenuView.swift */; };
 		0CDB0C9D21675F7400669331 /* PJUserDetailsMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CDB0C9C21675F7400669331 /* PJUserDetailsMenuView.xib */; };
+		0CE2616821C500AF00740582 /* PJAlbumCollectiionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2616721C500AF00740582 /* PJAlbumCollectiionFlowLayout.swift */; };
+		0CE2617F21C5346800740582 /* PJAlbumDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2617E21C5346800740582 /* PJAlbumDetailsViewController.swift */; };
+		0CE2618221C5420A00740582 /* PJAlbumCollectionFocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2618121C5420A00740582 /* PJAlbumCollectionFocusView.swift */; };
+		0CE2618621C5434000740582 /* PJAlbumCollectionFocusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CE2618521C5434000740582 /* PJAlbumCollectionFocusView.xib */; };
 		0CE4F3F321592C7C003AD0F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4F3F221592C7C003AD0F5 /* AppDelegate.swift */; };
 		0CE4F3FB21592C7C003AD0F5 /* PIGPEN.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0CE4F3F921592C7C003AD0F5 /* PIGPEN.xcdatamodeld */; };
 		0CE4F3FD21592C7D003AD0F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CE4F3FC21592C7D003AD0F5 /* Assets.xcassets */; };
@@ -172,6 +176,10 @@
 		0CDB0C962167299A00669331 /* PJUserDetailsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserDetailsTableView.swift; sourceTree = "<group>"; };
 		0CDB0C9A21675F6E00669331 /* PJUserDetailsMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserDetailsMenuView.swift; sourceTree = "<group>"; };
 		0CDB0C9C21675F7400669331 /* PJUserDetailsMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJUserDetailsMenuView.xib; sourceTree = "<group>"; };
+		0CE2616721C500AF00740582 /* PJAlbumCollectiionFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJAlbumCollectiionFlowLayout.swift; sourceTree = "<group>"; };
+		0CE2617E21C5346800740582 /* PJAlbumDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJAlbumDetailsViewController.swift; sourceTree = "<group>"; };
+		0CE2618121C5420A00740582 /* PJAlbumCollectionFocusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJAlbumCollectionFocusView.swift; sourceTree = "<group>"; };
+		0CE2618521C5434000740582 /* PJAlbumCollectionFocusView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJAlbumCollectionFocusView.xib; sourceTree = "<group>"; };
 		0CE4F3EF21592C7C003AD0F5 /* PIGPEN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PIGPEN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CE4F3F221592C7C003AD0F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CE4F3FA21592C7C003AD0F5 /* PIGPEN.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PIGPEN.xcdatamodel; sourceTree = "<group>"; };
@@ -264,6 +272,8 @@
 		0C1F6F9F21B3914600304CD8 /* AlbumCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				0CE2618021C541DC00740582 /* FocusView */,
+				0CE2616621C5009000740582 /* Layout */,
 				0C1F6FA721B3922600304CD8 /* Cell */,
 				0C1F6FA521B3920500304CD8 /* PJAlbumDetailCollectionView.swift */,
 			);
@@ -316,7 +326,8 @@
 		0C1F6FB121B3926E00304CD8 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				0CA365F721B26CF300E7D2F7 /* PJAlbumViewController.swift */,
+				0CE2617D21C5345100740582 /* Album */,
+				0CE2617C21C5344500740582 /* AlbumDetails */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -823,6 +834,39 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
+		0CE2616621C5009000740582 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				0CE2616721C500AF00740582 /* PJAlbumCollectiionFlowLayout.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		0CE2617C21C5344500740582 /* AlbumDetails */ = {
+			isa = PBXGroup;
+			children = (
+				0CE2617E21C5346800740582 /* PJAlbumDetailsViewController.swift */,
+			);
+			path = AlbumDetails;
+			sourceTree = "<group>";
+		};
+		0CE2617D21C5345100740582 /* Album */ = {
+			isa = PBXGroup;
+			children = (
+				0CA365F721B26CF300E7D2F7 /* PJAlbumViewController.swift */,
+			);
+			path = Album;
+			sourceTree = "<group>";
+		};
+		0CE2618021C541DC00740582 /* FocusView */ = {
+			isa = PBXGroup;
+			children = (
+				0CE2618121C5420A00740582 /* PJAlbumCollectionFocusView.swift */,
+				0CE2618521C5434000740582 /* PJAlbumCollectionFocusView.xib */,
+			);
+			path = FocusView;
+			sourceTree = "<group>";
+		};
 		0CE4F3E621592C7C003AD0F5 = {
 			isa = PBXGroup;
 			children = (
@@ -1020,6 +1064,7 @@
 				0C55E2F3215D2D76000D8815 /* PJUserInfoViewController.xib in Resources */,
 				0CDB0C8F216705B000669331 /* PJUserSelfTableViewCell.xib in Resources */,
 				0C599EE02170983D00FC2E37 /* PJCreateVirtualPetChoiceGenderViewController.xib in Resources */,
+				0CE2618621C5434000740582 /* PJAlbumCollectionFocusView.xib in Resources */,
 				0C599EE5217099E900FC2E37 /* PJUserCreateVirtualPetChoiceNameViewController.xib in Resources */,
 				0CDB0C9D21675F7400669331 /* PJUserDetailsMenuView.xib in Resources */,
 			);
@@ -1111,6 +1156,7 @@
 				0CED02E6219D510F00294033 /* PJBaseAlertViewController.swift in Sources */,
 				0CA365F821B26CF300E7D2F7 /* PJAlbumViewController.swift in Sources */,
 				0C8B75592196934000353842 /* PJMessageViewController.swift in Sources */,
+				0CE2616821C500AF00740582 /* PJAlbumCollectiionFlowLayout.swift in Sources */,
 				0CE4F3FB21592C7C003AD0F5 /* PIGPEN.xcdatamodeld in Sources */,
 				0C55E2FC215F5EA9000D8815 /* PJUser.swift in Sources */,
 				0C55E2F7215F570D000D8815 /* PJUserRegisterViewController.swift in Sources */,
@@ -1123,6 +1169,7 @@
 				0C5E634F2165AB8C00A90762 /* PJTapic.swift in Sources */,
 				0C5E634321644F7900A90762 /* String_time.swift in Sources */,
 				0C55E2ED215B7DB0000D8815 /* PJUserForgetViewController.swift in Sources */,
+				0CE2618221C5420A00740582 /* PJAlbumCollectionFocusView.swift in Sources */,
 				0CDB0C972167299A00669331 /* PJUserDetailsTableView.swift in Sources */,
 				0C55E2E4215A84EA000D8815 /* UIViewPosition.swift in Sources */,
 				0C1F6FA421B391E500304CD8 /* PJAlbumTableView.swift in Sources */,
@@ -1135,6 +1182,7 @@
 				0C55E2C5215A61E3000D8815 /* PJHomeViewController.swift in Sources */,
 				0C55E2D0215A62C7000D8815 /* PJBreedsViewController.swift in Sources */,
 				0C5E6337216241CF00A90762 /* PJBaseTipsView.swift in Sources */,
+				0CE2617F21C5346800740582 /* PJAlbumDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

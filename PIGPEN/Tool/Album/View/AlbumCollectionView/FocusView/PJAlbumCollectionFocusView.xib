@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PJAlbumCollectionFocusView" customModule="PIGPEN" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sKa-94-0Ey">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="album_focusView" translatesAutoresizingMaskIntoConstraints="NO" id="cmm-QI-fvY">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="sKa-94-0Ey" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="0Cp-ld-Usv"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="sKa-94-0Ey" secondAttribute="bottom" id="35J-Yx-dNM"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="cmm-QI-fvY" secondAttribute="trailing" id="S22-0V-1mS"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="sKa-94-0Ey" secondAttribute="trailing" id="aPT-1T-Rq2"/>
+                <constraint firstItem="sKa-94-0Ey" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="gQX-oh-yx7"/>
+                <constraint firstItem="cmm-QI-fvY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="lnj-aY-4pu"/>
+                <constraint firstItem="cmm-QI-fvY" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="oxg-3s-Lui"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="cmm-QI-fvY" secondAttribute="bottom" id="wXw-Xj-WoO"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="avatarImageView" destination="sKa-94-0Ey" id="qJb-de-cq0"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="album_focusView" width="375" height="376"/>
+    </resources>
+</document>
