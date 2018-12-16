@@ -272,10 +272,10 @@
 		0C1F6F9F21B3914600304CD8 /* AlbumCollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				0C1F6FA521B3920500304CD8 /* PJAlbumDetailCollectionView.swift */,
 				0CE2618021C541DC00740582 /* FocusView */,
 				0CE2616621C5009000740582 /* Layout */,
 				0C1F6FA721B3922600304CD8 /* Cell */,
-				0C1F6FA521B3920500304CD8 /* PJAlbumDetailCollectionView.swift */,
 			);
 			path = AlbumCollectionView;
 			sourceTree = "<group>";

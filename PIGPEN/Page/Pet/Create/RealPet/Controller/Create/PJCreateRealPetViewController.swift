@@ -98,7 +98,16 @@ class PJCreateRealPetViewController: PJBaseViewController, UITextFieldDelegate {
     }
     
     @IBAction func avatarTapped(_ sender: UITapGestureRecognizer) {
-        navigationController?.pushViewController(PJAlbumViewController(), animated: true)
+        let album = PJAlbumDataManager.manager().albums.filter({ (collection) -> Bool in
+            return collection.assetCollectionSubtype == .smartAlbumUserLibrary
+        })
+        let vc = PJAlbumDetailsViewController()
+        vc.currentAlbumCollection = album[0]
+        PJAlbumDataManager.manager().getAlbumPhotos(albumCollection: album[0], complateHandler: { photos, assets  in
+            vc.models = photos
+            vc.currentAlbumAssets = assets
+            self.navigationController?.pushViewController(vc, animated: true)
+        })
     }
     
     // MARK: - Delegate

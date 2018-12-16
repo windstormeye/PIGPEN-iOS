@@ -44,34 +44,38 @@ class PJAlbumDataManager {
             
             var photo = Photo()
             photo.photoTitle = collection.localizedTitle
-            convertPHAssetToUIImage(asset: assets[0], mode: .fastFormat) { (photoImage) in
-                photo.photoImage = photoImage
-                photos.append(photo)
-                c_index += 1
+            convertPHAssetToUIImage(asset: assets[0],
+                                    size: CGSize(width: 150, height: 150),
+                                    mode: .fastFormat) { (photoImage) in
+                                        photo.photoImage = photoImage
+                                        photos.append(photo)
+                                        c_index += 1
                 
-                if c_index == albumCollections.count - 1 {
-                    complateHandler(photos, photosCount)
-                }
+                                        if c_index == albumCollections.count - 1 {
+                                            complateHandler(photos, photosCount)
+                                        }
             }
         }
     }
     
     /// 获取某一相册的所有照片
     func getAlbumPhotos(albumCollection: PHAssetCollection,
-                        complateHandler: @escaping (([Photo]) -> Void)) {
+                        complateHandler: @escaping (([Photo], PHFetchResult<PHAsset>) -> Void)) {
         let assets = albumPHAssets(albumCollection)
         var photos = [Photo]()
-        
+    
         for a_index in 0..<assets.count {
             var photo = Photo()
-            convertPHAssetToUIImage(asset: assets[a_index], mode: .highQualityFormat) { (photoImage) in
-                photo.photoImage = photoImage
-                photo.photoTitle = albumCollection.localizedTitle ?? ""
-                photos.append(photo)
+            convertPHAssetToUIImage(asset: assets[a_index],
+                                    size: CGSize(width: 150, height: 150),
+                                    mode: .highQualityFormat) { (photoImage) in
+                                        photo.photoImage = photoImage
+                                        photo.photoTitle = albumCollection.localizedTitle ?? ""
+                                        photos.append(photo)
                 
-                if a_index == assets.count - 1 {
-                    complateHandler(photos)
-                }
+                                        if a_index == assets.count - 1 {
+                                            complateHandler(photos, assets)
+                                        }
             }
         }
     }
@@ -101,10 +105,12 @@ class PJAlbumDataManager {
         return collections
     }
     
-    private func convertPHAssetToUIImage(asset: PHAsset,
+    /// PHAsset 转 UIImage
+    func convertPHAssetToUIImage(asset: PHAsset,
+                                         size: CGSize,
                                          mode: PHImageRequestOptionsDeliveryMode,
                                          complateHandler: @escaping (_ photo: UIImage?) -> Void) {
-        let coverSize = CGSize(width: 150, height: 150)
+        let coverSize = size
         let options = PHImageRequestOptions()
         options.isSynchronous = false
         options.deliveryMode = mode

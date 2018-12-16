@@ -11,6 +11,9 @@ import Photos
 
 class PJAlbumViewController: PJBaseViewController {
     
+    // MARK: - Public Properties
+    var complateHander: ((PHAssetCollection) -> Void)?
+    
     // MARK: - Private Property
     private var albumTableView: PJAlbumTableView?
     
@@ -37,6 +40,7 @@ class PJAlbumViewController: PJBaseViewController {
         backButtonTapped(backSel: .back)
         isHiddenBarBottomLineView = false
 
+        // TODO: - 后期再考虑照片的添加
         PHPhotoLibrary.shared().register(self)
         
         albumTableView = PJAlbumTableView(frame: CGRect(x: 0, y: headerView!.bottom,
@@ -48,11 +52,8 @@ class PJAlbumViewController: PJBaseViewController {
         albumTableView?.didSelectedCell = { [weak self] selectedIndex in
             guard let `self` = self else { return }
             let album = PJAlbumDataManager.manager().albums[selectedIndex]
-            let vc = PJAlbumDetailsViewController()
-            PJAlbumDataManager.manager().getAlbumPhotos(albumCollection: album, complateHandler: { (photos) in
-                vc.models = photos
-                self.navigationController?.pushViewController(vc, animated: true)
-            })
+            self.complateHander!(album)
+            self.dismiss(animated: true, completion: nil)
         }
         
         PJAlbumDataManager.manager().getAlbumCovers { [weak self] coverPhotos, albumPhotosCounts  in
