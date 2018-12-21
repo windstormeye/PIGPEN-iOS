@@ -68,6 +68,23 @@ class PJAlbumDetailsViewController: PJBaseViewController {
 //                                                                    self.albumFocusView?.setModel(PJAlbumDetailCollectionViewCell.cellModel(avatarImage: avatar))
 //            })
         }
+        
+        albumCollectionView?.scrollDidScroll = { [weak self] offset_y in
+            guard let `self` = self else { return }
+            guard let albumFocusView = self.albumFocusView else { return }
+            guard let headerView = self.headerView else { return }
+            
+            albumFocusView.top = -offset_y + headerView.height
+            if albumFocusView.bottom < headerView.height {
+                albumFocusView.bottom = headerView.height
+            }
+            if albumFocusView.top > headerView.bottom {
+                albumFocusView.top = headerView.bottom
+            }
+            
+            self.albumCollectionView?.top = albumFocusView.bottom
+            self.albumCollectionView?.height = PJSCREEN_HEIGHT - albumFocusView.bottom
+        }
     }
 }
 
@@ -118,4 +135,3 @@ extension PJAlbumDetailsViewController {
         present(nav, animated: true, completion: nil)
     }
 }
-

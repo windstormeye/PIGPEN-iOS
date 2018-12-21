@@ -11,8 +11,9 @@ import UIKit
 class PJAlbumDetailCollectionView: UICollectionView {
     // MARK: - Public Properties
     var collectionModel: [PJAlbumDataManager.Photo]?
+    // Closure
     var selectedCell: ((Int) -> Void)?
-    
+    var scrollDidScroll: ((CGFloat) -> Void)?
     // MARK: - Private Properties
     private static let cellIndetifier = "PJAlbumDetailCollectionViewCell"
     
@@ -65,5 +66,13 @@ extension PJAlbumDetailCollectionView: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedCell?(indexPath.row)
+    }
+}
+
+extension PJAlbumDetailCollectionView {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offset_y = scrollView.contentOffset.y
+        print(offset_y)
+        scrollDidScroll?(offset_y)
     }
 }
