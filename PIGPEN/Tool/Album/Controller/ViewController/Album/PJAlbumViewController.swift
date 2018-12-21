@@ -36,8 +36,12 @@ class PJAlbumViewController: PJBaseViewController {
     }
     
     private func initView() {
-        title = "选择照片"
-        backButtonTapped(backSel: .back)
+        if currenVCFromPush(navc: navigationController, currenVC: self) {
+            title = "选择照片 ▴"
+            backButtonTapped(backSel: .back)
+        } else {
+            
+        }
         isHiddenBarBottomLineView = false
 
         // TODO: - 后期再考虑照片的添加

@@ -23,7 +23,7 @@ class PJUserLoginViewController: PJBaseViewController {
     
     private func initView() {
         title = "登录"
-        if currenVCFromPush(navc: navigationController ?? nil, currenVC: self) {
+        if currenVCFromPush(navc: navigationController, currenVC: self) {
             backButtonTapped(backSel: .back)
         } else {
             leftBarButtonItemTapped(leftTapped: .back, imageName: "close")

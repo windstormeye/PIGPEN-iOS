@@ -28,32 +28,31 @@ func isPhoneNumber(phoneString: String) -> Bool {
     return predicate.evaluate(with: phoneString)
 }
 
-
+/// debug 模式下才能执行的代码块
 func debugOnly(_ body: () -> Void) {
     assert({body(); return true}())
 }
 
-// 当前 vc 如果是 push 则 pop，反之 dismiss
+/// 当前 vc 如果是 push 则 pop，反之 dismiss
 func dissmisCurrentVC(navc: UINavigationController?,
                       currenVC: UIViewController) {
-    guard navc != nil else {
+    guard let navc = navc else {
         currenVC.dismiss(animated: true, completion: nil)
         return
     }
-    let vcs = navc!.viewControllers
+    let vcs = navc.viewControllers
     if vcs.count > 1 && vcs[vcs.count - 1] === currenVC {
-        navc!.popViewController(animated: true)
+        navc.popViewController(animated: true)
     } else {
         currenVC.dismiss(animated: true, completion: nil)
     }
 }
 
+/// 判断当前 vc 是 push 还是 pop 进来
 func currenVCFromPush(navc: UINavigationController?,
                       currenVC: UIViewController) -> Bool {
-    guard navc != nil else {
-        return false
-    }
-    let vcs = navc!.viewControllers
+    guard let navc = navc else { return false }
+    let vcs = navc.viewControllers
     if vcs.count > 1 && vcs[vcs.count - 1] === currenVC {
         return true
     } else {

@@ -108,6 +108,10 @@ class PJCreateRealPetViewController: PJBaseViewController, UITextFieldDelegate {
             vc.currentAlbumAssets = assets
             self.navigationController?.pushViewController(vc, animated: true)
         })
+        vc.selectedComplateHandler = { [weak self] photo in
+            guard let `self` = self else { return }
+            self.avatarImageView.image = photo.photoImage
+        }
     }
     
     // MARK: - Delegate

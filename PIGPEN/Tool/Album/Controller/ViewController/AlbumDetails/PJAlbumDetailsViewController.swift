@@ -14,6 +14,9 @@ class PJAlbumDetailsViewController: PJBaseViewController {
     var models: [PJAlbumDataManager.Photo]?
     var currentAlbumCollection: PHAssetCollection?
     var currentAlbumAssets: PHFetchResult<PHAsset>?
+    var selectedPhoto: PJAlbumDataManager.Photo?
+    // Closure
+    var selectedComplateHandler: ((PJAlbumDataManager.Photo) -> Void)?
     
     // MARK: - Private Properties
     private var albumCollectionView: PJAlbumDetailCollectionView?
@@ -42,6 +45,7 @@ class PJAlbumDetailsViewController: PJBaseViewController {
         view.addSubview(albumFocusView!)
         let focusModel = PJAlbumDetailCollectionViewCell.cellModel(avatarImage: models[0].photoImage ?? UIImage())
         albumFocusView?.setModel(focusModel)
+        selectedPhoto = models[0]
         
         albumCollectionView = PJAlbumDetailCollectionView(frame: CGRect(x: 0, y: albumFocusView!.bottom,
                                                                     width: PJSCREEN_WIDTH,
@@ -54,7 +58,7 @@ class PJAlbumDetailsViewController: PJBaseViewController {
             
             let avatar = models[selectedIndex].photoImage ?? UIImage()
             self.albumFocusView?.setModel(PJAlbumDetailCollectionViewCell.cellModel(avatarImage: avatar))
-            
+            self.selectedPhoto = models[selectedIndex]
 //            let p_size = UIScreen.main.bounds.width
 //            PJAlbumDataManager.manager().convertPHAssetToUIImage(asset: self.currentAlbumAssets![selectedIndex],
 //                                                                 size: CGSize(width: p_size, height: p_size),
@@ -79,7 +83,9 @@ extension PJAlbumDetailsViewController {
     }
     
     @objc fileprivate func ok() {
-        
+        guard let selectedPhoto = selectedPhoto else { return }
+        selectedComplateHandler?(selectedPhoto)
+        navigationController?.popViewController(animated: true)
     }
     
     @objc fileprivate func navigationBarTapped() {
@@ -93,7 +99,7 @@ extension PJAlbumDetailsViewController {
                 self.currentAlbumAssets = assets
                 
                 self.albumFocusView?.setModel(PJAlbumDetailCollectionViewCell.cellModel(avatarImage: photos[0].photoImage ?? UIImage()))
-                
+                self.selectedPhoto = photos[0]
 //                let p_size = UIScreen.main.bounds.width
 //                PJAlbumDataManager.manager().convertPHAssetToUIImage(asset: self.currentAlbumAssets![0],
 //                                                                     size: CGSize(width: p_size, height: p_size),
