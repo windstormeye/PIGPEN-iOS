@@ -37,10 +37,10 @@ class PJAlbumViewController: PJBaseViewController {
     
     private func initView() {
         if currenVCFromPush(navc: navigationController, currenVC: self) {
-            title = "选择照片 ▴"
+            title = "选择照片"
             backButtonTapped(backSel: .back)
         } else {
-            
+            title = "选择照片 ▴"
         }
         isHiddenBarBottomLineView = false
 

@@ -50,22 +50,19 @@ class PJUser: Codable {
     
     let userAccountPath =  NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first!
     
-    var nickName: String? = ""
-    var gender: Int? = 0
-    var avatar: Int? = -1
-    var token: String? = ""
+    var nickName = ""
+    var gender = 0
+    var avatar  = -1
+    var token  = ""
+    var uid = ""
     
     init() {
-        nickName = ""
-        gender = 1
-        avatar = -1
-        token = ""
         let user = self.readBySandBox()
         if user != nil {
-            nickName = user?.nickName
-            gender = user?.gender
-            avatar = user?.avatar
-            token = user?.token
+            nickName = user?.nickName ?? ""
+            gender = user?.gender ?? 0
+            avatar = user?.avatar ?? -1
+            token = user?.token ?? ""
         }
     }
     
@@ -114,8 +111,8 @@ class PJUser: Codable {
                                                 
                                                 var dataDic = dataDic["msg"]!
                                                 let userDic = dataDic["masuser"].dictionary!
-                                                self.gender = userDic["gender"]?.intValue
-                                                self.avatar = userDic["avatar"]?.intValue
+                                                self.gender = userDic["gender"]?.intValue ?? 0
+                                                self.avatar = userDic["avatar"]?.intValue ?? -1
                                                 
                                                 self.saveToSandBox()
                                                 completeHandler()
@@ -139,7 +136,7 @@ class PJUser: Codable {
         psd = psd.md5()
         
         let parameters = [
-            "username": registerModel.phone,
+            "phoneNumber": registerModel.phone,
             "password": psd,
             "avatar": String(registerModel.avatar),
             "gender": String(registerModel.gender),
@@ -153,9 +150,9 @@ class PJUser: Codable {
                                                 
                                                 var dataDic = dataDic["msg"]!
                                                 let userDic = dataDic["masuser"].dictionary!
-                                                self.nickName = userDic["nick_name"]?.string
-                                                self.gender = userDic["gender"]?.intValue
-                                                self.avatar = userDic["avatar"]?.intValue
+                                                self.nickName = userDic["nick_name"]?.string ?? ""
+                                                self.gender = userDic["gender"]?.intValue ?? 0
+                                                self.avatar = userDic["avatar"]?.intValue ?? -1
                                                 self.token = dataDic["token"].string!
                                                 
                                                 self.saveToSandBox()
@@ -183,7 +180,7 @@ class PJUser: Codable {
         sign = sign.md5()
         
         let parameters = [
-            "username": phone,
+            "phoneNumber": phone,
             "sign": sign,
             // 因为登录接口要做 md5 验证，所以 body 要带上
             "timestamp": String.timestape(),
@@ -196,9 +193,9 @@ class PJUser: Codable {
                                                 
                                                 var dataDic = dataDic["msg"]!
                                                 let userDic = dataDic["masuser"].dictionary!
-                                                self.nickName = userDic["nick_name"]?.string
-                                                self.gender = userDic["gender"]?.intValue
-                                                self.avatar = userDic["avatar"]?.intValue
+                                                self.nickName = userDic["nick_name"]?.string ?? ""
+                                                self.gender = userDic["gender"]?.intValue ?? 0
+                                                self.avatar = userDic["avatar"]?.intValue ?? -1
                                                 self.token = dataDic["token"].string!
                                                 
                                                 self.saveToSandBox()
@@ -218,7 +215,7 @@ class PJUser: Codable {
                     completeHandler: @escaping () -> Void,
                     failedHandler: @escaping (PJError) -> Void) {
         let parameters = [
-            "phone": phoneString,
+            "phoneNumber": phoneString,
         ]
         
         PJNetwork.shared.requstWithGet(path: UserUrl.checkPhone.rawValue,
@@ -255,7 +252,7 @@ class PJUser: Codable {
                 try BeerData.write(to: url)
                 print("完成了对数据的二进制化归档")
             } catch {
-                print(error)
+                assert(true, "saveToSandBox \(error.localizedDescription)")
             }
         }
     }
@@ -266,14 +263,13 @@ class PJUser: Codable {
         do {
             let data = try FileHandle.init(forReadingFrom: url)
             do {
-                let user = try JSONDecoder().decode(PJUser.self,
-                                                         from: data.readDataToEndOfFile())
+                let user = try JSONDecoder().decode(PJUser.self, from: data.readDataToEndOfFile())
                 return user
             } catch {
-                print(error)
+                assert(true, "readBySandBox JSONDecoder \(error.localizedDescription)")
             }
         } catch {
-            print(error)
+            assert(true, "readBySandBox \(error.localizedDescription)")
         }
         return nil
     }

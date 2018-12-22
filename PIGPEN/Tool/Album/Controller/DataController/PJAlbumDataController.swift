@@ -128,7 +128,7 @@ class PJAlbumDataManager {
     private func albumPHAssets(_ collection: PHAssetCollection) -> PHFetchResult<PHAsset> {
         let options = PHFetchOptions()
         options.predicate = NSPredicate(format: "mediaType = %d", PHAssetMediaType.image.rawValue)
-        options.sortDescriptors = [NSSortDescriptor.init(key: "creationDate", ascending: false)]
+        options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         let fetchResult = PHAsset.fetchAssets(in: collection, options: options)
         return fetchResult
     }
