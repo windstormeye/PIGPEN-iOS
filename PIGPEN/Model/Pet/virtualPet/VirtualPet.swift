@@ -8,27 +8,17 @@
 
 import Foundation
 
-enum VirtualPetUrl: String {
-    case create = "virtualPet/create"
-}
-
-struct VirtualPetModel {
-    var nick_name: String
-    var gender: Int
-    var breed: Int
-}
-
 class PJVirtualPet {
     var model: VirtualPetModel?
     
     class func create(model: VirtualPetModel,
                       complateHandler: @escaping () -> Void,
-                      failedHandler: @escaping (PJError) -> Void) {
+                      failedHandler: @escaping (PJNetwork.Error) -> Void) {
         let parameters = [
-            "nick_name": model.nick_name,
-            "gender": String(model.gender),
-            "breed": String(model.breed),
-            "user_nick_name": PJUser.shared.nickName ?? "",
+            "pet_nick_name": model.nick_name!,
+            "gender": String(model.gender!),
+            "breed": String(model.breed!),
+            "uid": PJUser.shared.userModel?.uid ?? "",
         ]
         PJNetwork.shared.requstWithPost(path: VirtualPetUrl.create.rawValue,
                                         parameters: parameters,
@@ -36,13 +26,25 @@ class PJVirtualPet {
                                             if dataDic["msgCode"]?.intValue == 666 {
                                                 complateHandler()
                                             } else {
-                                                let error = PJError(errorCode: dataDic["msgCode"]?.intValue,
-                                                                    errorMsg: dataDic["msg"]?.string)
+                                                let error = PJNetwork.Error(errorCode: dataDic["msgCode"]?.intValue,
+                                                                            errorMsg: dataDic["msg"]?.string)
                                                 failedHandler(error)
                                             }
         }) { (errorString) in
-            failedHandler(PJError(errorCode: 0,
-                                  errorMsg: "未知错误"))
+            failedHandler(PJNetwork.Error(errorCode: 0, errorMsg: "未知错误"))
         }
+    }
+}
+
+extension PJVirtualPet {
+    enum VirtualPetUrl: String {
+        case create = "virtualPet/create"
+    }
+    
+    struct VirtualPetModel: Codable {
+        var pet_id: String?
+        var nick_name: String?
+        var gender: Int?
+        var breed: Int?
     }
 }

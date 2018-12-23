@@ -18,7 +18,7 @@ class PJUserCreateVirtualPetChoiceNameViewController: PJBaseViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var okButton: UIButton!
     
-    var model: VirtualPetModel?
+    var model: PJVirtualPet.VirtualPetModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,19 +8,13 @@
 
 import UIKit
 
-protocol PJUserDetailsVirtualPetTableViewCellDelegate {
-    func PJUserDetailVirtualPetTableViewCellAvatarTapped()
-    func PJUserDetailVirtualPetTableViewCellNewPetTapped()
-}
-
-extension PJUserDetailsVirtualPetTableViewCellDelegate {
-    func PJUserDetailVirtualPetTableViewCellAvatarTapped() {}
-    func PJUserDetailVirtualPetTableViewCellNewPetTapped() {}
-}
-
-class PJUserDetailsVirtualPetTableViewCell: UITableViewCell, PJUserDateilsVirtualPetCollectionViewDelegate {
-
+class PJUserDetailsVirtualPetTableViewCell: UITableViewCell {
     var viewDelegate: PJUserDetailsVirtualPetTableViewCellDelegate?
+    var virtualPetModels: [PJVirtualPet.VirtualPetModel]? {
+        didSet { didSetVirtualPetModel() }
+    }
+    
+    private var avatarCollectionView: PJUserDetailsVirtualPetCollectionView?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -34,8 +28,6 @@ class PJUserDetailsVirtualPetTableViewCell: UITableViewCell, PJUserDateilsVirtua
     private func initView() {
         selectionStyle = .none
         
-//        let petArray = [VirtualPet()]
-        
         let collectionViewLayout = UICollectionViewFlowLayout()
         let itemW = 80
         collectionViewLayout.itemSize = CGSize(width: itemW , height: itemW)
@@ -46,16 +38,30 @@ class PJUserDetailsVirtualPetTableViewCell: UITableViewCell, PJUserDateilsVirtua
                                                               bottom: 0, right: 0)
         
         let collectionViewRect = CGRect(x: 0, y: 0, width: PJSCREEN_WIDTH, height: 100)
-        let avatarCollectionView = PJUserDetailsVirtualPetCollectionView(frame: collectionViewRect,
+        avatarCollectionView = PJUserDetailsVirtualPetCollectionView(frame: collectionViewRect,
                                                                      collectionViewLayout: collectionViewLayout)
-        avatarCollectionView.alwaysBounceHorizontal = true
-        avatarCollectionView.viewDelegate = self
-        contentView.addSubview(avatarCollectionView)
-        
-//        avatarCollectionView.dataArray = petArray
-        avatarCollectionView.reloadData()
+        avatarCollectionView!.alwaysBounceHorizontal = true
+        avatarCollectionView!.viewDelegate = self
+        contentView.addSubview(avatarCollectionView!)
     }
     
+    private func didSetVirtualPetModel() {
+        avatarCollectionView?.dataArray = virtualPetModels ?? [PJVirtualPet.VirtualPetModel]()
+        avatarCollectionView?.reloadData()
+    }
+}
+
+protocol PJUserDetailsVirtualPetTableViewCellDelegate {
+    func PJUserDetailVirtualPetTableViewCellAvatarTapped()
+    func PJUserDetailVirtualPetTableViewCellNewPetTapped()
+}
+
+extension PJUserDetailsVirtualPetTableViewCellDelegate {
+    func PJUserDetailVirtualPetTableViewCellAvatarTapped() {}
+    func PJUserDetailVirtualPetTableViewCellNewPetTapped() {}
+}
+
+extension PJUserDetailsVirtualPetTableViewCell: PJUserDateilsVirtualPetCollectionViewDelegate {
     func PJUserDateilsVirtualPetColletionViewDidSelectedIndex(collectionView: PJUserDetailsVirtualPetCollectionView, index: Int) {
         let count = collectionView.dataArray.count
         if count > 0{

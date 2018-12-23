@@ -17,15 +17,15 @@ UITableViewDataSource {
 
     static let cellIdentifier = "PJBreedsViewControllerTableViewCell"
     
-    var selectedModel: RealPetBreedModel?
+    var selectedModel: PJRealPet.RealPetBreedModel?
     var sectionTitles = [String]()
     
-    var tableViewModels = [RealPetBreedGroupModel]()
+    var tableViewModels = [PJRealPet.RealPetBreedGroupModel]()
     var tableView: UITableView?
     var tableViewRefresh: UIRefreshControl?
     var sideSliderView: PJBreedsSideSliderView?
     
-    var selectComplation: ((RealPetBreedModel) -> Void)?
+    var selectComplation: ((PJRealPet.RealPetBreedModel) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,16 +64,16 @@ UITableViewDataSource {
         tableView?.separatorStyle = .none
         tableView?.showsVerticalScrollIndicator = false
         
-        RealPet.breedList(petType: "dog",
-                          complationHandler: { [weak self] models in
-                            if let `self` = self {
-                                for model in models {
-                                    self.sectionTitles.append(model.group!)
+        PJRealPet.breedList(petType: "dog",
+                            complationHandler: { [weak self] models in
+                                if let `self` = self {
+                                    for model in models {
+                                        self.sectionTitles.append(model.group!)
+                                    }
+                                    self.sideSliderView?.itemStrings = self.sectionTitles
+                                    self.tableViewModels = models
+                                    self.tableView?.reloadData()
                                 }
-                                self.sideSliderView?.itemStrings = self.sectionTitles
-                                self.tableViewModels = models
-                                self.tableView?.reloadData()
-                            }
             }, failedHandler: { (error) in
                 
         })

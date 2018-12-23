@@ -76,7 +76,7 @@ class PJCreateVirtualPetViewController: PJBaseViewController {
             tag = 2
         }
         let vc = PJCreateVirtualPetChoiceGenderViewController()
-        let model = VirtualPetModel(nick_name: "", gender: 1, breed: tag)
+        let model = PJVirtualPet.VirtualPetModel(pet_id: nil, nick_name: "", gender: 1, breed: tag)
         vc.model = model
         navigationController?.pushViewController(vc, animated: true)
     }

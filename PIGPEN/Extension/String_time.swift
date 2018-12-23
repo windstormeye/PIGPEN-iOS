@@ -10,7 +10,7 @@ import Foundation
 
 
 extension String {
-    static func timestape() -> String {
+    static func timestampe() -> String {
         let dataNow = Date()
         var finishDate = Int(dataNow.timeIntervalSince1970)
         finishDate = finishDate / 300

@@ -8,20 +8,10 @@
 
 import UIKit
 
-protocol PJUserDetailRealPetTableViewCellDelegate {
-    func PJUserDetailPetTableViewCellAvatarTapped()
-    func PJUserDetailPetTableViewCellNewPetTapped()
-}
-
-extension PJUserDetailRealPetTableViewCellDelegate {
-    func PJUserDetailPetTableViewCellAvatarTapped() {}
-    func PJUserDetailPetTableViewCellNewPetTapped() {}
-}
-
-class PJUserDetailRealPetTableViewCell: UITableViewCell,
-PJUserDateilsRealPetColletionViewDelegate {
+class PJUserDetailRealPetTableViewCell: UITableViewCell {
     
     var viewDelegate: PJUserDetailRealPetTableViewCellDelegate?
+    var realPetModels: [PJRealPet.RealPetModel]?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -34,8 +24,6 @@ PJUserDateilsRealPetColletionViewDelegate {
     
     private func initView() {
         selectionStyle = .none
-        
-        let petArray = [RealPet(), RealPet(), RealPet(), RealPet()]
         
         let collectionViewLayout = UICollectionViewFlowLayout()
         let itemW = 80
@@ -53,10 +41,22 @@ PJUserDateilsRealPetColletionViewDelegate {
         avatarCollectionView.viewDelegate = self
         contentView.addSubview(avatarCollectionView)
         
-        avatarCollectionView.dataArray = petArray
+        avatarCollectionView.dataArray = realPetModels ?? [PJRealPet.RealPetModel]()
         avatarCollectionView.reloadData()
     }
-    
+}
+
+protocol PJUserDetailRealPetTableViewCellDelegate {
+    func PJUserDetailPetTableViewCellAvatarTapped()
+    func PJUserDetailPetTableViewCellNewPetTapped()
+}
+
+extension PJUserDetailRealPetTableViewCellDelegate {
+    func PJUserDetailPetTableViewCellAvatarTapped() {}
+    func PJUserDetailPetTableViewCellNewPetTapped() {}
+}
+
+extension PJUserDetailRealPetTableViewCell: PJUserDateilsRealPetColletionViewDelegate {
     func PJUserDateilsRealPetColletionViewDidSelectedIndex(collectionView: PJUserDateilsRealPetColletionView, index: Int) {
         let count = collectionView.dataArray.count  - 1
         if index == (count < 0 ? 0 : count) {
@@ -66,3 +66,4 @@ PJUserDateilsRealPetColletionViewDelegate {
         }
     }
 }
+

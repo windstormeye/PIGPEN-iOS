@@ -13,7 +13,7 @@ class PJHomeViewController: PJBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if PJUser.shared.token == "" {
+        if PJUser.shared.userModel?.token == "" {
             let navVC = UINavigationController(rootViewController: PJWelcomeViewController())
             present(navVC, animated: true, completion: nil)
         }

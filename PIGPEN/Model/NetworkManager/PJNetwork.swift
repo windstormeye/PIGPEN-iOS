@@ -10,21 +10,6 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-
-struct PJError {
-    let errorCode: Int?
-    let errorMsg: String?
-}
-
-
-enum NetworkError {
-    case token
-    case timeout
-    case parameters
-    case methon
-}
-
-
 class PJNetwork {
     static let shared = PJNetwork()
     
@@ -37,14 +22,22 @@ class PJNetwork {
                        failed: @escaping (String) -> Void) {
         var parameters = parameters
         if parameters["nick_name"] == nil {
-            parameters["nick_name"] = PJUser.shared.nickName ?? ""
+            parameters["nick_name"] = PJUser.shared.userModel?.nick_name ?? ""
+        }
+        if parameters["uid"] == nil {
+            parameters["uid"] = PJUser.shared.userModel?.uid ?? ""
         }
         
         let params = parametersHandler(parameters: parameters)
         let headerParameters: HTTPHeaders = [
-            "usertoken": PJUser.shared.token ?? "",
-            "timestamp": String.timestape(),
+            "usertoken": PJUser.shared.userModel?.token ?? "",
+            "timestamp": String.timestampe(),
         ]
+        
+        debugOnly {
+            print(params)
+        }
+        
         Alamofire.request(hostName + path,
                           method: .get,
                           parameters: params,
@@ -66,14 +59,22 @@ class PJNetwork {
                         failed: @escaping (String) -> Void) {
         var parameters = parameters
         if parameters["nick_name"] == nil {
-            parameters["nick_name"] = PJUser.shared.nickName ?? ""
+            parameters["nick_name"] = PJUser.shared.userModel?.nick_name ?? ""
+        }
+        if parameters["uid"] == nil {
+            parameters["uid"] = PJUser.shared.userModel?.uid ?? ""
         }
         
         let params = parametersHandler(parameters: parameters)
         let headerParameters: HTTPHeaders = [
-            "usertoken": PJUser.shared.token ?? "",
-            "timestamp": String.timestape(),
+            "usertoken": PJUser.shared.userModel?.token ?? "",
+            "timestamp": String.timestampe(),
         ]
+        
+        debugOnly {
+            print(params)
+        }
+        
         Alamofire.request(hostName + path,
                           method: .post,
                           parameters: params,
@@ -126,4 +127,20 @@ class PJNetwork {
         }
     }
     
+}
+
+extension PJNetwork {
+    struct Error {
+        let errorCode: Int?
+        let errorMsg: String?
+    }
+    
+    
+    enum NetworkError {
+        case token
+        case timeout
+        case parameters
+        case methon
+    }
+
 }

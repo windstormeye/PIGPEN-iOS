@@ -42,7 +42,7 @@ class PJCreateRealPetViewController: PJBaseViewController, UITextFieldDelegate {
     @IBOutlet weak var dogEatLineView: UIView!
     @IBOutlet weak var loveStatusConstraint: NSLayoutConstraint!
     
-    var tempBreedModel: RealPetBreedModel?
+    var tempBreedModel: PJRealPet.RealPetBreedModel?
     // defual = cat, false == cat
     var catOrDog: petType = .cat
     
@@ -135,7 +135,7 @@ class PJCreateRealPetViewController: PJBaseViewController, UITextFieldDelegate {
             navigationController?.pushViewController(vc,
                                                      animated: true)
         case 1001:
-            PJPickerView.showPickerView(viewModel: { (viewModel) in
+            let _ = PJPickerView.showPickerView(viewModel: { (viewModel) in
                 viewModel.titleString = "猫咪的生日"
                 viewModel.pickerType = .time
             }) { [weak self] finalString in
@@ -144,7 +144,7 @@ class PJCreateRealPetViewController: PJBaseViewController, UITextFieldDelegate {
                 }
             }
         case 1002:
-            PJPickerView.showPickerView(viewModel: { (viewModel) in
+            let _ = PJPickerView.showPickerView(viewModel: { (viewModel) in
                 viewModel.titleString = "猫咪体重"
                 var weightArray = [String]()
                 for item in 0...100 {
@@ -169,7 +169,7 @@ class PJCreateRealPetViewController: PJBaseViewController, UITextFieldDelegate {
                 }
             }
         case 1003:
-            PJPickerView.showPickerView(viewModel: { (viewModel) in
+            let _ = PJPickerView.showPickerView(viewModel: { (viewModel) in
                 viewModel.titleString = "绝育情况"
                 viewModel.pickerType = .custom
                 viewModel.dataArray = [["已绝育", "未绝育"]]
@@ -179,7 +179,7 @@ class PJCreateRealPetViewController: PJBaseViewController, UITextFieldDelegate {
                 }
             }
         case 1004:
-            PJPickerView.showPickerView(viewModel: { (viewModel) in
+            let _ = PJPickerView.showPickerView(viewModel: { (viewModel) in
                 viewModel.titleString = "感情状态"
                 viewModel.pickerType = .custom
                 viewModel.dataArray = [["单身", "约会中", "已婚"]]
@@ -189,7 +189,7 @@ class PJCreateRealPetViewController: PJBaseViewController, UITextFieldDelegate {
                 }
             }
         case 1005:
-            PJPickerView.showPickerView(viewModel: { (viewModel) in
+            let _ = PJPickerView.showPickerView(viewModel: { (viewModel) in
                 viewModel.titleString = "猫咪与您的关系"
                 viewModel.pickerType = .custom
                 viewModel.dataArray = [["我是妈咪", "我是爸比", "我是爷爷", "我是奶奶",

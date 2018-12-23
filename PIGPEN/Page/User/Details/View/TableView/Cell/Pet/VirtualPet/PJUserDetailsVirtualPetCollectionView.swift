@@ -8,21 +8,13 @@
 
 import UIKit
 
-protocol PJUserDateilsVirtualPetCollectionViewDelegate {
-    func PJUserDateilsVirtualPetColletionViewDidSelectedIndex(collectionView: PJUserDetailsVirtualPetCollectionView, index: Int)
-}
 
-extension PJUserDateilsVirtualPetCollectionViewDelegate {
-    func PJUserDateilsVirtualPetColletionViewDidSelectedIndex(collectionView: PJUserDetailsVirtualPetCollectionView, index: Int) {}
-}
-
-class PJUserDetailsVirtualPetCollectionView: UICollectionView,
-UICollectionViewDelegate, UICollectionViewDataSource {
+class PJUserDetailsVirtualPetCollectionView: UICollectionView {
 
     static let cellIdentifier = "PJUserDateilsVirtualPetColletionViewCell"
     
     var viewDelegate: PJUserDateilsVirtualPetCollectionViewDelegate?
-    var dataArray = [PJVirtualPet]()
+    var dataArray = [PJVirtualPet.VirtualPetModel]()
     
     override init(frame: CGRect,
                   collectionViewLayout layout: UICollectionViewLayout) {
@@ -46,6 +38,20 @@ UICollectionViewDelegate, UICollectionViewDataSource {
                  forCellWithReuseIdentifier: PJUserDetailsVirtualPetCollectionView.cellIdentifier)
     }
     
+}
+
+protocol PJUserDateilsVirtualPetCollectionViewDelegate {
+    func PJUserDateilsVirtualPetColletionViewDidSelectedIndex(collectionView: PJUserDetailsVirtualPetCollectionView,
+                                                              index: Int)
+}
+
+extension PJUserDateilsVirtualPetCollectionViewDelegate {
+    func PJUserDateilsVirtualPetColletionViewDidSelectedIndex(collectionView: PJUserDetailsVirtualPetCollectionView,
+                                                              index: Int) {}
+}
+
+// MARK: - UICollectionView Delegate & DataSource
+extension PJUserDetailsVirtualPetCollectionView: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -57,7 +63,8 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PJUserDetailsVirtualPetCollectionView.cellIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PJUserDetailsVirtualPetCollectionView.cellIdentifier,
+                                                      for: indexPath)
         
         if dataArray.count != 0 {
             let cellImageView = UIImageView(frame: CGRect(x: 0, y: 0,
@@ -78,7 +85,6 @@ UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         viewDelegate?.PJUserDateilsVirtualPetColletionViewDidSelectedIndex(collectionView: self,
-                                                                        index: indexPath.row)
+                                                                           index: indexPath.row)
     }
-
 }

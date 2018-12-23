@@ -119,11 +119,11 @@ class PJUserRegisterViewController: PJBaseViewController {
                                                 PJTapic.error()
                                                 print(error!.localizedDescription)
                                             } else {
-                                                let registerModel = PJUserRegisterModel(nickName: "",
-                                                                                        phone: phoneString,
-                                                                                        passwd: passwordString,
-                                                                                        gender: 1,
-                                                                                        avatar: -1)
+                                                let registerModel = PJUser.UserRegisterModel(nickName: "",
+                                                                                             phone: phoneString,
+                                                                                             passwd: passwordString,
+                                                                                             gender: 1,
+                                                                                             avatar: -1)
                                                 let vc = PJUserInfoViewController()
                                                 vc.userRegisterModel = registerModel
                                                 self.navigationController?.pushViewController(vc,

@@ -22,7 +22,7 @@ class PJUserInfoViewController: PJBaseViewController, PJUserInfoSeleteAvatarView
     @IBOutlet weak var okButton: UIButton!
     @IBOutlet weak var tipsLabel: UILabel!
     
-    var userRegisterModel: PJUserRegisterModel?
+    var userRegisterModel: PJUser.UserRegisterModel?
     
     // 默认为 -1
     private var avatarTag = -1

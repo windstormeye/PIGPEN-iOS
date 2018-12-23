@@ -8,32 +8,12 @@
 
 import UIKit
 
-protocol PJUserDetailsTableViewDelegate {
-    func PJUserDetailsTableViewToPetDetails()
-    func PJUserDetailsTableViewToNewPet()
-    func PJUserDetailsTableViewVirtualPetToDetails()
-    func PJUserDetailsTableViewVirtualPetToNewPet()
-    func PJUserDetailsTableViewMoneyLook()
-    func PJUserDetailsTableViewMoneySteal()
-}
-
-extension PJUserDetailsTableViewDelegate {
-    func PJUserDetailsTableViewToPetDetails() {}
-    func PJUserDetailsTableViewToNewPet() {}
-    func PJUserDetailsTableViewVirtualPetToDetails() {}
-    func PJUserDetailsTableViewVirtualPetToNewPet() {}
-    func PJUserDetailsTableViewMoneyLook() {}
-    func PJUserDetailsTableViewMoneySteal() {}
-}
-
-class PJUserDetailsTableView: UITableView, UITableViewDelegate, UITableViewDataSource, PJUserDetailRealPetTableViewCellDelegate, PJUserDetailsVirtualPetTableViewCellDelegate, PJUserDetailsMoneyTableViewCellDelegate {
-    
-    static let userIdentifier = "PJUserSelfTableViewCell"
-    static let realPetIdentifier = "PJUserDetailPetTableViewCell"
-    static let virtualPetIdentifier = "PJUserDetailsVirtualPetTableViewCell"
-    static let moneyIndentifier = "PJUserDetailsMoneyTableViewCell"
-    
+class PJUserDetailsTableView: UITableView {
+    // MARK: - Public Properties
     var viewDelegate: PJUserDetailsTableViewDelegate?
+    var userDetailsModel: PJUser.UserModel?
+    var realPetModels: [PJRealPet.RealPetModel]?
+    var virtualPetModels: [PJVirtualPet.VirtualPetModel]?
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -57,10 +37,26 @@ class PJUserDetailsTableView: UITableView, UITableViewDelegate, UITableViewDataS
                  forCellReuseIdentifier: PJUserDetailsTableView.realPetIdentifier)
         register(PJUserDetailsVirtualPetTableViewCell.self,
                  forCellReuseIdentifier: PJUserDetailsTableView.virtualPetIdentifier)
-        register(UINib(nibName: "PJUserDetailsMoneyTableViewCell", bundle: nil), forCellReuseIdentifier: PJUserDetailsTableView.moneyIndentifier)
+        register(UINib(nibName: "PJUserDetailsMoneyTableViewCell", bundle: nil),
+                 forCellReuseIdentifier: PJUserDetailsTableView.moneyIndentifier)
     }
+}
+
+fileprivate extension Selector {
+
+}
+
+extension PJUserDetailsTableView {
     
-    // MARK: - tableView delegate
+}
+
+// MARK: - UITableView Delegate
+extension PJUserDetailsTableView: UITableViewDelegate, UITableViewDataSource {
+    static let userIdentifier = "PJUserSelfTableViewCell"
+    static let realPetIdentifier = "PJUserDetailPetTableViewCell"
+    static let virtualPetIdentifier = "PJUserDetailsVirtualPetTableViewCell"
+    static let moneyIndentifier = "PJUserDetailsMoneyTableViewCell"
+    
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 3 {
@@ -120,25 +116,34 @@ class PJUserDetailsTableView: UITableView, UITableViewDelegate, UITableViewDataS
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: PJUserDetailsTableView.userIdentifier, for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: PJUserDetailsTableView.userIdentifier,
+                                                     for: indexPath) as! PJUserSelfTableViewCell
+            cell.model = userDetailsModel
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: PJUserDetailsTableView.realPetIdentifier, for: indexPath) as! PJUserDetailRealPetTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: PJUserDetailsTableView.realPetIdentifier,
+                                                     for: indexPath) as! PJUserDetailRealPetTableViewCell
             cell.viewDelegate = self
+            cell.realPetModels = realPetModels
             return cell
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: PJUserDetailsTableView.virtualPetIdentifier, for: indexPath) as! PJUserDetailsVirtualPetTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: PJUserDetailsTableView.virtualPetIdentifier,
+                                                     for: indexPath) as! PJUserDetailsVirtualPetTableViewCell
             cell.viewDelegate = self
+            cell.virtualPetModels = virtualPetModels
             return cell
         case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: PJUserDetailsTableView.moneyIndentifier, for: indexPath) as! PJUserDetailsMoneyTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: PJUserDetailsTableView.moneyIndentifier,
+                                                     for: indexPath) as! PJUserDetailsMoneyTableViewCell
             return cell
         default:
             return UITableViewCell()
         }
     }
- 
-    // MARK: Delegate
+}
+
+// MARK: - PJUserDetailRealPetTableViewCellDelegate
+extension PJUserDetailsTableView: PJUserDetailRealPetTableViewCellDelegate {
     func PJUserDetailPetTableViewCellAvatarTapped() {
         viewDelegate?.PJUserDetailsTableViewToPetDetails()
     }
@@ -146,7 +151,10 @@ class PJUserDetailsTableView: UITableView, UITableViewDelegate, UITableViewDataS
     func PJUserDetailPetTableViewCellNewPetTapped() {
         viewDelegate?.PJUserDetailsTableViewToNewPet()
     }
-    
+}
+
+// MARK: - PJUserDetailsVirtualPetTableViewCellDelegate
+extension PJUserDetailsTableView: PJUserDetailsVirtualPetTableViewCellDelegate {
     func PJUserDetailVirtualPetTableViewCellAvatarTapped() {
         viewDelegate?.PJUserDetailsTableViewVirtualPetToDetails()
     }
@@ -154,7 +162,10 @@ class PJUserDetailsTableView: UITableView, UITableViewDelegate, UITableViewDataS
     func PJUserDetailVirtualPetTableViewCellNewPetTapped() {
         viewDelegate?.PJUserDetailsTableViewVirtualPetToNewPet()
     }
-    
+}
+
+// MARK: - PJUserDetailsMoneyTableViewCellDelegate
+extension PJUserDetailsTableView: PJUserDetailsMoneyTableViewCellDelegate {
     func PJUserDetailsMoneyTableViewCellStealButtonTapped() {
         viewDelegate?.PJUserDetailsTableViewMoneySteal()
     }
@@ -162,4 +173,23 @@ class PJUserDetailsTableView: UITableView, UITableViewDelegate, UITableViewDataS
     func PJUserDetailsMoneyTableViewCellLookButtonTapped() {
         viewDelegate?.PJUserDetailsTableViewMoneyLook()
     }
+}
+
+// MARK: - PJUserDetailsTableViewDelegate
+protocol PJUserDetailsTableViewDelegate {
+    func PJUserDetailsTableViewToPetDetails()
+    func PJUserDetailsTableViewToNewPet()
+    func PJUserDetailsTableViewVirtualPetToDetails()
+    func PJUserDetailsTableViewVirtualPetToNewPet()
+    func PJUserDetailsTableViewMoneyLook()
+    func PJUserDetailsTableViewMoneySteal()
+}
+
+extension PJUserDetailsTableViewDelegate {
+    func PJUserDetailsTableViewToPetDetails() {}
+    func PJUserDetailsTableViewToNewPet() {}
+    func PJUserDetailsTableViewVirtualPetToDetails() {}
+    func PJUserDetailsTableViewVirtualPetToNewPet() {}
+    func PJUserDetailsTableViewMoneyLook() {}
+    func PJUserDetailsTableViewMoneySteal() {}
 }

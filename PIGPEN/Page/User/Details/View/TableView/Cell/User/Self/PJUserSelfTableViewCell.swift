@@ -9,28 +9,58 @@
 import UIKit
 
 class PJUserSelfTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var avatarImageView: UIImageView!
-    @IBOutlet weak var genderImageView: UIImageView!
-    @IBOutlet weak var statusLabel: UILabel!
-    @IBOutlet weak var levelLabel: UILabel!
-    @IBOutlet weak var followLabel: UILabel!
-    @IBOutlet weak var starLabel: UILabel!
+    // MARK: - Private Properties
+    // 头像
+    @IBOutlet weak private var avatarImageView: UIImageView!
+    // 性别
+    @IBOutlet weak private var genderImageView: UIImageView!
+    // 饲养状态
+    @IBOutlet weak private var statusLabel: UILabel!
+    // 评分
+    @IBOutlet weak private var levelLabel: UILabel!
+    // 关注
+    @IBOutlet weak private var followLabel: UILabel!
+    // 收藏
+    @IBOutlet weak private var starLabel: UILabel!
     
-    var model: PJUserDetailsModel?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    // MARK: - Public Properties
+    var model: PJUser.UserModel? {
+        didSet {
+           didSetModel()
+        }
     }
 
-    func updateUI(model: PJUserDetailsModel) {
-        avatarImageView.image = UIImage(named: String(model.avatar))
-        genderImageView.image = UIImage(named: String(model.gender))
-        // TODO: 换枚举 model.status
-        statusLabel.text = "暂无宠物"
-        levelLabel.text = String(model.level)
-        followLabel.text = String(model.follow)
-        statusLabel.text = String(model.star)
+    // MARK: - Private Methods
+    private func didSetModel() {
+        avatarImageView.image = UIImage(named: String(model?.avatar ?? 0))
+        genderImageView.image = UIImage(named: "user_info_gender_\(String(model?.gender ?? 0))")
+    
+        var feedingStatusString = ""
+        if model?.feeding_status![0] == 1 {
+            feedingStatusString.append("猫 &")
+        }
+        if model?.feeding_status![1] == 1 {
+            feedingStatusString.append("狗 &")
+        }
+        if model?.feeding_status![2] == 1 {
+            feedingStatusString.append("虚拟狗 &")
+        }
+        if feedingStatusString == "" {
+            feedingStatusString = "暂无宠物"
+        } else {
+            feedingStatusString.removeLast()
+            feedingStatusString.removeLast()
+        }
+        statusLabel.text = feedingStatusString
+        
+        if model?.level == -1.0 {
+            levelLabel.text = "暂无评分"
+        } else {
+            levelLabel.text = String(model?.level ?? 0)
+        }
+
+        followLabel.text = String(model?.follow ?? 0)
+        starLabel.text = String(model?.star ?? 0)
     }
     
 }
