@@ -50,9 +50,11 @@ class PJUserDetailsViewController: PJBaseViewController {
                 print(error)
             }
             
-            PJUser.shared.details(details_uid: PJUser.shared.userModel?.uid ?? "", getSelf: true, completeHandler: { (userModel) in
-                self.tableView?.userDetailsModel = userModel
-                self.tableView?.reloadData()
+            PJUser.shared.details(details_uid: PJUser.shared.userModel?.uid ?? "",
+                                  getSelf: true,
+                                  completeHandler: { (userModel) in
+                                    self.tableView?.userDetailsModel = userModel
+                                    self.tableView?.reloadData()
             }) { (error) in
                 PJTapic.error()
                 print(error)

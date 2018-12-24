@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         rootTabBar = UITabBarController()
         rootTabBar?.tabBar.isTranslucent = false
+        rootTabBar?.delegate = self
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = rootTabBar
         window?.makeKeyAndVisible()
@@ -54,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Init
     
     private func initTabBarControler() {
-        let homePage = PJHomeViewController()
+        let homePage = PJGradeViewController()
         let homeNav = UINavigationController(rootViewController: homePage)
         homeNav.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0,
                                                       bottom: -5, right: 0)
@@ -86,6 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         rootTabBar?.viewControllers = [homeNav, chatNav, playNav, messageNav, userNav]
+        rootTabBar?.tabBar.showBottomLine(in: 0)
     }
     
     
@@ -119,3 +121,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate: UITabBarControllerDelegate {
+    public func tabBarController(_ tabBarController: UITabBarController,
+                                 didSelect viewController: UIViewController) {
+        tabBarController.tabBar.showBottomLine(in: tabBarController.selectedIndex)
+    }
+}

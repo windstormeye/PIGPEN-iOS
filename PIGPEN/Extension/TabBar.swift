@@ -8,9 +8,8 @@
 
 import UIKit
 
-
+// MARK: - Reddot
 extension UITabBar {
-
     func showRedDot(tabItemIndex: Int) {
         guard tabItemIndex > 5 else {
             return
@@ -45,3 +44,37 @@ extension UITabBar {
         }
     }
 }
+
+// MARK: - bottomLine
+extension UITabBar {
+    func showBottomLine(in selectedIndex: Int) {
+        var bottomLineView: UIView?
+        
+        for view in self.subviews {
+            if view.tag == 666 {
+                bottomLineView = view
+            }
+        }
+        
+        let l_x = (3.0 * CGFloat(selectedIndex + 1) - 2.0) * PJSCREEN_WIDTH / CGFloat(self.items!.count * 3) - 2.5
+        if bottomLineView == nil {
+            let l_y = CGFloat(40)
+            let l_h = CGFloat(2)
+            let l_w = CGFloat(30)
+            
+            bottomLineView = UIView(frame: CGRect(x: l_x, y: l_y, width: l_w, height: l_h))
+            bottomLineView?.tag = 666
+            bottomLineView?.backgroundColor = PJRGB(r: 249, g: 162, b: 162)
+            self.addSubview(bottomLineView!)
+        } else {
+            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: {
+                bottomLineView?.x = l_x
+            }) { (finished) in
+                if finished {
+                    
+                }
+            }
+        }
+    }
+}
+
