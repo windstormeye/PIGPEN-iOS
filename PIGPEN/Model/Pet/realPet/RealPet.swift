@@ -21,7 +21,7 @@ class PJRealPet {
         PJNetwork.shared.requstWithGet(path: RealPetUrl.breeds.rawValue,
                                        parameters: parameters,
                                        complement: { (dataDic) in
-                                        if dataDic["msgCode"]?.intValue == 666 {
+                                        if dataDic["msgCode"]?.intValue == 0 {
                                             var models = [RealPetBreedGroupModel]()
                                             let dicts = dataDic["msg"]!["breeds"].arrayValue
                                             for dict in dicts {

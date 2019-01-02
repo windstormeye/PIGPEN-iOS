@@ -10,6 +10,7 @@ import UIKit
 
 // MARK: - Reddot
 extension UITabBar {
+    /// 只显示点，不显示数字
     func showRedDot(tabItemIndex: Int) {
         guard tabItemIndex > 5 else {
             return

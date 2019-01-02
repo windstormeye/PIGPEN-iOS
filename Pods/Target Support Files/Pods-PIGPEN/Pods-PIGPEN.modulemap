@@ -1,4 +1,4 @@
-module Pods_PIGPEN {
+framework module Pods_PIGPEN {
   umbrella header "Pods-PIGPEN-umbrella.h"
 
   export *

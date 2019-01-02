@@ -1,12 +1,14 @@
 platform :ios, '10.0'
 target 'PIGPEN' do
+    use_frameworks!
 
-pod 'mob_smssdk'
-pod 'IQKeyboardManagerSwift'
-pod 'Alamofire'
-pod 'SwiftyJSON'
-pod 'CryptoSwift'
-pod 'Schedule'
+    pod 'mob_smssdk'
+    pod 'Qiniu'
+
+    pod 'IQKeyboardManagerSwift'
+    pod 'Alamofire'
+    pod 'SwiftyJSON'
+    pod 'CryptoSwift'
+    pod 'Schedule'
 
 end
- 

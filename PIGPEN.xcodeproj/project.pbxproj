@@ -74,6 +74,8 @@
 		0CC35DA221D0BAF6002244DA /* PJGradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DA121D0BAF6002244DA /* PJGradeViewController.swift */; };
 		0CC35DAB21D0BC35002244DA /* PJGradeYesterdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DAA21D0BC35002244DA /* PJGradeYesterdayViewController.swift */; };
 		0CC35DAD21D0BC43002244DA /* PJGradeWeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DAC21D0BC43002244DA /* PJGradeWeekViewController.swift */; };
+		0CC35DCE21DCFFDC002244DA /* PJImageUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DCD21DCFFDC002244DA /* PJImageUpload.swift */; };
+		0CC35DD021DD0BC8002244DA /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DCF21DD0BC8002244DA /* Date.swift */; };
 		0CDB0C8F216705B000669331 /* PJUserSelfTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CDB0C8D216705B000669331 /* PJUserSelfTableViewCell.xib */; };
 		0CDB0C90216705B000669331 /* PJUserSelfTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0C8E216705B000669331 /* PJUserSelfTableViewCell.swift */; };
 		0CDB0C972167299A00669331 /* PJUserDetailsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0C962167299A00669331 /* PJUserDetailsTableView.swift */; };
@@ -93,7 +95,7 @@
 		0CED02E3219D45AC00294033 /* PJDogFoodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CED02E1219D45AC00294033 /* PJDogFoodViewController.xib */; };
 		0CED02E6219D510F00294033 /* PJBaseAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CED02E5219D510F00294033 /* PJBaseAlertViewController.swift */; };
 		0CED02E9219D5A8400294033 /* PJAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CED02E8219D5A8400294033 /* PJAlertView.swift */; };
-		6155BC9AE80D9BE2A10BEB45 /* libPods-PIGPEN.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3155F10B4EB7E5C66A26C91 /* libPods-PIGPEN.a */; };
+		1D380E7C3274F4367974E080 /* Pods_PIGPEN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E67D2961E371F2F024277FE /* Pods_PIGPEN.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,6 +179,8 @@
 		0CC35DA121D0BAF6002244DA /* PJGradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJGradeViewController.swift; sourceTree = "<group>"; };
 		0CC35DAA21D0BC35002244DA /* PJGradeYesterdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJGradeYesterdayViewController.swift; sourceTree = "<group>"; };
 		0CC35DAC21D0BC43002244DA /* PJGradeWeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJGradeWeekViewController.swift; sourceTree = "<group>"; };
+		0CC35DCD21DCFFDC002244DA /* PJImageUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJImageUpload.swift; sourceTree = "<group>"; };
+		0CC35DCF21DD0BC8002244DA /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		0CDB0C8D216705B000669331 /* PJUserSelfTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PJUserSelfTableViewCell.xib; sourceTree = "<group>"; };
 		0CDB0C8E216705B000669331 /* PJUserSelfTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PJUserSelfTableViewCell.swift; sourceTree = "<group>"; };
 		0CDB0C962167299A00669331 /* PJUserDetailsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserDetailsTableView.swift; sourceTree = "<group>"; };
@@ -199,9 +203,9 @@
 		0CED02E1219D45AC00294033 /* PJDogFoodViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJDogFoodViewController.xib; sourceTree = "<group>"; };
 		0CED02E5219D510F00294033 /* PJBaseAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBaseAlertViewController.swift; sourceTree = "<group>"; };
 		0CED02E8219D5A8400294033 /* PJAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJAlertView.swift; sourceTree = "<group>"; };
+		4E67D2961E371F2F024277FE /* Pods_PIGPEN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PIGPEN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6472681005EABAD7037BD786 /* Pods-PIGPEN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PIGPEN.release.xcconfig"; path = "Pods/Target Support Files/Pods-PIGPEN/Pods-PIGPEN.release.xcconfig"; sourceTree = "<group>"; };
 		8BD192072D34D432799FE1CF /* Pods-PIGPEN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PIGPEN.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PIGPEN/Pods-PIGPEN.debug.xcconfig"; sourceTree = "<group>"; };
-		D3155F10B4EB7E5C66A26C91 /* libPods-PIGPEN.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PIGPEN.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,7 +213,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6155BC9AE80D9BE2A10BEB45 /* libPods-PIGPEN.a in Frameworks */,
+				1D380E7C3274F4367974E080 /* Pods_PIGPEN.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +442,7 @@
 				0C5E634221644F7900A90762 /* String_time.swift */,
 				0C5E63472164FE3900A90762 /* UIColor_Custom.swift */,
 				0C5E63522165ADF500A90762 /* NotificationName.swift */,
+				0CC35DCF21DD0BC8002244DA /* Date.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -701,6 +706,7 @@
 		0C5E63502165AB9300A90762 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				0CC35DCC21DCFFC6002244DA /* ImageUpload */,
 				0CC35DA521D0BB51002244DA /* Segment */,
 				0CA365F621B26CB600E7D2F7 /* Album */,
 				0CED02E7219D585700294033 /* Alert */,
@@ -850,6 +856,14 @@
 			children = (
 			);
 			path = Total;
+			sourceTree = "<group>";
+		};
+		0CC35DCC21DCFFC6002244DA /* ImageUpload */ = {
+			isa = PBXGroup;
+			children = (
+				0CC35DCD21DCFFDC002244DA /* PJImageUpload.swift */,
+			);
+			path = ImageUpload;
 			sourceTree = "<group>";
 		};
 		0CDB0C8A2167055900669331 /* View */ = {
@@ -1030,7 +1044,7 @@
 		772C67EFF054D7CA74FF8656 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D3155F10B4EB7E5C66A26C91 /* libPods-PIGPEN.a */,
+				4E67D2961E371F2F024277FE /* Pods_PIGPEN.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1046,7 +1060,7 @@
 				0CE4F3EB21592C7C003AD0F5 /* Sources */,
 				0CE4F3EC21592C7C003AD0F5 /* Frameworks */,
 				0CE4F3ED21592C7C003AD0F5 /* Resources */,
-				B15239FD528C03CD78074F86 /* [CP] Copy Pods Resources */,
+				F495B411540F3851D3D00624 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1171,22 +1185,34 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B15239FD528C03CD78074F86 /* [CP] Copy Pods Resources */ = {
+		F495B411540F3851D3D00624 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-PIGPEN/Pods-PIGPEN-resources.sh",
-				"${PODS_ROOT}/IQKeyboardManagerSwift/IQKeyboardManagerSwift/Resources/IQKeyboardManager.bundle",
+				"${SRCROOT}/Pods/Target Support Files/Pods-PIGPEN/Pods-PIGPEN-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/HappyDNS/HappyDNS.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Qiniu/Qiniu.framework",
+				"${BUILT_PRODUCTS_DIR}/Schedule/Schedule.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HappyDNS.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Qiniu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Schedule.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PIGPEN/Pods-PIGPEN-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PIGPEN/Pods-PIGPEN-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1207,11 +1233,13 @@
 				0C8B755D2196FF8B00353842 /* PJBreedsSideSliderView.swift in Sources */,
 				0C55E2E2215A8422000D8815 /* PJStatic.swift in Sources */,
 				0C5E63532165ADF500A90762 /* NotificationName.swift in Sources */,
+				0CC35DD021DD0BC8002244DA /* Date.swift in Sources */,
 				0CC35DAB21D0BC35002244DA /* PJGradeYesterdayViewController.swift in Sources */,
 				0C1F6FAF21B3925E00304CD8 /* PJAlbumTableViewCell.swift in Sources */,
 				0C599ECE21703C5200FC2E37 /* PJCreateRealPetViewController.swift in Sources */,
 				0C55E2CE215A62BE000D8815 /* PJPlayViewController.swift in Sources */,
 				0C55E2CC215A62AF000D8815 /* PJChatViewController.swift in Sources */,
+				0CC35DCE21DCFFDC002244DA /* PJImageUpload.swift in Sources */,
 				0CE4F3F321592C7C003AD0F5 /* AppDelegate.swift in Sources */,
 				0C55E2F2215D2D76000D8815 /* PJUserInfoViewController.swift in Sources */,
 				0C5E634021635FA500A90762 /* PJNetworkUrls.swift in Sources */,

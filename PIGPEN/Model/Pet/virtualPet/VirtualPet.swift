@@ -23,7 +23,7 @@ class PJVirtualPet {
         PJNetwork.shared.requstWithPost(path: VirtualPetUrl.create.rawValue,
                                         parameters: parameters,
                                         complement: { (dataDic) in
-                                            if dataDic["msgCode"]?.intValue == 666 {
+                                            if dataDic["msgCode"]?.intValue == 0 {
                                                 complateHandler()
                                             } else {
                                                 let error = PJNetwork.Error(errorCode: dataDic["msgCode"]?.intValue,

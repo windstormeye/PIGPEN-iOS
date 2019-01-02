@@ -94,13 +94,15 @@ class PJCreateRealPetViewController: PJBaseViewController, UITextFieldDelegate {
     }
     
     @IBAction func okButtonTapped(_ sender: UIButton) {
-        
+        // TODO: 在这里进行测试七牛图片上传
     }
     
     @IBAction func avatarTapped(_ sender: UITapGestureRecognizer) {
         let album = PJAlbumDataManager.manager().albums.filter({ (collection) -> Bool in
             return collection.assetCollectionSubtype == .smartAlbumUserLibrary
         })
+        if album.count == 0 { return }
+        
         let vc = PJAlbumDetailsViewController()
         vc.currentAlbumCollection = album[0]
         PJAlbumDataManager.manager().getAlbumPhotos(albumCollection: album[0], complateHandler: { photos, assets  in

@@ -74,7 +74,7 @@ extension PJUser {
         PJNetwork.shared.requstWithGet(path: UserUrl.details.rawValue,
                                        parameters: ["details_uid": details_uid],
                                        complement: { (dataDic) in
-                                        if dataDic["msgCode"]?.intValue == 666 {
+                                        if dataDic["msgCode"]?.intValue == 0 {
                                             var dataDic = dataDic["msg"]!
                                             let userDic = dataDic["masuser"].dictionary!
                                             let gender = userDic["gender"]?.intValue
@@ -125,7 +125,7 @@ extension PJUser {
         PJNetwork.shared.requstWithPost(path: UserUrl.update.rawValue,
                                         parameters: parameters,
                                         complement: { (dataDic) in
-                                            if dataDic["msgCode"]?.intValue == 666 {
+                                            if dataDic["msgCode"]?.intValue == 0 {
                                                 self.logout()
                                                 
                                                 var dataDic = dataDic["msg"]!
@@ -163,7 +163,7 @@ extension PJUser {
         PJNetwork.shared.requstWithPost(path: UserUrl.register.rawValue,
                                         parameters: parameters,
                                         complement: { (dataDic) in
-                                            if dataDic["msgCode"]?.intValue == 666 {
+                                            if dataDic["msgCode"]?.intValue == 0 {
                                                 self.logout()
                                                 
                                                 var dataDic = dataDic["msg"]!
@@ -216,7 +216,7 @@ extension PJUser {
         PJNetwork.shared.requstWithPost(path: UserUrl.logIn.rawValue,
                                         parameters: parameters,
                                         complement: { (dataDic) in
-                                            if dataDic["msgCode"]?.intValue == 666 {
+                                            if dataDic["msgCode"]?.intValue == 0 {
                                                 self.logout()
                                                 
                                                 var dataDic = dataDic["msg"]!
@@ -259,7 +259,7 @@ extension PJUser {
         PJNetwork.shared.requstWithGet(path: UserUrl.checkPhone.rawValue,
                                        parameters: parameters,
                                        complement: { (dataDic) in
-                                        if dataDic["msgCode"]?.intValue == 666 {
+                                        if dataDic["msgCode"]?.intValue == 0 {
                                             completeHandler()
                                         } else {
                                             let error = PJNetwork.Error(errorCode: dataDic["msgCode"]?.intValue,
@@ -282,7 +282,7 @@ extension PJUser {
         PJNetwork.shared.requstWithGet(path: UserUrl.pets.rawValue,
                                        parameters: [:],
                                        complement: { (dataDict) in
-                                        if dataDict["msgCode"]?.intValue == 666 {
+                                        if dataDict["msgCode"]?.intValue == 0 {
                                             let realPetDicts = dataDict["msg"]!["real_pet"].arrayValue
                                             let virtualPetDicts = dataDict["msg"]!["virtual_pet"].arrayValue
                                             
