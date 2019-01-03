@@ -21,12 +21,14 @@ class PJImageUploader {
                                             var dataDict = dataDict["msg"]!
                                             let tokens = dataDict["upload_tokens"].arrayValue
                                             for c_i in 0..<assets.count {
-                                                let key = "pet_avatar" + Date().secondStamp + PJUser.shared.userModel!.uid! + "\(c_i)"
+//                                                let key = "pet_avatar" + Date().secondStamp + PJUser.shared.userModel!.uid! + "\(c_i)"
                                                 QNUploadManager()?.put(assets[c_i],
-                                                                       key: key,
+                                                                       key: nil,
                                                                        token: tokens[c_i].string,
                                                                        complete: { (info, key, respDict) in
-                                                                        
+                                                                        guard let `respDict` = respDict else { return }
+                                                                        // key 即为文件名
+                                                                        let key = respDict["key"]
                                                 }, option: nil)
                                             }
                                         } else {
@@ -43,6 +45,6 @@ class PJImageUploader {
 // MARK: - URL
 extension PJImageUploader {
     enum URL: String {
-        case upload = "pet/uploadToken"
+        case upload = "realPet/uploadToken"
     }
 }

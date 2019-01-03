@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 fileprivate extension Selector {
     static let back = #selector(PJCreateRealPetViewController.back)
@@ -98,22 +99,47 @@ class PJCreateRealPetViewController: PJBaseViewController, UITextFieldDelegate {
     }
     
     @IBAction func avatarTapped(_ sender: UITapGestureRecognizer) {
-        let album = PJAlbumDataManager.manager().albums.filter({ (collection) -> Bool in
-            return collection.assetCollectionSubtype == .smartAlbumUserLibrary
-        })
-        if album.count == 0 { return }
+//        let album = PJAlbumDataManager.manager().albums.filter({ (collection) -> Bool in
+//            return collection.assetCollectionSubtype == .smartAlbumUserLibrary
+//        })
+//        if album.count == 0 { return }
+//
+//        let vc = PJAlbumDetailsViewController()
+//        vc.currentAlbumCollection = album[0]
+//        PJAlbumDataManager.manager().getAlbumPhotos(albumCollection: album[0], complateHandler: { photos, assets  in
+//            vc.models = photos
+//            vc.currentAlbumAssets = assets
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        })
+//        vc.selectedComplateHandler = { [weak self] photo in
+//            guard let `self` = self else { return }
+//            self.avatarImageView.image = photo.photoImage
+//        }
         
-        let vc = PJAlbumDetailsViewController()
-        vc.currentAlbumCollection = album[0]
-        PJAlbumDataManager.manager().getAlbumPhotos(albumCollection: album[0], complateHandler: { photos, assets  in
-            vc.models = photos
-            vc.currentAlbumAssets = assets
-            self.navigationController?.pushViewController(vc, animated: true)
-        })
-        vc.selectedComplateHandler = { [weak self] photo in
-            guard let `self` = self else { return }
-            self.avatarImageView.image = photo.photoImage
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        
+        let actionsSheet = UIAlertController(title: "选择宠物头像来源", message: nil, preferredStyle: .actionSheet)
+        let albumAction = UIAlertAction(title: "从相册选择", style: .default) { (action) in
+            imagePicker.sourceType = .photoLibrary
+            self.present(imagePicker, animated: true, completion: nil)
         }
+        
+        let cameraAction = UIAlertAction(title: "从相机拍摄", style: .default) { (action) in
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                imagePicker.sourceType = .camera
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+        }
+        
+        let cancleAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        
+        actionsSheet.addAction(albumAction)
+        actionsSheet.addAction(cameraAction)
+        actionsSheet.addAction(cancleAction)
+        
+        present(actionsSheet, animated: true, completion: nil)
     }
     
     // MARK: - Delegate
@@ -226,5 +252,31 @@ class PJCreateRealPetViewController: PJBaseViewController, UITextFieldDelegate {
         }
         
         return false
+    }
+}
+
+// MARK: - UIImagePicker
+extension PJCreateRealPetViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker .dismiss(animated: true, completion: nil)
+        let phasset = info[.phAsset] as! PHAsset
+        PJAlbumDataManager.manager().convertPHAssetToUIImage(asset: phasset,
+                                                             size: CGSize(width: 150, height: 150),
+                                                             mode: .highQualityFormat,
+                                                             complateHandler: { [weak self] photoImage in
+                                                                guard let `self` = self else { return }
+                                                                self.avatarImageView.image = photoImage
+        })
+        
+        PJImageUploader.upload(assets: [phasset], complateHandler: {
+            
+        }) { (error) in
+            print(error.errorMsg)
+        }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
 }
