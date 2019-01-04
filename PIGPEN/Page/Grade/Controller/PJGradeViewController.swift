@@ -8,31 +8,26 @@
 
 import UIKit
 
-class PJGradeViewController: UIViewController {
+class PJGradeViewController: PJBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        headerView?.backgroundColor = .white
+        isHiddenBarBottomLineView = false
+        navigationItem.title = "我的评分"
 
+        let segment = PJSegmentView(frame: CGRect(x: 0, y: headerView!.bottom, width: PJSCREEN_WIDTH, height: 50))
+        view.addSubview(segment)
+        segment.viewModel = PJSegmentView.ViewModel(titles: ["昨日", "周评分", "月评分", "总评分"])
         
-        let vc1 = PJGradeYesterdayViewController()
-        let vc2 = PJGradeWeekViewController()
-        
-        vc1.view.x = 0
-        vc2.view.x = 50
-        
-        view.addSubview(vc1.view)
-        view.addSubview(vc2.view)
+//        let vc1 = PJGradeYesterdayViewController()
+//        let vc2 = PJGradeWeekViewController()
+//
+//        vc1.view.x = 0
+//        vc2.view.x = 50
+//
+//        view.addSubview(vc1.view)
+//        view.addSubview(vc2.view)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

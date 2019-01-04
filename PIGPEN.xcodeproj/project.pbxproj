@@ -76,6 +76,8 @@
 		0CC35DAD21D0BC43002244DA /* PJGradeWeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DAC21D0BC43002244DA /* PJGradeWeekViewController.swift */; };
 		0CC35DCE21DCFFDC002244DA /* PJImageUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DCD21DCFFDC002244DA /* PJImageUpload.swift */; };
 		0CC35DD021DD0BC8002244DA /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DCF21DD0BC8002244DA /* Date.swift */; };
+		0CC35DD221DF39E7002244DA /* PJSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DD121DF39E7002244DA /* PJSegmentView.swift */; };
+		0CC35DD421DF3B8C002244DA /* PJSegmentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CC35DD321DF3B8C002244DA /* PJSegmentView.xib */; };
 		0CDB0C8F216705B000669331 /* PJUserSelfTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CDB0C8D216705B000669331 /* PJUserSelfTableViewCell.xib */; };
 		0CDB0C90216705B000669331 /* PJUserSelfTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0C8E216705B000669331 /* PJUserSelfTableViewCell.swift */; };
 		0CDB0C972167299A00669331 /* PJUserDetailsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0C962167299A00669331 /* PJUserDetailsTableView.swift */; };
@@ -181,6 +183,8 @@
 		0CC35DAC21D0BC43002244DA /* PJGradeWeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJGradeWeekViewController.swift; sourceTree = "<group>"; };
 		0CC35DCD21DCFFDC002244DA /* PJImageUpload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJImageUpload.swift; sourceTree = "<group>"; };
 		0CC35DCF21DD0BC8002244DA /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		0CC35DD121DF39E7002244DA /* PJSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJSegmentView.swift; sourceTree = "<group>"; };
+		0CC35DD321DF3B8C002244DA /* PJSegmentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJSegmentView.xib; sourceTree = "<group>"; };
 		0CDB0C8D216705B000669331 /* PJUserSelfTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PJUserSelfTableViewCell.xib; sourceTree = "<group>"; };
 		0CDB0C8E216705B000669331 /* PJUserSelfTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PJUserSelfTableViewCell.swift; sourceTree = "<group>"; };
 		0CDB0C962167299A00669331 /* PJUserDetailsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserDetailsTableView.swift; sourceTree = "<group>"; };
@@ -824,6 +828,8 @@
 		0CC35DA521D0BB51002244DA /* Segment */ = {
 			isa = PBXGroup;
 			children = (
+				0CC35DD121DF39E7002244DA /* PJSegmentView.swift */,
+				0CC35DD321DF3B8C002244DA /* PJSegmentView.xib */,
 			);
 			path = Segment;
 			sourceTree = "<group>";
@@ -1147,6 +1153,7 @@
 				0C1F6FB021B3925E00304CD8 /* PJAlbumTableViewCell.xib in Resources */,
 				0CE4F3FD21592C7D003AD0F5 /* Assets.xcassets in Resources */,
 				0C55E2E9215B703C000D8815 /* PJUserLoginViewController.xib in Resources */,
+				0CC35DD421DF3B8C002244DA /* PJSegmentView.xib in Resources */,
 				0C599ED621703CDA00FC2E37 /* PJCreateVirtualPetViewController.xib in Resources */,
 				0C55E2F3215D2D76000D8815 /* PJUserInfoViewController.xib in Resources */,
 				0CDB0C8F216705B000669331 /* PJUserSelfTableViewCell.xib in Resources */,
@@ -1252,6 +1259,7 @@
 				0C5E634D2165A5F800A90762 /* PJSmallHUD.swift in Sources */,
 				0C5E633B21624D1F00A90762 /* PJUserInfoAvatarSelectCollectionView.swift in Sources */,
 				0C5E63392162444400A90762 /* PJUserInfoSeleteAvatarView.swift in Sources */,
+				0CC35DD221DF39E7002244DA /* PJSegmentView.swift in Sources */,
 				0C599EC3217032A000FC2E37 /* PJUserDetailsVirtualPetTableViewCell.swift in Sources */,
 				0CED02E2219D45AC00294033 /* PJDogFoodViewController.swift in Sources */,
 				0C5E633E216309C300A90762 /* PJNetwork.swift in Sources */,

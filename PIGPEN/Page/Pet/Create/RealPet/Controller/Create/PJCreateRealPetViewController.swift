@@ -261,6 +261,7 @@ extension PJCreateRealPetViewController: UIImagePickerControllerDelegate, UINavi
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker .dismiss(animated: true, completion: nil)
         let phasset = info[.phAsset] as! PHAsset
+        // TODO: 考虑图片压缩
         PJAlbumDataManager.manager().convertPHAssetToUIImage(asset: phasset,
                                                              size: CGSize(width: 150, height: 150),
                                                              mode: .highQualityFormat,
