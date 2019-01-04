@@ -78,6 +78,8 @@
 		0CC35DD021DD0BC8002244DA /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DCF21DD0BC8002244DA /* Date.swift */; };
 		0CC35DD221DF39E7002244DA /* PJSegmentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DD121DF39E7002244DA /* PJSegmentView.swift */; };
 		0CC35DD421DF3B8C002244DA /* PJSegmentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CC35DD321DF3B8C002244DA /* PJSegmentView.xib */; };
+		0CC35DD621DF653C002244DA /* YXWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DD521DF653C002244DA /* YXWaveView.swift */; };
+		0CC35DD921DF7025002244DA /* PJWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DD821DF7025002244DA /* PJWaveView.swift */; };
 		0CDB0C8F216705B000669331 /* PJUserSelfTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CDB0C8D216705B000669331 /* PJUserSelfTableViewCell.xib */; };
 		0CDB0C90216705B000669331 /* PJUserSelfTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0C8E216705B000669331 /* PJUserSelfTableViewCell.swift */; };
 		0CDB0C972167299A00669331 /* PJUserDetailsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0C962167299A00669331 /* PJUserDetailsTableView.swift */; };
@@ -185,6 +187,8 @@
 		0CC35DCF21DD0BC8002244DA /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		0CC35DD121DF39E7002244DA /* PJSegmentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJSegmentView.swift; sourceTree = "<group>"; };
 		0CC35DD321DF3B8C002244DA /* PJSegmentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJSegmentView.xib; sourceTree = "<group>"; };
+		0CC35DD521DF653C002244DA /* YXWaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YXWaveView.swift; sourceTree = "<group>"; };
+		0CC35DD821DF7025002244DA /* PJWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJWaveView.swift; sourceTree = "<group>"; };
 		0CDB0C8D216705B000669331 /* PJUserSelfTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PJUserSelfTableViewCell.xib; sourceTree = "<group>"; };
 		0CDB0C8E216705B000669331 /* PJUserSelfTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PJUserSelfTableViewCell.swift; sourceTree = "<group>"; };
 		0CDB0C962167299A00669331 /* PJUserDetailsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserDetailsTableView.swift; sourceTree = "<group>"; };
@@ -710,6 +714,7 @@
 		0C5E63502165AB9300A90762 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				0CC35DD721DF7008002244DA /* WaveView */,
 				0CC35DCC21DCFFC6002244DA /* ImageUpload */,
 				0CC35DA521D0BB51002244DA /* Segment */,
 				0CA365F621B26CB600E7D2F7 /* Album */,
@@ -870,6 +875,23 @@
 				0CC35DCD21DCFFDC002244DA /* PJImageUpload.swift */,
 			);
 			path = ImageUpload;
+			sourceTree = "<group>";
+		};
+		0CC35DD721DF7008002244DA /* WaveView */ = {
+			isa = PBXGroup;
+			children = (
+				0CC35DDA21DF7228002244DA /* Wave */,
+				0CC35DD821DF7025002244DA /* PJWaveView.swift */,
+			);
+			path = WaveView;
+			sourceTree = "<group>";
+		};
+		0CC35DDA21DF7228002244DA /* Wave */ = {
+			isa = PBXGroup;
+			children = (
+				0CC35DD521DF653C002244DA /* YXWaveView.swift */,
+			);
+			path = Wave;
 			sourceTree = "<group>";
 		};
 		0CDB0C8A2167055900669331 /* View */ = {
@@ -1268,6 +1290,7 @@
 				0CA365F821B26CF300E7D2F7 /* PJAlbumViewController.swift in Sources */,
 				0C8B75592196934000353842 /* PJMessageViewController.swift in Sources */,
 				0CE2616821C500AF00740582 /* PJAlbumCollectiionFlowLayout.swift in Sources */,
+				0CC35DD921DF7025002244DA /* PJWaveView.swift in Sources */,
 				0CE4F3FB21592C7C003AD0F5 /* PIGPEN.xcdatamodeld in Sources */,
 				0C55E2FC215F5EA9000D8815 /* PJUser.swift in Sources */,
 				0C55E2F7215F570D000D8815 /* PJUserRegisterViewController.swift in Sources */,
@@ -1285,6 +1308,7 @@
 				0C55E2E4215A84EA000D8815 /* UIViewPosition.swift in Sources */,
 				0C1F6FA421B391E500304CD8 /* PJAlbumTableView.swift in Sources */,
 				0CC35DA221D0BAF6002244DA /* PJGradeViewController.swift in Sources */,
+				0CC35DD621DF653C002244DA /* YXWaveView.swift in Sources */,
 				0C0A54AD216CF64600195DF1 /* PJUserDateilsRealPetColletionView.swift in Sources */,
 				0C5E634B2165A57200A90762 /* PJBigHUD.swift in Sources */,
 				0C55E3012161B247000D8815 /* PJWelcomeViewController.swift in Sources */,
