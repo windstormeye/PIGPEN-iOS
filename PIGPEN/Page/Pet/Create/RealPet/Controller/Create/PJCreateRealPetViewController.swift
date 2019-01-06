@@ -13,7 +13,7 @@ fileprivate extension Selector {
     static let back = #selector(PJCreateRealPetViewController.back)
 }
 
-class PJCreateRealPetViewController: PJBaseViewController, UITextFieldDelegate {
+class PJCreateRealPetViewController: PJBaseViewController {
 
     enum petType {
         case cat
@@ -46,6 +46,7 @@ class PJCreateRealPetViewController: PJBaseViewController, UITextFieldDelegate {
     var tempBreedModel: PJRealPet.RealPetBreedModel?
     // defual = cat, false == cat
     var catOrDog: petType = .cat
+    var petModel = PJRealPet.RealPetRegisterModel()
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -87,15 +88,19 @@ class PJCreateRealPetViewController: PJBaseViewController, UITextFieldDelegate {
     @IBAction func femaleButtonTapped(_ sender: UIButton) {
         femaleButton.isSelected = !femaleButton.isSelected
         maleButton.isSelected = false
+        // 女性
+        petModel.gender = 0
     }
     
     @IBAction func maleButtonTapped(_ sender: UIButton) {
         maleButton.isSelected = !maleButton.isSelected
         femaleButton.isSelected = false
+        // 男性
+        petModel.gender = 1
     }
     
     @IBAction func okButtonTapped(_ sender: UIButton) {
-        // TODO: 在这里进行测试七牛图片上传
+        
     }
     
     @IBAction func avatarTapped(_ sender: UITapGestureRecognizer) {
@@ -141,118 +146,6 @@ class PJCreateRealPetViewController: PJBaseViewController, UITextFieldDelegate {
         
         present(actionsSheet, animated: true, completion: nil)
     }
-    
-    // MARK: - Delegate
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        guard textField.tag >= 1000 else {
-            return true
-        }
-        
-        switch textField.tag {
-        case 1000:
-            let vc = PJBreedsViewController()
-            vc.selectComplation = { [weak self] model in
-                if let `self` = self {
-                    self.breedTextField.text = model.zh_name ?? ""
-                    self.tempBreedModel = model
-                }
-            }
-            if tempBreedModel != nil {
-                vc.selectedModel = tempBreedModel
-            }
-            navigationController?.pushViewController(vc,
-                                                     animated: true)
-        case 1001:
-            let _ = PJPickerView.showPickerView(viewModel: { (viewModel) in
-                viewModel.titleString = "猫咪的生日"
-                viewModel.pickerType = .time
-            }) { [weak self] finalString in
-                if let `self` = self {
-                    self.birthTextField.text = finalString
-                }
-            }
-        case 1002:
-            let _ = PJPickerView.showPickerView(viewModel: { (viewModel) in
-                viewModel.titleString = "猫咪体重"
-                var weightArray = [String]()
-                for item in 0...100 {
-                    weightArray.append("\(item)")
-                }
-                var o_weightArray = [String]()
-                for item in 0..<10 {
-                    o_weightArray.append("\(item)")
-                }
-                viewModel.dataArray = [weightArray, o_weightArray, ["kg"]]
-                viewModel.pickerType = .custom
-            }) { [weak self] finalString in
-                if let `self` = self {
-                    guard finalString != "00" else {
-                        return
-                    }
-                    var finalString = finalString
-                    if (finalString[finalString.startIndex] == "0") {
-                        finalString.remove(at: finalString.startIndex)
-                    }
-                    self.weightTextField.text = finalString + "00g"
-                }
-            }
-        case 1003:
-            let _ = PJPickerView.showPickerView(viewModel: { (viewModel) in
-                viewModel.titleString = "绝育情况"
-                viewModel.pickerType = .custom
-                viewModel.dataArray = [["已绝育", "未绝育"]]
-            }) { [weak self] finalString in
-                if let `self` = self {
-                    self.pppTextField.text = finalString
-                }
-            }
-        case 1004:
-            let _ = PJPickerView.showPickerView(viewModel: { (viewModel) in
-                viewModel.titleString = "感情状态"
-                viewModel.pickerType = .custom
-                viewModel.dataArray = [["单身", "约会中", "已婚"]]
-            }) { [weak self] finalString in
-                if let `self` = self {
-                    self.loveTextField.text = finalString
-                }
-            }
-        case 1005:
-            let _ = PJPickerView.showPickerView(viewModel: { (viewModel) in
-                viewModel.titleString = "猫咪与您的关系"
-                viewModel.pickerType = .custom
-                viewModel.dataArray = [["我是妈咪", "我是爸比", "我是爷爷", "我是奶奶",
-                                        "我是姐姐", "我是哥哥", "我是弟弟", "我是妹妹",
-                                        "我是干爸", "我是干妈", "我是叔叔", "我是阿姨",]]
-            }) { [weak self] finalString in
-                if let `self` = self {
-                    self.relationshipTextField.text = finalString
-                }
-            }
-        case 1006:
-            let picker = PJPickerView.showPickerView(viewModel: { (viewModel) in
-                var items = [String]()
-                for item in 1...1000 {
-                    items.append("\(item)")
-                }
-                viewModel.titleString = "每日进食量"
-                viewModel.pickerType = .custom
-                viewModel.leftButtonName = "每日进食量参考值"
-                viewModel.dataArray = [items, ["g"]]
-            }) { [weak self] finalString in
-                if let `self` = self {
-                    self.dogEatTextField.text = finalString
-                }
-            }
-            picker!.leftButtonTappedHandler = { [weak self] in
-                guard let `self` = self else {return}
-                self.navigationController?.pushViewController(PJDogFoodViewController(),
-                                                              animated: true)
-            }
-        default: break
-        }
-        
-        return false
-    }
 }
 
 // MARK: - UIImagePicker
@@ -270,10 +163,13 @@ extension PJCreateRealPetViewController: UIImagePickerControllerDelegate, UINavi
                                                                 self.avatarImageView.image = photoImage
         })
         
-        PJImageUploader.upload(assets: [phasset], complateHandler: {
-            
+        PJImageUploader.upload(assets: [phasset],
+                               complateHandler: { [weak self] imgUrls,keys in
+                                guard let `self` = self else { return }
+                                
+                                self.petModel.avatar_key = keys[0]
         }) { (error) in
-            print(error.errorMsg)
+            print(error.errorMsg!)
         }
     }
     
@@ -281,3 +177,116 @@ extension PJCreateRealPetViewController: UIImagePickerControllerDelegate, UINavi
         picker.dismiss(animated: true, completion: nil)
     }
 }
+
+extension PJCreateRealPetViewController: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        guard textField.tag >= 1000 else {
+            return true
+        }
+        
+        switch textField.tag {
+        case 1000:
+            let vc = PJBreedsViewController()
+            vc.selectComplation = { [weak self] model in
+                guard let `self` = self else { return }
+                self.breedTextField.text = model.zh_name ?? ""
+                self.tempBreedModel = model
+                self.petModel.breed_type = model.zh_name
+            }
+            if tempBreedModel != nil {
+                vc.selectedModel = tempBreedModel
+            }
+            navigationController?.pushViewController(vc,
+                                                     animated: true)
+        case 1001:
+            let _ = PJPickerView.showPickerView(viewModel: { (viewModel) in
+                viewModel.titleString = "猫咪的生日"
+                viewModel.pickerType = .time
+            }) { [weak self] finalString in
+                guard let `self` = self else { return }
+                self.birthTextField.text = finalString
+                self.petModel.birth_time = finalString
+            }
+        case 1002:
+            let _ = PJPickerView.showPickerView(viewModel: { (viewModel) in
+                viewModel.titleString = "猫咪体重"
+                var weightArray = [String]()
+                for item in 0...100 {
+                    weightArray.append("\(item)")
+                }
+                var o_weightArray = [String]()
+                for item in 0..<10 {
+                    o_weightArray.append("\(item)")
+                }
+                viewModel.dataArray = [weightArray, o_weightArray, ["kg"]]
+                viewModel.pickerType = .custom
+            }) { [weak self] finalString in
+                guard let `self` = self else { return }
+                guard finalString != "00" else { return }
+                var finalString = finalString
+                if (finalString[finalString.startIndex] == "0") {
+                    finalString.remove(at: finalString.startIndex)
+                }
+                self.weightTextField.text = finalString + "00g"
+                // 修改格式的话，这要改
+                self.petModel.weight = finalString + "00"
+            }
+        case 1003:
+            let _ = PJPickerView.showPickerView(viewModel: { (viewModel) in
+                viewModel.titleString = "绝育情况"
+                viewModel.pickerType = .custom
+                viewModel.dataArray = [["已绝育", "未绝育"]]
+            }) { [weak self] finalString in
+                guard let `self` = self else { return }
+                self.pppTextField.text = finalString
+                self.petModel.ppp_status = finalString
+            }
+        case 1004:
+            let _ = PJPickerView.showPickerView(viewModel: { (viewModel) in
+                viewModel.titleString = "感情状态"
+                viewModel.pickerType = .custom
+                viewModel.dataArray = [["单身", "约会中", "已婚"]]
+            }) { [weak self] finalString in
+                guard let `self` = self else { return }
+                self.loveTextField.text = finalString
+                self.petModel.love_status = finalString
+            }
+        case 1005:
+            let _ = PJPickerView.showPickerView(viewModel: { (viewModel) in
+                viewModel.titleString = "猫咪与您的关系"
+                viewModel.pickerType = .custom
+                viewModel.dataArray = [["我是妈咪", "我是爸比", "我是爷爷", "我是奶奶",
+                                        "我是姐姐", "我是哥哥", "我是弟弟", "我是妹妹",
+                                        "我是干爸", "我是干妈", "我是叔叔", "我是阿姨",]]
+            }) { [weak self] finalString in
+                guard let `self` = self else { return }
+                self.relationshipTextField.text = finalString
+                self.petModel.family_relation = finalString
+            }
+        case 1006:
+            let picker = PJPickerView.showPickerView(viewModel: { (viewModel) in
+                var items = [String]()
+                for item in 1...1000 {
+                    items.append("\(item)")
+                }
+                viewModel.titleString = "每日进食量"
+                viewModel.pickerType = .custom
+                viewModel.leftButtonName = "每日进食量参考值"
+                viewModel.dataArray = [items, ["g"]]
+            }) { [weak self] finalString in
+                guard let `self` = self else { return }
+                self.dogEatTextField.text = finalString
+                self.petModel.food_weight = finalString
+            }
+            picker!.leftButtonTappedHandler = { [weak self] in
+                guard let `self` = self else {return}
+                self.navigationController?.pushViewController(PJDogFoodViewController(),
+                                                              animated: true)
+            }
+        default: break
+        }
+        
+        return false
+    }
+}
+

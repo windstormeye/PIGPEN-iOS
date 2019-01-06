@@ -25,11 +25,14 @@ class PJRealPet {
                                             var models = [RealPetBreedGroupModel]()
                                             let dicts = dataDic["msg"]!["breeds"].arrayValue
                                             for dict in dicts {
-                                                // TODO: JSONDecoder 改
-                                                if let model = try? JSONDecoder().decode(RealPetBreedGroupModel.self,
-                                                                                         from: dict.rawData()) {
-                                                    models.append(model)
+                                                let model = dataConvertToModel(RealPetBreedGroupModel(), from: dict)
+                                                if model != nil {
+                                                    models.append(model!)
                                                 }
+//                                                if let model = try? JSONDecoder().decode(RealPetBreedGroupModel.self,
+//                                                                                         from: dict.rawData()) {
+//                                                    models.append(model)
+//                                                }
                                             }
                                             complationHandler(models)
                                         } else {
@@ -41,11 +44,20 @@ class PJRealPet {
             failedHandler(PJNetwork.Error(errorCode: 0, errorMsg: "未知错误"))
         }
     }
+    
+    /// 创建新宠物
+    class func createPet(model: RealPetRegisterModel,
+                         complateHandler: @escaping ((RealPetModel) -> Void),
+                         failureHandler: @escaping ((PJNetwork.Error) -> Void)) {
+        // 想想看能不能直接模型转字典，不能
+//        let parameters = []
+    }
 }
 
 extension PJRealPet {
     enum RealPetUrl: String {
         case breeds = "realPet/breeds"
+        case create = "realPet/createPet"
     }
     
     struct RealPetModel: Codable {
@@ -58,6 +70,22 @@ extension PJRealPet {
         var love_status: Int?
         var family_relation: Int?
         var birth_time: String?
+        var avatar_url: String?
+    }
+    
+    struct RealPetRegisterModel: Codable {
+        var pet_nick_name: String?
+        var gender: Int?
+        var pet_type: String?
+        var weight: String?
+        var ppp_status: String?
+        var love_status: String?
+        var family_relation: String?
+        var birth_time: String?
+        var avatar_key: String?
+        var relation_code: String?
+        var breed_type: String?
+        var food_weight: String?
     }
     
     struct RealPetBreedModel: Codable {

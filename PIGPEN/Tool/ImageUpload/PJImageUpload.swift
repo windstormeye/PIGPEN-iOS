@@ -11,8 +11,9 @@ import Photos
 import Qiniu
 
 class PJImageUploader {
+    /// 上传图片
     class func upload(assets: [PHAsset],
-                      complateHandler: @escaping (() -> Void),
+                      complateHandler: @escaping (([String], [String]) -> Void),
                       falierHandler: @escaping ((PJNetwork.Error) -> Void)) {
         PJNetwork.shared.requstWithGet(path: URL.upload.rawValue,
                                        parameters: ["imageCount": String(assets.count)],
@@ -20,20 +21,25 @@ class PJImageUploader {
                                         if dataDict["msgCode"]?.intValue == 0 {
                                             var dataDict = dataDict["msg"]!
                                             let tokens = dataDict["upload_tokens"].arrayValue
+                                            // `setKey` 方法参数
                                             var keys = ""
-                                            var c_index = 0
+                                            // complateHandler 闭包回调参数
+                                            var complateKeys = [String]()
                                             for c_i in 0..<assets.count {
-                                                QNUploadManager()?.put(assets[c_i], key: nil, token: tokens[c_i].string, complete: { (info, key, respDict) in
-                                                    guard let `respDict` = respDict else { return }
-                                                    // key 即为文件名
+                                                let token = tokens[c_i]["img_token"].string
+                                                let key = tokens[c_i]["img_key"].string
+                                                complateKeys.append(key!)
+                                                // 七牛上传
+                                                QNUploadManager()?.put(assets[c_i], key: key, token: token, complete: { (info, key, respDict) in
+                                                    guard let respDict = respDict else { return }
+                                                    // key 即为文件名。拼接完成后一次性丢给 API
                                                     let key = respDict["key"]
                                                     keys += "," + String(key as! String)
-                                                    c_index += 1
                                                     
-                                                    if c_index == assets.count {
+                                                    if c_i == assets.count - 1 {
                                                         keys.removeFirst()
                                                         setKey(key: keys, complateHandler: { (imgUrls) in
-                                                            // TODO: 还是有些问题，需要搞懂七牛云对私有空间怎么下载
+                                                            complateHandler(imgUrls, complateKeys)
                                                         }, failuredHandler: { (error) in
                                                             falierHandler(error)
                                                         })
@@ -58,12 +64,11 @@ class PJImageUploader {
                                             complement: { (dataDict) in
                                                 if dataDict["msgCode"]?.intValue == 0 {
                                                     var dataDict = dataDict["msg"]!
-                                                    let keys = dataDict["image_urls"].string
+                                                    let keys = dataDict["image_urls"].array
                                                     if keys != nil {
-                                                        let ks = keys!.split(separator: ",")
                                                         var k = [String]()
-                                                        for key in ks {
-                                                            k.append(String(key))
+                                                        for key in keys! {
+                                                            k.append(key.string!)
                                                         }
                                                         complateHandler(k)
                                                     }
