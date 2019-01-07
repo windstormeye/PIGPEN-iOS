@@ -16,8 +16,7 @@ extension PJUserDateilsRealPetColletionViewDelegate {
     func PJUserDateilsRealPetColletionViewDidSelectedIndex(collectionView: PJUserDateilsRealPetColletionView, index: Int) {}
 }
 
-class PJUserDateilsRealPetColletionView: UICollectionView,
-UICollectionViewDelegate, UICollectionViewDataSource {
+class PJUserDateilsRealPetColletionView: UICollectionView {
     static let cellIdentifier = "PJUserDateilsRealPetColletionViewCell"
     
     var viewDelegate: PJUserDateilsRealPetColletionViewDelegate?
@@ -44,25 +43,22 @@ UICollectionViewDelegate, UICollectionViewDataSource {
         register(UICollectionViewCell.self,
                  forCellWithReuseIdentifier: PJUserDateilsRealPetColletionView.cellIdentifier)
     }
-    
+}
+
+extension PJUserDateilsRealPetColletionView: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        if dataArray.count == 0 {
-            return 1
-        } else {
-            return dataArray.count
-        }
+        return dataArray.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PJUserDateilsRealPetColletionView.cellIdentifier, for: indexPath)
-        let count = dataArray.count - 1
-        if indexPath.row == (count < 0 ? 0 : count) {
+        if indexPath.row == dataArray.count {
             let cellImageView = UIImageView(frame: CGRect(x: 0, y: 0,
                                                           width: cell.width,
                                                           height: cell.height))
@@ -72,12 +68,16 @@ UICollectionViewDelegate, UICollectionViewDataSource {
             let cellImageView = UIImageView(frame: CGRect(x: 0, y: 0,
                                                           width: cell.width,
                                                           height: cell.height))
-            cellImageView.image = UIImage(named: "pet_avatar")
+            let cellModel = dataArray[indexPath.row]
+            // TODO: 需要设置占位图
+            cellImageView.kf.setImage(with: URL(string: cellModel.avatar_url!))
+            cellImageView.layer.cornerRadius = 40
+            cellImageView.clipsToBounds = true
             cell.contentView.addSubview(cellImageView)
         }
         return cell
     }
-
+    
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         viewDelegate?.PJUserDateilsRealPetColletionViewDidSelectedIndex(collectionView: self,

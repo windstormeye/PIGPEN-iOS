@@ -30,20 +30,23 @@ class PJImageUploader {
                                                 let key = tokens[c_i]["img_key"].string
                                                 complateKeys.append(key!)
                                                 // 七牛上传
-                                                QNUploadManager()?.put(assets[c_i], key: key, token: token, complete: { (info, key, respDict) in
-                                                    guard let respDict = respDict else { return }
-                                                    // key 即为文件名。拼接完成后一次性丢给 API
-                                                    let key = respDict["key"]
-                                                    keys += "," + String(key as! String)
+                                                QNUploadManager()?.put(assets[c_i],
+                                                                       key: key,
+                                                                       token: token,
+                                                                       complete: { (info, key, respDict) in
+                                                                        guard let respDict = respDict else { return }
+                                                                        // key 即为文件名。拼接完成后一次性丢给 API
+                                                                        let key = respDict["key"]
+                                                                        keys += "," + String(key as! String)
                                                     
-                                                    if c_i == assets.count - 1 {
-                                                        keys.removeFirst()
-                                                        setKey(key: keys, complateHandler: { (imgUrls) in
-                                                            complateHandler(imgUrls, complateKeys)
-                                                        }, failuredHandler: { (error) in
-                                                            falierHandler(error)
-                                                        })
-                                                    }
+                                                                        if c_i == assets.count - 1 {
+                                                                            keys.removeFirst()
+                                                                            setKey(key: keys, complateHandler: { (imgUrls) in
+                                                                                complateHandler(imgUrls, complateKeys)
+                                                                            }, failuredHandler: { (error) in
+                                                                                falierHandler(error)
+                                                                            })
+                                                                        }
                                                 }, option: nil)
                                             }
                                         } else {
@@ -54,29 +57,29 @@ class PJImageUploader {
         }) { (errorString) in
             falierHandler(PJNetwork.Error(errorCode: nil, errorMsg: errorString))
         }
-        
-        /// 上传 keys 且换回图片完整 url
-        func setKey(key: String,
-                    complateHandler: @escaping ((([String]) -> Void)),
-                    failuredHandler: @escaping ((PJNetwork.Error) -> Void)) {
-            PJNetwork.shared.requstWithPost(path: URL.setKey.rawValue,
-                                            parameters: ["keys": key],
-                                            complement: { (dataDict) in
-                                                if dataDict["msgCode"]?.intValue == 0 {
-                                                    var dataDict = dataDict["msg"]!
-                                                    let keys = dataDict["image_urls"].array
-                                                    if keys != nil {
-                                                        var k = [String]()
-                                                        for key in keys! {
-                                                            k.append(key.string!)
-                                                        }
-                                                        complateHandler(k)
+    }
+    
+    /// 通过 拼接完后的所有 keys 换回图片完整 url
+    class func setKey(key: String,
+                complateHandler: @escaping ((([String]) -> Void)),
+                failuredHandler: @escaping ((PJNetwork.Error) -> Void)) {
+        PJNetwork.shared.requstWithPost(path: URL.setKey.rawValue,
+                                        parameters: ["keys": key],
+                                        complement: { (dataDict) in
+                                            if dataDict["msgCode"]?.intValue == 0 {
+                                                var dataDict = dataDict["msg"]!
+                                                let keys = dataDict["image_urls"].array
+                                                if keys != nil {
+                                                    var k = [String]()
+                                                    for key in keys! {
+                                                        k.append(key.string!)
                                                     }
+                                                    complateHandler(k)
                                                 }
-            }) { (errorString) in
-                let error = PJNetwork.Error(errorCode: nil, errorMsg: errorString)
-                falierHandler(error)
-            }
+                                            }
+        }) { (errorString) in
+            let error = PJNetwork.Error(errorCode: nil, errorMsg: errorString)
+            failuredHandler(error)
         }
     }
 }

@@ -15,9 +15,8 @@ class PJRealPet {
                          complationHandler: @escaping ([RealPetBreedGroupModel]) -> Void,
                          failedHandler: @escaping (PJNetwork.Error) -> Void) {
         let parameters = [
-            "nick_name": PJUser.shared.userModel?.nick_name ?? "",
             "pet_type": petType
-            ]
+        ]
         PJNetwork.shared.requstWithGet(path: RealPetUrl.breeds.rawValue,
                                        parameters: parameters,
                                        complement: { (dataDic) in
@@ -25,14 +24,11 @@ class PJRealPet {
                                             var models = [RealPetBreedGroupModel]()
                                             let dicts = dataDic["msg"]!["breeds"].arrayValue
                                             for dict in dicts {
-                                                let model = dataConvertToModel(RealPetBreedGroupModel(), from: dict)
+                                                let model = dataConvertToModel(RealPetBreedGroupModel(),
+                                                                               from: try! dict.rawData())
                                                 if model != nil {
                                                     models.append(model!)
                                                 }
-//                                                if let model = try? JSONDecoder().decode(RealPetBreedGroupModel.self,
-//                                                                                         from: dict.rawData()) {
-//                                                    models.append(model)
-//                                                }
                                             }
                                             complationHandler(models)
                                         } else {
@@ -49,8 +45,32 @@ class PJRealPet {
     class func createPet(model: RealPetRegisterModel,
                          complateHandler: @escaping ((RealPetModel) -> Void),
                          failureHandler: @escaping ((PJNetwork.Error) -> Void)) {
-        // 想想看能不能直接模型转字典，不能
-//        let parameters = []
+        let parameters = [
+            "pet_nick_name": model.pet_nick_name!,
+            "gender": model.gender!,
+            "pet_type": model.pet_type!,
+            "birth_time": model.birth_time!,
+            "weight": model.weight!,
+            "ppp_status": model.ppp_status!,
+            "love_status": model.love_status!,
+            "relation_code": model.relation_code!,
+            "avatar_key": model.avatar_key!,
+            "breed_type": model.breed_type!,
+            "food_weight": model.food_weight!
+        ]
+        
+        PJNetwork.shared.requstWithPost(path: RealPetUrl.create.rawValue,
+                                        parameters: parameters,
+                                        complement: { (resDict) in
+                                            if resDict["msgCode"]?.intValue == 0 {
+                                                let petModel = dataConvertToModel(RealPetModel(),
+                                                                               from: try! (resDict["msg"]?.rawData())!)
+                                                complateHandler(petModel!)
+                                            }
+        }) { (errorString) in
+            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
+            failureHandler(error)
+        }
     }
 }
 
@@ -65,22 +85,21 @@ extension PJRealPet {
         var nick_name: String?
         var gender: Int?
         var pet_type: String?
-        var weight: String?
+        var weight: Int?
         var ppp_status: Int?
         var love_status: Int?
-        var family_relation: Int?
+        var relationship: Int?
         var birth_time: String?
         var avatar_url: String?
     }
     
     struct RealPetRegisterModel: Codable {
         var pet_nick_name: String?
-        var gender: Int?
+        var gender: String?
         var pet_type: String?
         var weight: String?
         var ppp_status: String?
         var love_status: String?
-        var family_relation: String?
         var birth_time: String?
         var avatar_key: String?
         var relation_code: String?

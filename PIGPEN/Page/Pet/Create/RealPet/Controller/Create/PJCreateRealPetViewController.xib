@@ -37,7 +37,7 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boe-8s-hP0">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_info_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="OJN-ar-1w6">
+                        <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_info_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="OJN-ar-1w6">
                             <rect key="frame" x="142.5" y="20" width="90" height="90"/>
                             <gestureRecognizers/>
                             <constraints>
@@ -50,7 +50,7 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </imageView>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入宠物的名字" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mX8-3i-vNh">
+                        <textField opaque="NO" tag="1007" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入宠物的名字" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mX8-3i-vNh">
                             <rect key="frame" x="94.5" y="130" width="186" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="186" id="9c7-FW-VoX"/>
@@ -321,17 +321,8 @@
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <connections>
-                <outletCollection property="gestureRecognizers" destination="CRS-r3-pW3" appends="YES" id="cDy-JT-n6p"/>
-            </connections>
             <point key="canvasLocation" x="53.600000000000001" y="48.125937031484263"/>
         </view>
-        <tapGestureRecognizer id="CRS-r3-pW3">
-            <connections>
-                <action selector="avatarTapped:" destination="-1" id="qaC-i0-ceJ"/>
-                <outlet property="delegate" destination="OJN-ar-1w6" id="H2B-Dq-QyC"/>
-            </connections>
-        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="user_info_avatar" width="90" height="90"/>

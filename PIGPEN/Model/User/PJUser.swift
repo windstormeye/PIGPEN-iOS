@@ -291,10 +291,8 @@ extension PJUser {
                                             
                                             for dict in realPetDicts {
                                                 // TODO: JSONDecoder 改
-                                                if let model = try? JSONDecoder().decode(PJRealPet.RealPetModel.self,
-                                                                                         from: dict.rawData()) {
-                                                    realPetModels.append(model)
-                                                }
+                                                let model = dataConvertToModel(PJRealPet.RealPetModel(), from: try! dict.rawData())
+                                                realPetModels.append(model!)
                                             }
                                             
                                             for dict in virtualPetDicts {

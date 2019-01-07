@@ -11,6 +11,7 @@ import Photos
 
 fileprivate extension Selector {
     static let back = #selector(PJCreateRealPetViewController.back)
+    static let avatarTap = #selector(PJCreateRealPetViewController.avatarTapped)
 }
 
 class PJCreateRealPetViewController: PJBaseViewController {
@@ -70,6 +71,9 @@ class PJCreateRealPetViewController: PJBaseViewController {
         loveTextField.delegate = self
         dogEatTextField.delegate = self
         
+        let avatarTapped = UITapGestureRecognizer(target: self, action: .avatarTap)
+        avatarImageView.addGestureRecognizer(avatarTapped)
+        
         // 该段代码不能放入 `viewWillLayoutSubviews`，PJAlertView dismiss 后会再调用一次
         switch catOrDog {
         case .dog:
@@ -78,6 +82,9 @@ class PJCreateRealPetViewController: PJBaseViewController {
             dogEatTextField.isHidden = true
             dogEatLineView.isHidden = true
         }
+        
+        // TODO：写完 HUD 后这里要改！！！
+        petModel.pet_type = "dog"
     }
     
     // MARK: Action
@@ -89,21 +96,26 @@ class PJCreateRealPetViewController: PJBaseViewController {
         femaleButton.isSelected = !femaleButton.isSelected
         maleButton.isSelected = false
         // 女性
-        petModel.gender = 0
+        petModel.gender = "0"
     }
     
     @IBAction func maleButtonTapped(_ sender: UIButton) {
         maleButton.isSelected = !maleButton.isSelected
         femaleButton.isSelected = false
         // 男性
-        petModel.gender = 1
+        petModel.gender = "1"
     }
     
     @IBAction func okButtonTapped(_ sender: UIButton) {
-        
+        petModel.pet_nick_name = nameTextField.text
+        PJRealPet.createPet(model: petModel, complateHandler: { (model) in
+            
+        }) { (error) in
+            print(error.errorMsg!)
+        }
     }
     
-    @IBAction func avatarTapped(_ sender: UITapGestureRecognizer) {
+    @objc func avatarTapped() {
 //        let album = PJAlbumDataManager.manager().albums.filter({ (collection) -> Bool in
 //            return collection.assetCollectionSubtype == .smartAlbumUserLibrary
 //        })
@@ -202,7 +214,7 @@ extension PJCreateRealPetViewController: UITextFieldDelegate {
             let _ = PJPickerView.showPickerView(viewModel: { (viewModel) in
                 viewModel.titleString = "猫咪的生日"
                 viewModel.pickerType = .time
-            }) { [weak self] finalString in
+            }) { [weak self] finalString, selectedViewModel in
                 guard let `self` = self else { return }
                 self.birthTextField.text = finalString
                 self.petModel.birth_time = finalString
@@ -220,7 +232,7 @@ extension PJCreateRealPetViewController: UITextFieldDelegate {
                 }
                 viewModel.dataArray = [weightArray, o_weightArray, ["kg"]]
                 viewModel.pickerType = .custom
-            }) { [weak self] finalString in
+            }) { [weak self] finalString, selectedViewModel  in
                 guard let `self` = self else { return }
                 guard finalString != "00" else { return }
                 var finalString = finalString
@@ -236,20 +248,20 @@ extension PJCreateRealPetViewController: UITextFieldDelegate {
                 viewModel.titleString = "绝育情况"
                 viewModel.pickerType = .custom
                 viewModel.dataArray = [["已绝育", "未绝育"]]
-            }) { [weak self] finalString in
+            }) { [weak self] finalString, selectedViewModel in
                 guard let `self` = self else { return }
                 self.pppTextField.text = finalString
-                self.petModel.ppp_status = finalString
+                self.petModel.ppp_status = String(selectedViewModel.row)
             }
         case 1004:
             let _ = PJPickerView.showPickerView(viewModel: { (viewModel) in
                 viewModel.titleString = "感情状态"
                 viewModel.pickerType = .custom
                 viewModel.dataArray = [["单身", "约会中", "已婚"]]
-            }) { [weak self] finalString in
+            }) { [weak self] finalString, selectedViewModel in
                 guard let `self` = self else { return }
                 self.loveTextField.text = finalString
-                self.petModel.love_status = finalString
+                self.petModel.love_status = String(selectedViewModel.row)
             }
         case 1005:
             let _ = PJPickerView.showPickerView(viewModel: { (viewModel) in
@@ -258,10 +270,10 @@ extension PJCreateRealPetViewController: UITextFieldDelegate {
                 viewModel.dataArray = [["我是妈咪", "我是爸比", "我是爷爷", "我是奶奶",
                                         "我是姐姐", "我是哥哥", "我是弟弟", "我是妹妹",
                                         "我是干爸", "我是干妈", "我是叔叔", "我是阿姨",]]
-            }) { [weak self] finalString in
+            }) { [weak self] finalString, selectedViewModel in
                 guard let `self` = self else { return }
                 self.relationshipTextField.text = finalString
-                self.petModel.family_relation = finalString
+                self.petModel.relation_code = String(selectedViewModel.row)
             }
         case 1006:
             let picker = PJPickerView.showPickerView(viewModel: { (viewModel) in
@@ -273,10 +285,13 @@ extension PJCreateRealPetViewController: UITextFieldDelegate {
                 viewModel.pickerType = .custom
                 viewModel.leftButtonName = "每日进食量参考值"
                 viewModel.dataArray = [items, ["g"]]
-            }) { [weak self] finalString in
+            }) { [weak self] finalString, selectedViewModel in
                 guard let `self` = self else { return }
+                
                 self.dogEatTextField.text = finalString
-                self.petModel.food_weight = finalString
+                var f_s = finalString
+                f_s.removeLast()
+                self.petModel.food_weight = f_s
             }
             picker!.leftButtonTappedHandler = { [weak self] in
                 guard let `self` = self else {return}

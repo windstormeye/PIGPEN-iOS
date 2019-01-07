@@ -11,7 +11,11 @@ import UIKit
 class PJUserDetailRealPetTableViewCell: UITableViewCell {
     
     var viewDelegate: PJUserDetailRealPetTableViewCellDelegate?
-    var realPetModels: [PJRealPet.RealPetModel]?
+    var realPetModels: [PJRealPet.RealPetModel]? {
+        didSet { didSetRealPetModel() }
+    }
+    
+    private var avatarCollectionView: PJUserDateilsRealPetColletionView?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -35,14 +39,16 @@ class PJUserDetailRealPetTableViewCell: UITableViewCell {
                                                               bottom: 0, right: 0)
 
         let collectionViewRect = CGRect(x: 0, y: 0, width: PJSCREEN_WIDTH, height: 100)
-        let avatarCollectionView = PJUserDateilsRealPetColletionView(frame: collectionViewRect,
+        avatarCollectionView = PJUserDateilsRealPetColletionView(frame: collectionViewRect,
                                                                     collectionViewLayout: collectionViewLayout)
-        avatarCollectionView.alwaysBounceHorizontal = true
-        avatarCollectionView.viewDelegate = self
-        contentView.addSubview(avatarCollectionView)
-        
-        avatarCollectionView.dataArray = realPetModels ?? [PJRealPet.RealPetModel]()
-        avatarCollectionView.reloadData()
+        avatarCollectionView?.alwaysBounceHorizontal = true
+        avatarCollectionView?.viewDelegate = self
+        contentView.addSubview(avatarCollectionView!)
+    }
+    
+    private func didSetRealPetModel() {
+        avatarCollectionView?.dataArray = realPetModels ?? [PJRealPet.RealPetModel]()
+        avatarCollectionView?.reloadData()
     }
 }
 
@@ -58,8 +64,7 @@ extension PJUserDetailRealPetTableViewCellDelegate {
 
 extension PJUserDetailRealPetTableViewCell: PJUserDateilsRealPetColletionViewDelegate {
     func PJUserDateilsRealPetColletionViewDidSelectedIndex(collectionView: PJUserDateilsRealPetColletionView, index: Int) {
-        let count = collectionView.dataArray.count  - 1
-        if index == (count < 0 ? 0 : count) {
+        if index == collectionView.dataArray.count {
             viewDelegate?.PJUserDetailPetTableViewCellNewPetTapped()
         } else {
             viewDelegate?.PJUserDetailPetTableViewCellAvatarTapped()

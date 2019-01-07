@@ -31,8 +31,9 @@ UIPickerViewDataSource {
     }
 
     var leftButtonTappedHandler: (() -> Void)?
-    private var complationHandler: ((String) -> Void)?
+    private var complationHandler: ((String, ViewModel) -> Void)?
     private var viewModel: PickerModel?
+    private var seletedViewModel = ViewModel()
     private var backgroundView: UIView?
     private var topView: UIView?
     private var titleLabel: UILabel?
@@ -46,7 +47,7 @@ UIPickerViewDataSource {
     
     // MARK: - Public
     class func showPickerView(viewModel: ((_ model: inout PickerModel) -> Void)?,
-                              complationHandler: @escaping (String) -> Void) -> PJPickerView? {
+                              complationHandler: @escaping (String, ViewModel) -> Void) -> PJPickerView? {
         let picker = PJPickerView()
         picker.viewModel = PickerModel()
         if viewModel != nil {
@@ -196,7 +197,7 @@ UIPickerViewDataSource {
             finalString = dateFormatter.string(from: datePicker!.date)
         }
         if complationHandler != nil {
-            complationHandler!(finalString)
+            complationHandler!(finalString, seletedViewModel)
             dismissView()
         }
     }
@@ -243,5 +244,14 @@ UIPickerViewDataSource {
         case 1: secondTitle = string
         default: break
         }
+        seletedViewModel.section = row
+        seletedViewModel.row = component
+    }
+}
+
+extension PJPickerView {
+    struct ViewModel {
+        var section = 0
+        var row = 0
     }
 }

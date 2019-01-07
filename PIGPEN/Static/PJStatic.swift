@@ -74,16 +74,14 @@ func windowFromLevel(level: UIWindow.Level) -> UIWindow? {
 ///
 /// - parameter model: 模型对象
 /// - parameter data: 字典
-func dataConvertToModel<T: Codable>(_ model: T, from data: Any) -> T? {
+func dataConvertToModel<T: Codable>(_ model: T, from data: Data) -> T? {
     do {
-        let json = try JSONSerialization.data(withJSONObject: data, options: [])
-        do {
-            return try JSONDecoder().decode(T.self, from: json)
-        } catch {
-            assert(true, "dataConvertToModel JSONDecoder error:\(error.localizedDescription)")
-        }
+        return try JSONDecoder().decode(T.self, from: data)
     } catch {
-        assert(true, "dataConvertToModel JSONSerialization error:\(error.localizedDescription)")
+        debugOnly {
+            print("dataConvertToModel JSONDecoder error:\(error.localizedDescription)")
+        }
+        assert(true, "dataConvertToModel JSONDecoder error:\(error.localizedDescription)")
     }
     return nil
 }
