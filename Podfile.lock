@@ -10,9 +10,6 @@ PODS:
   - Qiniu (7.2.5):
     - HappyDNS (~> 0.3)
   - Schedule (0.1.0)
-  - SDWebImage (4.4.2):
-    - SDWebImage/Core (= 4.4.2)
-  - SDWebImage/Core (4.4.2)
   - SwiftyJSON (4.1.0)
 
 DEPENDENCIES:
@@ -23,7 +20,6 @@ DEPENDENCIES:
   - mob_smssdk
   - Qiniu
   - Schedule
-  - SDWebImage
   - SwiftyJSON
 
 SPEC REPOS:
@@ -37,7 +33,6 @@ SPEC REPOS:
     - MOBFoundation
     - Qiniu
     - Schedule
-    - SDWebImage
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -50,9 +45,8 @@ SPEC CHECKSUMS:
   MOBFoundation: 7f1e157be332576e4d45809a03bc733292c6ad8d
   Qiniu: 909b408ee489ea54827e9717be90b94bc9dfbc48
   Schedule: 62cd2defb026a3607349b2a2b1bd8ec3fd12cccd
-  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: 39208efe918975508326ad14d4cbc7cec8dcce7b
+PODFILE CHECKSUM: e9c0c8241ecf4d0c2cf74491aa7368fff2cb6dc7
 
 COCOAPODS: 1.5.3

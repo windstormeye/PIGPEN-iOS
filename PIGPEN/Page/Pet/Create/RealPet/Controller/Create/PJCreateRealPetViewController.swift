@@ -96,20 +96,20 @@ class PJCreateRealPetViewController: PJBaseViewController {
         femaleButton.isSelected = !femaleButton.isSelected
         maleButton.isSelected = false
         // 女性
-        petModel.gender = "0"
+        petModel.gender = 0
     }
     
     @IBAction func maleButtonTapped(_ sender: UIButton) {
         maleButton.isSelected = !maleButton.isSelected
         femaleButton.isSelected = false
         // 男性
-        petModel.gender = "1"
+        petModel.gender = 1
     }
     
     @IBAction func okButtonTapped(_ sender: UIButton) {
         petModel.pet_nick_name = nameTextField.text
         PJRealPet.createPet(model: petModel, complateHandler: { (model) in
-            
+            self.navigationController?.popViewController(animated: true)
         }) { (error) in
             print(error.errorMsg!)
         }
@@ -241,7 +241,7 @@ extension PJCreateRealPetViewController: UITextFieldDelegate {
                 }
                 self.weightTextField.text = finalString + "00g"
                 // 修改格式的话，这要改
-                self.petModel.weight = finalString + "00"
+                self.petModel.weight = Int(finalString + "00")
             }
         case 1003:
             let _ = PJPickerView.showPickerView(viewModel: { (viewModel) in
@@ -251,7 +251,7 @@ extension PJCreateRealPetViewController: UITextFieldDelegate {
             }) { [weak self] finalString, selectedViewModel in
                 guard let `self` = self else { return }
                 self.pppTextField.text = finalString
-                self.petModel.ppp_status = String(selectedViewModel.row)
+                self.petModel.ppp_status = selectedViewModel.row
             }
         case 1004:
             let _ = PJPickerView.showPickerView(viewModel: { (viewModel) in
@@ -261,7 +261,7 @@ extension PJCreateRealPetViewController: UITextFieldDelegate {
             }) { [weak self] finalString, selectedViewModel in
                 guard let `self` = self else { return }
                 self.loveTextField.text = finalString
-                self.petModel.love_status = String(selectedViewModel.row)
+                self.petModel.love_status = selectedViewModel.row
             }
         case 1005:
             let _ = PJPickerView.showPickerView(viewModel: { (viewModel) in
@@ -273,7 +273,7 @@ extension PJCreateRealPetViewController: UITextFieldDelegate {
             }) { [weak self] finalString, selectedViewModel in
                 guard let `self` = self else { return }
                 self.relationshipTextField.text = finalString
-                self.petModel.relation_code = String(selectedViewModel.row)
+                self.petModel.relation_code = selectedViewModel.row
             }
         case 1006:
             let picker = PJPickerView.showPickerView(viewModel: { (viewModel) in

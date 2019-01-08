@@ -63,7 +63,8 @@ extension PJUserDateilsRealPetColletionView: UICollectionViewDelegate, UICollect
                                                           width: cell.width,
                                                           height: cell.height))
             cellImageView.image = UIImage(named: "user_details_addPet")
-            cell.contentView.addSubview(cellImageView)
+            cell.addSubview(cellImageView)
+//            cell.contentView.addSubview(cellImageView)
         } else {
             let cellImageView = UIImageView(frame: CGRect(x: 0, y: 0,
                                                           width: cell.width,
@@ -73,7 +74,8 @@ extension PJUserDateilsRealPetColletionView: UICollectionViewDelegate, UICollect
             cellImageView.kf.setImage(with: URL(string: cellModel.avatar_url!))
             cellImageView.layer.cornerRadius = 40
             cellImageView.clipsToBounds = true
-            cell.contentView.addSubview(cellImageView)
+            cell.addSubview(cellImageView)
+//            cell.contentView.addSubview(cellImageView)
         }
         return cell
     }

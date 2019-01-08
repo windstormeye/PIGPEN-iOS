@@ -12,11 +12,21 @@ class PJUserDetailsViewController: PJBaseViewController {
 
     var tableView: PJUserDetailsTableView?
     var menuBackViewButton: UIButton?
+    var isFirstLoad = false
     
     // MARK: init Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        guard isFirstLoad else {
+            isFirstLoad = true
+            return
+        }
+        viewWillData()
     }
 
     private func initView() {
@@ -39,27 +49,7 @@ class PJUserDetailsViewController: PJBaseViewController {
         menuBackViewButton?.backgroundColor = .clear
         view.addSubview(menuBackViewButton!)
         
-        if PJUser.shared.userModel?.uid != nil {
-            PJUser.shared.pets(complateHandler: { [weak self] realPetModels, virtualPetModels in
-                guard let `self` = self else { return }
-                self.tableView?.realPetModels = realPetModels
-                self.tableView?.virtualPetModels = virtualPetModels
-                self.tableView?.reloadData()
-            }) { (error) in
-                PJTapic.error()
-                print(error)
-            }
-            
-            PJUser.shared.details(details_uid: PJUser.shared.userModel?.uid ?? "",
-                                  getSelf: true,
-                                  completeHandler: { (userModel) in
-                                    self.tableView?.userDetailsModel = userModel
-                                    self.tableView?.reloadData()
-            }) { (error) in
-                PJTapic.error()
-                print(error)
-            }
-        }
+        viewWillData()
         
         NotificationCenter.default.addObserver(self,
                                                selector: .loginSuccess,
@@ -97,6 +87,30 @@ extension PJUserDetailsViewController {
     @objc fileprivate func menu() {
         menuView.isHidden = !menuView.isHidden
         menuBackViewButton?.isHidden = !menuBackViewButton!.isHidden
+    }
+    
+    func viewWillData() {
+        if PJUser.shared.userModel?.uid != nil {
+            PJUser.shared.pets(complateHandler: { [weak self] realPetModels, virtualPetModels in
+                guard let `self` = self else { return }
+                self.tableView?.realPetModels = realPetModels
+                self.tableView?.virtualPetModels = virtualPetModels
+                self.tableView?.reloadData()
+            }) { (error) in
+                PJTapic.error()
+                print(error)
+            }
+            
+            PJUser.shared.details(details_uid: PJUser.shared.userModel?.uid ?? "",
+                                  getSelf: true,
+                                  completeHandler: { (userModel) in
+                                    self.tableView?.userDetailsModel = userModel
+                                    self.tableView?.reloadData()
+            }) { (error) in
+                PJTapic.error()
+                print(error)
+            }
+        }
     }
 }
 

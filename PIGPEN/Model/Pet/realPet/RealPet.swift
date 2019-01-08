@@ -57,14 +57,14 @@ class PJRealPet {
             "avatar_key": model.avatar_key!,
             "breed_type": model.breed_type!,
             "food_weight": model.food_weight!
-        ]
+            ] as [String : Any]
         
         PJNetwork.shared.requstWithPost(path: RealPetUrl.create.rawValue,
                                         parameters: parameters,
                                         complement: { (resDict) in
                                             if resDict["msgCode"]?.intValue == 0 {
                                                 let petModel = dataConvertToModel(RealPetModel(),
-                                                                               from: try! (resDict["msg"]?.rawData())!)
+                                                                                  from: try! (resDict["msg"]?.rawData())!)
                                                 complateHandler(petModel!)
                                             }
         }) { (errorString) in
@@ -81,28 +81,30 @@ extension PJRealPet {
     }
     
     struct RealPetModel: Codable {
+        var gender: Int?
+        var weight: Int?
+        var ppp_status: Int?
+        var love_status: Int?
+        var relationship: Int?
         var pet_id: String?
+        var pet_type: String?
         var nick_name: String?
+        var birth_time: String?
+        var avatar_url: String?
+        var breed_type: String?
+        var created_time: String?
+    }
+    
+    struct RealPetRegisterModel: Codable {
+        var pet_nick_name: String?
         var gender: Int?
         var pet_type: String?
         var weight: Int?
         var ppp_status: Int?
         var love_status: Int?
-        var relationship: Int?
-        var birth_time: String?
-        var avatar_url: String?
-    }
-    
-    struct RealPetRegisterModel: Codable {
-        var pet_nick_name: String?
-        var gender: String?
-        var pet_type: String?
-        var weight: String?
-        var ppp_status: String?
-        var love_status: String?
         var birth_time: String?
         var avatar_key: String?
-        var relation_code: String?
+        var relation_code: Int?
         var breed_type: String?
         var food_weight: String?
     }

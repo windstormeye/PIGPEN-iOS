@@ -54,7 +54,7 @@ class PJNetwork {
     
     
     func requstWithPost(path: String,
-                        parameters: [String: String],
+                        parameters: [String: Any],
                         complement: @escaping ([String: JSON]) -> Void,
                         failed: @escaping (String) -> Void) {
         var parameters = parameters
@@ -108,7 +108,7 @@ class PJNetwork {
     }
     
     
-    private func parametersHandler(parameters: [String: String]) -> Parameters {
+    private func parametersHandler(parameters: [String: Any]) -> Parameters {
         var pa = Parameters()
         for (k ,v) in parameters {
             pa[k] = v

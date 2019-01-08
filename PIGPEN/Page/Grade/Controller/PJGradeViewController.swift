@@ -8,7 +8,6 @@
 
 import UIKit
 import Kingfisher
-import SDWebImage
 
 class PJGradeViewController: PJBaseViewController {
     // MARK: - Private Properties
