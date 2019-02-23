@@ -118,6 +118,7 @@ extension PJUserDetailsTableView: UITableViewDelegate, UITableViewDataSource {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: PJUserDetailsTableView.userIdentifier,
                                                      for: indexPath) as! PJUserSelfTableViewCell
+            cell.viewDelegate = self
             cell.model = userDetailsModel
             return cell
         case 1:
@@ -176,6 +177,21 @@ extension PJUserDetailsTableView: PJUserDetailsMoneyTableViewCellDelegate {
     }
 }
 
+// MARK: - PJUserSelfTableViewCellDelegate
+extension PJUserDetailsTableView: PJUserSelfTableViewCellDelegate {
+    func PJUserSelfLevelButtonTapped() {
+        viewDelegate?.PJUserDetailsTableViewUserSelfLevel()
+    }
+    
+    func PJUserSelfFollowButtonTapped() {
+        viewDelegate?.PJUserDetailsTableViewUserSelfFollow()
+    }
+    
+    func PJUserSelftStarButtonTapped() {
+        viewDelegate?.PJUserDetailsTableViewUserSelfStar()
+    }
+}
+
 // MARK: - PJUserDetailsTableViewDelegate
 protocol PJUserDetailsTableViewDelegate {
     func PJUserDetailsTableViewToPetDetails()
@@ -184,6 +200,9 @@ protocol PJUserDetailsTableViewDelegate {
     func PJUserDetailsTableViewVirtualPetToNewPet()
     func PJUserDetailsTableViewMoneyLook()
     func PJUserDetailsTableViewMoneySteal()
+    func PJUserDetailsTableViewUserSelfLevel()
+    func PJUserDetailsTableViewUserSelfFollow()
+    func PJUserDetailsTableViewUserSelfStar()
 }
 
 extension PJUserDetailsTableViewDelegate {
@@ -193,4 +212,7 @@ extension PJUserDetailsTableViewDelegate {
     func PJUserDetailsTableViewVirtualPetToNewPet() {}
     func PJUserDetailsTableViewMoneyLook() {}
     func PJUserDetailsTableViewMoneySteal() {}
+    func PJUserDetailsTableViewUserSelfLevel() {}
+    func PJUserDetailsTableViewUserSelfFollow() {}
+    func PJUserDetailsTableViewUserSelfStar() {}
 }

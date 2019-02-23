@@ -55,7 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Init
     
     private func initTabBarControler() {
-//        let homePage = PJGradeViewController()
         let homePage = PJHomeViewController()
         let homeNav = UINavigationController(rootViewController: homePage)
         homeNav.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0,

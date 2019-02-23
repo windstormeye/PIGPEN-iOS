@@ -22,13 +22,16 @@ class PJUserSelfTableViewCell: UITableViewCell {
     @IBOutlet weak private var followLabel: UILabel!
     // 收藏
     @IBOutlet weak private var starLabel: UILabel!
+    /// 查看评分 Button
+    @IBOutlet weak var levelButton: UIButton!
+    /// 关注 Button
+    @IBOutlet weak var followButton: UIButton!
+    /// 收藏 Button
+    @IBOutlet weak var starButton: UIButton!
     
     // MARK: - Public Properties
-    var model: PJUser.UserModel? {
-        didSet {
-           didSetModel()
-        }
-    }
+    var model: PJUser.UserModel? { didSet { didSetModel() } }
+    var viewDelegate: PJUserSelfTableViewCellDelegate?
 
     // MARK: - Private Methods
     private func didSetModel() {
@@ -63,4 +66,29 @@ class PJUserSelfTableViewCell: UITableViewCell {
         starLabel.text = String(model?.star ?? 0)
     }
     
+    @IBAction func levelButtonTapped(_ sender: UIButton) {
+        viewDelegate?.PJUserSelfLevelButtonTapped()
+    }
+    
+    @IBAction func followButtonTapped(_ sender: UIButton) {
+        viewDelegate?.PJUserSelfFollowButtonTapped()
+    }
+    
+    @IBAction func starButtonTapped(_ sender: UIButton) {
+        viewDelegate?.PJUserSelftStarButtonTapped()
+    }
 }
+
+// MARK: Protocol
+protocol PJUserSelfTableViewCellDelegate: class  {
+    func PJUserSelfLevelButtonTapped()
+    func PJUserSelfFollowButtonTapped()
+    func PJUserSelftStarButtonTapped()
+}
+extension PJUserSelfTableViewCell {
+    func PJUserSelfLevelButtonTapped() {}
+    func PJUserSelfFollowButtonTapped() {}
+    func PJUserSelftStarButtonTapped() {}
+}
+
+

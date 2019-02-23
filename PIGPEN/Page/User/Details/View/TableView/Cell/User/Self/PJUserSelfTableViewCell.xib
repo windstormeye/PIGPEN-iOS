@@ -110,17 +110,51 @@
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tV4-Jr-xW1">
+                        <rect key="frame" x="105" y="45" width="60" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="HaM-aN-gst"/>
+                            <constraint firstAttribute="height" constant="40" id="sQO-Fq-iei"/>
+                        </constraints>
+                        <connections>
+                            <action selector="levelButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="OHD-Kw-Kvl"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0bX-Fk-IEd">
+                        <rect key="frame" x="165" y="45" width="60" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="3v1-jF-HjZ"/>
+                            <constraint firstAttribute="width" constant="60" id="eqt-tn-sB0"/>
+                        </constraints>
+                        <connections>
+                            <action selector="followButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qF2-S9-gCh"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSX-ax-Pdc">
+                        <rect key="frame" x="225" y="45" width="60" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="0IF-uz-Iea"/>
+                            <constraint firstAttribute="height" constant="40" id="MNW-uf-6Pp"/>
+                        </constraints>
+                        <connections>
+                            <action selector="starButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="O9N-lm-CqA"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="meo-Bp-e3g" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="4yT-y5-OiS"/>
                     <constraint firstItem="YjU-m0-nXB" firstAttribute="bottom" secondItem="tF0-5D-zwg" secondAttribute="bottom" id="61M-lu-Wdw"/>
                     <constraint firstItem="YjU-m0-nXB" firstAttribute="leading" secondItem="tF0-5D-zwg" secondAttribute="trailing" id="AaT-vB-buH"/>
+                    <constraint firstItem="0bX-Fk-IEd" firstAttribute="leading" secondItem="rD5-gI-JWi" secondAttribute="trailing" id="Epz-II-Ndl"/>
                     <constraint firstItem="rD5-gI-JWi" firstAttribute="top" secondItem="J1Q-qi-eFa" secondAttribute="bottom" id="H29-ti-57P"/>
+                    <constraint firstItem="YSX-ax-Pdc" firstAttribute="top" secondItem="DzJ-hx-aUO" secondAttribute="bottom" constant="20" id="IlC-dA-f8k"/>
+                    <constraint firstItem="tV4-Jr-xW1" firstAttribute="top" secondItem="XPS-ld-bdY" secondAttribute="bottom" constant="20" id="J4V-7E-4l1"/>
                     <constraint firstItem="rD5-gI-JWi" firstAttribute="leading" secondItem="J1Q-qi-eFa" secondAttribute="leading" id="NGz-hX-9ud"/>
                     <constraint firstItem="Db9-gv-doq" firstAttribute="leading" secondItem="meo-Bp-e3g" secondAttribute="trailing" constant="10" id="R9a-Fg-nYh"/>
                     <constraint firstItem="tF0-5D-zwg" firstAttribute="leading" secondItem="J1Q-qi-eFa" secondAttribute="trailing" id="Rro-QJ-wUc"/>
                     <constraint firstItem="Nwz-nW-rfN" firstAttribute="leading" secondItem="rbS-q9-vW6" secondAttribute="trailing" id="XPI-FQ-Dxg"/>
                     <constraint firstItem="DzJ-hx-aUO" firstAttribute="centerY" secondItem="XPS-ld-bdY" secondAttribute="centerY" id="YF5-m4-tXn"/>
+                    <constraint firstItem="YSX-ax-Pdc" firstAttribute="leading" secondItem="rbS-q9-vW6" secondAttribute="trailing" id="Z3f-jx-XGB"/>
                     <constraint firstItem="Db9-gv-doq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Zwo-TH-4fO"/>
                     <constraint firstItem="rD5-gI-JWi" firstAttribute="top" secondItem="XPS-ld-bdY" secondAttribute="bottom" constant="40" id="hkr-8P-u85"/>
                     <constraint firstItem="rbS-q9-vW6" firstAttribute="bottom" secondItem="rD5-gI-JWi" secondAttribute="bottom" id="i2r-4E-Oet"/>
@@ -129,7 +163,9 @@
                     <constraint firstItem="DzJ-hx-aUO" firstAttribute="leading" secondItem="XPS-ld-bdY" secondAttribute="trailing" constant="2" id="kDt-C2-EEb"/>
                     <constraint firstItem="XPS-ld-bdY" firstAttribute="centerY" secondItem="Db9-gv-doq" secondAttribute="centerY" id="kfO-1b-Ffz"/>
                     <constraint firstItem="tF0-5D-zwg" firstAttribute="bottom" secondItem="J1Q-qi-eFa" secondAttribute="bottom" id="lYe-SF-CeX"/>
+                    <constraint firstItem="tV4-Jr-xW1" firstAttribute="leading" secondItem="Db9-gv-doq" secondAttribute="leading" id="nGf-DT-N03"/>
                     <constraint firstItem="XPS-ld-bdY" firstAttribute="leading" secondItem="Db9-gv-doq" secondAttribute="trailing" constant="5" id="nYS-am-cxe"/>
+                    <constraint firstItem="0bX-Fk-IEd" firstAttribute="top" secondItem="XPS-ld-bdY" secondAttribute="bottom" constant="20" id="qBF-Zi-jCi"/>
                     <constraint firstItem="rD5-gI-JWi" firstAttribute="leading" secondItem="Db9-gv-doq" secondAttribute="leading" id="rQt-GR-Bd4"/>
                     <constraint firstItem="Nwz-nW-rfN" firstAttribute="bottom" secondItem="rbS-q9-vW6" secondAttribute="bottom" id="ypQ-XZ-aI7"/>
                 </constraints>
@@ -138,9 +174,12 @@
             <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="avatarImageView" destination="meo-Bp-e3g" id="Pwj-7i-ey9"/>
+                <outlet property="followButton" destination="0bX-Fk-IEd" id="QY8-ik-PHO"/>
                 <outlet property="followLabel" destination="tF0-5D-zwg" id="C9J-wu-1e7"/>
                 <outlet property="genderImageView" destination="Db9-gv-doq" id="SAl-ft-44l"/>
+                <outlet property="levelButton" destination="tV4-Jr-xW1" id="x0A-er-k0f"/>
                 <outlet property="levelLabel" destination="J1Q-qi-eFa" id="Oxd-W0-xjI"/>
+                <outlet property="starButton" destination="YSX-ax-Pdc" id="axU-mp-qnO"/>
                 <outlet property="starLabel" destination="YjU-m0-nXB" id="yho-98-S23"/>
                 <outlet property="statusLabel" destination="DzJ-hx-aUO" id="gF5-P1-QrD"/>
             </connections>

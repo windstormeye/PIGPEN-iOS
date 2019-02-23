@@ -169,4 +169,18 @@ extension PJUserDetailsViewController: PJUserDetailsTableViewDelegate {
     func PJUserDetailsTableViewMoneySteal() {
         
     }
+    
+    func PJUserDetailsTableViewUserSelfLevel() {
+        let vc = PJGradeViewController()
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func PJUserDetailsTableViewUserSelfFollow() {
+        
+    }
+    
+    func PJUserDetailsTableViewUserSelfStar() {
+        
+    }
 }

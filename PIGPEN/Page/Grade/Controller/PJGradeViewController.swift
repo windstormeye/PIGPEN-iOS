@@ -17,6 +17,8 @@ class PJGradeViewController: PJBaseViewController {
         super.viewDidLoad()
         headerView?.backgroundColor = .white
         isHiddenBarBottomLineView = false
+        backButtonTapped(backSel: .back)
+        
         navigationItem.title = "我的评分"
         view.backgroundColor = .white
         
@@ -41,4 +43,15 @@ class PJGradeViewController: PJBaseViewController {
 
     }
 
+}
+
+// MARK: - Selector
+fileprivate extension Selector {
+    static let back = #selector(PJGradeViewController.back)
+}
+
+extension PJGradeViewController {
+    @objc fileprivate func back() {
+        navigationController?.popViewController(animated: true)
+    }
 }
