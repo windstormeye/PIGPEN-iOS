@@ -80,6 +80,7 @@
 		0CC35DD421DF3B8C002244DA /* PJSegmentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CC35DD321DF3B8C002244DA /* PJSegmentView.xib */; };
 		0CC35DD621DF653C002244DA /* YXWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DD521DF653C002244DA /* YXWaveView.swift */; };
 		0CC35DD921DF7025002244DA /* PJWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DD821DF7025002244DA /* PJWaveView.swift */; };
+		0CC35DDD21E637E8002244DA /* PJCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DDC21E637E8002244DA /* PJCalloutView.swift */; };
 		0CDB0C8F216705B000669331 /* PJUserSelfTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CDB0C8D216705B000669331 /* PJUserSelfTableViewCell.xib */; };
 		0CDB0C90216705B000669331 /* PJUserSelfTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0C8E216705B000669331 /* PJUserSelfTableViewCell.swift */; };
 		0CDB0C972167299A00669331 /* PJUserDetailsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0C962167299A00669331 /* PJUserDetailsTableView.swift */; };
@@ -189,6 +190,7 @@
 		0CC35DD321DF3B8C002244DA /* PJSegmentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJSegmentView.xib; sourceTree = "<group>"; };
 		0CC35DD521DF653C002244DA /* YXWaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YXWaveView.swift; sourceTree = "<group>"; };
 		0CC35DD821DF7025002244DA /* PJWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJWaveView.swift; sourceTree = "<group>"; };
+		0CC35DDC21E637E8002244DA /* PJCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJCalloutView.swift; sourceTree = "<group>"; };
 		0CDB0C8D216705B000669331 /* PJUserSelfTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PJUserSelfTableViewCell.xib; sourceTree = "<group>"; };
 		0CDB0C8E216705B000669331 /* PJUserSelfTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PJUserSelfTableViewCell.swift; sourceTree = "<group>"; };
 		0CDB0C962167299A00669331 /* PJUserDetailsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserDetailsTableView.swift; sourceTree = "<group>"; };
@@ -714,6 +716,7 @@
 		0C5E63502165AB9300A90762 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				0CC35DDB21E6376C002244DA /* PopMenu */,
 				0CC35DD721DF7008002244DA /* WaveView */,
 				0CC35DCC21DCFFC6002244DA /* ImageUpload */,
 				0CC35DA521D0BB51002244DA /* Segment */,
@@ -892,6 +895,14 @@
 				0CC35DD521DF653C002244DA /* YXWaveView.swift */,
 			);
 			path = Wave;
+			sourceTree = "<group>";
+		};
+		0CC35DDB21E6376C002244DA /* PopMenu */ = {
+			isa = PBXGroup;
+			children = (
+				0CC35DDC21E637E8002244DA /* PJCalloutView.swift */,
+			);
+			path = PopMenu;
 			sourceTree = "<group>";
 		};
 		0CDB0C8A2167055900669331 /* View */ = {
@@ -1287,6 +1298,7 @@
 				0C599EC3217032A000FC2E37 /* PJUserDetailsVirtualPetTableViewCell.swift in Sources */,
 				0CED02E2219D45AC00294033 /* PJDogFoodViewController.swift in Sources */,
 				0C5E633E216309C300A90762 /* PJNetwork.swift in Sources */,
+				0CC35DDD21E637E8002244DA /* PJCalloutView.swift in Sources */,
 				0CC35DAD21D0BC43002244DA /* PJGradeWeekViewController.swift in Sources */,
 				0CED02E6219D510F00294033 /* PJBaseAlertViewController.swift in Sources */,
 				0CA365F821B26CF300E7D2F7 /* PJAlbumViewController.swift in Sources */,

@@ -34,10 +34,10 @@ class PJGradeViewController: PJBaseViewController {
         
         waterView?.viewModel!.level = 10
         
-        let url = URL(string: "http://pigpenimg.pjhubs.com/pigpenpet_avatar15467606501.jpeg?e=1546764253&token=HUFE4cvWpUrohdU7w1HU-Lb82jOvI58er5DlPSDs:GKtK5OOH3Zefbo5vT6Gq3GHeK5I=")
-        let imgv = UIImageView(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
-        imgv.kf.setImage(with: url)
-        view.addSubview(imgv)
+//        let url = URL(string: "http://pigpenimg.pjhubs.com/pigpenpet_avatar15467606501.jpeg?e=1546764253&token=HUFE4cvWpUrohdU7w1HU-Lb82jOvI58er5DlPSDs:GKtK5OOH3Zefbo5vT6Gq3GHeK5I=")
+//        let imgv = UIImageView(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
+//        imgv.kf.setImage(with: url)
+//        view.addSubview(imgv)
 
     }
 

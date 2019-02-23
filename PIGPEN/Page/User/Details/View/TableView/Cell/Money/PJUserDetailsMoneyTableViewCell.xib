@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,9 +30,8 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4,500 斤" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oro-Tg-b6Q">
-                        <rect key="frame" x="102" y="15" width="67" height="20"/>
+                        <rect key="frame" x="102" y="15" width="94" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="67" id="ewu-x6-En0"/>
                             <constraint firstAttribute="height" constant="20" id="zZ4-24-xlh"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
@@ -79,6 +78,7 @@
                     <constraint firstAttribute="trailing" secondItem="YvV-cM-jBt" secondAttribute="trailing" constant="5" id="O8U-ys-GIT"/>
                     <constraint firstItem="oro-Tg-b6Q" firstAttribute="centerY" secondItem="XbN-Vd-NHv" secondAttribute="centerY" id="PEk-v6-lJy"/>
                     <constraint firstItem="oro-Tg-b6Q" firstAttribute="leading" secondItem="XbN-Vd-NHv" secondAttribute="trailing" constant="5" id="YVv-la-NMs"/>
+                    <constraint firstItem="sb8-zQ-j0z" firstAttribute="leading" secondItem="oro-Tg-b6Q" secondAttribute="trailing" id="hMS-Xr-I3C"/>
                     <constraint firstItem="XbN-Vd-NHv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="me6-2U-blI"/>
                     <constraint firstItem="XbN-Vd-NHv" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="n8I-WZ-G1F"/>
                 </constraints>

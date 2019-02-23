@@ -11,5 +11,4 @@ target 'PIGPEN' do
     pod 'CryptoSwift'
     pod 'Schedule'
     pod 'Kingfisher'
-    pod 'SDWebImage' 
 end

@@ -135,6 +135,7 @@ extension PJUserDetailsTableView: UITableViewDelegate, UITableViewDataSource {
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: PJUserDetailsTableView.moneyIndentifier,
                                                      for: indexPath) as! PJUserDetailsMoneyTableViewCell
+            cell.viewModel = PJUserDetailsMoneyTableViewCell.ViewModel(money: userDetailsModel?.money ?? 0)
             return cell
         default:
             return UITableViewCell()

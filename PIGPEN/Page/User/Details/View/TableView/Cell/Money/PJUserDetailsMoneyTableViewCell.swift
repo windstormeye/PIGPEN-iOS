@@ -8,15 +8,6 @@
 
 import UIKit
 
-protocol PJUserDetailsMoneyTableViewCellDelegate {
-    func PJUserDetailsMoneyTableViewCellLookButtonTapped()
-    func PJUserDetailsMoneyTableViewCellStealButtonTapped()
-}
-
-extension PJUserDetailsMoneyTableViewCellDelegate {
-    func PJUserDetailsMoneyTableViewCellLookButtonTapped() {}
-    func PJUserDetailsMoneyTableViewCellStealButtonTapped() {}
-}
 
 class PJUserDetailsMoneyTableViewCell: UITableViewCell {
 
@@ -25,7 +16,7 @@ class PJUserDetailsMoneyTableViewCell: UITableViewCell {
     @IBOutlet weak var stealButton: UIButton!
     
     var viewDelegate: PJUserDetailsMoneyTableViewCellDelegate?
-    
+    var viewModel: ViewModel? { didSet { didSetViewModel() } }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -48,5 +39,31 @@ class PJUserDetailsMoneyTableViewCell: UITableViewCell {
     
     @IBAction func stealButtonTapped(_ sender: UIButton) {
         viewDelegate?.PJUserDetailsMoneyTableViewCellStealButtonTapped()
+    }
+}
+
+// MARK: Setter & Getter
+extension PJUserDetailsMoneyTableViewCell {
+    func didSetViewModel() {
+        moneyLabel.text = String(viewModel?.money ?? 0) + " 斤"
+    }
+}
+
+// MARK: Protocol
+protocol PJUserDetailsMoneyTableViewCellDelegate {
+    func PJUserDetailsMoneyTableViewCellLookButtonTapped()
+    func PJUserDetailsMoneyTableViewCellStealButtonTapped()
+}
+
+extension PJUserDetailsMoneyTableViewCellDelegate {
+    func PJUserDetailsMoneyTableViewCellLookButtonTapped() {}
+    func PJUserDetailsMoneyTableViewCellStealButtonTapped() {}
+}
+
+// MARK: ViewModel
+extension PJUserDetailsMoneyTableViewCell {
+    struct ViewModel {
+        // 猪饲料
+        var money: Int = 0
     }
 }

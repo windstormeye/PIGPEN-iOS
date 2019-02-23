@@ -58,6 +58,22 @@ class PJUserDetailsViewController: PJBaseViewController {
     }
     
     // MARK: lazy load
+    lazy var calloutView: PJCalloutView = {
+        let menuWidth = CGFloat(120)
+        let menuHeight = CGFloat(180)
+        let calloutView = PJCalloutView(frame: CGRect(x: PJSCREEN_WIDTH - menuWidth - CGFloat(15),
+                                                      y: headerView!.bottom,
+                                                      width: menuWidth,
+                                                      height: menuHeight), { (viewModel) in
+                                                        viewModel
+        }, complationBlock: { (seletedIndex) in
+            
+        })
+        
+        view.addSubview(calloutView)
+        return calloutView
+    }()
+    
     lazy var menuView: PJUserDetailsMenuView = {
         let menu = PJUserDetailsMenuView.newInstance()
         menu?.viewDelegate = self

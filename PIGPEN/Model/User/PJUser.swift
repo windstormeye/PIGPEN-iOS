@@ -30,7 +30,8 @@ class PJUser {
                                   follow: 0,
                                   star: 0,
                                   token: "",
-                                  uid: "")
+                                  uid: "",
+                                  money: 0)
         }
     }
     
@@ -81,6 +82,7 @@ extension PJUser {
                                             let nickName = userDic["nick_name"]?.string
                                             let avatar = userDic["avatar"]?.intValue
                                             let uid = userDic["uid"]?.string
+                                            let money = userDic["money"]?.int
                                                 
                                             let f_s = dataDic["feeding_status"].array
                                             var feedingStatus = [Int]()
@@ -96,7 +98,8 @@ extension PJUser {
                                                                  follow: 0,
                                                                  star: 0,
                                                                  token: nil,
-                                                                 uid: uid)
+                                                                 uid: uid,
+                                                                 money: money)
                                             if getSelf {
                                                 self.userModel = user
                                                 self.saveToSandBox()
@@ -356,6 +359,8 @@ extension PJUser {
         var token: String?
         /// 用户唯一标识符
         var uid: String?
+        /// 猪饲料
+        var money: Int?
     }
     
     // 用户注册时的中转 model
