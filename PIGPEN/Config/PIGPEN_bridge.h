@@ -10,5 +10,6 @@
 #define PIGPEN_bridge_h
 
 #import <SMS_SDK/SMSSDK.h>
+#import "TXIM.h"
 
 #endif /* PIGPEN_bridge_h */

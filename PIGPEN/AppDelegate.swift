@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         initTabBarControler()
-        
+        TXIM.config()
         IQKeyboardManager.shared.enable = true
         
         return true

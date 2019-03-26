@@ -193,6 +193,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+## TXIMSDK_iOS
+
+copyright 2017 tencent Ltd. All rights reserved.
+
+
 ## mob_smssdk
 
 Copyright © 2012-2017 mob.com
