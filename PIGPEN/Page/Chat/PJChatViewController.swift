@@ -12,19 +12,42 @@ class PJChatViewController: PJBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        initView()
+    }
 
-        // Do any additional setup after loading the view.
+    private func initView() {
+        let cvc = TConversationController()
+        cvc.delegate = self
+        addChild(cvc)
+        view.addSubview(cvc.view)
+    }
+}
+
+extension PJChatViewController: TConversationControllerDelegagte {
+    func conversationController(_ conversationController: TConversationController!,
+                                didSelectConversation conversation: TConversationCellData!) {
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func conversationController(_ conversationController: TConversationController!,
+                                didClickRightBarButton rightBarButton: UIButton!) {
+        let add = TAddMemberController()
+        add.delegate = self
+        addChild(add)
+        view.addSubview(add.view)
     }
-    */
+}
 
+
+extension PJChatViewController: TAddMemberControllerDelegate {
+    func didCancel(in controller: TAddMemberController!) {
+        
+    }
+    
+    func addMemberController(_ controller: TAddMemberController!, didAddMemberResult result: TAddMemberResult!) {
+        print(result.code)
+        print(result.desc)
+        print(result.addMembers)
+        print(result.groupId)
+    }
 }

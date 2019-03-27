@@ -16,7 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var window: UIWindow?
     private var rootTabBar: UITabBarController?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         rootTabBar = UITabBarController()
         rootTabBar?.tabBar.isTranslucent = false
@@ -51,9 +52,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         self.saveContext()
     }
-
-    // MARK: - Init
     
+    // MARK: - Core Data stack
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "PIGPEN")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+}
+
+extension AppDelegate {
+    // MARK: - Init
     private func initTabBarControler() {
         let homePage = PJHomeViewController()
         let homeNav = UINavigationController(rootViewController: homePage)
@@ -89,24 +102,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         rootTabBar?.viewControllers = [homeNav, chatNav, playNav, messageNav, userNav]
         rootTabBar?.tabBar.showBottomLine(in: 0)
     }
-    
-    
-    // MARK: - Core Data stack
+}
 
-    lazy var persistentContainer: NSPersistentContainer = {
-        
-        let container = NSPersistentContainer(name: "PIGPEN")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
-
+extension AppDelegate {
     // MARK: - Core Data Saving support
-
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
@@ -118,7 +117,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
 }
 
 extension AppDelegate: UITabBarControllerDelegate {

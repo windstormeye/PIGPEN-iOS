@@ -1113,6 +1113,7 @@
 				0CE4F3EC21592C7C003AD0F5 /* Frameworks */,
 				0CE4F3ED21592C7C003AD0F5 /* Resources */,
 				F495B411540F3851D3D00624 /* [CP] Embed Pods Frameworks */,
+				A2C53DF0C2F5B0295E57F753 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1238,6 +1239,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A2C53DF0C2F5B0295E57F753 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PIGPEN/Pods-PIGPEN-resources.sh",
+				"${PODS_ROOT}/TXIMSDK_TUIKit_iOS/iOS/TUIKit.framework/TUIKitFace.bundle",
+				"${PODS_ROOT}/TXIMSDK_TUIKit_iOS/iOS/TUIKit.framework/TUIKitResource.bundle",
+				"${PODS_ROOT}/TXIMSDK_TUIKit_iOS/iOS/TUIKit.framework/emoji.plist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TUIKitFace.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TUIKitResource.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/emoji.plist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PIGPEN/Pods-PIGPEN-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F495B411540F3851D3D00624 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1253,6 +1276,7 @@
 				"${BUILT_PRODUCTS_DIR}/Qiniu/Qiniu.framework",
 				"${BUILT_PRODUCTS_DIR}/Schedule/Schedule.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${PODS_ROOT}/TXIMSDK_TUIKit_iOS/iOS/TUIKit.framework",
 				"${PODS_ROOT}/TXIMSDK_iOS/iOS/ImSDK.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -1265,6 +1289,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Qiniu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Schedule.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TUIKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImSDK.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

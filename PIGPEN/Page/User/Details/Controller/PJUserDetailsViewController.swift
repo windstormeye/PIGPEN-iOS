@@ -64,8 +64,7 @@ class PJUserDetailsViewController: PJBaseViewController {
         let calloutView = PJCalloutView(frame: CGRect(x: PJSCREEN_WIDTH - menuWidth - CGFloat(15),
                                                       y: headerView!.bottom,
                                                       width: menuWidth,
-                                                      height: menuHeight), { (viewModel) in
-                                                        viewModel
+                                                      height: menuHeight), { (viewModel) in viewModel
         }, complationBlock: { (seletedIndex) in
             
         })

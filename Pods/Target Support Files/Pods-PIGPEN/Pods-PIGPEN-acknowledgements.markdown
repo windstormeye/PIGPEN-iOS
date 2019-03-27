@@ -3,7 +3,7 @@ This application makes use of the following third party libraries:
 
 ## Alamofire
 
-Copyright (c) 2014-2018 Alamofire Software Foundation (http://alamofire.org/)
+Copyright (c) 2014 Alamofire Software Foundation (http://alamofire.org/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -42,7 +42,7 @@ Permission is granted to anyone to use this software for any purpose,including c
 
 The MIT License (MIT)
 
-Copyright (c) 2012-2016 qiniu.com
+Copyright (c) 2011-2019 qiniu.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -191,6 +191,11 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+
+## TXIMSDK_TUIKit_iOS
+
+copyright 2017 tencent Ltd. All rights reserved.
 
 
 ## TXIMSDK_iOS

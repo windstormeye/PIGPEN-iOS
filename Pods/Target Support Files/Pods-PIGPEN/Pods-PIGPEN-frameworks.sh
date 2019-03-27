@@ -151,6 +151,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Qiniu/Qiniu.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Schedule/Schedule.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
+  install_framework "${PODS_ROOT}/TXIMSDK_TUIKit_iOS/iOS/TUIKit.framework"
   install_framework "${PODS_ROOT}/TXIMSDK_iOS/iOS/ImSDK.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -162,6 +163,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Qiniu/Qiniu.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Schedule/Schedule.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
+  install_framework "${PODS_ROOT}/TXIMSDK_TUIKit_iOS/iOS/TUIKit.framework"
   install_framework "${PODS_ROOT}/TXIMSDK_iOS/iOS/ImSDK.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

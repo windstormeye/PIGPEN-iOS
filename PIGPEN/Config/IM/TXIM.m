@@ -7,30 +7,39 @@
 //
 
 #import "TXIM.h"
-#import <ImSDK/ImSDK.h>
+#import <TUIKit/TUIKit.h>
 
 @implementation TXIM
 + (void)config {
     //初始化 SDK 基本配置
-    TIMSdkConfig *sdkConfig = [[TIMSdkConfig alloc] init];
-    sdkConfig.sdkAppId = 1400197107;
-    sdkConfig.accountType = @"36862";
-    sdkConfig.disableLogPrint = YES;
-    [[TIMManager sharedInstance] initSdk:sdkConfig];
+    NSInteger sdkAppid = 1400197107;
+    NSString *accountType = @"36862";
+//    TUIKitConfig *config = [TUIKitConfig defaultConfig];//默认TUIKit配置，这个您可以根据自己的需求在 TUIKitConfig 里面自行配置
+    [[TUIKit sharedInstance] initKit:sdkAppid accountType:accountType withConfig:[TUIKitConfig defaultConfig]];
 }
 
 + (void)userLogin:(NSString *)uid
               sig:(NSString *)sig
          complate:(void (^)(void))complate
           failure:(void (^)(int code, NSString *err))failure {
-    TIMLoginParam * login_param = [[TIMLoginParam alloc ]init];
-    login_param.identifier = uid;
-    login_param.userSig = sig;
-    login_param.appidAt3rd = @"1400197107";
-    [[TIMManager sharedInstance] login: login_param succ:^(){
+    
+    
+    NSString *identifier = uid;
+    NSString *userSig = sig;
+    [[TUIKit sharedInstance] loginKit:identifier userSig:userSig succ:^{
         complate();
-    } fail:^(int code, NSString * err) {
-        failure(code, err);
+    } fail:^(int code, NSString *msg) {
+        failure(code, msg);
     }];
 }
+
++ (void)userLogout:(void (^)(void))complate
+           faliure:(void(^)(int code, NSString *err))faliure {
+//    [[TIMManager sharedInstance] logout:^() {
+//        complate();
+//    } fail:^(int code, NSString * err) {
+//        faliure(code, err);
+//    }];
+}
+
 @end

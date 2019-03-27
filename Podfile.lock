@@ -1,17 +1,18 @@
 PODS:
-  - Alamofire (4.7.3)
-  - CryptoSwift (0.11.0)
-  - HappyDNS (0.3.14)
-  - IQKeyboardManagerSwift (6.1.1)
-  - Kingfisher (4.10.1)
-  - mob_smssdk (3.2.1):
+  - Alamofire (4.8.1)
+  - CryptoSwift (0.15.0)
+  - HappyDNS (0.3.15)
+  - IQKeyboardManagerSwift (6.2.0)
+  - Kingfisher (5.3.0)
+  - mob_smssdk (3.2.3):
     - MOBFoundation
-  - MOBFoundation (3.1.8)
+  - MOBFoundation (3.2.2)
   - Qiniu (7.2.5):
     - HappyDNS (~> 0.3)
-  - Schedule (0.1.0)
-  - SwiftyJSON (4.1.0)
-  - TXIMSDK_iOS (4.0.0.1)
+  - Schedule (1.0.0)
+  - SwiftyJSON (4.2.0)
+  - TXIMSDK_iOS (4.2.9)
+  - TXIMSDK_TUIKit_iOS (4.2.9)
 
 DEPENDENCIES:
   - Alamofire
@@ -23,6 +24,7 @@ DEPENDENCIES:
   - Schedule
   - SwiftyJSON
   - TXIMSDK_iOS
+  - TXIMSDK_TUIKit_iOS
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -37,20 +39,22 @@ SPEC REPOS:
     - Schedule
     - SwiftyJSON
     - TXIMSDK_iOS
+    - TXIMSDK_TUIKit_iOS
 
 SPEC CHECKSUMS:
-  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
-  CryptoSwift: ad5208dd2aae0a764ea4ce2c2d34bd067cae67f0
-  HappyDNS: dc6a164ee81979093123c241c6353bcf0218add6
-  IQKeyboardManagerSwift: 977affaeb4d6e971975c7790a6850f31d38f1207
-  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
-  mob_smssdk: edc462704cc07c6d245eee16c4c09ac4f4d53e61
-  MOBFoundation: 7f1e157be332576e4d45809a03bc733292c6ad8d
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  CryptoSwift: 769f58a9e89f64e8796c2e59ce5f002dc81a2438
+  HappyDNS: 00c15e651a347206e58a20503a32a5564589b56a
+  IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
+  Kingfisher: 4692c783ffb99e9e2e40a6eb3e518c3b96c6fa8c
+  mob_smssdk: cdb6a31d4fd4667ed928e2eca03f21ad89ebc05c
+  MOBFoundation: b5ff4038ddb9a0f06b685b86408f905a10aa147c
   Qiniu: 909b408ee489ea54827e9717be90b94bc9dfbc48
-  Schedule: 62cd2defb026a3607349b2a2b1bd8ec3fd12cccd
-  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
-  TXIMSDK_iOS: 95ebccce9b8d3f7435bc78d6a767b63351c6b0d4
+  Schedule: 64f334e01daa6f80201ab147b59cb4f1e118ae74
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  TXIMSDK_iOS: b05c2c2af3ccc6257e8e0078dbeefcb3459fb56c
+  TXIMSDK_TUIKit_iOS: 2adaf30dfc9a6eea94f7de6efd25349e877a15f7
 
-PODFILE CHECKSUM: 7e59538cdb2d94bc30744b35303dc01e5abf4a72
+PODFILE CHECKSUM: e788a065ab2a963470a2e6d7a3aa21b7f1b6519c
 
 COCOAPODS: 1.5.3

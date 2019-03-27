@@ -52,7 +52,8 @@ class PJUserRegisterViewController: PJBaseViewController {
     // MARK: UI
     private func authCodeButtonSending() {
         authCodeButton.isEnabled = false
-        plan = Schedule.every(1.second).do {
+        
+        plan = Plan.every(1.second).do {
             self.authCodeButtonTimes -= 1
             let timesString = String(self.authCodeButtonTimes) + "s之后再次获取"
             DispatchQueue.main.async {

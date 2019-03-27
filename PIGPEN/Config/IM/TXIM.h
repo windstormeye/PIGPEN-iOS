@@ -12,7 +12,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TXIM : NSObject
 + (void)config;
-+ (void)userLogin:(NSString *)uid sig:(NSString *)sig complate:(void (^)(void))complate failure:(void (^)(int code, NSString *err))failure;
+
++ (void)userLogin:(NSString *)uid
+              sig:(NSString *)sig
+         complate:(void (^)(void))complate
+          failure:(void (^)(int code, NSString *err))failure;
+
++ (void)userLogout:(void (^)(void))complate
+           faliure:(void(^)(int code, NSString *err))faliure;
 @end
 
 NS_ASSUME_NONNULL_END
