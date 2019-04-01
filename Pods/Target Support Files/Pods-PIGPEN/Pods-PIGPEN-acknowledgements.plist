@@ -198,6 +198,16 @@ THE SOFTWARE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
+			<string>Copyright 2014 Rong Cloud</string>
+			<key>License</key>
+			<string>Copyright</string>
+			<key>Title</key>
+			<string>RongCloudIM</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
 			<string>MIT License
 
 Copyright (c) 2018 Quentin Jin
@@ -255,28 +265,6 @@ THE SOFTWARE.
 			<string>MIT</string>
 			<key>Title</key>
 			<string>SwiftyJSON</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-		</dict>
-		<dict>
-			<key>FooterText</key>
-			<string>copyright 2017 tencent Ltd. All rights reserved.
-</string>
-			<key>License</key>
-			<string>Proprietary</string>
-			<key>Title</key>
-			<string>TXIMSDK_TUIKit_iOS</string>
-			<key>Type</key>
-			<string>PSGroupSpecifier</string>
-		</dict>
-		<dict>
-			<key>FooterText</key>
-			<string>copyright 2017 tencent Ltd. All rights reserved.
-</string>
-			<key>License</key>
-			<string>Proprietary</string>
-			<key>Title</key>
-			<string>TXIMSDK_iOS</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>

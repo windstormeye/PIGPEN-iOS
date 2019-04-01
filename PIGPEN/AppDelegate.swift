@@ -27,8 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         initTabBarControler()
-        TXIM.config()
         IQKeyboardManager.shared.enable = true
+        RCIM.shared()?.initWithAppKey("kj7swf8ok3sq2")
         
         return true
     }

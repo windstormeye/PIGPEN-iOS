@@ -8,46 +8,21 @@
 
 import UIKit
 
-class PJChatViewController: PJBaseViewController {
+class PJChatViewController: RCConversationListViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
     }
-
+    
     private func initView() {
-        let cvc = TConversationController()
-        cvc.delegate = self
-        addChild(cvc)
-        view.addSubview(cvc.view)
-    }
-}
-
-extension PJChatViewController: TConversationControllerDelegagte {
-    func conversationController(_ conversationController: TConversationController!,
-                                didSelectConversation conversation: TConversationCellData!) {
+        self.setDisplayConversationTypes([NSNumber(integerLiteral: Int(RCConversationType.ConversationType_PRIVATE.rawValue))])
         
-    }
-    
-    func conversationController(_ conversationController: TConversationController!,
-                                didClickRightBarButton rightBarButton: UIButton!) {
-        let add = TAddMemberController()
-        add.delegate = self
-        addChild(add)
-        view.addSubview(add.view)
+//        4186284364
+        let chat = RCConversationViewController(conversationType: .ConversationType_PRIVATE, targetId: "4180157412")
+        chat!.title = "YiYi"
+        hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(chat!, animated: true)
     }
 }
 
-
-extension PJChatViewController: TAddMemberControllerDelegate {
-    func didCancel(in controller: TAddMemberController!) {
-        
-    }
-    
-    func addMemberController(_ controller: TAddMemberController!, didAddMemberResult result: TAddMemberResult!) {
-        print(result.code)
-        print(result.desc)
-        print(result.addMembers)
-        print(result.groupId)
-    }
-}

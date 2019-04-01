@@ -33,7 +33,8 @@ class PJUser {
                                   star: 0,
                                   token: "",
                                   uid: "",
-                                  money: 0)
+                                  money: 0,
+                                  rongID: "")
         }
     }
     
@@ -101,7 +102,8 @@ extension PJUser {
                                                                  star: 0,
                                                                  token: nil,
                                                                  uid: uid,
-                                                                 money: money)
+                                                                 money: money,
+                                                                 rongID: "")
                                             if getSelf {
                                                 self.userModel = user
                                                 self.saveToSandBox()
@@ -241,13 +243,19 @@ extension PJUser {
                                                     feedingStatus.append(s.int!)
                                                 }
                                                 self.userModel?.feeding_status = feedingStatus
-                                                self.saveToSandBox()
                                                 
-                                                self.sig(complateHandler: {
-                                                    self.isLoginTXIM = true
-                                                }, failureHandler: { (error) in
-                                                    
+//                                                y1recPhZlzX04Wn31ijFNsuyBGhF3pKRUq6szS6hjh7MwhuPZj/PuFyxN7e9/Bap65IGpWqJoOxgpwcvy1rpGxo6f00qZDoG
+                                                
+//                                                5M+L0EpdikaYHiNvFjk2yAKxvapQKMen7wH1vojIoeGK5xU00uupl2UxfHR87P7LbWin8BED9WPMylWSNgHpKjBN5OPBZEVR
+                                                RCIM.shared()?.connect(withToken: "y1recPhZlzX04Wn31ijFNsuyBGhF3pKRUq6szS6hjh7MwhuPZj/PuFyxN7e9/Bap65IGpWqJoOxgpwcvy1rpGxo6f00qZDoG", success: { (userId) in
+                                                    self.userModel?.rongID = userId
+                                                }, error: { (errorCode) in
+                                                    print("errorCode=\(errorCode)")
+                                                }, tokenIncorrect: {
+                                                    print("连接错误")
                                                 })
+                                                
+                                                self.saveToSandBox()
                                                 
                                                 completeHandler()
                                             } else {
@@ -286,12 +294,6 @@ extension PJUser {
         self.userModel = UserModel()
         // 可能在多个 page 下进行登出，然后再登录时账户信息错误
         saveToSandBox()
-        // 推出腾讯云 IM
-        TXIM.userLogout({
-            
-        }) { (code, errString) in
-            
-        }
     }
     
     func pets(complateHandler: @escaping ([PJRealPet.RealPetModel], [PJVirtualPet.VirtualPetModel]) -> Void,
@@ -330,29 +332,6 @@ extension PJUser {
             failedHandler(PJNetwork.Error(errorCode: 0, errorMsg: errorString))
         }
     }
-    
-    /// 登录腾讯云
-    func sig(complateHandler: @escaping (() -> Void),
-             failureHandler: @escaping ((PJNetwork.Error) -> Void)) {
-        PJNetwork.shared.requstWithGet(path: UserUrl.tmSig.rawValue,
-                                       parameters: [:],
-                                       complement: { (dataDict) in
-                                        if dataDict["msgCode"]?.intValue == 0 {
-                                            let sig = dataDict["uid_sig"]?.string
-                                            TXIM.userLogin(self.userModel!.uid!,
-                                                           sig: sig!,
-                                                           complate: {
-                                                    complateHandler()
-                                            }, failure: { (code, errString) in
-                                                let error = PJNetwork.Error(errorCode: 0, errorMsg: "IM 登录失败")
-                                                failureHandler(error)
-                                            })
-                                        }
-        }) { (errorString) in
-            failureHandler(PJNetwork.Error(errorCode: 0,
-                                           errorMsg: errorString))
-        }
-    }
 }
 
 private extension PJUser {
@@ -373,8 +352,6 @@ private extension PJUser {
         case checkPhone = "masuser/checkPhone"
         /// 获取用户所有宠物信息
         case pets = "masuser/pets"
-        /// 登录腾讯云 IM
-        case tmSig = "masuser/sig"
     }
 }
 
@@ -400,6 +377,8 @@ extension PJUser {
         var uid: String?
         /// 猪饲料
         var money: Int?
+        /// 融云IM ID
+        var rongID: String?
     }
     
     // 用户注册时的中转 model

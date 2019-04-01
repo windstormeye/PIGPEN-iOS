@@ -9,11 +9,7 @@
 #ifndef PIGPEN_bridge_h
 #define PIGPEN_bridge_h
 
-#import <TUIKit/TUIKit.h>
-#import <TUIKit/TTabBarController.h>
-#import <TUIKit/TConversationController.h>
-#import <TUIKit/TAddMemberController.h>
 #import <SMS_SDK/SMSSDK.h>
-#import "TXIM.h"
+#import <RongIMKit/RongIMKit.h>
 
 #endif /* PIGPEN_bridge_h */
