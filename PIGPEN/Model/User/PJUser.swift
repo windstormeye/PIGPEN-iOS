@@ -34,7 +34,7 @@ class PJUser {
                                   token: "",
                                   uid: "",
                                   money: 0,
-                                  rongID: "")
+                                  rcToken: "")
         }
     }
     
@@ -103,7 +103,7 @@ extension PJUser {
                                                                  token: nil,
                                                                  uid: uid,
                                                                  money: money,
-                                                                 rongID: "")
+                                                                 rcToken: "")
                                             if getSelf {
                                                 self.userModel = user
                                                 self.saveToSandBox()
@@ -116,7 +116,7 @@ extension PJUser {
                                             failedHandler(error)
                                         }
         }) { (errorString) in
-            failedHandler(PJNetwork.Error(errorCode: 0, errorMsg: "未知错误"))
+            failedHandler(PJNetwork.Error(errorCode: -1, errorMsg: "未知错误"))
         }
     }
     
@@ -148,7 +148,7 @@ extension PJUser {
                                                 failedHandler(error)
                                             }
         }) { (errorString) in
-            failedHandler(PJNetwork.Error(errorCode: 0, errorMsg: "未知错误"))
+            failedHandler(PJNetwork.Error(errorCode: -1, errorMsg: "未知错误"))
         }
     }
     
@@ -199,7 +199,7 @@ extension PJUser {
                                                 failedHandler(error)
                                             }
         }) { (errorString) in
-            failedHandler(PJNetwork.Error(errorCode: 0, errorMsg: "未知错误"))
+            failedHandler(PJNetwork.Error(errorCode: -1, errorMsg: "未知错误"))
         }
     }
     
@@ -242,29 +242,23 @@ extension PJUser {
                                                 for s in f_s! {
                                                     feedingStatus.append(s.int!)
                                                 }
+                                                
                                                 self.userModel?.feeding_status = feedingStatus
                                                 
-//                                                y1recPhZlzX04Wn31ijFNsuyBGhF3pKRUq6szS6hjh7MwhuPZj/PuFyxN7e9/Bap65IGpWqJoOxgpwcvy1rpGxo6f00qZDoG
-                                                
-//                                                5M+L0EpdikaYHiNvFjk2yAKxvapQKMen7wH1vojIoeGK5xU00uupl2UxfHR87P7LbWin8BED9WPMylWSNgHpKjBN5OPBZEVR
-                                                RCIM.shared()?.connect(withToken: "y1recPhZlzX04Wn31ijFNsuyBGhF3pKRUq6szS6hjh7MwhuPZj/PuFyxN7e9/Bap65IGpWqJoOxgpwcvy1rpGxo6f00qZDoG", success: { (userId) in
-                                                    self.userModel?.rongID = userId
-                                                }, error: { (errorCode) in
-                                                    print("errorCode=\(errorCode)")
-                                                }, tokenIncorrect: {
-                                                    print("连接错误")
+                                                // 登录成功后获取融云token，并持久化
+                                                self.rcToken(complateHandler: { (rcToken) in
+                                                    self.userModel?.rcToken = rcToken
+                                                    self.saveToSandBox()
+                                                    completeHandler()
+                                                }, failedHandler: { (error) in
+                                                    failedHandler(error)
                                                 })
-                                                
-                                                self.saveToSandBox()
-                                                
-                                                completeHandler()
                                             } else {
-                                                let error = PJNetwork.Error(errorCode: dataDic["msgCode"]?.intValue,
-                                                                            errorMsg: dataDic["msg"]?.string)
+                                                let error = PJNetwork.Error(errorCode: dataDic["msgCode"]?.intValue,errorMsg: dataDic["msg"]?.string)
                                                 failedHandler(error)
                                             }
         }, failed: { (errorString) in
-            failedHandler(PJNetwork.Error(errorCode: 0, errorMsg: "未知错误"))
+            failedHandler(PJNetwork.Error(errorCode: -1, errorMsg: "未知错误"))
         })
     }
     
@@ -286,7 +280,7 @@ extension PJUser {
                                             failedHandler(error)
                                         }
         }, failed: { (errorString) in
-            failedHandler(PJNetwork.Error(errorCode: 0, errorMsg: "未知错误"))
+            failedHandler(PJNetwork.Error(errorCode: -1, errorMsg: "未知错误"))
         })
     }
     
@@ -329,7 +323,23 @@ extension PJUser {
                                             failedHandler(error)
                                         }
         }) { (errorString) in
-            failedHandler(PJNetwork.Error(errorCode: 0, errorMsg: errorString))
+            failedHandler(PJNetwork.Error(errorCode: -1, errorMsg: errorString))
+        }
+    }
+    
+    func rcToken(complateHandler: @escaping (String) -> Void,
+                 failedHandler: @escaping (PJNetwork.Error) -> Void) {
+        PJNetwork.shared.requstWithGet(path: UserUrl.rcToken.rawValue,
+                                       parameters: [:], complement: { (dataDict) in
+                                        if dataDict["msgCode"]?.intValue == 0 {
+                                            let res = dataDict["msg"]?.dictionary
+                                            complateHandler(res!["token"]!.string!)
+                                        } else {
+                                            let error = PJNetwork.Error(errorCode: dataDict["msgCode"]?.intValue,errorMsg: dataDict["msg"]?.string)
+                                            failedHandler(error)
+                                        }
+        }) { (errorString) in
+            failedHandler(PJNetwork.Error(errorCode: -1, errorMsg: errorString))
         }
     }
 }
@@ -352,6 +362,8 @@ private extension PJUser {
         case checkPhone = "masuser/checkPhone"
         /// 获取用户所有宠物信息
         case pets = "masuser/pets"
+        /// 获取融云 token
+        case rcToken = "masuser/getRCToken"
     }
 }
 
@@ -377,8 +389,8 @@ extension PJUser {
         var uid: String?
         /// 猪饲料
         var money: Int?
-        /// 融云IM ID
-        var rongID: String?
+        /// 融云IM token
+        var rcToken: String?
     }
     
     // 用户注册时的中转 model

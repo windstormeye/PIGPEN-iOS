@@ -4,9 +4,9 @@ target 'PIGPEN' do
 
     pod 'mob_smssdk'
     pod 'Qiniu'
-    pod 'TXIMSDK_iOS'
-    pod 'TXIMSDK_TUIKit_iOS'
+    pod 'RongCloudIM/IMLib', '~> 2.8.3'
     
+    pod 'MessengerKit'
     pod 'IQKeyboardManagerSwift'
     pod 'Alamofire'
     pod 'SwiftyJSON'

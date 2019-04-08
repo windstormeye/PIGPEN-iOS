@@ -10,6 +10,6 @@
 #define PIGPEN_bridge_h
 
 #import <SMS_SDK/SMSSDK.h>
-#import <RongIMKit/RongIMKit.h>
+#import <RongIMLib/RongIMLib.h>
 
 #endif /* PIGPEN_bridge_h */

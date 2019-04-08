@@ -18,7 +18,6 @@
 		0C1F6FB021B3925E00304CD8 /* PJAlbumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C1F6FAE21B3925E00304CD8 /* PJAlbumTableViewCell.xib */; };
 		0C1F6FB421B392EF00304CD8 /* PJAlbumDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1F6FB321B392EF00304CD8 /* PJAlbumDataController.swift */; };
 		0C55E2C5215A61E3000D8815 /* PJHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2C4215A61E3000D8815 /* PJHomeViewController.swift */; };
-		0C55E2CC215A62AF000D8815 /* PJChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2CB215A62AF000D8815 /* PJChatViewController.swift */; };
 		0C55E2CE215A62BE000D8815 /* PJPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2CD215A62BE000D8815 /* PJPlayViewController.swift */; };
 		0C55E2D0215A62C7000D8815 /* PJBreedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2CF215A62C7000D8815 /* PJBreedsViewController.swift */; };
 		0C55E2D2215A62CD000D8815 /* PJUserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2D1215A62CD000D8815 /* PJUserDetailsViewController.swift */; };
@@ -125,7 +124,6 @@
 		0C1F6FAE21B3925E00304CD8 /* PJAlbumTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJAlbumTableViewCell.xib; sourceTree = "<group>"; };
 		0C1F6FB321B392EF00304CD8 /* PJAlbumDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJAlbumDataController.swift; sourceTree = "<group>"; };
 		0C55E2C4215A61E3000D8815 /* PJHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJHomeViewController.swift; sourceTree = "<group>"; };
-		0C55E2CB215A62AF000D8815 /* PJChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJChatViewController.swift; sourceTree = "<group>"; };
 		0C55E2CD215A62BE000D8815 /* PJPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJPlayViewController.swift; sourceTree = "<group>"; };
 		0C55E2CF215A62C7000D8815 /* PJBreedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBreedsViewController.swift; sourceTree = "<group>"; };
 		0C55E2D1215A62CD000D8815 /* PJUserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserDetailsViewController.swift; sourceTree = "<group>"; };
@@ -387,7 +385,6 @@
 		0C55E2C7215A61EE000D8815 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				0C55E2CB215A62AF000D8815 /* PJChatViewController.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -1241,18 +1238,10 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-PIGPEN/Pods-PIGPEN-resources.sh",
-				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RongCloud.bundle",
-				"${PODS_ROOT}/RongCloudIM/RongCloudIM/en.lproj",
-				"${PODS_ROOT}/RongCloudIM/RongCloudIM/zh-Hans.lproj",
-				"${PODS_ROOT}/RongCloudIM/RongCloudIM/Emoji.plist",
 				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RCConfig.plist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RongCloud.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/en.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zh-Hans.lproj",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Emoji.plist",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RCConfig.plist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1272,6 +1261,7 @@
 				"${BUILT_PRODUCTS_DIR}/HappyDNS/HappyDNS.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/MessengerKit/MessengerKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Qiniu/Qiniu.framework",
 				"${BUILT_PRODUCTS_DIR}/Schedule/Schedule.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -1283,6 +1273,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HappyDNS.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessengerKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Qiniu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Schedule.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -1315,7 +1306,6 @@
 				0C1F6FAF21B3925E00304CD8 /* PJAlbumTableViewCell.swift in Sources */,
 				0C599ECE21703C5200FC2E37 /* PJCreateRealPetViewController.swift in Sources */,
 				0C55E2CE215A62BE000D8815 /* PJPlayViewController.swift in Sources */,
-				0C55E2CC215A62AF000D8815 /* PJChatViewController.swift in Sources */,
 				0CC35DCE21DCFFDC002244DA /* PJImageUpload.swift in Sources */,
 				0CE4F3F321592C7C003AD0F5 /* AppDelegate.swift in Sources */,
 				0C55E2F2215D2D76000D8815 /* PJUserInfoViewController.swift in Sources */,

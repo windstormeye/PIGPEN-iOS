@@ -28,25 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         initTabBarControler()
         IQKeyboardManager.shared.enable = true
-        RCIM.shared()?.initWithAppKey("kj7swf8ok3sq2")
+        
+        RCIMClient.shared()?.initWithAppKey("kj7swf8ok3sq2")
         
         return true
-    }
-
-    func applicationWillResignActive(_ application: UIApplication) {
-        
-    }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -74,7 +59,7 @@ extension AppDelegate {
                                                       bottom: -5, right: 0)
         homeNav.tabBarItem.image = UIImage(named: "tabBar_home")?.withRenderingMode(.alwaysOriginal)
         
-        let chatPage = PJChatViewController()
+        let chatPage = PJMessageViewController()
         let chatNav = UINavigationController(rootViewController: chatPage)
         chatNav.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0,
                                                       bottom: -5, right: 0)
