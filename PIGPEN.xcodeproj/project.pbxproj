@@ -95,6 +95,7 @@
 		0CE4F40021592C7D003AD0F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CE4F3FE21592C7D003AD0F5 /* LaunchScreen.storyboard */; };
 		0CE5C07821C00D7400A98566 /* PIGPENTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE5C07721C00D7400A98566 /* PIGPENTests.swift */; };
 		0CE5C07F21C00D8800A98566 /* PJAlbumDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1F6FB321B392EF00304CD8 /* PJAlbumDataController.swift */; };
+		0CEC156E225CCF2D001F1533 /* PJIM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEC156D225CCF2D001F1533 /* PJIM.swift */; };
 		0CED02E2219D45AC00294033 /* PJDogFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CED02E0219D45AC00294033 /* PJDogFoodViewController.swift */; };
 		0CED02E3219D45AC00294033 /* PJDogFoodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CED02E1219D45AC00294033 /* PJDogFoodViewController.xib */; };
 		0CED02E6219D510F00294033 /* PJBaseAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CED02E5219D510F00294033 /* PJBaseAlertViewController.swift */; };
@@ -207,6 +208,7 @@
 		0CE5C07521C00D7400A98566 /* PIGPENTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PIGPENTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CE5C07721C00D7400A98566 /* PIGPENTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIGPENTests.swift; sourceTree = "<group>"; };
 		0CE5C07921C00D7400A98566 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CEC156D225CCF2D001F1533 /* PJIM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJIM.swift; sourceTree = "<group>"; };
 		0CED02E0219D45AC00294033 /* PJDogFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJDogFoodViewController.swift; sourceTree = "<group>"; };
 		0CED02E1219D45AC00294033 /* PJDogFoodViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJDogFoodViewController.xib; sourceTree = "<group>"; };
 		0CED02E5219D510F00294033 /* PJBaseAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBaseAlertViewController.swift; sourceTree = "<group>"; };
@@ -503,6 +505,7 @@
 		0C55E2F9215F5E14000D8815 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0CEC156C225CCF11001F1533 /* IM */,
 				0C5E633C216309A900A90762 /* NetworkManager */,
 				0C0A54A7216B990500195DF1 /* Pet */,
 				0C55E2FA215F5E94000D8815 /* User */,
@@ -1042,6 +1045,14 @@
 			path = PIGPENTests;
 			sourceTree = "<group>";
 		};
+		0CEC156C225CCF11001F1533 /* IM */ = {
+			isa = PBXGroup;
+			children = (
+				0CEC156D225CCF2D001F1533 /* PJIM.swift */,
+			);
+			path = IM;
+			sourceTree = "<group>";
+		};
 		0CED02DE219D456500294033 /* Create */ = {
 			isa = PBXGroup;
 			children = (
@@ -1331,6 +1342,7 @@
 				0CE2616821C500AF00740582 /* PJAlbumCollectiionFlowLayout.swift in Sources */,
 				0CC35DD921DF7025002244DA /* PJWaveView.swift in Sources */,
 				0CE4F3FB21592C7C003AD0F5 /* PIGPEN.xcdatamodeld in Sources */,
+				0CEC156E225CCF2D001F1533 /* PJIM.swift in Sources */,
 				0C55E2FC215F5EA9000D8815 /* PJUser.swift in Sources */,
 				0C55E2F7215F570D000D8815 /* PJUserRegisterViewController.swift in Sources */,
 				0C55E30A2162190B000D8815 /* CALayer_UIColor.swift in Sources */,

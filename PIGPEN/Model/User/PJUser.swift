@@ -220,43 +220,45 @@ extension PJUser {
             // 因为登录接口要做 md5 验证，所以 body 要带上
             "timestamp": String.timestampe(),
             ]
-        PJNetwork.shared.requstWithPost(path: UserUrl.logIn.rawValue,
-                                        parameters: parameters,
-                                        complement: { (dataDic) in
-                                            if dataDic["msgCode"]?.intValue == 0 {
-                                                self.logout()
-                                                
-                                                var dataDic = dataDic["msg"]!
-                                                let userDic = dataDic["masuser"].dictionary!
-                                                self.userModel?.nick_name = userDic["nick_name"]?.string ?? ""
-                                                self.userModel?.gender = userDic["gender"]?.intValue ?? 0
-                                                self.userModel?.avatar = userDic["avatar"]?.intValue ?? -1
-                                                self.userModel?.token = dataDic["token"].string!
-                                                self.userModel?.uid = userDic["uid"]?.string!
-                                                self.userModel?.level = userDic["level"]?.float ?? -1
-                                                self.userModel?.follow = userDic["follow"]?.int ?? 0
-                                                self.userModel?.star = userDic["star"]?.int ?? 0
-                                                
-                                                let f_s = dataDic["feeding_status"].array
-                                                var feedingStatus = [Int]()
-                                                for s in f_s! {
-                                                    feedingStatus.append(s.int!)
-                                                }
-                                                
-                                                self.userModel?.feeding_status = feedingStatus
-                                                
-                                                // 登录成功后获取融云token，并持久化
-                                                self.rcToken(complateHandler: { (rcToken) in
-                                                    self.userModel?.rcToken = rcToken
-                                                    self.saveToSandBox()
-                                                    completeHandler()
-                                                }, failedHandler: { (error) in
-                                                    failedHandler(error)
-                                                })
-                                            } else {
-                                                let error = PJNetwork.Error(errorCode: dataDic["msgCode"]?.intValue,errorMsg: dataDic["msg"]?.string)
-                                                failedHandler(error)
-                                            }
+        PJNetwork.shared.requstWithPost(path: UserUrl.logIn.rawValue, parameters: parameters, complement: { (dataDic) in
+            if dataDic["msgCode"]?.intValue == 0 {
+                self.logout()
+                var dataDic = dataDic["msg"]!
+                let userDic = dataDic["masuser"].dictionary!
+                self.userModel?.nick_name = userDic["nick_name"]?.string ?? ""
+                self.userModel?.gender = userDic["gender"]?.intValue ?? 0
+                self.userModel?.avatar = userDic["avatar"]?.intValue ?? -1
+                self.userModel?.token = dataDic["token"].string!
+                self.userModel?.uid = userDic["uid"]?.string!
+                self.userModel?.level = userDic["level"]?.float ?? -1
+                self.userModel?.follow = userDic["follow"]?.int ?? 0
+                self.userModel?.star = userDic["star"]?.int ?? 0
+                
+                let f_s = dataDic["feeding_status"].array
+                var feedingStatus = [Int]()
+                for s in f_s! {
+                    feedingStatus.append(s.int!)
+                }
+                
+                self.userModel?.feeding_status = feedingStatus
+                
+                // 登录成功后获取融云token，并持久化
+                self.rcToken(complateHandler: { (rcToken) in
+                    self.userModel?.rcToken = rcToken
+                    self.saveToSandBox()
+                    
+                    self.connectRC(completeHandler: {
+                        completeHandler()
+                    }, failedHandler: { (error) in
+                        failedHandler(error)
+                    })
+                }, failedHandler: { (error) in
+                    failedHandler(error)
+                })
+            } else {
+                let error = PJNetwork.Error(errorCode: dataDic["msgCode"]?.intValue,errorMsg: dataDic["msg"]?.string)
+                failedHandler(error)
+            }
         }, failed: { (errorString) in
             failedHandler(PJNetwork.Error(errorCode: -1, errorMsg: "未知错误"))
         })
@@ -341,6 +343,20 @@ extension PJUser {
         }) { (errorString) in
             failedHandler(PJNetwork.Error(errorCode: -1, errorMsg: errorString))
         }
+    }
+    
+    func connectRC(completeHandler: @escaping () -> Void,
+                   failedHandler: @escaping (PJNetwork.Error) -> Void) {
+        guard self.userModel?.rcToken != nil else { return }
+        RCIMClient.shared()?.connect(withToken: self.userModel?.rcToken, success: { (userId) in
+            completeHandler()
+        }, error: { (errorCode) in
+            failedHandler(PJNetwork.Error(errorCode: -1,
+                                          errorMsg: "融云IM 登录失败"))
+        }, tokenIncorrect: {
+            failedHandler(PJNetwork.Error(errorCode: -1,
+                                          errorMsg: "融云IM token 失效"))
+        })
     }
 }
 

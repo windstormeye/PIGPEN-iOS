@@ -30,6 +30,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         
         RCIMClient.shared()?.initWithAppKey("kj7swf8ok3sq2")
+        PJUser.shared.connectRC(completeHandler: {
+            debugOnly {
+                print("融云 IM 登录成功")
+            }
+        }) { (error) in
+            
+        }
         
         return true
     }

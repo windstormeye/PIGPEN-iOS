@@ -13,18 +13,46 @@ class PJMessageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .white
+        
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(sendMsg))
+        view.addGestureRecognizer(tap)
+        
+        RCIMClient.shared()?.setReceiveMessageDelegate(self, object: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc
+    func sendMsg() {
+        PJIM.share().sendText(textString: "Hello, world!",
+                              userID: "4186284364",
+                              complateHandler: {
+                                print("发送成功")
+        }) { (errorCode) in
+            print(errorCode)
+        }
     }
-    */
+}
 
+
+extension PJMessageViewController: RCIMClientReceiveMessageDelegate {
+    func onReceived(_ message: RCMessage!, left nLeft: Int32, object: Any!) {
+        print(message.objectName)
+        switch message.objectName {
+        case "RC:TxtMsg":
+            let text = message.content as! RCTextMessage
+            let m = PJIM.Message(type: .text,
+                            textContent: text.content,
+                            audioContent: nil,
+                            sendUserId: message.senderUserId,
+                            msgId: message.messageId,
+                            msgDirection: message.messageDirection,
+                            msgStatus: message.sentStatus,
+                            msgReceivedTime: message.receivedTime,
+                            msgSentTime: message.sentTime)
+            print(m.textContent!)
+        case "RCImageMessage": break
+        default: break
+        }
+    }
 }
