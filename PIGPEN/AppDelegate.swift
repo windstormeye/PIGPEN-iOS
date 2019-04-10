@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("融云 IM 登录成功")
             }
         }) { (error) in
-            
+            print(error.errorCode)
         }
         
         return true

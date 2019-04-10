@@ -55,6 +55,9 @@
 		0C599EE4217099E900FC2E37 /* PJUserCreateVirtualPetChoiceNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C599EE2217099E900FC2E37 /* PJUserCreateVirtualPetChoiceNameViewController.swift */; };
 		0C599EE5217099E900FC2E37 /* PJUserCreateVirtualPetChoiceNameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C599EE3217099E900FC2E37 /* PJUserCreateVirtualPetChoiceNameViewController.xib */; };
 		0C599EEB2171C00200FC2E37 /* VirtualPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C599EEA2171C00200FC2E37 /* VirtualPet.swift */; };
+		0C5B5D01225DBEE400392E21 /* PJIMMessageHomeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5B5D00225DBEE400392E21 /* PJIMMessageHomeTableView.swift */; };
+		0C5B5D06225DBF1500392E21 /* PJIMMessageHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5B5D04225DBF1500392E21 /* PJIMMessageHomeTableViewCell.swift */; };
+		0C5B5D07225DBF1500392E21 /* PJIMMessageHomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C5B5D05225DBF1500392E21 /* PJIMMessageHomeTableViewCell.xib */; };
 		0C5E6337216241CF00A90762 /* PJBaseTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E6336216241CF00A90762 /* PJBaseTipsView.swift */; };
 		0C5E63392162444400A90762 /* PJUserInfoSeleteAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E63382162444400A90762 /* PJUserInfoSeleteAvatarView.swift */; };
 		0C5E633B21624D1F00A90762 /* PJUserInfoAvatarSelectCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E633A21624D1F00A90762 /* PJUserInfoAvatarSelectCollectionView.swift */; };
@@ -164,6 +167,9 @@
 		0C599EE2217099E900FC2E37 /* PJUserCreateVirtualPetChoiceNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserCreateVirtualPetChoiceNameViewController.swift; sourceTree = "<group>"; };
 		0C599EE3217099E900FC2E37 /* PJUserCreateVirtualPetChoiceNameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJUserCreateVirtualPetChoiceNameViewController.xib; sourceTree = "<group>"; };
 		0C599EEA2171C00200FC2E37 /* VirtualPet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VirtualPet.swift; sourceTree = "<group>"; };
+		0C5B5D00225DBEE400392E21 /* PJIMMessageHomeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJIMMessageHomeTableView.swift; sourceTree = "<group>"; };
+		0C5B5D04225DBF1500392E21 /* PJIMMessageHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJIMMessageHomeTableViewCell.swift; sourceTree = "<group>"; };
+		0C5B5D05225DBF1500392E21 /* PJIMMessageHomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJIMMessageHomeTableViewCell.xib; sourceTree = "<group>"; };
 		0C5E6336216241CF00A90762 /* PJBaseTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBaseTipsView.swift; sourceTree = "<group>"; };
 		0C5E63382162444400A90762 /* PJUserInfoSeleteAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserInfoSeleteAvatarView.swift; sourceTree = "<group>"; };
 		0C5E633A21624D1F00A90762 /* PJUserInfoAvatarSelectCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserInfoAvatarSelectCollectionView.swift; sourceTree = "<group>"; };
@@ -426,7 +432,6 @@
 		0C55E2D3215A78F4000D8815 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				0C90D6AF224A6A7F008C536D /* IM */,
 				0C55E2D4215A792F000D8815 /* Muti-Language */,
 				0C5E63412163696F00A90762 /* style.data */,
 				0C5E63542165B6D400A90762 /* PIGPEN_bridge.h */,
@@ -681,6 +686,16 @@
 			path = virtualPet;
 			sourceTree = "<group>";
 		};
+		0C5B5CFD225DBEA100392E21 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				0C5B5D00225DBEE400392E21 /* PJIMMessageHomeTableView.swift */,
+				0C5B5D04225DBF1500392E21 /* PJIMMessageHomeTableViewCell.swift */,
+				0C5B5D05225DBF1500392E21 /* PJIMMessageHomeTableViewCell.xib */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
 		0C5E63342162415C00A90762 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -797,13 +812,6 @@
 				0C8B75612198126D00353842 /* PJPickerView.swift */,
 			);
 			path = Picker;
-			sourceTree = "<group>";
-		};
-		0C90D6AF224A6A7F008C536D /* IM */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = IM;
 			sourceTree = "<group>";
 		};
 		0CA365F621B26CB600E7D2F7 /* Album */ = {
@@ -1059,6 +1067,7 @@
 		0CEC156F225CE347001F1533 /* IM */ = {
 			isa = PBXGroup;
 			children = (
+				0C5B5CFD225DBEA100392E21 /* List */,
 				0CEC1570225CE363001F1533 /* PJIMMessageViewController.swift */,
 			);
 			path = IM;
@@ -1215,6 +1224,7 @@
 				0CE4F3FD21592C7D003AD0F5 /* Assets.xcassets in Resources */,
 				0C55E2E9215B703C000D8815 /* PJUserLoginViewController.xib in Resources */,
 				0CC35DD421DF3B8C002244DA /* PJSegmentView.xib in Resources */,
+				0C5B5D07225DBF1500392E21 /* PJIMMessageHomeTableViewCell.xib in Resources */,
 				0C599ED621703CDA00FC2E37 /* PJCreateVirtualPetViewController.xib in Resources */,
 				0C55E2F3215D2D76000D8815 /* PJUserInfoViewController.xib in Resources */,
 				0CDB0C8F216705B000669331 /* PJUserSelfTableViewCell.xib in Resources */,
@@ -1318,6 +1328,7 @@
 				0C55E2E8215B703C000D8815 /* PJUserLoginViewController.swift in Sources */,
 				0CDB0C9B21675F6E00669331 /* PJUserDetailsMenuView.swift in Sources */,
 				0C599EEB2171C00200FC2E37 /* VirtualPet.swift in Sources */,
+				0C5B5D06225DBF1500392E21 /* PJIMMessageHomeTableViewCell.swift in Sources */,
 				0C599EB7216CFE7A00FC2E37 /* PJRealPetDetailsViewController.swift in Sources */,
 				0C0A54AC216CF64600195DF1 /* PJUserDetailRealPetTableViewCell.swift in Sources */,
 				0C8B755D2196FF8B00353842 /* PJBreedsSideSliderView.swift in Sources */,
@@ -1335,6 +1346,7 @@
 				0C5E634021635FA500A90762 /* PJNetworkUrls.swift in Sources */,
 				0C1F6FAA21B3924400304CD8 /* PJAlbumDetailCollectionViewCell.swift in Sources */,
 				0C1F6FB421B392EF00304CD8 /* PJAlbumDataController.swift in Sources */,
+				0C5B5D01225DBEE400392E21 /* PJIMMessageHomeTableView.swift in Sources */,
 				0CDB0C90216705B000669331 /* PJUserSelfTableViewCell.swift in Sources */,
 				0C55E3082161BAB6000D8815 /* PJBaseViewController.swift in Sources */,
 				0C599ED521703CDA00FC2E37 /* PJCreateVirtualPetViewController.swift in Sources */,

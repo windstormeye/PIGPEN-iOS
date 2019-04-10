@@ -13,7 +13,7 @@ fileprivate extension Selector {
 }
 
 class PJBaseViewController: UIViewController {
-
+    var titleString = "" { didSet { navigationItem.title = titleString }}
     var headerView: UIView?
     var lineView: UIView?
     // default is false

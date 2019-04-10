@@ -31,10 +31,10 @@ class PJUser {
                                   level: -1,
                                   follow: 0,
                                   star: 0,
-                                  token: "",
+                                  token: nil,
                                   uid: "",
                                   money: 0,
-                                  rcToken: "")
+                                  rcToken: nil)
         }
     }
     
@@ -103,7 +103,7 @@ extension PJUser {
                                                                  token: nil,
                                                                  uid: uid,
                                                                  money: money,
-                                                                 rcToken: "")
+                                                                 rcToken: nil)
                                             if getSelf {
                                                 self.userModel = user
                                                 self.saveToSandBox()
@@ -190,9 +190,21 @@ extension PJUser {
                                                     feedingStatus.append(s.int!)
                                                 }
                                                 self.userModel?.feeding_status = feedingStatus
+                                    
                                                 
-                                                self.saveToSandBox()
-                                                completeHandler()
+                                                // 登录成功后获取融云token，并持久化
+                                                self.rcToken(complateHandler: { (rcToken) in
+                                                    self.userModel?.rcToken = rcToken
+                                                    self.saveToSandBox()
+                                                    
+                                                    self.connectRC(completeHandler: {
+                                                        completeHandler()
+                                                    }, failedHandler: { (error) in
+                                                        failedHandler(error)
+                                                    })
+                                                }, failedHandler: { (error) in
+                                                    failedHandler(error)
+                                                })
                                             } else {
                                                 let error = PJNetwork.Error(errorCode: dataDic["msgCode"]?.intValue,
                                                                             errorMsg: dataDic["msg"]?.string)
