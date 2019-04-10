@@ -9,8 +9,10 @@
 import UIKit
 
 class PJIMMessageHomeTableView: UITableView {
-    private let cellIndentifier = "PJIMMessageHomeTableViewCell"
     var viewModels = [PJIM.MessageListCell]() {didSet{ reloadData() }}
+    var cellSelected: ((Int) -> Void)?
+    
+    private let cellIndentifier = "PJIMMessageHomeTableViewCell"
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -34,7 +36,7 @@ class PJIMMessageHomeTableView: UITableView {
 
 extension PJIMMessageHomeTableView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        cellSelected?(indexPath.row)
     }
 }
 

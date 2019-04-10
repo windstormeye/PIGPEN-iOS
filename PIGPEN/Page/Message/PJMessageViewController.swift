@@ -22,18 +22,15 @@ class PJMessageViewController: PJBaseViewController {
         view.backgroundColor = .white
         
         
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(sendMsg))
-//        view.addGestureRecognizer(tap)
-//
-//        let b = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
-//        view.addSubview(b)
-//        b.setTitle("接收消息", for: .normal)
-//        b.addTarget(self, action: #selector(getMsg), for: .touchUpInside)
-//        b.backgroundColor = .black
-        
         tableView = PJIMMessageHomeTableView(frame: CGRect(x: 0, y: headerView!.bottom, width: view.width, height: view.height - headerView!.height), style: .plain)
         view.addSubview(tableView!)
-        
+        tableView?.cellSelected = { cellIndex in
+            let message = self.tableView?.viewModels[cellIndex]
+            let chat = PJIMChatViewController()
+            chat.messageCell = message
+            chat.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(chat, animated: true)
+        }
         
         RCIMClient.shared()?.setReceiveMessageDelegate(self, object: nil)
         
@@ -53,11 +50,6 @@ class PJMessageViewController: PJBaseViewController {
         }) { (errorCode) in
             print(errorCode)
         }
-    }
-    
-    @objc
-    func getMsg() {
-        present(PJIMMessageViewController(), animated: true, completion: nil)
     }
     
     @objc

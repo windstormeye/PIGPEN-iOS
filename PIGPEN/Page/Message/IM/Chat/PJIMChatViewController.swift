@@ -9,30 +9,15 @@
 import UIKit
 import MessengerKit
 
-class PJIMMessageViewController: MSGMessengerViewController {
-    
+class PJIMChatViewController: MSGMessengerViewController {
+    var messageCell: PJIM.MessageListCell? { didSet { didSetMessageCell() }}
     var id = 100
-    // Users in the chat
     
-    let steve = User(displayName: "Steve", avatar: #imageLiteral(resourceName: "0"), avatarUrl: nil, isSender: true)
+    var friendUser: ChatUser?
+    var meUser: ChatUser?
+
+    var messages = [[MSGMessage]]()
     
-    let tim = User(displayName: "Tim", avatar: #imageLiteral(resourceName: "4"), avatarUrl: nil, isSender: false)
-    
-    // Messages
-    
-    lazy var messages: [[MSGMessage]] = {
-        return [
-            [
-                MSGMessage(id: 1, body: .emoji("🐙💦🔫"), user: tim, sentAt: Date()),
-            ],
-            [
-                MSGMessage(id: 2, body: .text("Yeah sure, gimme 5"), user: steve, sentAt: Date()),
-                MSGMessage(id: 3, body: .text("Okay ready when you are"), user: steve, sentAt: Date())
-            ]
-        ]
-    }()
-    
-    // Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,12 +25,56 @@ class PJIMMessageViewController: MSGMessengerViewController {
         delegate = self
     }
     
+    private func didSetMessageCell() {
+        friendUser = ChatUser(displayName: messageCell!.nickName,
+                              avatar: UIImage(named: "\(messageCell!.avatar)"),
+                              isSender: false)
+        meUser = ChatUser(displayName: PJUser.shared.userModel!.nick_name!,
+                              avatar: UIImage(named: "\(PJUser.shared.userModel!.avatar!)"),
+                              isSender: true)
+        
+        
+        let ms = RCIMClient.shared()?.getLatestMessages(.ConversationType_PRIVATE, targetId: messageCell?.uid, count: 30) as? [RCMessage]
+        if ms != nil {
+            var m_index = 0
+            var tempMsgs = [MSGMessage]()
+            var tempMsgUserId = messageCell?.uid
+            messages.append(tempMsgs)
+            
+            for m in ms! {
+                let text = m.content as! RCTextMessage
+                if tempMsgUserId != m.targetId {
+                    tempMsgs.removeAll()
+                    messages.append(tempMsgs)
+                    m_index += 1
+                }
+                tempMsgUserId = m.targetId
+                
+                let c_m: MSGMessage?
+                if m.senderUserId != PJUser.shared.userModel?.uid! {
+                    c_m = MSGMessage(id: m.messageId,
+                                     body: .text(text.content),
+                                     user: friendUser!,
+                                     sentAt: Date(timeIntervalSince1970: TimeInterval(m.sentTime)))
+                } else {
+                    c_m = MSGMessage(id: m.messageId,
+                                     body: .text(text.content),
+                                     user: meUser!,
+                                     sentAt: Date(timeIntervalSince1970: TimeInterval(m.sentTime)))
+                }
+                tempMsgs.append(c_m!)
+                messages.insert(tempMsgs, at: m_index)
+                messages.remove(at: m_index + 1)
+            }
+        }
+    }
+    
     override func inputViewPrimaryActionTriggered(inputView: MSGInputView) {
         
         id += 1
         
         let body: MSGMessageBody = .text(inputView.message)
-        let message = MSGMessage(id: id, body: body, user: steve, sentAt: Date())
+        let message = MSGMessage(id: id, body: body, user: meUser!, sentAt: Date())
         insert(message)
     }
     
@@ -102,7 +131,7 @@ class PJIMMessageViewController: MSGMessengerViewController {
 
 // MARK: - MSGDataSource
 
-extension PJIMMessageViewController: MSGDataSource {
+extension PJIMChatViewController: MSGDataSource {
     
     func numberOfSections() -> Int {
         return messages.count
@@ -127,18 +156,12 @@ extension PJIMMessageViewController: MSGDataSource {
 }
 
 
-extension PJIMMessageViewController: MSGDelegate {
+extension PJIMChatViewController: MSGDelegate {
     
 }
 
-struct User: MSGUser {
-    
+struct ChatUser: MSGUser {
     var displayName: String
-    
     var avatar: UIImage?
-    
-    var avatarUrl: URL?
-    
     var isSender: Bool
-    
 }

@@ -62,6 +62,7 @@ import Foundation
                                           completeHandler: { (userModel) in
                                             let msgCell = MessageListCell(avatar: userModel.avatar!,
                                                                           nickName: userModel.nick_name!,
+                                                                          uid: userModel.uid!,
                                                                           message: message!)
                                             msgListCells.append(msgCell)
                                             
@@ -127,6 +128,7 @@ extension PJIM {
     struct MessageListCell {
         var avatar: Int
         var nickName: String
+        var uid: String
         var message: Message
     }
 }

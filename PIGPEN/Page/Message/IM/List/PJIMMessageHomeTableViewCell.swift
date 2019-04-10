@@ -15,9 +15,10 @@ class PJIMMessageHomeTableViewCell: UITableViewCell {
     @IBOutlet weak private var timeLabel: UILabel!
     @IBOutlet weak private var sendStatusImageView: UIImageView!
     
-    @IBOutlet weak var messageLabelWidthConstraints: NSLayoutConstraint!
+    @IBOutlet weak private var messageLabelWidthConstraints: NSLayoutConstraint!
     
     override func layoutSubviews() {
+        selectionStyle = .none
         messageLabelWidthConstraints.constant = width - messageLabel.left - timeLabel.width - 50
     }
     
