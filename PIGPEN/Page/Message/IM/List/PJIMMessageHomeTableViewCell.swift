@@ -15,19 +15,21 @@ class PJIMMessageHomeTableViewCell: UITableViewCell {
     @IBOutlet weak private var timeLabel: UILabel!
     @IBOutlet weak private var sendStatusImageView: UIImageView!
     
+    @IBOutlet weak var messageLabelWidthConstraints: NSLayoutConstraint!
+    
+    override func layoutSubviews() {
+        messageLabelWidthConstraints.constant = width - messageLabel.left - timeLabel.width - 50
+    }
     
     func setModel(_ viewModel: ViewModel) {
         avatarImaegView.image = UIImage(named: "\(viewModel.avatar)")
         nickNameLabel.text = viewModel.nickName
         messageLabel.text = viewModel.message
-        
+
         let date = Date(timeIntervalSince1970: TimeInterval(viewModel.time)!)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         timeLabel.text = dateFormatter.string(from: date)
-        
-//        let contentSize = timeLabel.text!.size(with: UIFont.systemFont(ofSize: 12))
-        
         
         
         if viewModel.sendStatus == .SentStatus_SENT {

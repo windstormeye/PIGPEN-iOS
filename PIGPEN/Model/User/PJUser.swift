@@ -13,12 +13,15 @@ import CryptoSwift
 class PJUser {
     // MARK: - Public Properties
     static let shared = PJUser()
-    var userModel: UserModel?
+    var userModel: UserModel? {
+        didSet {
+            print("2333")
+        }
+    }
     var isLoginTXIM: Bool = false
     
     // MARK: - Private Methods
-    private let userAccountPath =  NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory,
-                                                                       FileManager.SearchPathDomainMask.userDomainMask, true).first!
+    private let userAccountPath =  NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first!
     
     // MARK: - Life Cycle
     init() {
