@@ -6,7 +6,7 @@ target 'PIGPEN' do
     pod 'Qiniu'
     pod 'RongCloudIM/IMLib', '~> 2.8.3'
     
-    pod 'MessageKit'
+    pod 'MessengerKit', :git => 'https://github.com/steve228uk/MessengerKit.git'
     pod 'IQKeyboardManagerSwift'
     pod 'Alamofire'
     pod 'SwiftyJSON'

@@ -8,43 +8,28 @@
 
 import UIKit
 
-protocol PJBaseViewControllerProtocol: UIViewController {
-    var headerView: UIView? {get}
+protocol PJBaseViewControllerDelegate: UIViewController {
     var titleString: String { get set }
     
     func initBaseView()
     func popBack()
     func backButtonTapped(backSel: Selector, imageName: String?)
     func leftBarButtonItemTapped(leftTapped: Selector, imageName: String)
+    func rightBarButtonItem(imageName: String, rightSel: Selector)
 }
 
-extension PJBaseViewControllerProtocol {
-    var headerView: UIView? {
-        get {
-            return view.subviews.filter { return $0.tag == 0509 }.first
-        }
-    }
-    
+extension PJBaseViewControllerDelegate {
     var titleString: String {
         get { return navigationItem.title ?? "" }
         set { navigationItem.title = newValue }
     }
     
     func initBaseView() {
-        navigationController?.navigationBar.setBackgroundImage(UIImage(),
-                                                               for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.barTintColor = .white
         
         let titleTextAtt = [NSAttributedString.Key.foregroundColor: UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = titleTextAtt
-        
-        let h_v = UIView(frame: CGRect(x: 0, y: 0,
-                                       width: view.width,
-                                       height: navigationBarHeight))
-        h_v.tag = 0510
-        h_v.backgroundColor = .white
-        view.addSubview(h_v)
     }
     
     func popBack() {
@@ -58,6 +43,15 @@ extension PJBaseViewControllerProtocol {
         leftButton.addTarget(self, action: leftTapped, for: .touchUpInside)
         let leftBarButtonItem = UIBarButtonItem.init(customView: leftButton)
         navigationItem.setLeftBarButton(leftBarButtonItem, animated: true)
+    }
+    
+    func rightBarButtonItem(imageName: String, rightSel: Selector) {
+        let rightButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40,
+                                                 height: 40))
+        rightButton.setImage(UIImage(named: imageName), for: .normal)
+        rightButton.addTarget(self, action: rightSel, for: .touchUpInside)
+        let leftBarButtonItem = UIBarButtonItem.init(customView: rightButton)
+        navigationItem.setRightBarButton(leftBarButtonItem, animated: true)
     }
     
     func backButtonTapped(backSel: Selector, imageName: String?) {

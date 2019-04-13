@@ -8,13 +8,14 @@
 
 import UIKit
 
-class PJMessageViewController: PJBaseViewController {
+class PJMessageViewController: UIViewController, PJBaseViewControllerDelegate {
     
     private var tableView: PJIMMessageHomeTableView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         titleString = "信息"
+        initBaseView()
         leftBarButtonItemTapped(leftTapped: .addressBook,
                                 imageName: "message_book")
         rightBarButtonItem(imageName: "message_search",
@@ -22,7 +23,7 @@ class PJMessageViewController: PJBaseViewController {
         view.backgroundColor = .white
         
         
-        tableView = PJIMMessageHomeTableView(frame: CGRect(x: 0, y: headerView!.bottom, width: view.width, height: view.height - headerView!.height), style: .plain)
+        tableView = PJIMMessageHomeTableView(frame: CGRect(x: 0, y: 0, width: view.width, height: view.height), style: .plain)
         view.addSubview(tableView!)
         tableView?.cellSelected = { cellIndex in
             let message = self.tableView?.viewModels[cellIndex]
@@ -33,19 +34,20 @@ class PJMessageViewController: PJBaseViewController {
         }
         
         RCIMClient.shared()?.setReceiveMessageDelegate(self, object: nil)
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         PJIM.share().getConversionList { cells in
             self.tableView?.viewModels = cells
         }
-        
-        
     }
     
     @objc
     func sendMsg() {
         PJIM.share().sendText(textString: "Hello, world!",
                               userID: "4186284364",
-                              complateHandler: {
+                              complateHandler: { msgId in
                                 print("发送成功")
         }) { (errorCode) in
             print(errorCode)
@@ -70,7 +72,7 @@ extension PJMessageViewController: RCIMClientReceiveMessageDelegate {
         switch message.objectName {
         case "RC:TxtMsg":
             let text = message.content as! RCTextMessage
-            let m = PJIM.Message(type: .text(text.content),
+            let m = PJIM.Message(type: .text,
                             textContent: text.content,
                             audioContent: nil,
                             sendUserId: message.senderUserId,

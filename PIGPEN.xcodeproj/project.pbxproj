@@ -58,9 +58,8 @@
 		0C5B5D01225DBEE400392E21 /* PJIMMessageHomeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5B5D00225DBEE400392E21 /* PJIMMessageHomeTableView.swift */; };
 		0C5B5D06225DBF1500392E21 /* PJIMMessageHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5B5D04225DBF1500392E21 /* PJIMMessageHomeTableViewCell.swift */; };
 		0C5B5D07225DBF1500392E21 /* PJIMMessageHomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C5B5D05225DBF1500392E21 /* PJIMMessageHomeTableViewCell.xib */; };
-		0C5B5D0A226188F200392E21 /* PJIMChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5B5D09226188F200392E21 /* PJIMChatViewController.swift */; };
-		0C5B5D0D22618D5A00392E21 /* PJIMMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5B5D0C22618D5A00392E21 /* PJIMMessage.swift */; };
 		0C5B5D132261ADD300392E21 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5B5D122261ADD300392E21 /* UIViewController.swift */; };
+		0C5B5D2E2262226000392E21 /* PJIMChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5B5D2D2262226000392E21 /* PJIMChatViewController.swift */; };
 		0C5E6337216241CF00A90762 /* PJBaseTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E6336216241CF00A90762 /* PJBaseTipsView.swift */; };
 		0C5E63392162444400A90762 /* PJUserInfoSeleteAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E63382162444400A90762 /* PJUserInfoSeleteAvatarView.swift */; };
 		0C5E633B21624D1F00A90762 /* PJUserInfoAvatarSelectCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E633A21624D1F00A90762 /* PJUserInfoAvatarSelectCollectionView.swift */; };
@@ -172,9 +171,8 @@
 		0C5B5D00225DBEE400392E21 /* PJIMMessageHomeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJIMMessageHomeTableView.swift; sourceTree = "<group>"; };
 		0C5B5D04225DBF1500392E21 /* PJIMMessageHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJIMMessageHomeTableViewCell.swift; sourceTree = "<group>"; };
 		0C5B5D05225DBF1500392E21 /* PJIMMessageHomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJIMMessageHomeTableViewCell.xib; sourceTree = "<group>"; };
-		0C5B5D09226188F200392E21 /* PJIMChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJIMChatViewController.swift; sourceTree = "<group>"; };
-		0C5B5D0C22618D5A00392E21 /* PJIMMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJIMMessage.swift; sourceTree = "<group>"; };
 		0C5B5D122261ADD300392E21 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		0C5B5D2D2262226000392E21 /* PJIMChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PJIMChatViewController.swift; sourceTree = "<group>"; };
 		0C5E6336216241CF00A90762 /* PJBaseTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBaseTipsView.swift; sourceTree = "<group>"; };
 		0C5E63382162444400A90762 /* PJUserInfoSeleteAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserInfoSeleteAvatarView.swift; sourceTree = "<group>"; };
 		0C5E633A21624D1F00A90762 /* PJUserInfoAvatarSelectCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserInfoAvatarSelectCollectionView.swift; sourceTree = "<group>"; };
@@ -703,19 +701,10 @@
 		0C5B5D08225E324800392E21 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				0C5B5D09226188F200392E21 /* PJIMChatViewController.swift */,
-				0C5B5D0B22618D4900392E21 /* Message */,
+				0C5B5D2D2262226000392E21 /* PJIMChatViewController.swift */,
 				0C5B5CFD225DBEA100392E21 /* List */,
 			);
 			path = Chat;
-			sourceTree = "<group>";
-		};
-		0C5B5D0B22618D4900392E21 /* Message */ = {
-			isa = PBXGroup;
-			children = (
-				0C5B5D0C22618D5A00392E21 /* PJIMMessage.swift */,
-			);
-			path = Message;
 			sourceTree = "<group>";
 		};
 		0C5B5D142261B38F00392E21 /* Protocolo */ = {
@@ -1315,8 +1304,7 @@
 				"${BUILT_PRODUCTS_DIR}/HappyDNS/HappyDNS.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/MessageInputBar/MessageInputBar.framework",
-				"${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework",
+				"${BUILT_PRODUCTS_DIR}/MessengerKit/MessengerKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Qiniu/Qiniu.framework",
 				"${BUILT_PRODUCTS_DIR}/Schedule/Schedule.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -1328,8 +1316,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HappyDNS.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageInputBar.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessengerKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Qiniu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Schedule.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -1373,7 +1360,7 @@
 				0CDB0C90216705B000669331 /* PJUserSelfTableViewCell.swift in Sources */,
 				0C55E3082161BAB6000D8815 /* PJBaseViewController.swift in Sources */,
 				0C599ED521703CDA00FC2E37 /* PJCreateVirtualPetViewController.swift in Sources */,
-				0C5B5D0D22618D5A00392E21 /* PJIMMessage.swift in Sources */,
+				0C5B5D2E2262226000392E21 /* PJIMChatViewController.swift in Sources */,
 				0C55E2DD215A8055000D8815 /* TabBar.swift in Sources */,
 				0C5E634D2165A5F800A90762 /* PJSmallHUD.swift in Sources */,
 				0C5E633B21624D1F00A90762 /* PJUserInfoAvatarSelectCollectionView.swift in Sources */,
@@ -1393,7 +1380,6 @@
 				0CEC156E225CCF2D001F1533 /* PJIM.swift in Sources */,
 				0C55E2FC215F5EA9000D8815 /* PJUser.swift in Sources */,
 				0C55E2F7215F570D000D8815 /* PJUserRegisterViewController.swift in Sources */,
-				0C5B5D0A226188F200392E21 /* PJIMChatViewController.swift in Sources */,
 				0C55E30A2162190B000D8815 /* CALayer_UIColor.swift in Sources */,
 				0C8B75622198126D00353842 /* PJPickerView.swift in Sources */,
 				0C5B5D132261ADD300392E21 /* UIViewController.swift in Sources */,

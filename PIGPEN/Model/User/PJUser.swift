@@ -48,6 +48,7 @@ class PJUser {
                 try BeerData.write(to: url)
                 print("完成了对数据的二进制化归档")
             } catch {
+                print("saveToSandBox \(error.localizedDescription)")
                 assert(true, "saveToSandBox \(error.localizedDescription)")
             }
         }

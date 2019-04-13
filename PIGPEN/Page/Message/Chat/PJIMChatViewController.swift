@@ -1,110 +1,31 @@
 //
-//  PJIMChatViewController.swift
+//  PJIMMessageViewController.swift
 //  PIGPEN
 //
-//  Created by PJHubs on 2019/4/13.
+//  Created by PJHubs on 2019/4/9.
 //  Copyright © 2019 PJHubs. All rights reserved.
 //
 
 import UIKit
-import MapKit
-import MessageKit
-import MessageInputBar
+import MessengerKit
 
-class PJIMChatViewController: MessagesViewController, PJBaseViewControllerProtocol {
-    private let outgoingAvatarOverlap: CGFloat = 17.5
-    private let refreshControl = UIRefreshControl()
+class PJIMChatViewController: MSGMessengerViewController, PJBaseViewControllerDelegate {
+    var messageCell: PJIM.MessageListCell? { didSet { didSetMessageCell() }}
+    var id = 100
     
-    var messageCell: PJIM.MessageListCell? {
-        didSet {
-            titleString = messageCell!.nickName
-        }
-    }
+    var friendUser: ChatUser?
+    var meUser: ChatUser?
+
+    var messages = [[MSGMessage]]()
     
-    var f_sender = Sender(id: "2333", displayName: "YiYi")
-    var m_sender = Sender(id: PJUser.shared.userModel.uid!,
-                          displayName: PJUser.shared.userModel.nick_name!)
-    
-     var messageList: [PJIMMessage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initView()
-    }
-    
-    private func initView() {
+        dataSource = self
+        delegate = self
+        
         initBaseView()
-        initData()
         backButtonTapped(backSel: .back, imageName: nil)
-        
-        initMessageCollectionView()
-        initMessageInputBar()
-    }
-    
-    private func initData() {
-        messageList.append(PJIMMessage(text: "2333",
-                                       sender: m_sender,
-                                       messageId: UUID().uuidString,
-                                       date: Date()))
-        messageList.append(PJIMMessage(text: "2333",
-                                       sender: m_sender,
-                                       messageId: UUID().uuidString,
-                                       date: Date()))
-        messageList.append(PJIMMessage(text: "2333",
-                                       sender: m_sender,
-                                       messageId: UUID().uuidString,
-                                       date: Date()))
-    }
-    
-    func initMessageCollectionView() {
-        messagesCollectionView.messagesDataSource = self
-        messagesCollectionView.messageCellDelegate = self
-        
-        scrollsToBottomOnKeyboardBeginsEditing = true // default false
-        maintainPositionOnKeyboardFrameChanged = true // default false
-        
-        messagesCollectionView.addSubview(refreshControl)
-        refreshControl.addTarget(self, action: .loadMore, for: .valueChanged)
-        
-        let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout
-        layout?.sectionInset = UIEdgeInsets(top: 1, left: 8, bottom: 1, right: 8)
-        
-        // Hide the outgoing avatar and adjust the label alignment to line up with the messages
-        layout?.setMessageOutgoingAvatarSize(.zero)
-        layout?.setMessageOutgoingMessageTopLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)))
-        layout?.setMessageOutgoingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)))
-        
-        // Set outgoing avatar to overlap with the message bubble
-        layout?.setMessageIncomingMessageTopLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 0, left: 18, bottom: outgoingAvatarOverlap, right: 0)))
-        layout?.setMessageIncomingAvatarSize(CGSize(width: 30, height: 30))
-        layout?.setMessageIncomingMessagePadding(UIEdgeInsets(top: -outgoingAvatarOverlap, left: -18, bottom: outgoingAvatarOverlap, right: 18))
-        
-        layout?.setMessageIncomingAccessoryViewSize(CGSize(width: 30, height: 30))
-        layout?.setMessageIncomingAccessoryViewPadding(HorizontalEdgeInsets(left: 8, right: 0))
-        layout?.setMessageOutgoingAccessoryViewSize(CGSize(width: 30, height: 30))
-        layout?.setMessageOutgoingAccessoryViewPadding(HorizontalEdgeInsets(left: 0, right: 8))
-        
-        messagesCollectionView.messagesLayoutDelegate = self
-        messagesCollectionView.messagesDisplayDelegate = self
-    }
-    
-    func initMessageInputBar() {
-        messageInputBar.delegate = self
-        messageInputBar.inputTextView.tintColor = .primaryColor
-        messageInputBar.sendButton.tintColor = .primaryColor
-    }
-
-    func insertMessage(_ message: PJIMMessage) {
-        messageList.append(message)
-        // Reload last section to update header/footer labels and insert a new one
-        messagesCollectionView.performBatchUpdates({
-            messagesCollectionView.insertSections([messageList.count - 1])
-            if messageList.count >= 2 {
-                messagesCollectionView.reloadSections([messageList.count - 2])
-            }
-        }, completion: { [weak self] _ in
-            self?.messagesCollectionView.scrollToBottom(animated: true)
-        })
     }
     
     @objc
@@ -112,222 +33,165 @@ class PJIMChatViewController: MessagesViewController, PJBaseViewControllerProtoc
         popBack()
     }
     
-    @objc
-    func loadMoreMessages() {
-//        self.messageList.insert(contentsOf: messages, at: 0)
-//        self.messagesCollectionView.reloadDataAndKeepOffset()
-//        self.refreshControl.endRefreshing()
+    private func didSetMessageCell() {
+        titleString = messageCell!.nickName
+        friendUser = ChatUser(displayName: messageCell!.nickName,
+                              avatar: UIImage(named: "\(messageCell!.avatar)"),
+                              isSender: false)
+        meUser = ChatUser(displayName: PJUser.shared.userModel.nick_name!,
+                          avatar: UIImage(named: "\(PJUser.shared.userModel.avatar!)"),
+                              isSender: true)
+        
+        func update(_ ms: [RCMessage]) {
+            var m_index = 0
+            var tempMsgs = [MSGMessage]()
+            var tempMsgUserId = messageCell?.uid
+            messages.append(tempMsgs)
+            
+            for m in ms {
+                let text = m.content as! RCTextMessage
+                if tempMsgUserId != m.targetId {
+                    tempMsgs.removeAll()
+                    messages.append(tempMsgs)
+                    m_index += 1
+                }
+                tempMsgUserId = m.targetId
+                
+                let c_m: MSGMessage?
+                if m.senderUserId != PJUser.shared.userModel.uid! {
+                    c_m = MSGMessage(id: m.messageId,
+                                     body: .text(text.content),
+                                     user: friendUser!,
+                                     sentAt: Date(timeIntervalSince1970: TimeInterval(m.sentTime)))
+                } else {
+                    c_m = MSGMessage(id: m.messageId,
+                                     body: .text(text.content),
+                                     user: meUser!,
+                                     sentAt: Date(timeIntervalSince1970: TimeInterval(m.sentTime)))
+                }
+                tempMsgs.append(c_m!)
+                tempMsgs.reverse()
+                messages.insert(tempMsgs, at: m_index)
+                messages.remove(at: m_index + 1)
+            }
+        }
+        
+        let ms = RCIMClient.shared()?.getLatestMessages(.ConversationType_PRIVATE, targetId: messageCell?.uid, count: 30) as? [RCMessage]
+        if ms != nil {
+            update(ms!)
+        } else {
+            RCIMClient.shared()?.getRemoteHistoryMessages(.ConversationType_PRIVATE, targetId: PJUser.shared.userModel.uid!, recordTime: 0, count: 20, success: { (messages: [RCMessage]) in
+                    update(messages)
+                } as? ([Any]?) -> Void, error: { (errorCode) in
+                    print(errorCode.rawValue)
+            })
+        }
     }
     
-    func isPreviousMessageSameSender(at indexPath: IndexPath) -> Bool {
-        guard indexPath.section - 1 >= 0 else { return false }
-        return messageList[indexPath.section].sender == messageList[indexPath.section - 1].sender
+    override func inputViewPrimaryActionTriggered(inputView: MSGInputView) {
+        PJIM.share().sendText(textString: inputView.message,
+                              userID: messageCell!.uid,
+                              complateHandler: { mesId in
+                                let body: MSGMessageBody = .text(inputView.message)
+                                let message = MSGMessage(id: mesId,
+                                                         body: body,
+                                                         user: self.meUser!,
+                                                         sentAt: Date())
+                                DispatchQueue.main.async {
+                                    self.insert(message)
+                                }
+        }) { (errorCode) in
+            print(errorCode)
+        }
     }
     
-    func isNextMessageSameSender(at indexPath: IndexPath) -> Bool {
-        guard indexPath.section + 1 < messageList.count else { return false }
-        return messageList[indexPath.section].sender == messageList[indexPath.section + 1].sender
+    override func insert(_ message: MSGMessage) {
+        collectionView.performBatchUpdates({
+            if let lastSection = self.messages.last, let lastMessage = lastSection.last, lastMessage.user.displayName == message.user.displayName {
+                self.messages[self.messages.count - 1].append(message)
+                
+                let sectionIndex = self.messages.count - 1
+                let itemIndex = self.messages[sectionIndex].count - 1
+                self.collectionView.insertItems(at: [IndexPath(item: itemIndex, section: sectionIndex)])
+                
+            } else {
+                self.messages.append([message])
+                let sectionIndex = self.messages.count - 1
+                self.collectionView.insertSections([sectionIndex])
+            }
+        }, completion: { (_) in
+            self.collectionView.scrollToBottom(animated: true)
+            self.collectionView.layoutTypingLabelIfNeeded()
+        })
+        
+    }
+    
+    override func insert(_ messages: [MSGMessage], callback: (() -> Void)? = nil) {
+        
+        collectionView.performBatchUpdates({
+            for message in messages {
+                if let lastSection = self.messages.last, let lastMessage = lastSection.last, lastMessage.user.displayName == message.user.displayName {
+                    self.messages[self.messages.count - 1].append(message)
+                    
+                    let sectionIndex = self.messages.count - 1
+                    let itemIndex = self.messages[sectionIndex].count - 1
+                    self.collectionView.insertItems(at: [IndexPath(item: itemIndex, section: sectionIndex)])
+                    
+                } else {
+                    self.messages.append([message])
+                    let sectionIndex = self.messages.count - 1
+                    self.collectionView.insertSections([sectionIndex])
+                }
+            }
+        }, completion: { (_) in
+            self.collectionView.scrollToBottom(animated: false)
+            self.collectionView.layoutTypingLabelIfNeeded()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                callback?()
+            }
+        })
+        
     }
     
 }
 
 private extension Selector {
     static let back = #selector(PJIMChatViewController.back)
-    static let loadMore = #selector(PJIMChatViewController.loadMoreMessages)
 }
 
-extension PJIMChatViewController: MessagesDataSource {
-    func currentSender() -> Sender {
-        return Sender(id: PJUser.shared.userModel.uid!,
-                      displayName: PJUser.shared.userModel.nick_name!)
-    }
-    
-    func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
-        return messageList.count
-    }
-    
-    func messageForItem(at indexPath: IndexPath,
-                        in messagesCollectionView: MessagesCollectionView) -> MessageType {
-        return messageList[indexPath.row]
-    }
+// MARK: - MSGDataSource
 
-}
-
-extension PJIMChatViewController: MessagesLayoutDelegate {
+extension PJIMChatViewController: MSGDataSource {
     
-}
-
-extension PJIMChatViewController: MessagesDisplayDelegate {
-    func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        return isFromCurrentSender(message: message) ? .white : .darkText
+    func numberOfSections() -> Int {
+        return messages.count
     }
     
-    func detectorAttributes(for detector: DetectorType, and message: MessageType, at indexPath: IndexPath) -> [NSAttributedString.Key: Any] {
-        return MessageLabel.defaultAttributes
+    func numberOfMessages(in section: Int) -> Int {
+        return messages[section].count
     }
     
-    func enabledDetectors(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> [DetectorType] {
-        return [.url, .address, .phoneNumber, .date, .transitInformation]
+    func message(for indexPath: IndexPath) -> MSGMessage {
+        return messages[indexPath.section][indexPath.item]
     }
     
-    // MARK: - All Messages
-    
-    func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        return isFromCurrentSender(message: message) ? .primaryColor : UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+    func footerTitle(for section: Int) -> String? {
+        return "Just now"
     }
     
-    func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
-        
-        var corners: UIRectCorner = []
-        
-        if isFromCurrentSender(message: message) {
-            corners.formUnion(.topLeft)
-            corners.formUnion(.bottomLeft)
-            if !isPreviousMessageSameSender(at: indexPath) {
-                corners.formUnion(.topRight)
-            }
-            if !isNextMessageSameSender(at: indexPath) {
-                corners.formUnion(.bottomRight)
-            }
-        } else {
-            corners.formUnion(.topRight)
-            corners.formUnion(.bottomRight)
-            if !isPreviousMessageSameSender(at: indexPath) {
-                corners.formUnion(.topLeft)
-            }
-            if !isNextMessageSameSender(at: indexPath) {
-                corners.formUnion(.bottomLeft)
-            }
-        }
-        
-        return .custom { view in
-            let radius: CGFloat = 16
-            let path = UIBezierPath(roundedRect: view.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-            let mask = CAShapeLayer()
-            mask.path = path.cgPath
-            view.layer.mask = mask
-        }
-    }
-    
-    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
-//        let avatar = SampleData.shared.getAvatarFor(sender: message.sender)
-        avatarView.set(avatar: Avatar(image: UIImage(named: "0"), initials: message.sender.displayName))
-        avatarView.isHidden = isNextMessageSameSender(at: indexPath)
-        avatarView.layer.borderWidth = 2
-        avatarView.layer.borderColor = UIColor.primaryColor.cgColor
-    }
-    
-    func configureAccessoryView(_ accessoryView: UIView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
-        // Cells are reused, so only add a button here once. For real use you would need to
-        // ensure any subviews are removed if not needed
-        guard accessoryView.subviews.isEmpty else { return }
-        let button = UIButton(type: .infoLight)
-        button.tintColor = .primaryColor
-        accessoryView.addSubview(button)
-        button.frame = accessoryView.bounds
-        button.isUserInteractionEnabled = false // respond to accessoryView tap through `MessageCellDelegate`
-        accessoryView.layer.cornerRadius = accessoryView.frame.height / 2
-        accessoryView.backgroundColor = UIColor.primaryColor.withAlphaComponent(0.3)
-    }
-    
-    // MARK: - Location Messages
-    
-    func annotationViewForLocation(message: MessageType, at indexPath: IndexPath, in messageCollectionView: MessagesCollectionView) -> MKAnnotationView? {
-        let annotationView = MKAnnotationView(annotation: nil, reuseIdentifier: nil)
-        let pinImage = #imageLiteral(resourceName: "ic_map_marker")
-        annotationView.image = pinImage
-        annotationView.centerOffset = CGPoint(x: 0, y: -pinImage.size.height / 2)
-        return annotationView
-    }
-    
-    func animationBlockForLocation(message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> ((UIImageView) -> Void)? {
-        return { view in
-            view.layer.transform = CATransform3DMakeScale(2, 2, 2)
-            UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0, options: [], animations: {
-                view.layer.transform = CATransform3DIdentity
-            }, completion: nil)
-        }
-    }
-    
-    func snapshotOptionsForLocation(message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> LocationMessageSnapshotOptions {
-        
-        return LocationMessageSnapshotOptions(showsBuildings: true, showsPointsOfInterest: true, span: MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10))
-    }
-
-}
-
-extension PJIMChatViewController: MessageCellDelegate {
-    
-    func didTapAvatar(in cell: MessageCollectionViewCell) {
-        print("Avatar tapped")
-    }
-    
-    func didTapMessage(in cell: MessageCollectionViewCell) {
-        print("Message tapped")
-    }
-    
-    func didTapCellTopLabel(in cell: MessageCollectionViewCell) {
-        print("Top cell label tapped")
-    }
-    
-    func didTapMessageTopLabel(in cell: MessageCollectionViewCell) {
-        print("Top message label tapped")
-    }
-    
-    func didTapMessageBottomLabel(in cell: MessageCollectionViewCell) {
-        print("Bottom label tapped")
-    }
-    
-    func didTapAccessoryView(in cell: MessageCollectionViewCell) {
-        print("Accessory view tapped")
+    func headerTitle(for section: Int) -> String? {
+        return messages[section].first?.user.displayName
     }
     
 }
 
-extension PJIMChatViewController: MessageLabelDelegate {
-    
-    func didSelectAddress(_ addressComponents: [String: String]) {
-        print("Address Selected: \(addressComponents)")
-    }
-    
-    func didSelectDate(_ date: Date) {
-        print("Date Selected: \(date)")
-    }
-    
-    func didSelectPhoneNumber(_ phoneNumber: String) {
-        print("Phone Number Selected: \(phoneNumber)")
-    }
-    
-    func didSelectURL(_ url: URL) {
-        print("URL Selected: \(url)")
-    }
-    
-    func didSelectTransitInformation(_ transitInformation: [String: String]) {
-        print("TransitInformation Selected: \(transitInformation)")
-    }
+
+extension PJIMChatViewController: MSGDelegate {
     
 }
 
-extension PJIMChatViewController: MessageInputBarDelegate {
-    func messageInputBar(_ inputBar: MessageInputBar,
-                         didPressSendButtonWith text: String) {
-        for component in inputBar.inputTextView.components {
-            if let str = component as? String {
-                let message = PJIMMessage(text: str,
-                                          sender: currentSender(),
-                                          messageId: UUID().uuidString,
-                                          date: Date())
-                insertMessage(message)
-            } else if let img = component as? UIImage {
-                let message = PJIMMessage(image: img,
-                                          sender: currentSender(),
-                                          messageId: UUID().uuidString,
-                                          date: Date())
-                insertMessage(message)
-            }
-            
-        }
-        inputBar.inputTextView.text = String()
-        messagesCollectionView.scrollToBottom(animated: true)
-    }
+struct ChatUser: MSGUser {
+    var displayName: String
+    var avatar: UIImage?
+    var isSender: Bool
 }
