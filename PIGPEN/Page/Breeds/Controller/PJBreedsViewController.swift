@@ -116,7 +116,7 @@ UITableViewDataSource {
                                                height: 35))
         sectionLabel.text = tableViewModels[section].group ?? ""
         sectionLabel.font = UIFont.systemFont(ofSize: 14)
-        sectionLabel.textColor = PJRGB(r: 102, g: 102, b: 102)
+        sectionLabel.textColor = PJRGB(102, 102, 102)
         sectionView.addSubview(sectionLabel)
         
         if section != 0 {
@@ -124,7 +124,7 @@ UITableViewDataSource {
                                                width: PJSCREEN_WIDTH + 15,
                                                height: 1))
             sectionView.addSubview(topLine)
-            topLine.backgroundColor = .boderColor()
+            topLine.backgroundColor = .boderColor
         }
         
         return sectionView
@@ -136,7 +136,7 @@ UITableViewDataSource {
         let model = tableViewModels[indexPath.section].breeds?[indexPath.row]
         cell.textLabel?.text = model?.zh_name ?? ""
         cell.textLabel?.font = UIFont.systemFont(ofSize: 15)
-        cell.tintColor = .pinkColor()
+        cell.tintColor = .pinkColor
         if (selectedModel != nil && selectedModel?.id == model?.id) {
             cell.accessoryType = .checkmark
         } else {

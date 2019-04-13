@@ -8,18 +8,32 @@
 
 import UIKit
 
+let screenWidth = UIScreen.main.bounds.size.width
+let screentHeight = UIScreen.main.bounds.size.height
+// 底部安全距离
+let bottomSafeAreaHeight = UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0.0
+//顶部的安全距离
+let topSafeAreaHeight = UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0.0
+//状态栏高度
+let statusBarHeight = UIApplication.shared.statusBarFrame.height;
+//导航栏高度
+let navigationBarHeight = 44 + topSafeAreaHeight
+
+
 // 屏幕相关
 let PJSCREEN_HEIGHT = CGFloat(UIScreen.main.bounds.height)
 let PJSCREEN_WIDTH = CGFloat(UIScreen.main.bounds.width)
 let NavigationItemMargin = CGFloat(8)
 let PJTABBAR_HEIGHT = CGFloat(48)
 
-let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
-let navBarHeight = statusBarHeight + 64
 
 // 颜色相关
-func PJRGB(r: CGFloat, g:CGFloat, b:CGFloat) -> UIColor {
+func PJRGB(_ r: CGFloat, _ g:CGFloat, _ b:CGFloat) -> UIColor {
     return UIColor.init(red: r/255.0, green: g/255.0, blue: b/255.0, alpha: 1)
+}
+
+func PJRGBA(_ r: CGFloat, _ g:CGFloat, _ b:CGFloat, _ a: CGFloat) -> UIColor {
+    return UIColor.init(red: r/255.0, green: g/255.0, blue: b/255.0, alpha: a)
 }
 
 func isPhoneNumber(phoneString: String) -> Bool {

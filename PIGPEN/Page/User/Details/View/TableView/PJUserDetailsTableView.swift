@@ -93,13 +93,13 @@ extension PJUserDetailsTableView: UITableViewDelegate, UITableViewDataSource {
                                                width: headerView.width,
                                                height: headerView.height))
         titleLabel.font = UIFont.systemFont(ofSize: 12)
-        titleLabel.textColor = PJRGB(r: 102, g: 102, b: 102)
+        titleLabel.textColor = PJRGB(102, 102, 102)
         titleLabel.textAlignment = .left
         headerView.addSubview(titleLabel)
         
         let topLineView = UIView(frame: CGRect(x: 15, y: 0,
                                                width: width - 15, height: 1))
-        topLineView.backgroundColor = .boderColor()
+        topLineView.backgroundColor = .boderColor
         headerView.addSubview(topLineView)
         
         switch section {

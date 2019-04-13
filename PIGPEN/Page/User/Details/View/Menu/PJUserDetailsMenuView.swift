@@ -33,7 +33,7 @@ class PJUserDetailsMenuView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        layer.shadowColor = PJRGB(r: 200, g: 200, b: 200).cgColor
+        layer.shadowColor = PJRGB(200, 200, 200).cgColor
         layer.shadowOffset = CGSize(width: 0, height: 2)
         layer.shadowOpacity = 0.7
         layer.shadowRadius = 5

@@ -47,9 +47,9 @@ extension PJWaveView {
         /// 分数
         var level: CGFloat
         /// 前景波浪颜色
-        let foregroundColor: UIColor = .gradeForegroundColor()
+        let foregroundColor: UIColor = .gradeForegroundColor
         /// 后景波浪颜色
-        let backgroundCOlor: UIColor = .gradeBackgroundColor()
+        let backgroundCOlor: UIColor = .gradeBackgroundColor
         /// 波浪所占容器的高
         let containerHeight: CGFloat
     }

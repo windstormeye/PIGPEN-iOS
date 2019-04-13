@@ -31,7 +31,7 @@ class PJUserCreateVirtualPetChoiceNameViewController: PJBaseViewController {
         isHiddenBarBottomLineView = false
         
         okButton.isEnabled = false
-        okButton.backgroundColor = UIColor.unFocusColor()
+        okButton.backgroundColor = .unFocusColor
         
         NotificationCenter.default.addObserver(self,
                                                selector: .textFieldTextChange,
@@ -57,10 +57,10 @@ class PJUserCreateVirtualPetChoiceNameViewController: PJBaseViewController {
     // MARK: Notification
     @objc func textFieldTextChange(notification: Notification) {
         if nameTextField.text?.count != 0 {
-            okButton.backgroundColor = .focusColor()
+            okButton.backgroundColor = .focusColor
             okButton.isEnabled = true
         } else {
-            okButton.backgroundColor = .unFocusColor()
+            okButton.backgroundColor = .unFocusColor
             okButton.isEnabled = false
         }
     }

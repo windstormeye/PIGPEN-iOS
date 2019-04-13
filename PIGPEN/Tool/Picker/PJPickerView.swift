@@ -75,7 +75,7 @@ UIPickerViewDataSource {
         view.addSubview(backgroundView!)
         backgroundView?.alpha = 0
         backgroundView?.isUserInteractionEnabled = true
-        backgroundView?.backgroundColor = .backgroundColor()
+        backgroundView?.backgroundColor = .backgroundColor
     
         let tap = UITapGestureRecognizer(target: self, action: .dismissView)
         backgroundView?.addGestureRecognizer(tap)
@@ -94,7 +94,7 @@ UIPickerViewDataSource {
                                                  y: topView!.bottom - 1,
                                                  width: view.width,
                                                  height: 1))
-        topViewBottomLine?.backgroundColor = .boderColor()
+        topViewBottomLine?.backgroundColor = .boderColor
         pickerBackView?.addSubview(topViewBottomLine!)
         
         switch viewModel!.pickerType {
@@ -114,7 +114,7 @@ UIPickerViewDataSource {
                 topView?.addSubview(leftButton)
                 leftButton.titleLabel?.textAlignment = .left
                 leftButton.setTitle(viewModel?.leftButtonName, for: .normal)
-                leftButton.setTitleColor(PJRGB(r: 102, g: 102, b: 102),
+                leftButton.setTitleColor(PJRGB(102, 102, 102),
                                          for: .normal)
                 leftButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
                 leftButton.addTarget(self,
@@ -142,7 +142,7 @@ UIPickerViewDataSource {
                                               height: 30))
         topView?.addSubview(okButton!)
         okButton?.setTitle("完成", for: .normal)
-        okButton?.setTitleColor(PJRGB(r: 0, g: 155, b: 250), for: .normal)
+        okButton?.setTitleColor(PJRGB(0, 155, 250), for: .normal)
         okButton?.width = 40
         okButton?.right = view.width - 15
         okButton?.centerY = topView!.centerY

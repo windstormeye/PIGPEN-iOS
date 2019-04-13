@@ -38,9 +38,9 @@ class PJUserRegisterViewController: PJBaseViewController {
         backButtonTapped(backSel: .back)
         
         authCodeButton.layer.borderWidth = 1
-        authCodeButton.layer.borderColor = PJRGB(r: 102, g: 102, b: 102).cgColor
+        authCodeButton.layer.borderColor = PJRGB(102, 102, 102).cgColor
         
-        commitButton.backgroundColor = .unFocusColor()
+        commitButton.backgroundColor = .unFocusColor
         commitButton.isEnabled = false
         
         NotificationCenter.default.addObserver(self,
@@ -141,10 +141,10 @@ class PJUserRegisterViewController: PJBaseViewController {
         if phoneTextField.text?.count != 0 &&
             passwordTextField.text?.count != 0 &&
             authCodeTextField.text?.count != 0 {
-            commitButton.backgroundColor = .focusColor()
+            commitButton.backgroundColor = .focusColor
             commitButton.isEnabled = true
         } else {
-            commitButton.backgroundColor = .unFocusColor()
+            commitButton.backgroundColor = .unFocusColor
             commitButton.isEnabled = false
         }
     }

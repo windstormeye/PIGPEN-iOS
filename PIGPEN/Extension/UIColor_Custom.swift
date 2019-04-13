@@ -9,33 +9,14 @@
 import UIKit
 
 extension UIColor {
-    class func focusColor() -> UIColor {
-        return PJRGB(r: 0, g: 155, b: 250)
-    }
-    
-    class func unFocusColor() -> UIColor {
-        return PJRGB(r: 230, g: 230, b: 230)
-    }
-    
-    class func boderColor() -> UIColor {
-        return PJRGB(r: 230, g: 230, b: 230)
-    }
-    
-    class func pinkColor() -> UIColor {
-        return PJRGB(r: 249, g: 162, b: 162)
-    }
-    
-    class func backgroundColor() -> UIColor {
-        return UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.4)
-    }
-    
+    static let focusColor = PJRGB(0, 155, 250)
+    static let unFocusColor = PJRGB(230, 230, 230)
+    static let boderColor = PJRGB(230, 230, 230)
+    static let pinkColor = PJRGB(249, 162, 162)
+    static let backgroundColor = PJRGBA(0, 0, 0, 0.4)
     /// 评分组件-波浪前景色
-    class func gradeForegroundColor() -> UIColor {
-        return UIColor(red: 203/255.0, green: 235/255.0, blue: 255/255.0, alpha: 1)
-    }
-    
+    static let gradeForegroundColor = PJRGB(203, 235, 255)
     /// 评分组件-波浪后景色
-    class func gradeBackgroundColor() -> UIColor {
-        return UIColor(red: 232/255.0, green: 246/255.0, blue: 255/255.0, alpha: 1)
-    }
+    static let gradeBackgroundColor = PJRGB(232, 246, 255)
+    static let primaryColor = PJRGB(69, 193, 89)
 }

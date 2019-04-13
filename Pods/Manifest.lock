@@ -4,7 +4,9 @@ PODS:
   - HappyDNS (0.3.15)
   - IQKeyboardManagerSwift (6.2.0)
   - Kingfisher (5.3.0)
-  - MessengerKit (1.0.4)
+  - MessageInputBar/Core (0.4.1)
+  - MessageKit (2.0.0):
+    - MessageInputBar/Core
   - mob_smssdk (3.2.3):
     - MOBFoundation
   - MOBFoundation (3.2.2)
@@ -19,7 +21,7 @@ DEPENDENCIES:
   - CryptoSwift
   - IQKeyboardManagerSwift
   - Kingfisher
-  - MessengerKit (from `https://github.com/steve228uk/MessengerKit.git`)
+  - MessageKit
   - mob_smssdk
   - Qiniu
   - RongCloudIM/IMLib (~> 2.8.3)
@@ -33,6 +35,8 @@ SPEC REPOS:
     - HappyDNS
     - IQKeyboardManagerSwift
     - Kingfisher
+    - MessageInputBar
+    - MessageKit
     - mob_smssdk
     - MOBFoundation
     - Qiniu
@@ -40,22 +44,14 @@ SPEC REPOS:
     - Schedule
     - SwiftyJSON
 
-EXTERNAL SOURCES:
-  MessengerKit:
-    :git: https://github.com/steve228uk/MessengerKit.git
-
-CHECKOUT OPTIONS:
-  MessengerKit:
-    :commit: 3c6fda020cba538aeeca90bf12a4816147011655
-    :git: https://github.com/steve228uk/MessengerKit.git
-
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   CryptoSwift: 769f58a9e89f64e8796c2e59ce5f002dc81a2438
   HappyDNS: 00c15e651a347206e58a20503a32a5564589b56a
   IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
   Kingfisher: 4692c783ffb99e9e2e40a6eb3e518c3b96c6fa8c
-  MessengerKit: 39abeb652e7837b2ced80c4813b20368a994571d
+  MessageInputBar: e81c7535347f1f7b923de7080409a535a004b6e4
+  MessageKit: 29c1c87e5a396d2ca7a3f712e5171dc9aba42a1e
   mob_smssdk: cdb6a31d4fd4667ed928e2eca03f21ad89ebc05c
   MOBFoundation: b5ff4038ddb9a0f06b685b86408f905a10aa147c
   Qiniu: 909b408ee489ea54827e9717be90b94bc9dfbc48
@@ -63,6 +59,6 @@ SPEC CHECKSUMS:
   Schedule: 64f334e01daa6f80201ab147b59cb4f1e118ae74
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: e1ff2b84f803f2589614c7d4203714b8cee82528
+PODFILE CHECKSUM: 9b0dc3146a83a1946f21fa4e2aa9fc994b762270
 
 COCOAPODS: 1.5.3

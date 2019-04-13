@@ -31,7 +31,7 @@ class PJCreateVirtualPetChoiceGenderViewController: PJBaseViewController {
         isHiddenBarBottomLineView = false
         
         okButton.isEnabled = false
-        okButton.backgroundColor = .unFocusColor()
+        okButton.backgroundColor = .unFocusColor
     }
 
     // MARK: Action
@@ -44,7 +44,7 @@ class PJCreateVirtualPetChoiceGenderViewController: PJBaseViewController {
         maleButton.isSelected = false
         
         okButton.isEnabled = true
-        okButton.backgroundColor = .focusColor()
+        okButton.backgroundColor = .focusColor
     }
     
     @IBAction func maleButton(_ sender: UIButton) {
@@ -52,7 +52,7 @@ class PJCreateVirtualPetChoiceGenderViewController: PJBaseViewController {
         femaleButton.isSelected = false
         
         okButton.isEnabled = true
-        okButton.backgroundColor = .focusColor()
+        okButton.backgroundColor = .focusColor
     }
     
     @IBAction func okButton(_ sender: UIButton) {

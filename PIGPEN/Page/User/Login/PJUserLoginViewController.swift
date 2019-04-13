@@ -30,7 +30,7 @@ class PJUserLoginViewController: PJBaseViewController {
         }
         
         
-        loginButton.backgroundColor = .unFocusColor()
+        loginButton.backgroundColor = .unFocusColor
         loginButton.isEnabled = false
         
         NotificationCenter.default.addObserver(self,
@@ -67,10 +67,10 @@ class PJUserLoginViewController: PJBaseViewController {
     // MARK: Notification
     @objc func textFieldTextChange(notification: Notification) {
         if phoneTextField.text?.count != 0 && passwdTextField.text?.count != 0 {
-            loginButton.backgroundColor = .focusColor()
+            loginButton.backgroundColor = .focusColor
             loginButton.isEnabled = true
         } else {
-            loginButton.backgroundColor = .unFocusColor()
+            loginButton.backgroundColor = .unFocusColor
             loginButton.isEnabled = false
         }
     }

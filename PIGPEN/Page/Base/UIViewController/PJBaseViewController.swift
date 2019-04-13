@@ -45,7 +45,7 @@ class PJBaseViewController: UIViewController {
         
         lineView = UIView(frame: CGRect(x: 0, y: headerView!.bottom - 0.5,
                                             width: view.width, height: 0.5))
-        lineView?.backgroundColor = .boderColor()
+        lineView?.backgroundColor = .boderColor
         view.addSubview(lineView!)
         
         // 解决自定义 leftBarButtonItem 后侧滑失效，除非自定义 backBarButtonItem
@@ -70,11 +70,15 @@ class PJBaseViewController: UIViewController {
         navigationItem.setLeftBarButton(leftBarButtonItem, animated: true)
     }
     
-    func backButtonTapped(backSel: Selector) {
+    func backButtonTapped(backSel: Selector?) {
         let leftButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40,
                                                 height: 40))
         leftButton.setImage(UIImage(named: "nav_back"), for: .normal)
-        leftButton.addTarget(self, action: backSel, for: .touchUpInside)
+        if backSel != nil {
+            leftButton.addTarget(self, action: backSel!, for: .touchUpInside)
+        } else {
+            
+        }
         let leftBarButtonItem = UIBarButtonItem.init(customView: leftButton)
         navigationItem.setLeftBarButton(leftBarButtonItem, animated: true)
     }

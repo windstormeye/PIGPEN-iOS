@@ -34,7 +34,7 @@ class PJUserDetailsViewController: PJBaseViewController {
         isHiddenBarBottomLineView = false
         rightBarButtonItem(imageName: "user_details_menu", rightSel: .menu)
         
-        navigationItem.title = PJUser.shared.userModel?.nick_name
+        navigationItem.title = PJUser.shared.userModel.nick_name
         
         tableView = PJUserDetailsTableView(frame: CGRect(x: 0, y: headerView!.height,
                                                          width: view.width,
@@ -96,7 +96,7 @@ fileprivate extension Selector {
 extension PJUserDetailsViewController {
     // MARK: - Notification
     @objc fileprivate func loginSuccess() {
-        title = PJUser.shared.userModel?.nick_name
+        title = PJUser.shared.userModel.nick_name
     }
     
     @objc fileprivate func menu() {
@@ -105,7 +105,7 @@ extension PJUserDetailsViewController {
     }
     
     func viewWillData() {
-        if PJUser.shared.userModel?.uid != nil {
+        if PJUser.shared.userModel.uid != nil {
             PJUser.shared.pets(complateHandler: { [weak self] realPetModels, virtualPetModels in
                 guard let `self` = self else { return }
                 self.tableView?.realPetModels = realPetModels
@@ -116,7 +116,7 @@ extension PJUserDetailsViewController {
                 print(error)
             }
             
-            PJUser.shared.details(details_uid: PJUser.shared.userModel?.uid ?? "",
+            PJUser.shared.details(details_uid: PJUser.shared.userModel.uid ?? "",
                                   getSelf: true,
                                   completeHandler: { (userModel) in
                                     self.tableView?.userDetailsModel = userModel

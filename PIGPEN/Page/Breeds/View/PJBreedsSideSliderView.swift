@@ -32,7 +32,7 @@ class PJBreedsSideSliderView: UIView {
     }
     
     private func initView() {
-        backgroundColor = .boderColor()
+        backgroundColor = .boderColor
         layer.cornerRadius = 15
     }
 
@@ -66,7 +66,7 @@ class PJBreedsSideSliderView: UIView {
                     v.setTitleColor(.white, for: .normal)
                 }
             }
-            button.setTitleColor(.pinkColor(), for: .normal)
+            button.setTitleColor(.pinkColor, for: .normal)
         }
     }
 }

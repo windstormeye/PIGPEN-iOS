@@ -21,7 +21,7 @@ extension UITabBar {
         let redDot = UIView()
         redDot.tag = 2333 + tabItemIndex
         redDot.layer.cornerRadius = 4
-        redDot.backgroundColor = PJRGB(r: 249, g: 162, b: 162)
+        redDot.backgroundColor = PJRGB(249, 162, 162)
         
         let tabFrame = self.frame
         let tabBarItems = 5.0
@@ -65,7 +65,7 @@ extension UITabBar {
             
             bottomLineView = UIView(frame: CGRect(x: l_x, y: l_y, width: l_w, height: l_h))
             bottomLineView?.tag = 666
-            bottomLineView?.backgroundColor = PJRGB(r: 249, g: 162, b: 162)
+            bottomLineView?.backgroundColor = PJRGB(249, 162, 162)
             self.addSubview(bottomLineView!)
         } else {
             UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: {

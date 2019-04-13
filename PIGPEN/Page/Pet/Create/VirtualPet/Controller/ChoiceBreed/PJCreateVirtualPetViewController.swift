@@ -30,7 +30,7 @@ class PJCreateVirtualPetViewController: PJBaseViewController {
         isHiddenBarBottomLineView = false
         
         okButton.isEnabled = false
-        okButton.backgroundColor = .unFocusColor()
+        okButton.backgroundColor = .unFocusColor
     }
 
     // MARK: Action
@@ -44,7 +44,7 @@ class PJCreateVirtualPetViewController: PJBaseViewController {
         weimaRunnerButton.isSelected = false
         
         okButton.isEnabled = true
-        okButton.backgroundColor = .focusColor()
+        okButton.backgroundColor = .focusColor
     }
     
     @IBAction func weishCorgiButton(_ sender: UIButton) {
@@ -53,7 +53,7 @@ class PJCreateVirtualPetViewController: PJBaseViewController {
         weimaRunnerButton.isSelected = false
         
         okButton.isEnabled = true
-        okButton.backgroundColor = .focusColor()
+        okButton.backgroundColor = .focusColor
     }
     
     @IBAction func weimaRunnerButton(_ sender: UIButton) {
@@ -62,7 +62,7 @@ class PJCreateVirtualPetViewController: PJBaseViewController {
         frenchBulldogButton.isSelected = false
         
         okButton.isEnabled = true
-        okButton.backgroundColor = .focusColor()
+        okButton.backgroundColor = .focusColor
     }
     
     

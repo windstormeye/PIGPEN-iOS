@@ -13,11 +13,7 @@ import CryptoSwift
 class PJUser {
     // MARK: - Public Properties
     static let shared = PJUser()
-    var userModel: UserModel? {
-        didSet {
-            print("2333")
-        }
-    }
+    var userModel = UserModel()
     var isLoginTXIM: Bool = false
     
     // MARK: - Private Methods
@@ -25,8 +21,10 @@ class PJUser {
     
     // MARK: - Life Cycle
     init() {
-        userModel = self.readBySandBox()
-        if userModel == nil {
+        let u = self.readBySandBox()
+        if u != nil {
+            userModel = u!
+        } else {
             userModel = UserModel(nick_name: "",
                                   gender: 0,
                                   avatar: -1,
@@ -140,8 +138,8 @@ extension PJUser {
                                                 
                                                 var dataDic = dataDic["msg"]!
                                                 let userDic = dataDic["masuser"].dictionary!
-                                                self.userModel?.gender = userDic["gender"]?.intValue ?? 0
-                                                self.userModel?.avatar = userDic["avatar"]?.intValue ?? -1
+                                                self.userModel.gender = userDic["gender"]?.intValue ?? 0
+                                                self.userModel.avatar = userDic["avatar"]?.intValue ?? -1
                                                 
                                                 self.saveToSandBox()
                                                 completeHandler()
@@ -178,26 +176,26 @@ extension PJUser {
                                                 
                                                 var dataDic = dataDic["msg"]!
                                                 let userDic = dataDic["masuser"].dictionary!
-                                                self.userModel?.nick_name = userDic["nick_name"]?.string ?? ""
-                                                self.userModel?.gender = userDic["gender"]?.intValue ?? 0
-                                                self.userModel?.avatar = userDic["avatar"]?.intValue ?? -1
-                                                self.userModel?.token = dataDic["token"].string!
-                                                self.userModel?.uid = dataDic["uid"].string
-                                                self.userModel?.level = dataDic["level"].float
-                                                self.userModel?.follow = dataDic["follow"].int
-                                                self.userModel?.star = dataDic["star"].int
+                                                self.userModel.nick_name = userDic["nick_name"]?.string ?? ""
+                                                self.userModel.gender = userDic["gender"]?.intValue ?? 0
+                                                self.userModel.avatar = userDic["avatar"]?.intValue ?? -1
+                                                self.userModel.token = dataDic["token"].string!
+                                                self.userModel.uid = dataDic["uid"].string
+                                                self.userModel.level = dataDic["level"].float
+                                                self.userModel.follow = dataDic["follow"].int
+                                                self.userModel.star = dataDic["star"].int
                                                 
                                                 let f_s = dataDic["feeding_status"].array
                                                 var feedingStatus = [Int]()
                                                 for s in f_s! {
                                                     feedingStatus.append(s.int!)
                                                 }
-                                                self.userModel?.feeding_status = feedingStatus
+                                                self.userModel.feeding_status = feedingStatus
                                     
                                                 
                                                 // 登录成功后获取融云token，并持久化
                                                 self.rcToken(complateHandler: { (rcToken) in
-                                                    self.userModel?.rcToken = rcToken
+                                                    self.userModel.rcToken = rcToken
                                                     self.saveToSandBox()
                                                     
                                                     self.connectRC(completeHandler: {
@@ -240,14 +238,14 @@ extension PJUser {
                 self.logout()
                 var dataDic = dataDic["msg"]!
                 let userDic = dataDic["masuser"].dictionary!
-                self.userModel?.nick_name = userDic["nick_name"]?.string ?? ""
-                self.userModel?.gender = userDic["gender"]?.intValue ?? 0
-                self.userModel?.avatar = userDic["avatar"]?.intValue ?? -1
-                self.userModel?.token = dataDic["token"].string!
-                self.userModel?.uid = userDic["uid"]?.string!
-                self.userModel?.level = userDic["level"]?.float ?? -1
-                self.userModel?.follow = userDic["follow"]?.int ?? 0
-                self.userModel?.star = userDic["star"]?.int ?? 0
+                self.userModel.nick_name = userDic["nick_name"]?.string ?? ""
+                self.userModel.gender = userDic["gender"]?.intValue ?? 0
+                self.userModel.avatar = userDic["avatar"]?.intValue ?? -1
+                self.userModel.token = dataDic["token"].string!
+                self.userModel.uid = userDic["uid"]?.string!
+                self.userModel.level = userDic["level"]?.float ?? -1
+                self.userModel.follow = userDic["follow"]?.int ?? 0
+                self.userModel.star = userDic["star"]?.int ?? 0
                 
                 let f_s = dataDic["feeding_status"].array
                 var feedingStatus = [Int]()
@@ -255,11 +253,11 @@ extension PJUser {
                     feedingStatus.append(s.int!)
                 }
                 
-                self.userModel?.feeding_status = feedingStatus
+                self.userModel.feeding_status = feedingStatus
                 
                 // 登录成功后获取融云token，并持久化
                 self.rcToken(complateHandler: { (rcToken) in
-                    self.userModel?.rcToken = rcToken
+                    self.userModel.rcToken = rcToken
                     self.saveToSandBox()
                     
                     self.connectRC(completeHandler: {
@@ -362,8 +360,8 @@ extension PJUser {
     
     func connectRC(completeHandler: @escaping () -> Void,
                    failedHandler: @escaping (PJNetwork.Error) -> Void) {
-        guard self.userModel?.rcToken != nil else { return }
-        RCIMClient.shared()?.connect(withToken: self.userModel?.rcToken, success: { (userId) in
+        guard self.userModel.rcToken != nil else { return }
+        RCIMClient.shared()?.connect(withToken: self.userModel.rcToken, success: { (userId) in
             completeHandler()
         }, error: { (errorCode) in
             failedHandler(PJNetwork.Error(errorCode: -1,

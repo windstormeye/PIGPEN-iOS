@@ -54,7 +54,7 @@ class PJMessageViewController: PJBaseViewController {
     
     @objc
     fileprivate func addressBook() {
-        
+        sendMsg()
     }
     
     @objc
@@ -70,7 +70,7 @@ extension PJMessageViewController: RCIMClientReceiveMessageDelegate {
         switch message.objectName {
         case "RC:TxtMsg":
             let text = message.content as! RCTextMessage
-            let m = PJIM.Message(type: .text,
+            let m = PJIM.Message(type: .text(text.content),
                             textContent: text.content,
                             audioContent: nil,
                             sendUserId: message.senderUserId,

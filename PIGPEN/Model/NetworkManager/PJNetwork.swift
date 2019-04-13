@@ -22,15 +22,15 @@ class PJNetwork {
                        failed: @escaping (String) -> Void) {
         var parameters = parameters
         if parameters["nick_name"] == nil {
-            parameters["nick_name"] = PJUser.shared.userModel?.nick_name ?? ""
+            parameters["nick_name"] = PJUser.shared.userModel.nick_name ?? ""
         }
         if parameters["uid"] == nil {
-            parameters["uid"] = PJUser.shared.userModel?.uid ?? ""
+            parameters["uid"] = PJUser.shared.userModel.uid ?? ""
         }
         
         let params = parametersHandler(parameters: parameters)
         let headerParameters: HTTPHeaders = [
-            "usertoken": PJUser.shared.userModel?.token ?? "",
+            "usertoken": PJUser.shared.userModel.token ?? "",
             "timestamp": String.timestampe(),
         ]
         
@@ -59,15 +59,15 @@ class PJNetwork {
                         failed: @escaping (String) -> Void) {
         var parameters = parameters
         if parameters["nick_name"] == nil {
-            parameters["nick_name"] = PJUser.shared.userModel?.nick_name ?? ""
+            parameters["nick_name"] = PJUser.shared.userModel.nick_name ?? ""
         }
         if parameters["uid"] == nil {
-            parameters["uid"] = PJUser.shared.userModel?.uid ?? ""
+            parameters["uid"] = PJUser.shared.userModel.uid ?? ""
         }
         
         let params = parametersHandler(parameters: parameters)
         let headerParameters: HTTPHeaders = [
-            "usertoken": PJUser.shared.userModel?.token ?? "",
+            "usertoken": PJUser.shared.userModel.token ?? "",
             "timestamp": String.timestampe(),
         ]
         

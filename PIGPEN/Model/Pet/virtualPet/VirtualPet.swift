@@ -18,7 +18,7 @@ class PJVirtualPet {
             "pet_nick_name": model.nick_name!,
             "gender": String(model.gender!),
             "breed": String(model.breed!),
-            "uid": PJUser.shared.userModel?.uid ?? "",
+            "uid": PJUser.shared.userModel.uid ?? "",
         ]
         PJNetwork.shared.requstWithPost(path: VirtualPetUrl.create.rawValue,
                                         parameters: parameters,

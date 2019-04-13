@@ -60,7 +60,7 @@ class PJCreateRealPetViewController: PJBaseViewController {
         backButtonTapped(backSel: .back)
         isHiddenBarBottomLineView = false
         
-        okButton.backgroundColor = UIColor.unFocusColor()
+        okButton.backgroundColor = .unFocusColor
         
         breedTextField.delegate = self
         pppTextField.delegate = self
