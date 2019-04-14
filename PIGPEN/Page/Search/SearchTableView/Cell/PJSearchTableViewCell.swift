@@ -32,6 +32,10 @@ class PJSearchTableViewCell: UITableViewCell {
         }
     }
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        selectionStyle = .none
+    }
     
     private func didSetViewModel() {
         switch cellType {

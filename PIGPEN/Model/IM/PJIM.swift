@@ -144,6 +144,6 @@ extension PJIM {
         var avatar: Int
         var nickName: String
         var uid: String
-        var message: Message
+        var message: Message?
     }
 }

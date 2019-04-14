@@ -34,6 +34,19 @@ class PJUserSearchViewController: UIViewController, PJBaseViewControllerDelegate
         searchBar.returnKeyDown = { [weak self] text in
             self?.search(uid: text)
         }
+        
+        tableView.cellSelected = { [weak self] cellIndex in
+            guard let viewModel = self?.tableView.viewModels[cellIndex] else { return }
+            
+            
+            let chat = PJIMChatViewController()
+            chat.hidesBottomBarWhenPushed = true
+            self?.navigationController?.pushViewController(chat, animated: true)
+            chat.messageCell = PJIM.MessageListCell(avatar: viewModel.avatar!,
+                                                    nickName: viewModel.nick_name!,
+                                                    uid: viewModel.uid!,
+                                                    message: nil)
+        }
     }
     
     @objc

@@ -9,6 +9,8 @@
 import UIKit
 
 class PJSearchTableView: UITableView {
+    var cellSelected: ((Int) -> Void)?
+    
     var viewModels = [PJUser.UserModel]() {
         didSet { reloadData() }
     }
@@ -35,7 +37,9 @@ class PJSearchTableView: UITableView {
 }
 
 extension PJSearchTableView: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        cellSelected?(indexPath.row)
+    }
 }
 
 extension PJSearchTableView: UITableViewDataSource {

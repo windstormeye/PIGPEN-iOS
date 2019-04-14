@@ -53,7 +53,7 @@ extension PJIMMessageHomeTableView: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIndentifier,
                                                  for: indexPath) as! PJIMMessageHomeTableViewCell
         let viewModel = viewModels[indexPath.row]
-        cell.setModel(PJIMMessageHomeTableViewCell.ViewModel(avatar: viewModel.avatar, nickName: viewModel.nickName, message: viewModel.message.textContent!, time: "\(viewModel.message.msgSentTime)", sendStatus: viewModel.message.msgStatus))
+        cell.setModel(PJIMMessageHomeTableViewCell.ViewModel(avatar: viewModel.avatar, nickName: viewModel.nickName, message: viewModel.message!.textContent!, time: "\(viewModel.message!.msgSentTime)", sendStatus: viewModel.message!.msgStatus))
         return cell
     }
     
