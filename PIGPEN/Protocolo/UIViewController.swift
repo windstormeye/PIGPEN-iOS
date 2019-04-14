@@ -25,6 +25,11 @@ extension PJBaseViewControllerDelegate {
     }
     
     func initBaseView() {
+//        navigationController?.navigationBar.setBackgroundImage(UIImage(),
+//                                                               for: .compact)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
+        
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.barTintColor = .white
         

@@ -61,7 +61,9 @@ class PJMessageViewController: UIViewController, PJBaseViewControllerDelegate {
     
     @objc
     fileprivate func search() {
-        
+        let vc = PJUserSearchViewController()
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
