@@ -9,11 +9,14 @@
 import UIKit
 
 class PJSearchTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var avatarImageView: UIImageView!
-    @IBOutlet weak var nickNameLabel: UILabel!
-    @IBOutlet weak var accessImageView: UIImageView!
-    @IBOutlet weak var rightButton: UIButton!
+    var viewModel: PJUser.UserModel? {
+        didSet { didSetViewModel() }
+    }
+    
+    @IBOutlet weak private var avatarImageView: UIImageView!
+    @IBOutlet weak private var nickNameLabel: UILabel!
+    @IBOutlet weak private var accessImageView: UIImageView!
+    @IBOutlet weak private var rightButton: UIButton!
     
     var cellType = CellType.user
     var isLike: Bool? {
@@ -28,9 +31,7 @@ class PJSearchTableViewCell: UITableViewCell {
             }
         }
     }
-    var viewModel: PJUser? {
-        didSet { didSetViewModel() }
-    }
+
     
     private func didSetViewModel() {
         switch cellType {
@@ -40,8 +41,8 @@ class PJSearchTableViewCell: UITableViewCell {
             accessImageView.isHidden = false
             rightButton.setImage(UIImage(named: "search_send"),
                                  for: .normal)
-            avatarImageView.image = UIImage(named: String(viewModel!.userModel.avatar!))
-            nickNameLabel.text = viewModel!.userModel.nick_name!
+            avatarImageView.image = UIImage(named: String(viewModel!.avatar!))
+            nickNameLabel.text = viewModel!.nick_name!
             
         }
     }

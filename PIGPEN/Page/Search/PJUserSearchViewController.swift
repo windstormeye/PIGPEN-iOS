@@ -30,11 +30,24 @@ class PJUserSearchViewController: UIViewController, PJBaseViewControllerDelegate
         
         tableView = PJSearchTableView(frame: CGRect(x: 0, y: searchBar.bottom, width: view.width, height: view.height - searchBar.height - navigationBarHeight), style: .plain)
         view.addSubview(tableView)
+        
+        searchBar.returnKeyDown = { [weak self] text in
+            self?.search(uid: text)
+        }
     }
     
     @objc
     fileprivate func back() {
         popBack()
+    }
+    
+    private func search(uid: String) {
+        PJUser.shared.searchFriend(uid: uid,
+                                   completeHandler: {
+                                    self.tableView.viewModels = $0
+        }) { (error) in
+            print(error.errorMsg ?? "")
+        }
     }
 }
 

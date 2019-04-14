@@ -372,6 +372,42 @@ extension PJUser {
                                           errorMsg: "融云IM token 失效"))
         })
     }
+    
+    func searchFriend(uid: String,
+                      completeHandler: @escaping ([UserModel]) -> Void,
+                      failedHandler: @escaping (PJNetwork.Error) -> Void) {
+        let params = [
+            "s_nick_name": uid
+        ]
+        PJNetwork.shared.requstWithGet(path: UserUrl.searchUser.rawValue, parameters: params, complement: { (dataDict) in
+            if dataDict["msgCode"]?.intValue == 0 {
+                let res = dataDict["msg"]?.dictionary
+                let users = res!["users"]!.array!
+                var final_us = [UserModel]()
+                for u in users {
+                    let d_u = u.dictionary!
+                    let final_u = UserModel(nick_name: d_u["nick_name"]?.string,
+                                            gender: d_u["gender"]?.int!,
+                                            avatar: d_u["avatar"]?.int!,
+                                            feeding_status: nil,
+                                            level: nil,
+                                            follow: nil,
+                                            star: nil,
+                                            token: nil,
+                                            uid: d_u["uid"]?.string!,
+                                            money: nil,
+                                            rcToken: nil)
+                    final_us.append(final_u)
+                }
+                completeHandler(final_us)
+            } else {
+                let error = PJNetwork.Error(errorCode: dataDict["msgCode"]?.intValue,errorMsg: dataDict["msg"]?.string)
+                failedHandler(error)
+            }
+        }) { (errorString) in
+            failedHandler(PJNetwork.Error(errorCode: -1, errorMsg: errorString))
+        }
+    }
 }
 
 private extension PJUser {
@@ -394,6 +430,8 @@ private extension PJUser {
         case pets = "masuser/pets"
         /// 获取融云 token
         case rcToken = "masuser/getRCToken"
+        /// 搜索用户
+        case searchUser = "friend/search"
     }
 }
 

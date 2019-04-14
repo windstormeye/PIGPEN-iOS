@@ -9,7 +9,10 @@
 import UIKit
 
 class PJSearchTableView: UITableView {
-
+    var viewModels = [PJUser.UserModel]() {
+        didSet { reloadData() }
+    }
+    
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         initView()
@@ -21,6 +24,7 @@ class PJSearchTableView: UITableView {
     
     private func initView() {
         backgroundColor = .white
+        tableFooterView = UIView()
         
         dataSource = self
         delegate = self
@@ -40,11 +44,12 @@ extension PJSearchTableView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PJSearchTableViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PJSearchTableViewCell", for: indexPath) as! PJSearchTableViewCell
+        cell.viewModel = viewModels[indexPath.row]
         return cell
     }
 }

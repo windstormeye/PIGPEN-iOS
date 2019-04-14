@@ -9,8 +9,10 @@
 import UIKit
 
 class PJSearchBar: UIView {
-    @IBOutlet weak var searchTextField: UITextField!
-    @IBOutlet weak var searchButton: UIButton!
+    var returnKeyDown: ((String) -> Void)?
+    
+    @IBOutlet weak private var searchTextField: UITextField!
+    @IBOutlet weak private var searchButton: UIButton!
     
     class func newInstance() -> PJSearchBar? {
         let nibView = Bundle.main.loadNibNamed("PJSearchBar",
@@ -20,5 +22,17 @@ class PJSearchBar: UIView {
             return view
         }
         return nil
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        searchTextField.delegate = self
+    }
+}
+
+extension PJSearchBar: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        returnKeyDown?(textField.text ?? "")
+        return true
     }
 }
