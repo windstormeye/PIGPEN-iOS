@@ -60,6 +60,12 @@
 		0C5B5D07225DBF1500392E21 /* PJIMMessageHomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C5B5D05225DBF1500392E21 /* PJIMMessageHomeTableViewCell.xib */; };
 		0C5B5D132261ADD300392E21 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5B5D122261ADD300392E21 /* UIViewController.swift */; };
 		0C5B5D2E2262226000392E21 /* PJIMChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5B5D2D2262226000392E21 /* PJIMChatViewController.swift */; };
+		0C5B5D372262C73F00392E21 /* CustomOutgoingTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5B5D302262C73F00392E21 /* CustomOutgoingTextCell.swift */; };
+		0C5B5D382262C73F00392E21 /* CustomOutgoingTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C5B5D312262C73F00392E21 /* CustomOutgoingTextCell.xib */; };
+		0C5B5D392262C73F00392E21 /* CustomCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5B5D322262C73F00392E21 /* CustomCollectionView.swift */; };
+		0C5B5D3A2262C73F00392E21 /* CustomIncomingTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C5B5D332262C73F00392E21 /* CustomIncomingTextCell.xib */; };
+		0C5B5D3B2262C73F00392E21 /* CustomStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5B5D342262C73F00392E21 /* CustomStyle.swift */; };
+		0C5B5D3C2262C73F00392E21 /* CustomBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5B5D352262C73F00392E21 /* CustomBubble.swift */; };
 		0C5E6337216241CF00A90762 /* PJBaseTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E6336216241CF00A90762 /* PJBaseTipsView.swift */; };
 		0C5E63392162444400A90762 /* PJUserInfoSeleteAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E63382162444400A90762 /* PJUserInfoSeleteAvatarView.swift */; };
 		0C5E633B21624D1F00A90762 /* PJUserInfoAvatarSelectCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E633A21624D1F00A90762 /* PJUserInfoAvatarSelectCollectionView.swift */; };
@@ -173,6 +179,12 @@
 		0C5B5D05225DBF1500392E21 /* PJIMMessageHomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJIMMessageHomeTableViewCell.xib; sourceTree = "<group>"; };
 		0C5B5D122261ADD300392E21 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		0C5B5D2D2262226000392E21 /* PJIMChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PJIMChatViewController.swift; sourceTree = "<group>"; };
+		0C5B5D302262C73F00392E21 /* CustomOutgoingTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomOutgoingTextCell.swift; sourceTree = "<group>"; };
+		0C5B5D312262C73F00392E21 /* CustomOutgoingTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomOutgoingTextCell.xib; sourceTree = "<group>"; };
+		0C5B5D322262C73F00392E21 /* CustomCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionView.swift; sourceTree = "<group>"; };
+		0C5B5D332262C73F00392E21 /* CustomIncomingTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomIncomingTextCell.xib; sourceTree = "<group>"; };
+		0C5B5D342262C73F00392E21 /* CustomStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStyle.swift; sourceTree = "<group>"; };
+		0C5B5D352262C73F00392E21 /* CustomBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBubble.swift; sourceTree = "<group>"; };
 		0C5E6336216241CF00A90762 /* PJBaseTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBaseTipsView.swift; sourceTree = "<group>"; };
 		0C5E63382162444400A90762 /* PJUserInfoSeleteAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserInfoSeleteAvatarView.swift; sourceTree = "<group>"; };
 		0C5E633A21624D1F00A90762 /* PJUserInfoAvatarSelectCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserInfoAvatarSelectCollectionView.swift; sourceTree = "<group>"; };
@@ -701,6 +713,7 @@
 		0C5B5D08225E324800392E21 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				0C5B5D2F2262C72400392E21 /* Style */,
 				0C5B5D2D2262226000392E21 /* PJIMChatViewController.swift */,
 				0C5B5CFD225DBEA100392E21 /* List */,
 			);
@@ -713,6 +726,19 @@
 				0C5B5D122261ADD300392E21 /* UIViewController.swift */,
 			);
 			path = Protocolo;
+			sourceTree = "<group>";
+		};
+		0C5B5D2F2262C72400392E21 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				0C5B5D352262C73F00392E21 /* CustomBubble.swift */,
+				0C5B5D322262C73F00392E21 /* CustomCollectionView.swift */,
+				0C5B5D332262C73F00392E21 /* CustomIncomingTextCell.xib */,
+				0C5B5D302262C73F00392E21 /* CustomOutgoingTextCell.swift */,
+				0C5B5D312262C73F00392E21 /* CustomOutgoingTextCell.xib */,
+				0C5B5D342262C73F00392E21 /* CustomStyle.swift */,
+			);
+			path = Style;
 			sourceTree = "<group>";
 		};
 		0C5E63342162415C00A90762 /* View */ = {
@@ -1231,6 +1257,7 @@
 				0C55E2F8215F570D000D8815 /* PJUserRegisterViewController.xib in Resources */,
 				0C1F6FAB21B3924400304CD8 /* PJAlbumDetailCollectionViewCell.xib in Resources */,
 				0C55E2EE215B7DB0000D8815 /* PJUserForgetViewController.xib in Resources */,
+				0C5B5D3A2262C73F00392E21 /* CustomIncomingTextCell.xib in Resources */,
 				0C1F6FB021B3925E00304CD8 /* PJAlbumTableViewCell.xib in Resources */,
 				0CE4F3FD21592C7D003AD0F5 /* Assets.xcassets in Resources */,
 				0C55E2E9215B703C000D8815 /* PJUserLoginViewController.xib in Resources */,
@@ -1243,6 +1270,7 @@
 				0CE2618621C5434000740582 /* PJAlbumCollectionFocusView.xib in Resources */,
 				0C599EE5217099E900FC2E37 /* PJUserCreateVirtualPetChoiceNameViewController.xib in Resources */,
 				0CDB0C9D21675F7400669331 /* PJUserDetailsMenuView.xib in Resources */,
+				0C5B5D382262C73F00392E21 /* CustomOutgoingTextCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1336,9 +1364,11 @@
 				0C599ECA21703BCB00FC2E37 /* PJVirtualPetViewController.swift in Sources */,
 				0CED02E9219D5A8400294033 /* PJAlertView.swift in Sources */,
 				0C0A54A6216B977E00195DF1 /* RealPet.swift in Sources */,
+				0C5B5D372262C73F00392E21 /* CustomOutgoingTextCell.swift in Sources */,
 				0C55E2E8215B703C000D8815 /* PJUserLoginViewController.swift in Sources */,
 				0CDB0C9B21675F6E00669331 /* PJUserDetailsMenuView.swift in Sources */,
 				0C599EEB2171C00200FC2E37 /* VirtualPet.swift in Sources */,
+				0C5B5D3C2262C73F00392E21 /* CustomBubble.swift in Sources */,
 				0C5B5D06225DBF1500392E21 /* PJIMMessageHomeTableViewCell.swift in Sources */,
 				0C599EB7216CFE7A00FC2E37 /* PJRealPetDetailsViewController.swift in Sources */,
 				0C0A54AC216CF64600195DF1 /* PJUserDetailRealPetTableViewCell.swift in Sources */,
@@ -1347,6 +1377,7 @@
 				0C5E63532165ADF500A90762 /* NotificationName.swift in Sources */,
 				0CC35DD021DD0BC8002244DA /* Date.swift in Sources */,
 				0CC35DAB21D0BC35002244DA /* PJGradeYesterdayViewController.swift in Sources */,
+				0C5B5D392262C73F00392E21 /* CustomCollectionView.swift in Sources */,
 				0C1F6FAF21B3925E00304CD8 /* PJAlbumTableViewCell.swift in Sources */,
 				0C599ECE21703C5200FC2E37 /* PJCreateRealPetViewController.swift in Sources */,
 				0C55E2CE215A62BE000D8815 /* PJPlayViewController.swift in Sources */,
@@ -1399,6 +1430,7 @@
 				0C0A54AD216CF64600195DF1 /* PJUserDateilsRealPetColletionView.swift in Sources */,
 				0C5E634B2165A57200A90762 /* PJBigHUD.swift in Sources */,
 				0C55E3012161B247000D8815 /* PJWelcomeViewController.swift in Sources */,
+				0C5B5D3B2262C73F00392E21 /* CustomStyle.swift in Sources */,
 				0C599EE4217099E900FC2E37 /* PJUserCreateVirtualPetChoiceNameViewController.swift in Sources */,
 				0C1F6FA621B3920500304CD8 /* PJAlbumDetailCollectionView.swift in Sources */,
 				0C599EC72170354100FC2E37 /* PJUserDetailsVirtualPetCollectionView.swift in Sources */,

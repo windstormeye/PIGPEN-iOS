@@ -13,11 +13,19 @@ class PJIMChatViewController: MSGMessengerViewController, PJBaseViewControllerDe
     var messageCell: PJIM.MessageListCell? { didSet { didSetMessageCell() }}
     var id = 100
     
-    var friendUser: ChatUser?
-    var meUser: ChatUser?
+    private var friendUser: ChatUser?
+    private var meUser: ChatUser?
 
     var messages = [[MSGMessage]]()
+    lazy var dateFormatter: DateFormatter = {
+        let df = DateFormatter()
+        df.dateStyle = .short
+        return df
+    }()
     
+    override var style: MSGMessengerStyle {
+        return CustomStyle()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,9 +105,10 @@ class PJIMChatViewController: MSGMessengerViewController, PJBaseViewControllerDe
                 update(ms!)
                 self.collectionView.reloadData()
                 self.collectionView.scrollToBottom(animated: true)
-                self.collectionView.layoutTypingLabelIfNeeded()
+//                self.collectionView.layoutTypingLabelIfNeeded()
             }
         } else {
+            // TODO: 这部分有问题，需要交钱才能拉取到服务器上的历史消息
             RCIMClient.shared()?.getRemoteHistoryMessages(.ConversationType_PRIVATE, targetId: PJUser.shared.userModel.uid!, recordTime: 0, count: 20, success: { (messages: [RCMessage]) in
                     update(messages)
                 } as? ([Any]?) -> Void, error: { (errorCode) in
@@ -170,7 +179,16 @@ class PJIMChatViewController: MSGMessengerViewController, PJBaseViewControllerDe
                 callback?()
             }
         })
-
+    }
+    
+    func isPreviousMessageSameSender(at section: Int) -> Bool {
+        guard section - 1 >= 0 else { return false }
+        return messages[section].first!.user.displayName == messages[section - 1].first!.user.displayName
+    }
+    
+    func isNextMessageSameSender(at section: Int) -> Bool {
+        guard section + 1 < messages.count else { return false }
+        return messages[section].first!.user.displayName == messages[section + 1].first!.user.displayName
     }
     
 }
@@ -196,15 +214,18 @@ extension PJIMChatViewController: MSGDataSource {
     }
     
     func footerTitle(for section: Int) -> String? {
-        return "Just now"
+        return nil
     }
     
     func headerTitle(for section: Int) -> String? {
-        return messages[section].first?.user.displayName
+        return dateFormatter.string(from: messages[section].first!.sentAt)
+//        if isPreviousMessageSameSender(at: section) {
+//            return dateFormatter.string(from: messages[section].first!.sentAt)
+//        }
+//        return nil
     }
     
 }
-
 
 extension PJIMChatViewController: MSGDelegate {
     
