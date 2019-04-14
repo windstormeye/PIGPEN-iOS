@@ -26,11 +26,11 @@ class PJMessageViewController: UIViewController, PJBaseViewControllerDelegate {
         tableView = PJIMMessageHomeTableView(frame: CGRect(x: 0, y: 0, width: view.width, height: view.height), style: .plain)
         view.addSubview(tableView!)
         tableView?.cellSelected = { cellIndex in
-            let message = self.tableView?.viewModels[cellIndex]
             let chat = PJIMChatViewController()
-            chat.messageCell = message
             chat.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(chat, animated: true)
+            let message = self.tableView?.viewModels[cellIndex]
+            chat.messageCell = message
         }
         
         RCIMClient.shared()?.setReceiveMessageDelegate(self, object: nil)
@@ -68,23 +68,7 @@ class PJMessageViewController: UIViewController, PJBaseViewControllerDelegate {
 
 extension PJMessageViewController: RCIMClientReceiveMessageDelegate {
     func onReceived(_ message: RCMessage!, left nLeft: Int32, object: Any!) {
-        print(message.objectName)
-        switch message.objectName {
-        case "RC:TxtMsg":
-            let text = message.content as! RCTextMessage
-            let m = PJIM.Message(type: .text,
-                            textContent: text.content,
-                            audioContent: nil,
-                            sendUserId: message.senderUserId,
-                            msgId: message.messageId,
-                            msgDirection: message.messageDirection,
-                            msgStatus: message.sentStatus,
-                            msgReceivedTime: message.receivedTime,
-                            msgSentTime: message.sentTime)
-            print(m.textContent!)
-        case "RCImageMessage": break
-        default: break
-        }
+        
     }
 }
 

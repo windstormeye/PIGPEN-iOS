@@ -101,8 +101,23 @@ import Foundation
 extension PJIM: RCIMClientReceiveMessageDelegate {
     func onReceived(_ message: RCMessage!, left nLeft: Int32, object: Any!) {
         print(message.objectName)
-        let m = getMessage(with: message)
-        print(m?.textContent!)
+        switch message.objectName {
+        case "RC:TxtMsg":
+            let text = message.content as! RCTextMessage
+            let m = Message(type: .text,
+                            textContent: text.content,
+                            audioContent: nil,
+                            sendUserId: message.senderUserId,
+                            msgId: message.messageId,
+                            msgDirection: message.messageDirection,
+                            msgStatus: message.sentStatus,
+                            msgReceivedTime: message.receivedTime,
+                            msgSentTime: message.sentTime)
+            getMsg?(m)
+            print(m.textContent!)
+        case "RCImageMessage": break
+        default: break
+        }
     }
 }
 

@@ -26,6 +26,21 @@ class PJIMChatViewController: MSGMessengerViewController, PJBaseViewControllerDe
         
         initBaseView()
         backButtonTapped(backSel: .back, imageName: nil)
+        
+        PJIM.share().getMsg = { msg in
+            switch msg.type {
+            case .text:
+                let msgMsg = MSGMessage(id: msg.msgId,
+                                        body: MSGMessageBody.text(msg.textContent!),
+                                        user: self.friendUser!,
+                                        sentAt: Date(timeIntervalSince1970: TimeInterval(msg.msgSentTime)))
+                DispatchQueue.main.async {
+                    self.insert(msgMsg)
+                }
+                break;
+            case .audio: break
+            }
+        }
     }
     
     @objc
@@ -78,7 +93,12 @@ class PJIMChatViewController: MSGMessengerViewController, PJBaseViewControllerDe
         
         let ms = RCIMClient.shared()?.getLatestMessages(.ConversationType_PRIVATE, targetId: messageCell?.uid, count: 30) as? [RCMessage]
         if ms != nil {
-            update(ms!)
+            DispatchQueue.main.async {
+                update(ms!)
+                self.collectionView.reloadData()
+                self.collectionView.scrollToBottom(animated: true)
+                self.collectionView.layoutTypingLabelIfNeeded()
+            }
         } else {
             RCIMClient.shared()?.getRemoteHistoryMessages(.ConversationType_PRIVATE, targetId: PJUser.shared.userModel.uid!, recordTime: 0, count: 20, success: { (messages: [RCMessage]) in
                     update(messages)
@@ -109,11 +129,11 @@ class PJIMChatViewController: MSGMessengerViewController, PJBaseViewControllerDe
         collectionView.performBatchUpdates({
             if let lastSection = self.messages.last, let lastMessage = lastSection.last, lastMessage.user.displayName == message.user.displayName {
                 self.messages[self.messages.count - 1].append(message)
-                
+
                 let sectionIndex = self.messages.count - 1
                 let itemIndex = self.messages[sectionIndex].count - 1
                 self.collectionView.insertItems(at: [IndexPath(item: itemIndex, section: sectionIndex)])
-                
+
             } else {
                 self.messages.append([message])
                 let sectionIndex = self.messages.count - 1
@@ -123,20 +143,20 @@ class PJIMChatViewController: MSGMessengerViewController, PJBaseViewControllerDe
             self.collectionView.scrollToBottom(animated: true)
             self.collectionView.layoutTypingLabelIfNeeded()
         })
-        
+
     }
     
     override func insert(_ messages: [MSGMessage], callback: (() -> Void)? = nil) {
-        
+
         collectionView.performBatchUpdates({
             for message in messages {
                 if let lastSection = self.messages.last, let lastMessage = lastSection.last, lastMessage.user.displayName == message.user.displayName {
                     self.messages[self.messages.count - 1].append(message)
-                    
+
                     let sectionIndex = self.messages.count - 1
                     let itemIndex = self.messages[sectionIndex].count - 1
                     self.collectionView.insertItems(at: [IndexPath(item: itemIndex, section: sectionIndex)])
-                    
+
                 } else {
                     self.messages.append([message])
                     let sectionIndex = self.messages.count - 1
@@ -150,7 +170,7 @@ class PJIMChatViewController: MSGMessengerViewController, PJBaseViewControllerDe
                 callback?()
             }
         })
-        
+
     }
     
 }
