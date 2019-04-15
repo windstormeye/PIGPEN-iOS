@@ -9,6 +9,9 @@
 import UIKit
 
 class PJSearchTableViewCell: UITableViewCell {
+    var likeButtonClick: (() -> Void)?
+    var chatButtonClick: (() -> Void)?
+    
     var viewModel: PJUser.UserModel? {
         didSet { didSetViewModel() }
     }
@@ -50,6 +53,16 @@ class PJSearchTableViewCell: UITableViewCell {
             
         }
     }
+    
+    @IBAction func rightButtonClick(_ sender: Any) {
+        switch cellType {
+        case .pet:
+            likeButtonClick?()
+        case .user:
+            chatButtonClick?()
+        }
+    }
+    
 }
 
 extension PJSearchTableViewCell {

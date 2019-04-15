@@ -35,9 +35,8 @@ class PJUserSearchViewController: UIViewController, PJBaseViewControllerDelegate
             self?.search(uid: text)
         }
         
-        tableView.cellSelected = { [weak self] cellIndex in
-            guard let viewModel = self?.tableView.viewModels[cellIndex] else { return }
-            
+        tableView.cellChatButtonClick = { [weak self]  in
+            guard let viewModel = self?.tableView.viewModels[$0] else { return }
             
             let chat = PJIMChatViewController()
             chat.hidesBottomBarWhenPushed = true
@@ -46,6 +45,14 @@ class PJUserSearchViewController: UIViewController, PJBaseViewControllerDelegate
                                                     nickName: viewModel.nick_name!,
                                                     uid: viewModel.uid!,
                                                     message: nil)
+        }
+        
+        tableView.cellSelected = { [weak self] in
+            guard let viewModel = self?.tableView.viewModels[$0] else { return }
+            let vc = PJDetailViewController()
+            vc.viewModel = viewModel
+            vc.hidesBottomBarWhenPushed = true
+            self?.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
@@ -58,9 +65,7 @@ class PJUserSearchViewController: UIViewController, PJBaseViewControllerDelegate
         PJUser.shared.searchFriend(uid: uid,
                                    completeHandler: {
                                     self.tableView.viewModels = $0
-        }) { (error) in
-            print(error.errorMsg ?? "")
-        }
+        }) { print($0.errorMsg ?? "") }
     }
 }
 

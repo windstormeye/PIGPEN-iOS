@@ -10,6 +10,8 @@ import UIKit
 
 class PJSearchTableView: UITableView {
     var cellSelected: ((Int) -> Void)?
+    var cellLikeButtonClick: (() -> Void)?
+    var cellChatButtonClick: ((Int) -> Void)?
     
     var viewModels = [PJUser.UserModel]() {
         didSet { reloadData() }
@@ -54,6 +56,10 @@ extension PJSearchTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PJSearchTableViewCell", for: indexPath) as! PJSearchTableViewCell
         cell.viewModel = viewModels[indexPath.row]
+
+        cell.chatButtonClick = {
+            self.cellChatButtonClick?(indexPath.row)
+        }
         return cell
     }
 }

@@ -87,6 +87,12 @@
 		0CB5E8E42262DDF500CBE217 /* PJSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB5E8E22262DDF500CBE217 /* PJSearchTableViewCell.swift */; };
 		0CB5E8E52262DDF500CBE217 /* PJSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CB5E8E32262DDF500CBE217 /* PJSearchTableViewCell.xib */; };
 		0CB5E8E72262F76000CBE217 /* PJSearchTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB5E8E62262F76000CBE217 /* PJSearchTableView.swift */; };
+		0CB5E8EC2264BD7E00CBE217 /* PJDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB5E8EB2264BD7E00CBE217 /* PJDetailViewController.swift */; };
+		0CB5E8EF2264BDBF00CBE217 /* PJDetailTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB5E8EE2264BDBF00CBE217 /* PJDetailTableView.swift */; };
+		0CB5E8F32264BDF700CBE217 /* PJDetailUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB5E8F12264BDF700CBE217 /* PJDetailUserTableViewCell.swift */; };
+		0CB5E8F42264BDF700CBE217 /* PJDetailUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CB5E8F22264BDF700CBE217 /* PJDetailUserTableViewCell.xib */; };
+		0CB5E8F92264BE0C00CBE217 /* PJDetailPetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB5E8F72264BE0C00CBE217 /* PJDetailPetTableViewCell.swift */; };
+		0CB5E8FA2264BE0C00CBE217 /* PJDetailPetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CB5E8F82264BE0C00CBE217 /* PJDetailPetTableViewCell.xib */; };
 		0CC35DA221D0BAF6002244DA /* PJGradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DA121D0BAF6002244DA /* PJGradeViewController.swift */; };
 		0CC35DAB21D0BC35002244DA /* PJGradeYesterdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DAA21D0BC35002244DA /* PJGradeYesterdayViewController.swift */; };
 		0CC35DAD21D0BC43002244DA /* PJGradeWeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DAC21D0BC43002244DA /* PJGradeWeekViewController.swift */; };
@@ -214,6 +220,12 @@
 		0CB5E8E22262DDF500CBE217 /* PJSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJSearchTableViewCell.swift; sourceTree = "<group>"; };
 		0CB5E8E32262DDF500CBE217 /* PJSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJSearchTableViewCell.xib; sourceTree = "<group>"; };
 		0CB5E8E62262F76000CBE217 /* PJSearchTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJSearchTableView.swift; sourceTree = "<group>"; };
+		0CB5E8EB2264BD7E00CBE217 /* PJDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJDetailViewController.swift; sourceTree = "<group>"; };
+		0CB5E8EE2264BDBF00CBE217 /* PJDetailTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJDetailTableView.swift; sourceTree = "<group>"; };
+		0CB5E8F12264BDF700CBE217 /* PJDetailUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJDetailUserTableViewCell.swift; sourceTree = "<group>"; };
+		0CB5E8F22264BDF700CBE217 /* PJDetailUserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJDetailUserTableViewCell.xib; sourceTree = "<group>"; };
+		0CB5E8F72264BE0C00CBE217 /* PJDetailPetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJDetailPetTableViewCell.swift; sourceTree = "<group>"; };
+		0CB5E8F82264BE0C00CBE217 /* PJDetailPetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJDetailPetTableViewCell.xib; sourceTree = "<group>"; };
 		0CC35DA121D0BAF6002244DA /* PJGradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJGradeViewController.swift; sourceTree = "<group>"; };
 		0CC35DAA21D0BC35002244DA /* PJGradeYesterdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJGradeYesterdayViewController.swift; sourceTree = "<group>"; };
 		0CC35DAC21D0BC43002244DA /* PJGradeWeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJGradeWeekViewController.swift; sourceTree = "<group>"; };
@@ -446,6 +458,7 @@
 		0C55E2CA215A62A0000D8815 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				0CB5E8EA2264BD5800CBE217 /* Detail */,
 				0C55E2FE2161B1D0000D8815 /* Welcome */,
 				0C55E2FD2161B1A3000D8815 /* Details */,
 				0C55E2F4215F5653000D8815 /* Register */,
@@ -919,6 +932,51 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		0CB5E8EA2264BD5800CBE217 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				0CB5E8EB2264BD7E00CBE217 /* PJDetailViewController.swift */,
+				0CB5E8ED2264BD9500CBE217 /* PJDetailTableView */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		0CB5E8ED2264BD9500CBE217 /* PJDetailTableView */ = {
+			isa = PBXGroup;
+			children = (
+				0CB5E8EE2264BDBF00CBE217 /* PJDetailTableView.swift */,
+				0CB5E8F02264BDC400CBE217 /* Cell */,
+			);
+			path = PJDetailTableView;
+			sourceTree = "<group>";
+		};
+		0CB5E8F02264BDC400CBE217 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0CB5E8F62264BE0000CBE217 /* Pet */,
+				0CB5E8F52264BDFB00CBE217 /* User */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		0CB5E8F52264BDFB00CBE217 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				0CB5E8F12264BDF700CBE217 /* PJDetailUserTableViewCell.swift */,
+				0CB5E8F22264BDF700CBE217 /* PJDetailUserTableViewCell.xib */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		0CB5E8F62264BE0000CBE217 /* Pet */ = {
+			isa = PBXGroup;
+			children = (
+				0CB5E8F72264BE0C00CBE217 /* PJDetailPetTableViewCell.swift */,
+				0CB5E8F82264BE0C00CBE217 /* PJDetailPetTableViewCell.xib */,
+			);
+			path = Pet;
+			sourceTree = "<group>";
+		};
 		0CC35DA021D0BA33002244DA /* Grade */ = {
 			isa = PBXGroup;
 			children = (
@@ -1309,6 +1367,7 @@
 				0C55E2EE215B7DB0000D8815 /* PJUserForgetViewController.xib in Resources */,
 				0C5B5D3A2262C73F00392E21 /* CustomIncomingTextCell.xib in Resources */,
 				0C1F6FB021B3925E00304CD8 /* PJAlbumTableViewCell.xib in Resources */,
+				0CB5E8F42264BDF700CBE217 /* PJDetailUserTableViewCell.xib in Resources */,
 				0CE4F3FD21592C7D003AD0F5 /* Assets.xcassets in Resources */,
 				0C55E2E9215B703C000D8815 /* PJUserLoginViewController.xib in Resources */,
 				0CC35DD421DF3B8C002244DA /* PJSegmentView.xib in Resources */,
@@ -1317,6 +1376,7 @@
 				0C55E2F3215D2D76000D8815 /* PJUserInfoViewController.xib in Resources */,
 				0CB5E8E52262DDF500CBE217 /* PJSearchTableViewCell.xib in Resources */,
 				0CDB0C8F216705B000669331 /* PJUserSelfTableViewCell.xib in Resources */,
+				0CB5E8FA2264BE0C00CBE217 /* PJDetailPetTableViewCell.xib in Resources */,
 				0C599EE02170983D00FC2E37 /* PJCreateVirtualPetChoiceGenderViewController.xib in Resources */,
 				0CE2618621C5434000740582 /* PJAlbumCollectionFocusView.xib in Resources */,
 				0C599EE5217099E900FC2E37 /* PJUserCreateVirtualPetChoiceNameViewController.xib in Resources */,
@@ -1441,7 +1501,9 @@
 				0C1F6FB421B392EF00304CD8 /* PJAlbumDataController.swift in Sources */,
 				0C5B5D01225DBEE400392E21 /* PJIMMessageHomeTableView.swift in Sources */,
 				0CDB0C90216705B000669331 /* PJUserSelfTableViewCell.swift in Sources */,
+				0CB5E8F92264BE0C00CBE217 /* PJDetailPetTableViewCell.swift in Sources */,
 				0C55E3082161BAB6000D8815 /* PJBaseViewController.swift in Sources */,
+				0CB5E8EF2264BDBF00CBE217 /* PJDetailTableView.swift in Sources */,
 				0C599ED521703CDA00FC2E37 /* PJCreateVirtualPetViewController.swift in Sources */,
 				0C5B5D2E2262226000392E21 /* PJIMChatViewController.swift in Sources */,
 				0C55E2DD215A8055000D8815 /* TabBar.swift in Sources */,
@@ -1453,11 +1515,13 @@
 				0CED02E2219D45AC00294033 /* PJDogFoodViewController.swift in Sources */,
 				0C5E633E216309C300A90762 /* PJNetwork.swift in Sources */,
 				0CC35DDD21E637E8002244DA /* PJCalloutView.swift in Sources */,
+				0CB5E8F32264BDF700CBE217 /* PJDetailUserTableViewCell.swift in Sources */,
 				0CC35DAD21D0BC43002244DA /* PJGradeWeekViewController.swift in Sources */,
 				0CED02E6219D510F00294033 /* PJBaseAlertViewController.swift in Sources */,
 				0CA365F821B26CF300E7D2F7 /* PJAlbumViewController.swift in Sources */,
 				0C8B75592196934000353842 /* PJMessageViewController.swift in Sources */,
 				0CE2616821C500AF00740582 /* PJAlbumCollectiionFlowLayout.swift in Sources */,
+				0CB5E8EC2264BD7E00CBE217 /* PJDetailViewController.swift in Sources */,
 				0CC35DD921DF7025002244DA /* PJWaveView.swift in Sources */,
 				0CB5E8E72262F76000CBE217 /* PJSearchTableView.swift in Sources */,
 				0CE4F3FB21592C7C003AD0F5 /* PIGPEN.xcdatamodeld in Sources */,
