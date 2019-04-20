@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PJTapic: NSObject {
+class PJTapic {
     
     class func select() {
         let g = UISelectionFeedbackGenerator.init()
@@ -17,9 +17,11 @@ class PJTapic: NSObject {
     }
     
     class func succee() {
-        let g = UINotificationFeedbackGenerator.init()
-        g.notificationOccurred(.success)
-        g.prepare()
+        DispatchQueue.main.async {
+            let g = UINotificationFeedbackGenerator.init()
+            g.notificationOccurred(.success)
+            g.prepare()
+        }
     }
     
     class func warning() {

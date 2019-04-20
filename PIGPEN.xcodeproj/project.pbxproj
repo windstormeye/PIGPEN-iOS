@@ -93,6 +93,7 @@
 		0CB5E8F42264BDF700CBE217 /* PJDetailUserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CB5E8F22264BDF700CBE217 /* PJDetailUserTableViewCell.xib */; };
 		0CB5E8F92264BE0C00CBE217 /* PJDetailPetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB5E8F72264BE0C00CBE217 /* PJDetailPetTableViewCell.swift */; };
 		0CB5E8FA2264BE0C00CBE217 /* PJDetailPetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CB5E8F82264BE0C00CBE217 /* PJDetailPetTableViewCell.xib */; };
+		0CB5E903226AC87600CBE217 /* PJHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB5E902226AC87600CBE217 /* PJHUD.swift */; };
 		0CC35DA221D0BAF6002244DA /* PJGradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DA121D0BAF6002244DA /* PJGradeViewController.swift */; };
 		0CC35DAB21D0BC35002244DA /* PJGradeYesterdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DAA21D0BC35002244DA /* PJGradeYesterdayViewController.swift */; };
 		0CC35DAD21D0BC43002244DA /* PJGradeWeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DAC21D0BC43002244DA /* PJGradeWeekViewController.swift */; };
@@ -226,6 +227,7 @@
 		0CB5E8F22264BDF700CBE217 /* PJDetailUserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJDetailUserTableViewCell.xib; sourceTree = "<group>"; };
 		0CB5E8F72264BE0C00CBE217 /* PJDetailPetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJDetailPetTableViewCell.swift; sourceTree = "<group>"; };
 		0CB5E8F82264BE0C00CBE217 /* PJDetailPetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJDetailPetTableViewCell.xib; sourceTree = "<group>"; };
+		0CB5E902226AC87600CBE217 /* PJHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJHUD.swift; sourceTree = "<group>"; };
 		0CC35DA121D0BAF6002244DA /* PJGradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJGradeViewController.swift; sourceTree = "<group>"; };
 		0CC35DAA21D0BC35002244DA /* PJGradeYesterdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJGradeYesterdayViewController.swift; sourceTree = "<group>"; };
 		0CC35DAC21D0BC43002244DA /* PJGradeWeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJGradeWeekViewController.swift; sourceTree = "<group>"; };
@@ -417,7 +419,6 @@
 				0C55E2CA215A62A0000D8815 /* User */,
 				0C55E2C9215A61FC000D8815 /* Breeds */,
 				0C55E2C8215A61F5000D8815 /* Play */,
-				0C55E2C7215A61EE000D8815 /* Chat */,
 				0C55E2C6215A61E8000D8815 /* Home */,
 			);
 			path = Page;
@@ -429,13 +430,6 @@
 				0C55E2C4215A61E3000D8815 /* PJHomeViewController.swift */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		0C55E2C7215A61EE000D8815 /* Chat */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Chat;
 			sourceTree = "<group>";
 		};
 		0C55E2C8215A61F5000D8815 /* Play */ = {
@@ -798,6 +792,7 @@
 			children = (
 				0C5E634A2165A57200A90762 /* PJBigHUD.swift */,
 				0C5E634C2165A5F800A90762 /* PJSmallHUD.swift */,
+				0CB5E902226AC87600CBE217 /* PJHUD.swift */,
 			);
 			path = HUD;
 			sourceTree = "<group>";
@@ -1443,6 +1438,7 @@
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/HappyDNS/HappyDNS.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MessengerKit/MessengerKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Qiniu/Qiniu.framework",
@@ -1455,6 +1451,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HappyDNS.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessengerKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Qiniu.framework",
@@ -1482,6 +1479,7 @@
 				0C599EEB2171C00200FC2E37 /* VirtualPet.swift in Sources */,
 				0C5B5D3C2262C73F00392E21 /* CustomBubble.swift in Sources */,
 				0C5B5D06225DBF1500392E21 /* PJIMMessageHomeTableViewCell.swift in Sources */,
+				0CB5E903226AC87600CBE217 /* PJHUD.swift in Sources */,
 				0C599EB7216CFE7A00FC2E37 /* PJRealPetDetailsViewController.swift in Sources */,
 				0C0A54AC216CF64600195DF1 /* PJUserDetailRealPetTableViewCell.swift in Sources */,
 				0C8B755D2196FF8B00353842 /* PJBreedsSideSliderView.swift in Sources */,

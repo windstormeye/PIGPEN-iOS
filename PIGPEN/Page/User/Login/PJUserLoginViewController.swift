@@ -54,10 +54,13 @@ class PJUserLoginViewController: PJBaseViewController {
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         let phone = phoneTextField.text
         let passwd = passwdTextField.text
+        PJHUD.shared.showLoading(view: view)
         PJUser.shared.login(phone: phone!, passwd: passwd!, completeHandler: {
             PJTapic.succee()
+            PJHUD.shared.dismiss()
             NotificationCenter.default.post(name: .loginSuccess(), object: nil)
         }) { (error) in
+            PJHUD.shared.dismiss()
             PJTapic.error()
             print(error.errorMsg ?? "未知错误")
         }

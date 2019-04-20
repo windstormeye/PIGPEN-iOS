@@ -25,16 +25,19 @@ extension PJBaseViewControllerDelegate {
     }
     
     func initBaseView() {
-//        navigationController?.navigationBar.setBackgroundImage(UIImage(),
-//                                                               for: .compact)
+        // 去线
         navigationController?.navigationBar.shadowImage = UIImage()
-        
-        
+
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.barTintColor = .white
         
         let titleTextAtt = [NSAttributedString.Key.foregroundColor: UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = titleTextAtt
+        
+        // 解决自定义 leftBarButtonItem 后侧滑失效，除非自定义 backBarButtonItem
+        if navigationController?.responds(to: #selector(getter: UINavigationController.interactivePopGestureRecognizer)) ?? false {
+            navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        }
     }
     
     func popBack() {

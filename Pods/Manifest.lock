@@ -3,6 +3,7 @@ PODS:
   - CryptoSwift (0.15.0)
   - HappyDNS (0.3.15)
   - IQKeyboardManagerSwift (6.2.0)
+  - JGProgressHUD (2.0.3)
   - Kingfisher (5.3.0)
   - MessengerKit (1.0.4)
   - mob_smssdk (3.2.3):
@@ -18,6 +19,7 @@ DEPENDENCIES:
   - Alamofire
   - CryptoSwift
   - IQKeyboardManagerSwift
+  - JGProgressHUD
   - Kingfisher
   - MessengerKit (from `https://github.com/steve228uk/MessengerKit.git`)
   - mob_smssdk
@@ -32,6 +34,7 @@ SPEC REPOS:
     - CryptoSwift
     - HappyDNS
     - IQKeyboardManagerSwift
+    - JGProgressHUD
     - Kingfisher
     - mob_smssdk
     - MOBFoundation
@@ -54,6 +57,7 @@ SPEC CHECKSUMS:
   CryptoSwift: 769f58a9e89f64e8796c2e59ce5f002dc81a2438
   HappyDNS: 00c15e651a347206e58a20503a32a5564589b56a
   IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
+  JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
   Kingfisher: 4692c783ffb99e9e2e40a6eb3e518c3b96c6fa8c
   MessengerKit: 39abeb652e7837b2ced80c4813b20368a994571d
   mob_smssdk: cdb6a31d4fd4667ed928e2eca03f21ad89ebc05c
@@ -63,6 +67,6 @@ SPEC CHECKSUMS:
   Schedule: 64f334e01daa6f80201ab147b59cb4f1e118ae74
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: e1ff2b84f803f2589614c7d4203714b8cee82528
+PODFILE CHECKSUM: dd32f180001110bad0b7792db7b959caac1a028e
 
 COCOAPODS: 1.5.3

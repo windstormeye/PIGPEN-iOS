@@ -95,7 +95,7 @@ extension PJUser {
                                                 feedingStatus.append(s.int!)
                                             }
                                             
-                                            let user = UserModel(nick_name: nickName,
+                                            var user = UserModel(nick_name: nickName,
                                                                  gender: gender,
                                                                  avatar: avatar,
                                                                  feeding_status: feedingStatus,
@@ -107,6 +107,11 @@ extension PJUser {
                                                                  money: money,
                                                                  rcToken: nil)
                                             if getSelf {
+                                                user.token = self.userModel.token
+                                                user.rcToken = self.userModel.rcToken
+                                                user.level = self.userModel.level
+                                                user.follow = self.userModel.follow
+                                                user.star = self.userModel.star
                                                 self.userModel = user
                                                 self.saveToSandBox()
                                             }
@@ -181,10 +186,11 @@ extension PJUser {
                                                 self.userModel.gender = userDic["gender"]?.intValue ?? 0
                                                 self.userModel.avatar = userDic["avatar"]?.intValue ?? -1
                                                 self.userModel.token = dataDic["token"].string!
-                                                self.userModel.uid = dataDic["uid"].string
-                                                self.userModel.level = dataDic["level"].float
-                                                self.userModel.follow = dataDic["follow"].int
-                                                self.userModel.star = dataDic["star"].int
+                                                self.userModel.uid = userDic["uid"]?.string
+                                                self.userModel.level = userDic["level"]?.float ?? -1
+                                                self.userModel.follow = userDic["follow"]?.int ?? 0
+                                                self.userModel.star = userDic["star"]?.int ?? 0
+
                                                 
                                                 let f_s = dataDic["feeding_status"].array
                                                 var feedingStatus = [Int]()
@@ -195,21 +201,13 @@ extension PJUser {
                                     
                                                 
                                                 // 登录成功后获取融云token，并持久化
-                                                self.rcToken(complateHandler: { (rcToken) in
-                                                    self.userModel.rcToken = rcToken
+                                                self.rcToken(uid: self.userModel.uid!, complateHandler: {
+                                                    self.userModel.rcToken = $0
                                                     self.saveToSandBox()
                                                     
-                                                    self.connectRC(completeHandler: {
-                                                        completeHandler()
-                                                    }, failedHandler: { (error) in
-                                                        failedHandler(error)
-                                                    })
-                                                }, failedHandler: { (error) in
-                                                    failedHandler(error)
-                                                })
+                                                    self.connectRC(completeHandler: { completeHandler() }, failedHandler: { failedHandler($0) })}, failedHandler: { failedHandler($0) })
                                             } else {
-                                                let error = PJNetwork.Error(errorCode: dataDic["msgCode"]?.intValue,
-                                                                            errorMsg: dataDic["msg"]?.string)
+                                                let error = PJNetwork.Error(errorCode: dataDic["msgCode"]?.intValue, errorMsg: dataDic["msg"]?.string)
                                                 failedHandler(error)
                                             }
         }) { (errorString) in
@@ -257,24 +255,24 @@ extension PJUser {
                 self.userModel.feeding_status = feedingStatus
                 
                 // 登录成功后获取融云token，并持久化
-                self.rcToken(complateHandler: { (rcToken) in
-                    self.userModel.rcToken = rcToken
+                self.rcToken(uid: self.userModel.uid!, complateHandler: {
+                    self.userModel.rcToken = $0
                     self.saveToSandBox()
                     
                     self.connectRC(completeHandler: {
                         completeHandler()
-                    }, failedHandler: { (error) in
-                        failedHandler(error)
+                    }, failedHandler: {
+                        failedHandler($0)
                     })
-                }, failedHandler: { (error) in
-                    failedHandler(error)
+                }, failedHandler: {
+                    failedHandler($0)
                 })
             } else {
                 let error = PJNetwork.Error(errorCode: dataDic["msgCode"]?.intValue,errorMsg: dataDic["msg"]?.string)
                 failedHandler(error)
             }
-        }, failed: { (errorString) in
-            failedHandler(PJNetwork.Error(errorCode: -1, errorMsg: "未知错误"))
+        }, failed: {
+            failedHandler(PJNetwork.Error(errorCode: -1, errorMsg: $0))
         })
     }
     
@@ -291,8 +289,7 @@ extension PJUser {
                                         if dataDic["msgCode"]?.intValue == 0 {
                                             completeHandler()
                                         } else {
-                                            let error = PJNetwork.Error(errorCode: dataDic["msgCode"]?.intValue,
-                                                                        errorMsg: dataDic["msg"]?.string)
+                                            let error = PJNetwork.Error(errorCode: dataDic["msgCode"]?.intValue, errorMsg: dataDic["msg"]?.string)
                                             failedHandler(error)
                                         }
         }, failed: { (errorString) in
@@ -343,19 +340,20 @@ extension PJUser {
         }
     }
     
-    func rcToken(complateHandler: @escaping (String) -> Void,
+    func rcToken(uid: String,
+                 complateHandler: @escaping (String) -> Void,
                  failedHandler: @escaping (PJNetwork.Error) -> Void) {
         PJNetwork.shared.requstWithGet(path: UserUrl.rcToken.rawValue,
-                                       parameters: [:], complement: { (dataDict) in
-                                        if dataDict["msgCode"]?.intValue == 0 {
-                                            let res = dataDict["msg"]?.dictionary
+                                       parameters: ["uid": uid], complement: {
+                                        if $0["msgCode"]?.intValue == 0 {
+                                            let res = $0["msg"]?.dictionary
                                             complateHandler(res!["token"]!.string!)
                                         } else {
-                                            let error = PJNetwork.Error(errorCode: dataDict["msgCode"]?.intValue,errorMsg: dataDict["msg"]?.string)
+                                            let error = PJNetwork.Error(errorCode: $0["msgCode"]?.intValue,errorMsg: $0["msg"]?.string)
                                             failedHandler(error)
                                         }
-        }) { (errorString) in
-            failedHandler(PJNetwork.Error(errorCode: -1, errorMsg: errorString))
+        }) {
+            failedHandler(PJNetwork.Error(errorCode: -1, errorMsg: $0))
         }
     }
     

@@ -62,10 +62,15 @@ class PJUserSearchViewController: UIViewController, PJBaseViewControllerDelegate
     }
     
     private func search(uid: String) {
+        PJHUD.shared.showLoading(view: view)
         PJUser.shared.searchFriend(uid: uid,
                                    completeHandler: {
                                     self.tableView.viewModels = $0
-        }) { print($0.errorMsg ?? "") }
+                                    PJHUD.shared.dismiss()
+        }) {
+            print($0.errorMsg ?? "")
+            PJHUD.shared.dismiss()
+        }
     }
 }
 

@@ -38,25 +38,17 @@ class PJMessageViewController: UIViewController, PJBaseViewControllerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        PJIM.share().getConversionList { cells in
-            self.tableView?.viewModels = cells
-        }
-    }
-    
-    @objc
-    func sendMsg() {
-        PJIM.share().sendText(textString: "Hello, world!",
-                              userID: "4186284364",
-                              complateHandler: { msgId in
-                                print("发送成功")
-        }) { (errorCode) in
-            print(errorCode)
+        
+        PJHUD.shared.showLoading(view: view)
+        PJIM.share().getConversionList {
+            self.tableView?.viewModels = $0
+            PJHUD.shared.dismiss()
         }
     }
     
     @objc
     fileprivate func addressBook() {
-        sendMsg()
+        
     }
     
     @objc

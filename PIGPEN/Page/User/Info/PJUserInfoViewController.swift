@@ -65,14 +65,17 @@ class PJUserInfoViewController: PJBaseViewController, PJUserInfoSeleteAvatarView
         userRegisterModel!.avatar = avatarTag
         userRegisterModel!.gender = gendertag
         userRegisterModel!.nickName = nickNamegTextField.text!
+        
+        PJHUD.shared.showLoading(view: view)
         PJUser.shared.register(registerModel: userRegisterModel!,
                                completeHandler: {
+                                PJHUD.shared.dismiss()
                                 PJTapic.succee()
                                 NotificationCenter.default.post(name: .loginSuccess(),
                                                                 object: nil)
         }) { (error) in
             PJTapic.error()
-            print(error)
+            PJHUD.shared.showError(view: self.view, text: error.errorMsg!)
         }
     }
     
