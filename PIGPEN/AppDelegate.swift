@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initTabBarControler()
         IQKeyboardManager.shared.enable = true
         
+        Bugly.start(withAppId: "i1400197107")
+        
         RCIMClient.shared()?.initWithAppKey("kj7swf8ok3sq2")
         PJUser.shared.connectRC(completeHandler: {
             debugOnly {

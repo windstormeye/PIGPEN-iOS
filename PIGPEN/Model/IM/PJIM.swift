@@ -45,7 +45,9 @@ import Foundation
         let cList = RCIMClient.shared()?.getConversationList(cTypes) as? [RCConversation]
         
         var msgListCells = [MessageListCell]()
-        if cList != nil {
+        guard cList != nil else { return complateHandler(msgListCells)}
+        
+        if cList?.count != 0 {
             for (cIndex, c) in cList!.enumerated() {
                 print(c.targetId)
                 let currentMessage = RCMessage(type: .ConversationType_PRIVATE,
@@ -74,6 +76,8 @@ import Foundation
                     }
                 }
             }
+        } else {
+            complateHandler(msgListCells)
         }
     }
     

@@ -198,7 +198,7 @@ extension PJUser {
                                                     feedingStatus.append(s.int!)
                                                 }
                                                 self.userModel.feeding_status = feedingStatus
-                                    
+                                                Bugly.setUserIdentifier(self.userModel.uid!)
                                                 
                                                 // 登录成功后获取融云token，并持久化
                                                 self.rcToken(uid: self.userModel.uid!, complateHandler: {
@@ -253,6 +253,7 @@ extension PJUser {
                 }
                 
                 self.userModel.feeding_status = feedingStatus
+                Bugly.setUserIdentifier(self.userModel.uid!)
                 
                 // 登录成功后获取融云token，并持久化
                 self.rcToken(uid: self.userModel.uid!, complateHandler: {
