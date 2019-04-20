@@ -27,9 +27,10 @@ class PJIMMessageHomeTableViewCell: UITableViewCell {
         nickNameLabel.text = viewModel.nickName
         messageLabel.text = viewModel.message
 
-        let date = Date(timeIntervalSince1970: TimeInterval(viewModel.time)!)
+        let timestamp = Double(viewModel.time)! / Double(1000)
+        let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
+        dateFormatter.dateFormat = "yyyy/ MM/dd HH:mm"
         timeLabel.text = dateFormatter.string(from: date)
         
         

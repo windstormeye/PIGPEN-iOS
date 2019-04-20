@@ -73,12 +73,12 @@ class PJIMChatViewController: MSGMessengerViewController, PJBaseViewControllerDe
             
             for m in ms {
                 let text = m.content as! RCTextMessage
-                if tempMsgUserId != m.targetId {
+                if tempMsgUserId != m.senderUserId {
                     tempMsgs.removeAll()
                     messages.append(tempMsgs)
                     m_index += 1
+                    tempMsgUserId = m.senderUserId
                 }
-                tempMsgUserId = m.targetId
                 
                 let c_m: MSGMessage?
                 if m.senderUserId != PJUser.shared.userModel.uid! {
@@ -92,11 +92,12 @@ class PJIMChatViewController: MSGMessengerViewController, PJBaseViewControllerDe
                                      user: meUser!,
                                      sentAt: Date(timeIntervalSince1970: TimeInterval(m.sentTime)))
                 }
-                tempMsgs.append(c_m!)
-                tempMsgs.reverse()
+                tempMsgs.insert(c_m!, at: 0)
                 messages.insert(tempMsgs, at: m_index)
                 messages.remove(at: m_index + 1)
             }
+            
+            messages.reverse()
         }
         
         let ms = RCIMClient.shared()?.getLatestMessages(.ConversationType_PRIVATE, targetId: messageCell?.uid, count: 30) as? [RCMessage]
@@ -105,7 +106,6 @@ class PJIMChatViewController: MSGMessengerViewController, PJBaseViewControllerDe
                 update(ms!)
                 self.collectionView.reloadData()
                 self.collectionView.scrollToBottom(animated: true)
-//                self.collectionView.layoutTypingLabelIfNeeded()
             }
         } else {
             // TODO: 这部分有问题，需要交钱才能拉取到服务器上的历史消息

@@ -55,6 +55,8 @@ import Foundation
                                                direction: c.lastestMessageDirection,
                                                messageId: c.lastestMessageId,
                                                content: c.lastestMessage)
+                currentMessage?.sentTime = c.sentTime
+                currentMessage?.receivedTime = c.receivedTime
                 currentMessage?.senderUserId = c.senderUserId
                 if currentMessage != nil {
                     let message = getMessage(with: currentMessage!)

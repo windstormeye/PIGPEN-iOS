@@ -4,6 +4,8 @@ target 'PIGPEN' do
 
     pod 'mob_smssdk'
     pod 'Qiniu'
+    pod 'Bugly'
+    pod 'JGProgressHUD'
     pod 'RongCloudIM/IMLib', '~> 2.8.3'
     
     pod 'MessengerKit', :git => 'https://github.com/steve228uk/MessengerKit.git'

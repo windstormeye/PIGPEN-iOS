@@ -733,8 +733,8 @@
 		0C5B5D08225E324800392E21 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				0C5B5D2F2262C72400392E21 /* Style */,
 				0C5B5D2D2262226000392E21 /* PJIMChatViewController.swift */,
+				0C5B5D2F2262C72400392E21 /* Style */,
 				0C5B5CFD225DBEA100392E21 /* List */,
 			);
 			path = Chat;
