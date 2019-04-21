@@ -22,6 +22,7 @@ class PJMessageViewController: UIViewController, PJBaseViewControllerDelegate {
         rightBarButtonItem(imageName: "message_search",
                            rightSel: .search)
         view.backgroundColor = .white
+        requestPush()
         
         
         tableView = PJIMMessageHomeTableView(frame: CGRect(x: 0, y: 0, width: view.width, height: view.height), style: .plain)
@@ -35,7 +36,31 @@ class PJMessageViewController: UIViewController, PJBaseViewControllerDelegate {
         }
         
         RCIMClient.shared()?.setReceiveMessageDelegate(self, object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
+        
+        
+        PJIM.share().getConversionList {
+            self.tableView?.viewModels = $0
+        }
+    }
+    
+    @objc
+    fileprivate func addressBook() {
+        
+    }
+    
+    @objc
+    fileprivate func search() {
+        let vc = PJUserSearchViewController()
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func requestPush() {
         UNUserNotificationCenter.current().getNotificationSettings {
             if $0.authorizationStatus != .authorized {
                 let alertController = UIAlertController(title: "PIGPEN 需要推送权限", message: "开启权限后你就可以及时收到好友给你发送的消息啦～", preferredStyle: .alert)
@@ -54,28 +79,6 @@ class PJMessageViewController: UIViewController, PJBaseViewControllerDelegate {
                 self.present(alertController, animated: true, completion: nil)
             }
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        PJHUD.shared.showLoading(view: view)
-        PJIM.share().getConversionList {
-            self.tableView?.viewModels = $0
-            PJHUD.shared.dismiss()
-        }
-    }
-    
-    @objc
-    fileprivate func addressBook() {
-        
-    }
-    
-    @objc
-    fileprivate func search() {
-        let vc = PJUserSearchViewController()
-        vc.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

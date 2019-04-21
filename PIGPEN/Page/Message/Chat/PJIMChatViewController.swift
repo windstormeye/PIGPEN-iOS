@@ -57,6 +57,13 @@ class PJIMChatViewController: MSGMessengerViewController, PJBaseViewControllerDe
     }
     
     private func didSetMessageCell() {
+        // 如果有未读消息数，进入聊天后就全部已读
+        let badge = RCIMClient.shared()!.getUnreadCount(.ConversationType_PRIVATE, targetId: messageCell!.uid)
+        if (badge != 0) {
+            RCIMClient.shared()!.clearMessagesUnreadStatus(.ConversationType_PRIVATE, targetId: messageCell!.uid)
+            UIApplication.shared.applicationIconBadgeNumber -= Int(badge)
+        }
+        
         titleString = messageCell!.nickName
         friendUser = ChatUser(displayName: messageCell!.nickName,
                               avatar: UIImage(named: "\(messageCell!.avatar)"),
