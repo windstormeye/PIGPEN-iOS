@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class PJMessageViewController: UIViewController, PJBaseViewControllerDelegate {
     
@@ -34,6 +35,25 @@ class PJMessageViewController: UIViewController, PJBaseViewControllerDelegate {
         }
         
         RCIMClient.shared()?.setReceiveMessageDelegate(self, object: nil)
+        
+        UNUserNotificationCenter.current().getNotificationSettings {
+            if $0.authorizationStatus != .authorized {
+                let alertController = UIAlertController(title: "PIGPEN 需要推送权限", message: "开启权限后你就可以及时收到好友给你发送的消息啦～", preferredStyle: .alert)
+                let alerAction = UIAlertAction(title: "去开启", style: .default, handler: { _ in
+                    let settingUrl = URL(string: UIApplication.openSettingsURLString)!
+                    if UIApplication.shared.canOpenURL(settingUrl) {
+                        UIApplication.shared.open(settingUrl, options: [:], completionHandler: nil)
+                    }
+                })
+                let cancleAction = UIAlertAction(title: "取消", style: .default, handler: { _ in
+                    alertController.dismiss(animated: true, completion: nil)
+                })
+                
+                alertController.addAction(cancleAction)
+                alertController.addAction(alerAction)
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

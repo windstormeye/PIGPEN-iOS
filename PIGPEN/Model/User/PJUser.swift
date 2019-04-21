@@ -73,55 +73,50 @@ class PJUser {
 
 // MARK: - URL Implementation
 extension PJUser {
-    func details(details_uid: String,
-                 getSelf: Bool,
-                 completeHandler: @escaping (UserModel) -> Void,
-                 failedHandler: @escaping (PJNetwork.Error) -> Void) {
-        PJNetwork.shared.requstWithGet(path: UserUrl.details.rawValue,
-                                       parameters: ["details_uid": details_uid],
-                                       complement: { (dataDic) in
-                                        if dataDic["msgCode"]?.intValue == 0 {
-                                            var dataDic = dataDic["msg"]!
-                                            let userDic = dataDic["masuser"].dictionary!
-                                            let gender = userDic["gender"]?.intValue
-                                            let nickName = userDic["nick_name"]?.string
-                                            let avatar = userDic["avatar"]?.intValue
-                                            let uid = userDic["uid"]?.string
-                                            let money = userDic["money"]?.int
-                                                
-                                            let f_s = dataDic["feeding_status"].array
-                                            var feedingStatus = [Int]()
-                                            for s in f_s! {
-                                                feedingStatus.append(s.int!)
-                                            }
-                                            
-                                            var user = UserModel(nick_name: nickName,
-                                                                 gender: gender,
-                                                                 avatar: avatar,
-                                                                 feeding_status: feedingStatus,
-                                                                 level: -1,
-                                                                 follow: 0,
-                                                                 star: 0,
-                                                                 token: nil,
-                                                                 uid: uid,
-                                                                 money: money,
-                                                                 rcToken: nil)
-                                            if getSelf {
-                                                user.token = self.userModel.token
-                                                user.rcToken = self.userModel.rcToken
-                                                user.level = self.userModel.level
-                                                user.follow = self.userModel.follow
-                                                user.star = self.userModel.star
-                                                self.userModel = user
-                                                self.saveToSandBox()
-                                            }
-                                            
-                                            completeHandler(user)
-                                        } else {
-                                            let error = PJNetwork.Error(errorCode: dataDic["msgCode"]?.intValue,
-                                                                        errorMsg: dataDic["msg"]?.string)
-                                            failedHandler(error)
-                                        }
+    func details(details_uid: String, getSelf: Bool, completeHandler: @escaping (UserModel) -> Void, failedHandler: @escaping (PJNetwork.Error) -> Void) {
+        PJNetwork.shared.requstWithGet(path: UserUrl.details.rawValue, parameters: ["details_uid": details_uid], complement: { (dataDic) in
+            if dataDic["msgCode"]?.intValue == 0 {
+                var dataDic = dataDic["msg"]!
+                let userDic = dataDic["masuser"].dictionary!
+                let gender = userDic["gender"]?.intValue
+                let nickName = userDic["nick_name"]?.string
+                let avatar = userDic["avatar"]?.intValue
+                let uid = userDic["uid"]?.string
+                let money = userDic["money"]?.int
+                
+                let f_s = dataDic["feeding_status"].array
+                var feedingStatus = [Int]()
+                for s in f_s! {
+                    feedingStatus.append(s.int!)
+                }
+                
+                var user = UserModel(nick_name: nickName,
+                                     gender: gender,
+                                     avatar: avatar,
+                                     feeding_status: feedingStatus,
+                                     level: -1,
+                                     follow: 0,
+                                     star: 0,
+                                     token: nil,
+                                     uid: uid,
+                                     money: money,
+                                     rcToken: nil)
+                if getSelf {
+                    user.token = self.userModel.token
+                    user.rcToken = self.userModel.rcToken
+                    user.level = self.userModel.level
+                    user.follow = self.userModel.follow
+                    user.star = self.userModel.star
+                    self.userModel = user
+                    self.saveToSandBox()
+                }
+                
+                completeHandler(user)
+            } else {
+                let error = PJNetwork.Error(errorCode: dataDic["msgCode"]?.intValue,
+                                            errorMsg: dataDic["msg"]?.string)
+                failedHandler(error)
+            }
         }) { (errorString) in
             failedHandler(PJNetwork.Error(errorCode: -1, errorMsg: "未知错误"))
         }
@@ -205,7 +200,7 @@ extension PJUser {
                                                     self.userModel.rcToken = $0
                                                     self.saveToSandBox()
                                                     
-                                                    self.connectRC(completeHandler: { completeHandler() }, failedHandler: { failedHandler($0) })}, failedHandler: { failedHandler($0) })
+                                                    self.connectRC(completeHandler: { _ in completeHandler() }, failedHandler: { failedHandler($0) })}, failedHandler: { failedHandler($0) })
                                             } else {
                                                 let error = PJNetwork.Error(errorCode: dataDic["msgCode"]?.intValue, errorMsg: dataDic["msg"]?.string)
                                                 failedHandler(error)
@@ -260,7 +255,7 @@ extension PJUser {
                     self.userModel.rcToken = $0
                     self.saveToSandBox()
                     
-                    self.connectRC(completeHandler: {
+                    self.connectRC(completeHandler: {_ in
                         completeHandler()
                     }, failedHandler: {
                         failedHandler($0)
@@ -301,6 +296,7 @@ extension PJUser {
     func logout() {
         self.userModel = UserModel()
         // 可能在多个 page 下进行登出，然后再登录时账户信息错误
+        RCIMClient.shared()?.logout()
         saveToSandBox()
     }
     
@@ -358,11 +354,11 @@ extension PJUser {
         }
     }
     
-    func connectRC(completeHandler: @escaping () -> Void,
+    func connectRC(completeHandler: @escaping (String) -> Void,
                    failedHandler: @escaping (PJNetwork.Error) -> Void) {
         guard self.userModel.rcToken != nil else { return }
         RCIMClient.shared()?.connect(withToken: self.userModel.rcToken, success: { (userId) in
-            completeHandler()
+            completeHandler(userId ?? "无 uid")
         }, error: { (errorCode) in
             failedHandler(PJNetwork.Error(errorCode: -1,
                                           errorMsg: "融云IM 登录失败"))

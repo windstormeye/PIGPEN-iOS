@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import IQKeyboardManagerSwift
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        UIApplication.shared.registerForRemoteNotifications()
         
         rootTabBar = UITabBarController()
         rootTabBar?.tabBar.isTranslucent = false
@@ -28,14 +30,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         initTabBarControler()
         IQKeyboardManager.shared.enable = true
-        
+        requestPushNotification(application)
         Bugly.start(withAppId: "i1400197107")
         
         RCIMClient.shared()?.initWithAppKey("kj7swf8ok3sq2")
         PJUser.shared.connectRC(completeHandler: {
-            debugOnly {
-                print("融云 IM 登录成功")
-            }
+            print("融云 IM 登录成功: " + $0)
         }) { (error) in
             print(error.errorMsg ?? "")
         }
@@ -43,6 +43,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func application(_ application: UIApplication,
+                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        guard PJUser.shared.userModel.uid != nil else { return }
+        RCIMClient.shared()?.setDeviceToken(deviceToken.toHexString())
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+    }
+    
     func applicationWillTerminate(_ application: UIApplication) {
         self.saveContext()
     }
@@ -117,5 +127,21 @@ extension AppDelegate: UITabBarControllerDelegate {
     public func tabBarController(_ tabBarController: UITabBarController,
                                  didSelect viewController: UIViewController) {
         tabBarController.tabBar.showBottomLine(in: tabBarController.selectedIndex)
+    }
+}
+
+extension AppDelegate {
+    func requestPushNotification(_ application: UIApplication) {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) {
+            if $1 == nil {
+                if $0 {
+                    print("YES")
+                } else {
+                    print("NO")
+                }
+            } else {
+                print($1!.localizedDescription)
+            }
+        }
     }
 }
