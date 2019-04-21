@@ -99,6 +99,9 @@ class PJIMChatViewController: MSGMessengerViewController, PJBaseViewControllerDe
                                      user: meUser!,
                                      sentAt: Date(timeIntervalSince1970: TimeInterval(m.sentTime)))
                 }
+                // 设置消息已读状态
+                RCIMClient.shared()?.setMessageSentStatus(m.messageId, sentStatus: .SentStatus_READ)
+                
                 tempMsgs.insert(c_m!, at: 0)
                 messages.insert(tempMsgs, at: m_index)
                 messages.remove(at: m_index + 1)
@@ -109,10 +112,13 @@ class PJIMChatViewController: MSGMessengerViewController, PJBaseViewControllerDe
         
         let ms = RCIMClient.shared()?.getLatestMessages(.ConversationType_PRIVATE, targetId: messageCell?.uid, count: 30) as? [RCMessage]
         if ms != nil {
+            update(ms!)
             DispatchQueue.main.async {
-                update(ms!)
+                // reloadData 时主线程被占用，scrollToBottom 等待，reloadData 完成后，再执行 scrollToBottom
                 self.collectionView.reloadData()
-                self.collectionView.scrollToBottom(animated: true)
+                DispatchQueue.main.async {
+                    self.collectionView.scrollToBottom(animated: false)
+                }
             }
         } else {
             // TODO: 这部分有问题，需要交钱才能拉取到服务器上的历史消息

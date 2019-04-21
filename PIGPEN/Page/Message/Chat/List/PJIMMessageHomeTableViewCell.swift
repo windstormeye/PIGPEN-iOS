@@ -9,10 +9,15 @@
 import UIKit
 
 class PJIMMessageHomeTableViewCell: UITableViewCell {
+    // 头像
     @IBOutlet weak private var avatarImaegView: UIImageView!
+    // 昵称
     @IBOutlet weak private var nickNameLabel: UILabel!
+    // 消息
     @IBOutlet weak private var messageLabel: UILabel!
+    // 时间
     @IBOutlet weak private var timeLabel: UILabel!
+    // 发送状态标识符
     @IBOutlet weak private var sendStatusImageView: UIImageView!
     
     @IBOutlet weak private var messageLabelWidthConstraints: NSLayoutConstraint!
@@ -38,6 +43,13 @@ class PJIMMessageHomeTableViewCell: UITableViewCell {
             sendStatusImageView.isHidden = true
         } else {
             sendStatusImageView.isHidden = false
+        }
+        
+        if (viewModel.sendStatus == .SentStatus_READ) {
+            messageLabel.textColor = .lightGray
+            sendStatusImageView.isHidden = true
+        } else {
+            messageLabel.textColor = .black
         }
     }
 }

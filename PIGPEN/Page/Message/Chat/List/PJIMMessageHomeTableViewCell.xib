@@ -36,12 +36,12 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这是一段测试的文字这是一段测试的文字这是一段测试的文字这是一段测试的文字" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pi5-cv-KuN">
-                        <rect key="frame" x="90" y="35" width="170" height="30"/>
+                        <rect key="frame" x="90" y="45" width="170" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="170" id="HVq-Nx-dp2"/>
-                            <constraint firstAttribute="height" constant="30" id="tPV-e2-ClA"/>
+                            <constraint firstAttribute="height" constant="20" id="tPV-e2-ClA"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.72190070152282715" green="0.705863356590271" blue="0.70560890436172485" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -53,8 +53,8 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nd5-SM-Dot">
-                        <rect key="frame" x="265" y="43" width="31.5" height="14"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <rect key="frame" x="265" y="46.5" width="36" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.72190070149999996" green="0.70586335659999999" blue="0.70560890440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>

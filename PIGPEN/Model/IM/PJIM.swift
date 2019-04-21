@@ -58,6 +58,7 @@ import Foundation
                 currentMessage?.sentTime = c.sentTime
                 currentMessage?.receivedTime = c.receivedTime
                 currentMessage?.senderUserId = c.senderUserId
+                currentMessage?.sentStatus = c.sentStatus
                 if currentMessage != nil {
                     let message = getMessage(with: currentMessage!)
                     if message == nil { break }

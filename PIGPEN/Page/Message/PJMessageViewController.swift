@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessengerKit
 import UserNotifications
 
 class PJMessageViewController: UIViewController, PJBaseViewControllerDelegate {
@@ -35,15 +36,35 @@ class PJMessageViewController: UIViewController, PJBaseViewControllerDelegate {
             chat.messageCell = message
         }
         
-        RCIMClient.shared()?.setReceiveMessageDelegate(self, object: nil)
+        PJIM.share().getMsg = { msg in
+            switch msg.type {
+            case .text:
+                var cell: PJIM.MessageListCell?
+                var index = 0
+                for (i, c) in self.tableView!.viewModels.enumerated() {
+                    if c.message?.sendUserId == msg.sendUserId { cell = c; index = i }
+                }
+                if cell != nil {
+                    cell!.message?.textContent = msg.textContent
+                    cell!.message?.msgSentTime = msg.msgSentTime
+                    cell!.message?.msgStatus = msg.msgStatus
+                    
+                    DispatchQueue.main.async {
+                        self.tableView?.viewModels[index] = cell!
+                    }
+                }
+                break;
+            case .audio: break
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        
-        
+        titleString = "消息接收中..."
         PJIM.share().getConversionList {
+            self.titleString = "消息"
             self.tableView?.viewModels = $0
         }
     }
@@ -79,13 +100,6 @@ class PJMessageViewController: UIViewController, PJBaseViewControllerDelegate {
                 self.present(alertController, animated: true, completion: nil)
             }
         }
-    }
-}
-
-
-extension PJMessageViewController: RCIMClientReceiveMessageDelegate {
-    func onReceived(_ message: RCMessage!, left nLeft: Int32, object: Any!) {
-        
     }
 }
 
