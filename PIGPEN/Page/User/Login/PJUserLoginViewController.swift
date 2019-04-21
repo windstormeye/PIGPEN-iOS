@@ -58,6 +58,9 @@ class PJUserLoginViewController: PJBaseViewController {
         PJUser.shared.login(phone: phone!, passwd: passwd!, completeHandler: {
             PJTapic.succee()
             PJHUD.shared.dismiss()
+            DispatchQueue.main.async {
+                dissmisCurrentVC(navc: self.navigationController, currenVC: self)
+            }
             NotificationCenter.default.post(name: .loginSuccess(), object: nil)
         }) { (error) in
             PJHUD.shared.dismiss()

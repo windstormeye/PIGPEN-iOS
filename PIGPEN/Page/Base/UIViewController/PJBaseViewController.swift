@@ -16,6 +16,7 @@ class PJBaseViewController: UIViewController {
     var titleString = "" { didSet { navigationItem.title = titleString }}
     var headerView: UIView?
     var lineView: UIView?
+    var isPresentedLogin = false
     // default is false
     var isHiddenBarBottomLineView: Bool? {
         didSet {
@@ -97,6 +98,8 @@ class PJBaseViewController: UIViewController {
     }
     
     @objc fileprivate func gotoLoginPage() {
+        guard !isPresentedLogin else { return }
+        isPresentedLogin = true
         let navVC = UINavigationController(rootViewController: PJUserLoginViewController())
         present(navVC, animated: true, completion: nil)
     }
