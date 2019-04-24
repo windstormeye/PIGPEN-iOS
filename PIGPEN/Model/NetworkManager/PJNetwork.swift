@@ -121,7 +121,10 @@ class PJNetwork {
         switch dict["msgCode"] {
         case 2333: break
         case 1001:
-            NotificationCenter.default.post(name: .gotoLogin(), object: nil)
+            if !PJUser.shared.isLogin {
+                NotificationCenter.default.post(name: .gotoLogin(), object: nil)
+                PJUser.shared.isLogin = !PJUser.shared.isLogin
+            }
         case 1002: break
         case 2001: break
         default: break

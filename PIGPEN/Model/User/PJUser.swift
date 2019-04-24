@@ -14,7 +14,8 @@ class PJUser {
     // MARK: - Public Properties
     static let shared = PJUser()
     var userModel = UserModel()
-    var isLoginTXIM: Bool = false
+    /// 是否已经拉起登录
+    var isLogin = false
     
     // MARK: - Private Methods
     private let userAccountPath =  NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first!

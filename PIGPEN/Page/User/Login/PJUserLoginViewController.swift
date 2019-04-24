@@ -43,6 +43,7 @@ class PJUserLoginViewController: PJBaseViewController {
     // MARK: Action
     @objc fileprivate func back() {
         dissmisCurrentVC(navc: navigationController ?? nil, currenVC: self)
+        PJUser.shared.isLogin = !PJUser.shared.isLogin
     }
     
     @IBAction func forgetButtonTapped(_ sender: UIButton) {
