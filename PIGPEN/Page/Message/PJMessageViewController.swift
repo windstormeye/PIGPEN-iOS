@@ -63,6 +63,7 @@ class PJMessageViewController: UIViewController, PJBaseViewControllerDelegate {
         super.viewDidAppear(animated)
         
         titleString = "消息接收中..."
+        // TODO: 后续列表太卡优化这里
         PJIM.share().getConversionList {
             self.titleString = "消息"
             self.tableView?.viewModels = $0

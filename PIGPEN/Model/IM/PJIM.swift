@@ -48,13 +48,10 @@ import Foundation
         guard cList != nil else { return complateHandler(msgListCells)}
         
         if cList?.count != 0 {
-            for (cIndex, c) in cList!.enumerated() {
+            var cIndex = 0
+            for c in cList! {
                 print(c.targetId)
-                let currentMessage = RCMessage(type: .ConversationType_PRIVATE,
-                                               targetId: c.targetId,
-                                               direction: c.lastestMessageDirection,
-                                               messageId: c.lastestMessageId,
-                                               content: c.lastestMessage)
+                let currentMessage = RCMessage(type: .ConversationType_PRIVATE, targetId: c.targetId, direction: c.lastestMessageDirection, messageId: c.lastestMessageId, content: c.lastestMessage)
                 currentMessage?.sentTime = c.sentTime
                 currentMessage?.receivedTime = c.receivedTime
                 currentMessage?.senderUserId = c.senderUserId
@@ -62,20 +59,27 @@ import Foundation
                 if currentMessage != nil {
                     let message = getMessage(with: currentMessage!)
                     if message == nil { break }
-                    PJUser.shared.details(details_uid: c.targetId,
-                                          getSelf: false,
-                                          completeHandler: { (userModel) in
-                                            let msgCell = MessageListCell(avatar: userModel.avatar!,
-                                                                          nickName: userModel.nick_name!,
-                                                                          uid: userModel.uid!,
-                                                                          message: message!)
-                                            msgListCells.append(msgCell)
-                                            
-                                            if cIndex == cList!.count - 1 {
-                                                complateHandler(msgListCells)
-                                            }
-                    }) { (error) in
-                        print(error.errorMsg!)
+                    PJUser.shared.details(details_uid: c.targetId, getSelf: false, completeHandler: {
+                        
+                        let msgCell = MessageListCell(avatar: $0.avatar!, nickName: $0.nick_name!, uid: $0.uid!, message: message!)
+                            msgListCells.append(msgCell)
+                        
+                            if cIndex == cList!.count - 1 {
+                                
+                                var finalCells = [MessageListCell]()
+                                for cell in cList! {
+                                    for msgCell in msgListCells {
+                                        if msgCell.uid == cell.targetId {
+                                            finalCells.append(msgCell)
+                                            break
+                                        }
+                                    }
+                                }
+                                complateHandler(finalCells)
+                            }
+                            cIndex += 1
+                    }) {
+                        print($0.errorMsg!)
                     }
                 }
             }
