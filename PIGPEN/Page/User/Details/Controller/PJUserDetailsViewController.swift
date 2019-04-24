@@ -40,7 +40,7 @@ class PJUserDetailsViewController: PJBaseViewController {
                                                          width: view.width,
                                                          height: view.height - headerView!.height),
                                            style: .plain)
-//        tableView?.viewDelegate = self
+        tableView?.viewDelegate = self
         view.addSubview(tableView!)
         
         menuBackViewButton = UIButton(frame: view.frame)

@@ -77,6 +77,7 @@
 		0C5E634D2165A5F800A90762 /* PJSmallHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E634C2165A5F800A90762 /* PJSmallHUD.swift */; };
 		0C5E634F2165AB8C00A90762 /* PJTapic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E634E2165AB8C00A90762 /* PJTapic.swift */; };
 		0C5E63532165ADF500A90762 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E63522165ADF500A90762 /* NotificationName.swift */; };
+		0C6A98592270AFE5003E4AA5 /* PJImagePickerConfigue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6A98582270AFE5003E4AA5 /* PJImagePickerConfigue.swift */; };
 		0C8B75592196934000353842 /* PJMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8B75582196934000353842 /* PJMessageViewController.swift */; };
 		0C8B755D2196FF8B00353842 /* PJBreedsSideSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8B755C2196FF8B00353842 /* PJBreedsSideSliderView.swift */; };
 		0C8B75622198126D00353842 /* PJPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8B75612198126D00353842 /* PJPickerView.swift */; };
@@ -94,6 +95,7 @@
 		0CB5E8F92264BE0C00CBE217 /* PJDetailPetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB5E8F72264BE0C00CBE217 /* PJDetailPetTableViewCell.swift */; };
 		0CB5E8FA2264BE0C00CBE217 /* PJDetailPetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CB5E8F82264BE0C00CBE217 /* PJDetailPetTableViewCell.xib */; };
 		0CB5E903226AC87600CBE217 /* PJHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB5E902226AC87600CBE217 /* PJHUD.swift */; };
+		0CB5FED72270ABFF00CBE217 /* PJImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB5FED62270ABFF00CBE217 /* PJImagePickerViewController.swift */; };
 		0CC35DA221D0BAF6002244DA /* PJGradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DA121D0BAF6002244DA /* PJGradeViewController.swift */; };
 		0CC35DAB21D0BC35002244DA /* PJGradeYesterdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DAA21D0BC35002244DA /* PJGradeYesterdayViewController.swift */; };
 		0CC35DAD21D0BC43002244DA /* PJGradeWeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DAC21D0BC43002244DA /* PJGradeWeekViewController.swift */; };
@@ -211,6 +213,7 @@
 		0C5E634E2165AB8C00A90762 /* PJTapic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PJTapic.swift; sourceTree = "<group>"; };
 		0C5E63522165ADF500A90762 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		0C5E63542165B6D400A90762 /* PIGPEN_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIGPEN_bridge.h; sourceTree = "<group>"; };
+		0C6A98582270AFE5003E4AA5 /* PJImagePickerConfigue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJImagePickerConfigue.swift; sourceTree = "<group>"; };
 		0C8B75582196934000353842 /* PJMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJMessageViewController.swift; sourceTree = "<group>"; };
 		0C8B755C2196FF8B00353842 /* PJBreedsSideSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBreedsSideSliderView.swift; sourceTree = "<group>"; };
 		0C8B75612198126D00353842 /* PJPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PJPickerView.swift; sourceTree = "<group>"; };
@@ -229,6 +232,7 @@
 		0CB5E8F82264BE0C00CBE217 /* PJDetailPetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJDetailPetTableViewCell.xib; sourceTree = "<group>"; };
 		0CB5E902226AC87600CBE217 /* PJHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJHUD.swift; sourceTree = "<group>"; };
 		0CB5E905226C2CB700CBE217 /* PIGPEN.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PIGPEN.entitlements; sourceTree = "<group>"; };
+		0CB5FED62270ABFF00CBE217 /* PJImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJImagePickerViewController.swift; sourceTree = "<group>"; };
 		0CC35DA121D0BAF6002244DA /* PJGradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJGradeViewController.swift; sourceTree = "<group>"; };
 		0CC35DAA21D0BC35002244DA /* PJGradeYesterdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJGradeYesterdayViewController.swift; sourceTree = "<group>"; };
 		0CC35DAC21D0BC43002244DA /* PJGradeWeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJGradeWeekViewController.swift; sourceTree = "<group>"; };
@@ -801,6 +805,7 @@
 		0C5E63502165AB9300A90762 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				0CB5FED52270ABEC00CBE217 /* ImagePicker */,
 				0CC35DDB21E6376C002244DA /* PopMenu */,
 				0CC35DD721DF7008002244DA /* WaveView */,
 				0CC35DCC21DCFFC6002244DA /* ImageUpload */,
@@ -971,6 +976,15 @@
 				0CB5E8F82264BE0C00CBE217 /* PJDetailPetTableViewCell.xib */,
 			);
 			path = Pet;
+			sourceTree = "<group>";
+		};
+		0CB5FED52270ABEC00CBE217 /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				0CB5FED62270ABFF00CBE217 /* PJImagePickerViewController.swift */,
+				0C6A98582270AFE5003E4AA5 /* PJImagePickerConfigue.swift */,
+			);
+			path = ImagePicker;
 			sourceTree = "<group>";
 		};
 		0CC35DA021D0BA33002244DA /* Grade */ = {
@@ -1407,11 +1421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-			);
-			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
@@ -1469,9 +1479,12 @@
 				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MessengerKit/MessengerKit.framework",
+				"${BUILT_PRODUCTS_DIR}/PryntTrimmerView/PryntTrimmerView.framework",
 				"${BUILT_PRODUCTS_DIR}/Qiniu/Qiniu.framework",
 				"${BUILT_PRODUCTS_DIR}/Schedule/Schedule.framework",
+				"${BUILT_PRODUCTS_DIR}/SteviaLayout/Stevia.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/YPImagePicker/YPImagePicker.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1482,9 +1495,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessengerKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PryntTrimmerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Qiniu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Schedule.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stevia.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YPImagePicker.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1547,6 +1563,7 @@
 				0CA365F821B26CF300E7D2F7 /* PJAlbumViewController.swift in Sources */,
 				0C8B75592196934000353842 /* PJMessageViewController.swift in Sources */,
 				0CE2616821C500AF00740582 /* PJAlbumCollectiionFlowLayout.swift in Sources */,
+				0C6A98592270AFE5003E4AA5 /* PJImagePickerConfigue.swift in Sources */,
 				0CB5E8EC2264BD7E00CBE217 /* PJDetailViewController.swift in Sources */,
 				0CC35DD921DF7025002244DA /* PJWaveView.swift in Sources */,
 				0CB5E8E72262F76000CBE217 /* PJSearchTableView.swift in Sources */,
@@ -1572,6 +1589,7 @@
 				0C1F6FA421B391E500304CD8 /* PJAlbumTableView.swift in Sources */,
 				0CC35DA221D0BAF6002244DA /* PJGradeViewController.swift in Sources */,
 				0CC35DD621DF653C002244DA /* YXWaveView.swift in Sources */,
+				0CB5FED72270ABFF00CBE217 /* PJImagePickerViewController.swift in Sources */,
 				0C0A54AD216CF64600195DF1 /* PJUserDateilsRealPetColletionView.swift in Sources */,
 				0C5E634B2165A57200A90762 /* PJBigHUD.swift in Sources */,
 				0CB5E8DA2262D6F200CBE217 /* PJUserSearchViewController.swift in Sources */,
