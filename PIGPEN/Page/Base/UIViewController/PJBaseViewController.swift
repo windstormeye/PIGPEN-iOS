@@ -37,14 +37,14 @@ class PJBaseViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = titleTextAtt
         
         headerView = UIView(frame: CGRect(x: 0, y: 0,
-                                          width: view.width,
+                                          width: view.pj_width,
                                           height: navigationBarHeight))
         headerView?.backgroundColor = .white
         view.addSubview(headerView!)
         
         
         lineView = UIView(frame: CGRect(x: 0, y: headerView!.bottom - 0.5,
-                                            width: view.width, height: 0.5))
+                                            width: view.pj_width, height: 0.5))
         lineView?.backgroundColor = .boderColor
         view.addSubview(lineView!)
         
@@ -109,7 +109,7 @@ class PJBaseViewController: UIViewController {
     }
     var navigationBarHeight: CGFloat {
         get {
-            return statusBarHeight + navigationController!.navigationBar.height
+            return statusBarHeight + navigationController!.navigationBar.pj_height
         }
     }
 

@@ -24,7 +24,7 @@ class PJDetailViewController: UIViewController {
     
     private func initView() {
         view.backgroundColor = .white
-        tableView = PJDetailTableView(frame: CGRect(x: 0, y: navigationBarHeight, width: view.width, height: view.height - navigationBarHeight), style: .plain)
+        tableView = PJDetailTableView(frame: CGRect(x: 0, y: navigationBarHeight, width: view.pj_width, height: view.pj_height - navigationBarHeight), style: .plain)
         view.addSubview(tableView)
     }
 }

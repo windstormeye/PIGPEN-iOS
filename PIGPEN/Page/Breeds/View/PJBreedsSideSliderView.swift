@@ -39,7 +39,7 @@ class PJBreedsSideSliderView: UIView {
     // MARK: - Actions
     private func didSetItemString() {
         var index = 0
-        let buttonHeight = height / CGFloat(itemStrings!.count)
+        let buttonHeight = pj_height / CGFloat(itemStrings!.count)
         for item in itemStrings! {
             let button = UIButton(frame: CGRect(x: 0,
                                                 y: index * Int(buttonHeight),

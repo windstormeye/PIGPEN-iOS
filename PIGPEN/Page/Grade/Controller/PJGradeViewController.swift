@@ -30,8 +30,8 @@ class PJGradeViewController: PJBaseViewController {
         view.addSubview(segment)
         segment.viewModel = PJSegmentView.ViewModel(titles: ["昨日", "周评分", "月评分", "总评分"])
         
-        waterView = PJWaveView.init(frame: CGRect(x: 0, y: segment.bottom, width: self.view.width, height: self.view.height))
-        waterView?.viewModel = PJWaveView.ViewModel(level: 7.4, containerHeight: self.view.height)
+        waterView = PJWaveView.init(frame: CGRect(x: 0, y: segment.bottom, width: self.view.pj_width, height: self.view.pj_height))
+        waterView?.viewModel = PJWaveView.ViewModel(level: 7.4, containerHeight: self.view.pj_height)
         view.addSubview(waterView!)
         
         waterView?.viewModel!.level = 10

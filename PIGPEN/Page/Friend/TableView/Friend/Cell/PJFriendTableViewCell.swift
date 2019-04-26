@@ -33,13 +33,12 @@ class PJFriendTableViewCell: UITableViewCell {
         collectionViewLayout.scrollDirection = .horizontal
         collectionViewLayout.sectionInset = UIEdgeInsets(top: 0, left: innerW / 2, bottom: 0, right: innerW / 2)
         
-        let collectionView = PJLineCollectionView(frame: CGRect(x: 0, y: height - 30, width: width, height: 30), collectionViewLayout: collectionViewLayout)
-        collectionView.backgroundColor = UIColor(red: 54/255, green: 149/255, blue: 1, alpha: 1)
+        let collectionView = PJLineCollectionView(frame: CGRect(x: nickNameLabel.left, y: pj_height - 30, width: pj_width - chatButton.pj_width - avatarImageView.pj_width, height: 30), collectionViewLayout: collectionViewLayout)
         collectionView.lineType = .icon
+        collectionView.viewModels = ["0", "0", "0", "0", "0", "0", "0", "0"]
         addSubview(collectionView)
     }
     
     private func didSetViewModel() {
-        
     }
 }

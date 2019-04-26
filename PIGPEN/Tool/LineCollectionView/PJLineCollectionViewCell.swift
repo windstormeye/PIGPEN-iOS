@@ -12,6 +12,7 @@ class PJLineCollectionViewCell: UICollectionViewCell {
     var viewModel = "" {didSet { setViewModel()}}
     var viewColorModel: UIColor? {didSet{backgroundColor = viewColorModel}}
     var image: UIImage? { didSet{iconImageView?.image = image }}
+    var imageUrl: String? { didSet{iconImageView?.kf.setImage(with: URL(string: imageUrl!))}}
     var type: PJLineCollectionView.LineType = .text {didSet{setType()}}
     
     private var tipsLabel: UILabel?
@@ -27,14 +28,14 @@ class PJLineCollectionViewCell: UICollectionViewCell {
     }
     
     private func initView() {
-        let tipLabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        let tipLabel = UILabel(frame: CGRect(x: 0, y: 0, width: pj_width, height: pj_height))
         tipLabel.text = viewModel
         tipLabel.textAlignment = .center
         tipLabel.textColor = .white
         self.tipsLabel = tipLabel
         addSubview(tipLabel)
         
-        let iconImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: width, height: height))
+        let iconImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: pj_width, height: pj_height))
         addSubview(iconImageView)
         self.iconImageView = iconImageView
         iconImageView.contentMode = .scaleAspectFit
@@ -49,17 +50,23 @@ class PJLineCollectionViewCell: UICollectionViewCell {
         case .text:
             tipsLabel?.isHidden = false
             iconImageView?.isHidden = true
+            
         case .color:
             tipsLabel?.isHidden = true
             iconImageView?.isHidden = true
             backgroundColor = viewColorModel
-            layer.cornerRadius = width / 2
+            layer.cornerRadius = pj_width / 2
             layer.borderColor = PJRGB(220, 220, 220).cgColor
             layer.borderWidth = 1
             
         case .icon:
+            tipsLabel?.isHidden = true
             iconImageView?.isHidden = false
             iconImageView?.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+            
+        case .image:
+            tipsLabel?.isHidden = true
+            iconImageView?.isHidden = false
         }
     }
 }

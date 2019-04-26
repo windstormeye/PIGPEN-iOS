@@ -36,9 +36,9 @@ class PJUserDetailsViewController: PJBaseViewController {
         
         navigationItem.title = PJUser.shared.userModel.nick_name
         
-        tableView = PJUserDetailsTableView(frame: CGRect(x: 0, y: headerView!.height,
-                                                         width: view.width,
-                                                         height: view.height - headerView!.height),
+        tableView = PJUserDetailsTableView(frame: CGRect(x: 0, y: headerView!.pj_height,
+                                                         width: view.pj_width,
+                                                         height: view.pj_height - headerView!.pj_height),
                                            style: .plain)
         tableView?.viewDelegate = self
         view.addSubview(tableView!)

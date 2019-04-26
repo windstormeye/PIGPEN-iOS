@@ -17,14 +17,14 @@ let topSafeAreaHeight = UIApplication.shared.windows.first?.safeAreaInsets.top ?
 //状态栏高度
 let statusBarHeight = UIApplication.shared.statusBarFrame.height;
 //导航栏高度
-let navigationBarHeight = 44 + topSafeAreaHeight
+let navigationBarHeight = CGFloat(44 + topSafeAreaHeight)
 
 
 // 屏幕相关
 let PJSCREEN_HEIGHT = CGFloat(UIScreen.main.bounds.height)
 let PJSCREEN_WIDTH = CGFloat(UIScreen.main.bounds.width)
 let NavigationItemMargin = CGFloat(8)
-let PJTABBAR_HEIGHT = CGFloat(48)
+let PJTABBAR_HEIGHT = CGFloat(48) + bottomSafeAreaHeight
 
 
 // 颜色相关

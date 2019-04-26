@@ -25,8 +25,8 @@ class PJSegmentView: UIView {
     private func initView() {
         guard let viewModel = viewModel else { return }
         
-        line.frame = CGRect(x: 0, y: self.height - 10, width: 0, height: 2)
-        line.width = CGFloat(viewModel.titles[0].count * 15)
+        line.frame = CGRect(x: 0, y: self.pj_height - 10, width: 0, height: 2)
+        line.pj_width = CGFloat(viewModel.titles[0].count * 15)
         line.backgroundColor = .darkGray
         line.layer.cornerRadius = 1
         addSubview(line)
@@ -39,7 +39,7 @@ class PJSegmentView: UIView {
             let titleButton = UIButton(frame: CGRect(x: CGFloat(titleButton_X),
                                                      y: CGFloat(0),
                                                      width: itemW,
-                                                     height: self.height))
+                                                     height: self.pj_height))
             titleButton.setTitle(title, for: .normal)
             titleButton.setTitleColor(viewModel.textColor, for: .normal)
             titleButton.titleLabel?.font = UIFont.systemFont(ofSize: viewModel.fontSize, weight: .regular)
@@ -61,7 +61,7 @@ fileprivate extension Selector {
 extension PJSegmentView {
     @objc fileprivate func btnTapped(button: UIButton) {
         UIView.animate(withDuration: 0.25) {
-            self.line.width = CGFloat((button.titleLabel?.text?.count ?? 0) * 15)
+            self.line.pj_width = CGFloat((button.titleLabel?.text?.count ?? 0) * 15)
             self.line.centerX = button.centerX
         }
         

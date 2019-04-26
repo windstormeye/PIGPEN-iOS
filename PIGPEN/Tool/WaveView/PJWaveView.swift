@@ -24,15 +24,15 @@ class PJWaveView: UIView {
         let waterHeight = viewModel.containerHeight / 10 * viewModel.level
         
         let backView = UIView(frame: CGRect(x: 0,
-                                            y: self.height - waterHeight,
-                                            width: self.width,
+                                            y: self.pj_height - waterHeight,
+                                            width: self.pj_width,
                                             height: waterHeight))
         addSubview(backView)
         backView.backgroundColor = viewModel.foregroundColor
         
         let waterView = YXWaveView(frame: CGRect(x: 0,
                                                  y: backView.top - 10,
-                                                 width: self.width,
+                                                 width: self.pj_width,
                                                  height: 10))
         waterView.realWaveColor = viewModel.backgroundCOlor
         waterView.maskWaveColor = viewModel.foregroundColor

@@ -68,12 +68,10 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="QrV-EG-NeD"/>
             <connections>
-                <outlet property="accessImageView" destination="bna-VK-yVJ" id="MNq-2U-wWe"/>
                 <outlet property="avatarImageView" destination="RJK-Q9-zzu" id="Klf-Qd-y3d"/>
                 <outlet property="chatButton" destination="jGZ-sg-FDH" id="nbc-rm-JJ7"/>
                 <outlet property="genderImageView" destination="bna-VK-yVJ" id="heM-It-Oo4"/>
                 <outlet property="nickNameLabel" destination="gOh-xy-9Zk" id="ZHw-pp-jVL"/>
-                <outlet property="rightButton" destination="jGZ-sg-FDH" id="eBV-Aa-KEn"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="136.60714285714286"/>
         </tableViewCell>

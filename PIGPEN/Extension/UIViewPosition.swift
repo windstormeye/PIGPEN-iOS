@@ -24,8 +24,8 @@ extension UIView {
             self.frame = CGRect.init(
                 x: getPixintegral(pointValue: x),
                 y: self.y,
-                width: self.width,
-                height: self.height
+                width: self.pj_width,
+                height: self.pj_height
             )
         }
     }
@@ -38,13 +38,13 @@ extension UIView {
             self.frame = CGRect.init(
                 x: self.x,
                 y: getPixintegral(pointValue: y),
-                width: self.width,
-                height: self.height
+                width: self.pj_width,
+                height: self.pj_height
             )
         }
     }
     
-    public var width: CGFloat {
+    public var pj_width: CGFloat {
         get {
             return self.frame.size.width
         }
@@ -53,12 +53,12 @@ extension UIView {
                 x: self.x,
                 y: self.y,
                 width: getPixintegral(pointValue: width),
-                height: self.height
+                height: self.pj_height
             )
         }
     }
     
-    public var height: CGFloat {
+    public var pj_height: CGFloat {
         get {
             return self.frame.size.height
         }
@@ -66,7 +66,7 @@ extension UIView {
             self.frame = CGRect.init(
                 x: self.x,
                 y: self.y,
-                width: self.width,
+                width: self.pj_width,
                 height: getPixintegral(pointValue: height)
             )
         }
@@ -74,19 +74,19 @@ extension UIView {
     
     public var bottom: CGFloat {
         get {
-            return self.y + self.height
+            return self.y + self.pj_height
         }
         set(bottom) {
-            self.y = bottom - self.height
+            self.y = bottom - self.pj_height
         }
     }
     
     public var right: CGFloat {
         get {
-            return self.x + self.width
+            return self.x + self.pj_width
         }
         set (right) {
-            self.x = right - self.width
+            self.x = right - self.pj_width
         }
     }
     

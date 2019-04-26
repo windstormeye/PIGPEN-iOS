@@ -24,7 +24,7 @@ class PJIMMessageHomeTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         selectionStyle = .none
-        messageLabelWidthConstraints.constant = width - messageLabel.left - timeLabel.width - 50
+        messageLabelWidthConstraints.constant = pj_width - messageLabel.left - timeLabel.pj_width - 50
     }
     
     func setModel(_ viewModel: ViewModel) {

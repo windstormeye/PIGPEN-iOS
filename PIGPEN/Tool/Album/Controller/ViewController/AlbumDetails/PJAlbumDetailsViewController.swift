@@ -74,16 +74,16 @@ class PJAlbumDetailsViewController: PJBaseViewController {
             guard let albumFocusView = self.albumFocusView else { return }
             guard let headerView = self.headerView else { return }
             
-            albumFocusView.top = -offset_y + headerView.height
-            if albumFocusView.bottom < headerView.height {
-                albumFocusView.bottom = headerView.height
+            albumFocusView.top = -offset_y + headerView.pj_height
+            if albumFocusView.bottom < headerView.pj_height {
+                albumFocusView.bottom = headerView.pj_height
             }
             if albumFocusView.top > headerView.bottom {
                 albumFocusView.top = headerView.bottom
             }
             
             self.albumCollectionView?.top = albumFocusView.bottom
-            self.albumCollectionView?.height = PJSCREEN_HEIGHT - albumFocusView.bottom
+            self.albumCollectionView?.pj_height = PJSCREEN_HEIGHT - albumFocusView.bottom
         }
     }
 }

@@ -78,6 +78,7 @@ class PJIMChatViewController: MSGMessengerViewController, PJBaseViewControllerDe
             var tempMsgUserId = messageCell?.uid
             messages.append(tempMsgs)
             
+            // 便利所有消息，按照 sendId 和 targetId 进行分离
             for m in ms {
                 let text = m.content as! RCTextMessage
                 if tempMsgUserId != m.senderUserId {
@@ -111,6 +112,7 @@ class PJIMChatViewController: MSGMessengerViewController, PJBaseViewControllerDe
         }
         
         let ms = RCIMClient.shared()?.getLatestMessages(.ConversationType_PRIVATE, targetId: messageCell?.uid, count: 30) as? [RCMessage]
+        // 如果本地无消息，从融云服务器上拉取
         if ms != nil {
             update(ms!)
             DispatchQueue.main.async {

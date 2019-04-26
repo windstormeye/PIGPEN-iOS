@@ -58,7 +58,7 @@ class PJCalloutView: UIView {
         for buttonName in viewModel.buttonNames {
             let height = viewModel.buttonHeight
             let button = UIButton(frame: CGRect(x: 0, y: 8 + (index * height),
-                                                width: Int(self.width),
+                                                width: Int(self.pj_width),
                                                 height: height))
             self.addSubview(button)
             button.setTitle(buttonName, for: .normal)
@@ -79,7 +79,7 @@ class PJCalloutView: UIView {
             }
             
             button.tag = index
-            self.height = button.bottom
+            self.pj_height = button.bottom
             index += 1
         }
     }

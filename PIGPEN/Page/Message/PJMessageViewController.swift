@@ -26,7 +26,7 @@ class PJMessageViewController: UIViewController, PJBaseViewControllerDelegate {
         requestPush()
         
         
-        tableView = PJIMMessageHomeTableView(frame: CGRect(x: 0, y: 0, width: view.width, height: view.height), style: .plain)
+        tableView = PJIMMessageHomeTableView(frame: CGRect(x: 0, y: 0, width: view.pj_width, height: view.pj_height), style: .plain)
         view.addSubview(tableView!)
         tableView?.cellSelected = { cellIndex in
             let chat = PJIMChatViewController()
@@ -78,7 +78,7 @@ class PJMessageViewController: UIViewController, PJBaseViewControllerDelegate {
     
     @objc
     fileprivate func addressBook() {
-        
+        navigationController?.pushViewController(PJFriendViewController(), animated: true)
     }
     
     @objc

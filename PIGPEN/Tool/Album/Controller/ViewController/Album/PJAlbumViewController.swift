@@ -49,7 +49,7 @@ class PJAlbumViewController: PJBaseViewController {
         
         albumTableView = PJAlbumTableView(frame: CGRect(x: 0, y: headerView!.bottom,
                                                         width: PJSCREEN_WIDTH,
-                                                        height: PJSCREEN_HEIGHT - headerView!.height),
+                                                        height: PJSCREEN_HEIGHT - headerView!.pj_height),
                                           style: .plain)
         view.addSubview(albumTableView!)
 

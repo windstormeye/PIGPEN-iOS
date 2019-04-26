@@ -50,37 +50,46 @@ import Foundation
         if cList?.count != 0 {
             var cIndex = 0
             for c in cList! {
-                print(c.targetId)
-                let currentMessage = RCMessage(type: .ConversationType_PRIVATE, targetId: c.targetId, direction: c.lastestMessageDirection, messageId: c.lastestMessageId, content: c.lastestMessage)
+                let currentMessage = RCMessage(type: .ConversationType_PRIVATE,
+                                               targetId: c.targetId,
+                                               direction: c.lastestMessageDirection,
+                                               messageId: c.lastestMessageId,
+                                               content: c.lastestMessage)
                 currentMessage?.sentTime = c.sentTime
                 currentMessage?.receivedTime = c.receivedTime
                 currentMessage?.senderUserId = c.senderUserId
                 currentMessage?.sentStatus = c.sentStatus
+                
                 if currentMessage != nil {
+                    
                     let message = getMessage(with: currentMessage!)
                     if message == nil { break }
-                    PJUser.shared.details(details_uid: c.targetId, getSelf: false, completeHandler: {
-                        
-                        let msgCell = MessageListCell(avatar: $0.avatar!, nickName: $0.nick_name!, uid: $0.uid!, message: message!)
-                            msgListCells.append(msgCell)
-                        
-                            if cIndex == cList!.count - 1 {
-                                
-                                var finalCells = [MessageListCell]()
-                                for cell in cList! {
-                                    for msgCell in msgListCells {
-                                        if msgCell.uid == cell.targetId {
-                                            finalCells.append(msgCell)
-                                            break
-                                        }
-                                    }
-                                }
-                                complateHandler(finalCells)
-                            }
-                            cIndex += 1
-                    }) {
-                        print($0.errorMsg)
-                    }
+                    
+                    PJUser.shared.details(details_uid: c.targetId,
+                                          getSelf: false,
+                                          completeHandler: {
+                                            let msgCell = MessageListCell(avatar: $0.avatar!,
+                                                                          nickName: $0.nick_name!,
+                                                                          uid: $0.uid!,
+                                                                          message: message!)
+                                            msgListCells.append(msgCell)
+                                            
+                                            if cIndex == cList!.count - 1 {
+                                                var finalCells = [MessageListCell]()
+                                                for cell in cList! {
+                                                    _ = msgListCells.filter({
+                                                        if $0.uid == cell.targetId {
+                                                            finalCells.append($0)
+                                                            return true
+                                                        }; return false
+                                                    })
+                                                }
+                                                
+                                                complateHandler(finalCells)
+                                            }
+                                        
+                                            cIndex += 1
+                    }) { print($0.errorMsg) }
                 }
             }
         } else {

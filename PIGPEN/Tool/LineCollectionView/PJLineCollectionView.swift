@@ -32,6 +32,7 @@ class PJLineCollectionView: UICollectionView {
     private func initView() {
         showsHorizontalScrollIndicator = false
         isPagingEnabled = true
+        backgroundColor = .clear
         
         delegate = self
         dataSource = self
@@ -51,17 +52,22 @@ extension PJLineCollectionView: UICollectionViewDelegate {
 extension PJLineCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        switch lineType {
-        case .text:
-            guard let viewModels = viewModels else { return 0 }
-            return viewModels.count
-        case .color:
-            guard let viewColorModels = viewColorModels else { return 0 }
-            return viewColorModels.count
-        case .icon:
-            return 4
-        }
+//        switch lineType {
+//        case .text:
+//            guard let viewModels = viewModels else { return 0 }
+//            return viewModels.count
+//        case .color:
+//            guard let viewColorModels = viewColorModels else { return 0 }
+//            return viewColorModels.count
+//        case .icon:
+//            guard let viewColorModels = viewColorModels else { return 0 }
+//            return viewColorModels.count
+//        case .image:
+//            guard let viewColorModels = viewColorModels else { return 0 }
+//            return viewColorModels.count
+//        }
         
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -69,16 +75,19 @@ extension PJLineCollectionView: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PJLineCollectionViewCell", for: indexPath) as! PJLineCollectionViewCell
         cell.type = lineType
         
-        switch lineType {
-        case .text:
-            cell.viewModel = viewModels![indexPath.row]
-        case .color:
-            cell.viewColorModel = viewColorModels![indexPath.row]
-        case .icon:
-            cell.image = UIImage(named: "home-\(indexPath.row)")
-        }
+//        switch lineType {
+//        case .text:
+//            cell.viewModel = viewModels![indexPath.row]
+//        case .color:
+//            cell.viewColorModel = viewColorModels![indexPath.row]
+//        case .icon:
+//            cell.image = UIImage(named: viewModels![indexPath.row])
+//        case .image:
+//            cell.imageUrl = viewModels![indexPath.row]
+//        }
         cellCenterXs.append(cell.center.x)
         
+        cell.image = UIImage(named: "0")
         return cell
     }
 }
@@ -88,6 +97,7 @@ extension PJLineCollectionView {
         case text
         case color
         case icon
+        case image
     }
 }
 

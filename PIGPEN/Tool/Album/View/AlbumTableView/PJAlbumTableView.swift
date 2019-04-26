@@ -55,13 +55,10 @@ extension PJAlbumTableView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let tableModels = tableModels else { return UITableViewCell() }
-        let cell = tableView.dequeueReusableCell(withIdentifier: PJAlbumTableView.cellIndentifier,
-                                                 for: indexPath) as! PJAlbumTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: PJAlbumTableView.cellIndentifier, for: indexPath) as! PJAlbumTableViewCell
         let photoModel = tableModels.albumCoverPhoto[indexPath.row]
         let albumPhotosCount = tableModels.albumPhotosCount[indexPath.row]
-        let cellModel = PJAlbumTableViewCell.cellModel(coverImage: photoModel.photoImage ?? UIImage(),
-                                                       albumTitleString: photoModel.photoTitle ?? "",
-                                                       albumPhotosCountString: String(albumPhotosCount))
+        let cellModel = PJAlbumTableViewCell.cellModel(coverImage: photoModel.photoImage ?? UIImage(), albumTitleString: photoModel.photoTitle ?? "", albumPhotosCountString: String(albumPhotosCount))
         cell.setModel(cellModel)
         return cell
     }

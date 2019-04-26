@@ -60,15 +60,15 @@ extension PJUserDateilsRealPetColletionView: UICollectionViewDelegate, UICollect
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PJUserDateilsRealPetColletionView.cellIdentifier, for: indexPath)
         if indexPath.row == dataArray.count {
             let cellImageView = UIImageView(frame: CGRect(x: 0, y: 0,
-                                                          width: cell.width,
-                                                          height: cell.height))
+                                                          width: cell.pj_width,
+                                                          height: cell.pj_height))
             cellImageView.image = UIImage(named: "user_details_addPet")
             cell.addSubview(cellImageView)
 //            cell.contentView.addSubview(cellImageView)
         } else {
             let cellImageView = UIImageView(frame: CGRect(x: 0, y: 0,
-                                                          width: cell.width,
-                                                          height: cell.height))
+                                                          width: cell.pj_width,
+                                                          height: cell.pj_height))
             let cellModel = dataArray[indexPath.row]
             // TODO: 需要设置占位图
             cellImageView.kf.setImage(with: URL(string: cellModel.avatar_url!))

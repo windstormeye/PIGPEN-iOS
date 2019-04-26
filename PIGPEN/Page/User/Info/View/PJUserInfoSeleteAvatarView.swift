@@ -52,9 +52,9 @@ class PJUserInfoSeleteAvatarView: UIView, PJUserInfoAvatarSelectCollectionViewDe
         let viewTapped = UITapGestureRecognizer(target: self, action: .viewTapped)
         tappView.addGestureRecognizer(viewTapped)
         
-        backView = PJBaseTipsView(frame: CGRect(x: width * 0.05, y: 40,
-                                        width: width * 0.9,
-                                        height: height * 0.7))
+        backView = PJBaseTipsView(frame: CGRect(x: pj_width * 0.05, y: 40,
+                                        width: pj_width * 0.9,
+                                        height: pj_height * 0.7))
         backView.backgroundColor = .white
         addSubview(backView)
         
@@ -69,15 +69,15 @@ class PJUserInfoSeleteAvatarView: UIView, PJUserInfoAvatarSelectCollectionViewDe
         
         
         let collectionViewLayout = UICollectionViewFlowLayout()
-        let itemW = backView.width / 4
+        let itemW = backView.pj_width / 4
         collectionViewLayout.itemSize = CGSize(width: itemW , height: itemW)
         collectionViewLayout.minimumLineSpacing = 20
         collectionViewLayout.minimumInteritemSpacing = 10
         
-        let collectionViewRect = CGRect(x: backView.width * 0.05,
-                                        y: backView.height * 0.05,
-                                        width: backView.width * 0.9,
-                                        height: backView.height * 0.9)
+        let collectionViewRect = CGRect(x: backView.pj_width * 0.05,
+                                        y: backView.pj_height * 0.05,
+                                        width: backView.pj_width * 0.9,
+                                        height: backView.pj_height * 0.9)
         avatarCollectionView = PJUserInfoAvatarSelectCollectionView(frame: collectionViewRect,
                                                                   collectionViewLayout: collectionViewLayout)
         avatarCollectionView.viewDelegate = self

@@ -66,7 +66,7 @@ UIPickerViewDataSource {
         super.viewWillLayoutSubviews()
         let safeInset = self.view.safeAreaInsets
 
-        pickerBackView?.height += safeInset.bottom
+        pickerBackView?.pj_height += safeInset.bottom
         pickerBackView?.top -= safeInset.bottom
     }
     
@@ -80,19 +80,19 @@ UIPickerViewDataSource {
         let tap = UITapGestureRecognizer(target: self, action: .dismissView)
         backgroundView?.addGestureRecognizer(tap)
         
-        pickerBackView = UIView(frame: CGRect(x: 0, y: view.height,
-                                              width: view.width, height: 200))
+        pickerBackView = UIView(frame: CGRect(x: 0, y: view.pj_height,
+                                              width: view.pj_width, height: 200))
         view.addSubview(pickerBackView!)
         pickerBackView?.backgroundColor = .white
         
         topView = UIView(frame: CGRect(x: 0, y: 0,
-                                       width: view.width, height: 50))
+                                       width: view.pj_width, height: 50))
         pickerBackView?.addSubview(topView!)
         topView?.backgroundColor = .white
         
         topViewBottomLine = UIView(frame: CGRect(x: 0,
                                                  y: topView!.bottom - 1,
-                                                 width: view.width,
+                                                 width: view.pj_width,
                                                  height: 1))
         topViewBottomLine?.backgroundColor = .boderColor
         pickerBackView?.addSubview(topViewBottomLine!)
@@ -100,7 +100,7 @@ UIPickerViewDataSource {
         switch viewModel!.pickerType {
         case .custom:
             picker = UIPickerView(frame: CGRect(x: 0, y: topView!.bottom,
-                                                width: view.width,
+                                                width: view.pj_width,
                                                 height: 150))
             picker?.backgroundColor = .white
             pickerBackView?.addSubview(picker!)
@@ -110,7 +110,7 @@ UIPickerViewDataSource {
             if viewModel?.leftButtonName != nil {
                 let leftButton = UIButton(frame: CGRect(x: 15, y: 0,
                                                         width: 100,
-                                                        height: topView!.height))
+                                                        height: topView!.pj_height))
                 topView?.addSubview(leftButton)
                 leftButton.titleLabel?.textAlignment = .left
                 leftButton.setTitle(viewModel?.leftButtonName, for: .normal)
@@ -123,7 +123,7 @@ UIPickerViewDataSource {
             }
         case .time:
             datePicker = UIDatePicker(frame: CGRect(x: 0, y: topView!.bottom,
-                                                    width: view.width,
+                                                    width: view.pj_width,
                                                     height: 150))
             datePicker?.datePickerMode = .date
             datePicker?.maximumDate = Date()
@@ -136,15 +136,15 @@ UIPickerViewDataSource {
         titleLabel?.text = viewModel?.titleString
         titleLabel?.sizeToFit()
         titleLabel?.centerX = topView!.centerX
-        titleLabel?.height = topView!.height
+        titleLabel?.pj_height = topView!.pj_height
 
         okButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40,
                                               height: 30))
         topView?.addSubview(okButton!)
         okButton?.setTitle("完成", for: .normal)
         okButton?.setTitleColor(PJRGB(0, 155, 250), for: .normal)
-        okButton?.width = 40
-        okButton?.right = view.width - 15
+        okButton?.pj_width = 40
+        okButton?.right = view.pj_width - 15
         okButton?.centerY = topView!.centerY
         okButton?.addTarget(self, action: .ok, for: .touchUpInside)
     }

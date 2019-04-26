@@ -114,8 +114,8 @@ class PJUserInfoViewController: PJBaseViewController, PJUserInfoSeleteAvatarView
     // MARK: laze load
     lazy var avatarSelectView: PJUserInfoSeleteAvatarView = {
         let selectViewRect = CGRect(x: 0, y: headerView!.bottom,
-                                    width: view.width,
-                                    height: view.height)
+                                    width: view.pj_width,
+                                    height: view.pj_height)
         let selectedView = PJUserInfoSeleteAvatarView(frame: selectViewRect)
         selectedView.viewDelegate = self
         view.addSubview(selectedView)

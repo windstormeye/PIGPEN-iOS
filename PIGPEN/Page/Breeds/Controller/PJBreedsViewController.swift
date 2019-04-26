@@ -53,8 +53,8 @@ UITableViewDataSource {
             }
         }
         
-        let tableView_width = view.width - sideSliderView!.width - 10 - 15
-        let tableView_height = view.height - headerView!.height
+        let tableView_width = view.pj_width - sideSliderView!.pj_width - 10 - 15
+        let tableView_height = view.pj_height - headerView!.pj_height
         tableView = UITableView(frame: CGRect(x: 0, y: headerView!.bottom,
                                               width: tableView_width,
                                               height: tableView_height))

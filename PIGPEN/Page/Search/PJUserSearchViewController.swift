@@ -24,11 +24,11 @@ class PJUserSearchViewController: UIViewController, PJBaseViewControllerDelegate
         backButtonTapped(backSel: .back, imageName: nil)
         view.backgroundColor = .white
         
-        searchBar.frame = CGRect(x: 20, y: navigationBarHeight + 10, width: view.width - 40, height: 44)
-        searchBar.layer.cornerRadius = searchBar.height / 2
+        searchBar.frame = CGRect(x: 20, y: navigationBarHeight + 10, width: view.pj_width - 40, height: 44)
+        searchBar.layer.cornerRadius = searchBar.pj_height / 2
         view.addSubview(searchBar)
         
-        tableView = PJSearchTableView(frame: CGRect(x: 0, y: searchBar.bottom, width: view.width, height: view.height - searchBar.height - navigationBarHeight), style: .plain)
+        tableView = PJSearchTableView(frame: CGRect(x: 0, y: searchBar.bottom, width: view.pj_width, height: view.pj_height - searchBar.pj_height - navigationBarHeight), style: .plain)
         view.addSubview(tableView)
         
         searchBar.returnKeyDown = { [weak self] text in

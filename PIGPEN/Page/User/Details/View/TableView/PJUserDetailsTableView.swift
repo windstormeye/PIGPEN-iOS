@@ -87,18 +87,18 @@ extension PJUserDetailsTableView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: CGRect(x: 0, y: 2,
-                                              width: width, height: 30 - 2))
+                                              width: pj_width, height: 30 - 2))
         headerView.backgroundColor = .white
         let titleLabel = UILabel(frame: CGRect(x: 15, y: 0,
-                                               width: headerView.width,
-                                               height: headerView.height))
+                                               width: headerView.pj_width,
+                                               height: headerView.pj_height))
         titleLabel.font = UIFont.systemFont(ofSize: 12)
         titleLabel.textColor = PJRGB(102, 102, 102)
         titleLabel.textAlignment = .left
         headerView.addSubview(titleLabel)
         
         let topLineView = UIView(frame: CGRect(x: 15, y: 0,
-                                               width: width - 15, height: 1))
+                                               width: pj_width - 15, height: 1))
         topLineView.backgroundColor = .boderColor
         headerView.addSubview(topLineView)
         
