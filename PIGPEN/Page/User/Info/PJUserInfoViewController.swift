@@ -75,7 +75,7 @@ class PJUserInfoViewController: PJBaseViewController, PJUserInfoSeleteAvatarView
                                                                 object: nil)
         }) { (error) in
             PJTapic.error()
-            PJHUD.shared.showError(view: self.view, text: error.errorMsg!)
+            PJHUD.shared.showError(view: self.view, text: error.errorMsg)
         }
     }
     

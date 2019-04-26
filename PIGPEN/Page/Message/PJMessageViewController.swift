@@ -68,6 +68,12 @@ class PJMessageViewController: UIViewController, PJBaseViewControllerDelegate {
             self.titleString = "消息"
             self.tableView?.viewModels = $0
         }
+        
+        PJUser.shared.friends(type: .user, completeHandler: {
+            print($0)
+        }) {
+            print($0.errorMsg)
+        }
     }
     
     @objc

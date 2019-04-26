@@ -79,7 +79,7 @@ import Foundation
                             }
                             cIndex += 1
                     }) {
-                        print($0.errorMsg!)
+                        print($0.errorMsg)
                     }
                 }
             }

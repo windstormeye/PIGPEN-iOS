@@ -112,7 +112,7 @@ class PJCreateRealPetViewController: PJBaseViewController {
         PJRealPet.createPet(model: petModel, complateHandler: { (model) in
             self.navigationController?.popViewController(animated: true)
         }) { (error) in
-            print(error.errorMsg!)
+            print(error.errorMsg)
         }
     }
     
@@ -153,7 +153,7 @@ extension PJCreateRealPetViewController: UIImagePickerControllerDelegate, UINavi
                                 
                                 self.petModel.avatar_key = keys[0]
         }) { (error) in
-            print(error.errorMsg!)
+            print(error.errorMsg)
         }
     }
     

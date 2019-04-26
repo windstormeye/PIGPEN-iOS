@@ -129,7 +129,7 @@ class PJUserRegisterViewController: PJBaseViewController {
                                             }
             }
         }) { (error) in
-            PJHUD.shared.showError(view: self.view, text: error.errorMsg!)
+            PJHUD.shared.showError(view: self.view, text: error.errorMsg)
         }
     }
     

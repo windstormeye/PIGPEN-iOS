@@ -32,8 +32,7 @@ class PJRealPet {
                                             }
                                             complationHandler(models)
                                         } else {
-                                            let error = PJNetwork.Error(errorCode: dataDic["msgCode"]?.intValue,
-                                                                        errorMsg: dataDic["msg"]?.string)
+                                            let error = PJNetwork.Error(errorCode: dataDic["msgCode"]?.intValue ?? 0, errorMsg: dataDic["msg"]?.string ?? "未知错误")
                                             failedHandler(error)
                                         }
         }) { (errorString) in

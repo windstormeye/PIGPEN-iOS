@@ -135,8 +135,8 @@ class PJNetwork {
 
 extension PJNetwork {
     struct Error {
-        let errorCode: Int?
-        let errorMsg: String?
+        let errorCode: Int
+        let errorMsg: String
     }
     
     

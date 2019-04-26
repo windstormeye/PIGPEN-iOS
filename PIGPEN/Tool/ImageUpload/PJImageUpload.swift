@@ -50,12 +50,11 @@ class PJImageUploader {
                                                 }, option: nil)
                                             }
                                         } else {
-                                            let error = PJNetwork.Error(errorCode: dataDict["msgCode"]?.intValue,
-                                                                        errorMsg: dataDict["msg"]?.string)
+                                            let error = PJNetwork.Error(errorCode: dataDict["msgCode"]?.intValue ?? 0, errorMsg: dataDict["msg"]?.string ?? "未知错误")
                                             falierHandler(error)
                                         }
         }) { (errorString) in
-            falierHandler(PJNetwork.Error(errorCode: nil, errorMsg: errorString))
+            falierHandler(PJNetwork.Error(errorCode: 0, errorMsg: errorString))
         }
     }
     
@@ -78,7 +77,7 @@ class PJImageUploader {
                                                 }
                                             }
         }) { (errorString) in
-            let error = PJNetwork.Error(errorCode: nil, errorMsg: errorString)
+            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
             failuredHandler(error)
         }
     }
