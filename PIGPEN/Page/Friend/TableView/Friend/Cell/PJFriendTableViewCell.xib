@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="sPh-bR-aOG" customClass="PJFriendTableViewCell" customModule="PIGPEN" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sPh-bR-aOG" id="Rk6-bo-ofP">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="RJK-Q9-zzu">
+                        <rect key="frame" x="15" y="5" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="hf2-P1-twE"/>
+                            <constraint firstAttribute="width" constant="50" id="xxA-Oz-RlT"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_female" translatesAutoresizingMaskIntoConstraints="NO" id="bna-VK-yVJ">
+                        <rect key="frame" x="179.5" y="5" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="U2J-5w-yFA"/>
+                            <constraint firstAttribute="width" constant="15" id="kkW-JO-7bV"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PIGPEN2333" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOh-xy-9Zk">
+                        <rect key="frame" x="80" y="5" width="89.5" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="oVP-VH-kd4"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jGZ-sg-FDH">
+                        <rect key="frame" x="255" y="5" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="5CR-F8-8hH"/>
+                            <constraint firstAttribute="width" constant="50" id="Cpb-nL-rss"/>
+                        </constraints>
+                        <state key="normal" image="search_send"/>
+                        <connections>
+                            <action selector="rightButtonClick:" destination="sPh-bR-aOG" eventType="touchUpInside" id="z5x-hX-Uk6"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="bna-VK-yVJ" firstAttribute="top" secondItem="gOh-xy-9Zk" secondAttribute="top" id="3ut-Gv-kf8"/>
+                    <constraint firstAttribute="trailing" secondItem="jGZ-sg-FDH" secondAttribute="trailing" constant="15" id="By6-j7-Pf0"/>
+                    <constraint firstItem="RJK-Q9-zzu" firstAttribute="leading" secondItem="Rk6-bo-ofP" secondAttribute="leading" constant="15" id="EBW-L4-zkN"/>
+                    <constraint firstItem="jGZ-sg-FDH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bna-VK-yVJ" secondAttribute="trailing" constant="10" id="GR1-Wb-XHt"/>
+                    <constraint firstItem="gOh-xy-9Zk" firstAttribute="leading" secondItem="RJK-Q9-zzu" secondAttribute="trailing" constant="15" id="Ka1-m7-f7U"/>
+                    <constraint firstItem="bna-VK-yVJ" firstAttribute="leading" secondItem="gOh-xy-9Zk" secondAttribute="trailing" constant="10" id="Nmt-fZ-ahu"/>
+                    <constraint firstItem="gOh-xy-9Zk" firstAttribute="top" secondItem="RJK-Q9-zzu" secondAttribute="top" id="Wh2-eE-zc3"/>
+                    <constraint firstItem="RJK-Q9-zzu" firstAttribute="centerY" secondItem="Rk6-bo-ofP" secondAttribute="centerY" id="XPa-5D-pX2"/>
+                    <constraint firstItem="jGZ-sg-FDH" firstAttribute="centerY" secondItem="Rk6-bo-ofP" secondAttribute="centerY" id="t8q-ek-5wq"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="QrV-EG-NeD"/>
+            <connections>
+                <outlet property="accessImageView" destination="bna-VK-yVJ" id="MNq-2U-wWe"/>
+                <outlet property="avatarImageView" destination="RJK-Q9-zzu" id="Klf-Qd-y3d"/>
+                <outlet property="chatButton" destination="jGZ-sg-FDH" id="nbc-rm-JJ7"/>
+                <outlet property="genderImageView" destination="bna-VK-yVJ" id="heM-It-Oo4"/>
+                <outlet property="nickNameLabel" destination="gOh-xy-9Zk" id="ZHw-pp-jVL"/>
+                <outlet property="rightButton" destination="jGZ-sg-FDH" id="eBV-Aa-KEn"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="136.60714285714286"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="0" width="90" height="90"/>
+        <image name="search_send" width="20" height="22"/>
+        <image name="user_female" width="14" height="14"/>
+    </resources>
+</document>
