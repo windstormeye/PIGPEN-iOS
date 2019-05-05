@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="PJSlideMenuTableViewCell" customModule="PIGPEN" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_aboutMe" translatesAutoresizingMaskIntoConstraints="NO" id="02c-0D-I4e">
+                        <rect key="frame" x="10" y="20" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="BLJ-A9-0oI"/>
+                            <constraint firstAttribute="height" constant="20" id="yvY-XE-pLp"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="关于我们" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4f9-WA-Mev">
+                        <rect key="frame" x="40" y="21" width="265" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="4f9-WA-Mev" secondAttribute="trailing" constant="15" id="3HM-JY-CbW"/>
+                    <constraint firstItem="4f9-WA-Mev" firstAttribute="leading" secondItem="02c-0D-I4e" secondAttribute="trailing" constant="10" id="Q2P-fx-6cP"/>
+                    <constraint firstItem="02c-0D-I4e" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Y85-Sm-eNu"/>
+                    <constraint firstItem="02c-0D-I4e" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="pQ1-l4-nTJ"/>
+                    <constraint firstItem="4f9-WA-Mev" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="yZs-cf-hyy"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="tipsImageView" destination="02c-0D-I4e" id="58w-vm-TxL"/>
+                <outlet property="titleLabel" destination="4f9-WA-Mev" id="DQN-1S-68R"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="136.60714285714286"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="user_aboutMe" width="22" height="22"/>
+    </resources>
+</document>

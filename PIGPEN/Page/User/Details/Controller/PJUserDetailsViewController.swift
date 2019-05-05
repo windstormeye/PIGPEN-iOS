@@ -8,9 +8,10 @@
 
 import UIKit
 
-class PJUserDetailsViewController: PJBaseViewController {
+class PJUserDetailsViewController: UIViewController, PJBaseViewControllerDelegate {
 
     var tableView: PJUserDetailsTableView?
+    var menuTableView: PJSideMenuTableView?
     var menuBackViewButton: UIButton?
     var isFirstLoad = false
     
@@ -30,16 +31,16 @@ class PJUserDetailsViewController: PJBaseViewController {
     }
 
     private func initView() {
-        headerView?.backgroundColor = .white
-        isHiddenBarBottomLineView = false
+        initBaseView()
+        titleString = PJUser.shared.userModel.nick_name ?? "未登录"
+        view.backgroundColor = .white
+        view.isUserInteractionEnabled = true
+        
         rightBarButtonItem(imageName: "user_details_menu", rightSel: .menu)
         
         navigationItem.title = PJUser.shared.userModel.nick_name
         
-        tableView = PJUserDetailsTableView(frame: CGRect(x: 0, y: headerView!.pj_height,
-                                                         width: view.pj_width,
-                                                         height: view.pj_height - headerView!.pj_height),
-                                           style: .plain)
+        tableView = PJUserDetailsTableView(frame: CGRect(x: 0, y: 0, width: view.pj_width, height: view.pj_height), style: .plain)
         tableView?.viewDelegate = self
         view.addSubview(tableView!)
         
@@ -49,6 +50,15 @@ class PJUserDetailsViewController: PJBaseViewController {
         menuBackViewButton?.backgroundColor = .clear
         view.addSubview(menuBackViewButton!)
         
+        menuTableView = PJSideMenuTableView(frame: CGRect(x: view.pj_width, y: 0, width: view.pj_width * 0.4, height: view.pj_height), style: .plain)
+        view.addSubview(menuTableView!)
+        menuTableView?.update(["关于我们", "分享名片", "退出登录"],
+                              ["user_aboutMe", "user_share", "user_out"])
+        menuTableView?.didSelectedCell = {
+            print($0)
+        }
+        
+        
         viewWillData()
         
         NotificationCenter.default.addObserver(self,
@@ -56,35 +66,6 @@ class PJUserDetailsViewController: PJBaseViewController {
                                                name: .loginSuccess(),
                                                object: nil)
     }
-    
-    // MARK: lazy load
-    lazy var calloutView: PJCalloutView = {
-        let menuWidth = CGFloat(120)
-        let menuHeight = CGFloat(180)
-        let calloutView = PJCalloutView(frame: CGRect(x: PJSCREEN_WIDTH - menuWidth - CGFloat(15),
-                                                      y: headerView!.bottom,
-                                                      width: menuWidth,
-                                                      height: menuHeight), { (viewModel) in viewModel
-        }, complationBlock: { (seletedIndex) in
-            
-        })
-        
-        view.addSubview(calloutView)
-        return calloutView
-    }()
-    
-    lazy var menuView: PJUserDetailsMenuView = {
-        let menu = PJUserDetailsMenuView.newInstance()
-        menu?.viewDelegate = self
-        menu?.isHidden = true
-        let menuWidth = 120.0
-        let menuHeight = 180.0
-        menu?.frame = CGRect(x: Double(PJSCREEN_WIDTH) - menuWidth - 15,
-                             y: Double(headerView!.bottom),
-                             width: menuWidth, height: menuHeight)
-        view.addSubview(menu!)
-        return menu!
-    }()
 }
 
 // MARK: - Actions
@@ -99,9 +80,21 @@ extension PJUserDetailsViewController {
         title = PJUser.shared.userModel.nick_name
     }
     
-    @objc fileprivate func menu() {
-        menuView.isHidden = !menuView.isHidden
-        menuBackViewButton?.isHidden = !menuBackViewButton!.isHidden
+    @objc
+    fileprivate func menu() {
+        if tableView!.left != 0 {
+            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseIn, animations: {
+                self.tableView!.left = 0
+                self.navigationController?.navigationBar.left = 0
+                self.menuTableView?.left = self.tableView!.right
+            }, completion: nil)
+        } else {
+            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: {
+                self.tableView!.left -= self.view.pj_width * 0.4
+                self.navigationController?.navigationBar.left -= self.view.pj_width * 0.4
+                self.menuTableView?.left = self.tableView!.right
+            }, completion: nil)
+        }
     }
     
     func viewWillData() {
