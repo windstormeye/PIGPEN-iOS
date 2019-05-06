@@ -92,9 +92,9 @@
             <connections>
                 <outlet property="avatarImageView" destination="w8P-Xk-stP" id="Wgz-dh-pWD"/>
                 <outlet property="chatButton" destination="t1l-6E-azP" id="bkn-zc-CmI"/>
-                <outlet property="followsButton" destination="pU7-M6-bae" id="3wV-fx-wgb"/>
-                <outlet property="levelButton" destination="QZC-k2-cUm" id="b3W-4v-S3K"/>
-                <outlet property="moneyButton" destination="hj0-ZQ-pXy" id="mch-G4-jCF"/>
+                <outlet property="firstButton" destination="pU7-M6-bae" id="Hk1-Ne-TY4"/>
+                <outlet property="secondButton" destination="hj0-ZQ-pXy" id="nOI-fd-gNg"/>
+                <outlet property="threeButton" destination="QZC-k2-cUm" id="kNh-7c-bTz"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="136.60714285714286"/>
         </tableViewCell>

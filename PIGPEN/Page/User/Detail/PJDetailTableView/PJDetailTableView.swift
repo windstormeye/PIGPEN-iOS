@@ -43,7 +43,7 @@ extension PJDetailTableView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PJDetailUserTableViewCell", for: indexPath) as! PJDetailUserTableViewCell
-        cell.viewModel = PJDetailUserTableViewCell.ViewModel(avatar: 0, follows: 2333, money: 2333, level: 8.8)
+        cell.viewModel = PJDetailUserTableViewCell.ViewModel(avatar: 0, firstCount: 4, firstTitle: "2333\n已关注", secondCount: 4, secondTitle: "2333\n猪饲料", threeCount: 3, threeTitle: "8.8\n评分")
         return cell
     }
     

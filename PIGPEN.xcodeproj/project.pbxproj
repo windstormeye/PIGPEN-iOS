@@ -74,7 +74,7 @@
 		0C5E633B21624D1F00A90762 /* PJUserInfoAvatarSelectCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E633A21624D1F00A90762 /* PJUserInfoAvatarSelectCollectionView.swift */; };
 		0C5E633E216309C300A90762 /* PJNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E633D216309C300A90762 /* PJNetwork.swift */; };
 		0C5E634021635FA500A90762 /* PJNetworkUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E633F21635FA500A90762 /* PJNetworkUrls.swift */; };
-		0C5E634321644F7900A90762 /* String_time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E634221644F7900A90762 /* String_time.swift */; };
+		0C5E634321644F7900A90762 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E634221644F7900A90762 /* String.swift */; };
 		0C5E63482164FE3900A90762 /* UIColor_Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E63472164FE3900A90762 /* UIColor_Custom.swift */; };
 		0C5E634B2165A57200A90762 /* PJBigHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E634A2165A57200A90762 /* PJBigHUD.swift */; };
 		0C5E634D2165A5F800A90762 /* PJSmallHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E634C2165A5F800A90762 /* PJSmallHUD.swift */; };
@@ -219,7 +219,7 @@
 		0C5E633D216309C300A90762 /* PJNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJNetwork.swift; sourceTree = "<group>"; };
 		0C5E633F21635FA500A90762 /* PJNetworkUrls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJNetworkUrls.swift; sourceTree = "<group>"; };
 		0C5E63412163696F00A90762 /* style.data */ = {isa = PBXFileReference; lastKnownFileType = file; path = style.data; sourceTree = "<group>"; };
-		0C5E634221644F7900A90762 /* String_time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String_time.swift; sourceTree = "<group>"; };
+		0C5E634221644F7900A90762 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		0C5E63472164FE3900A90762 /* UIColor_Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor_Custom.swift; sourceTree = "<group>"; };
 		0C5E634A2165A57200A90762 /* PJBigHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBigHUD.swift; sourceTree = "<group>"; };
 		0C5E634C2165A5F800A90762 /* PJSmallHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJSmallHUD.swift; sourceTree = "<group>"; };
@@ -533,7 +533,7 @@
 				0C55E2DC215A8055000D8815 /* TabBar.swift */,
 				0C55E2E3215A84EA000D8815 /* UIViewPosition.swift */,
 				0C55E3092162190B000D8815 /* CALayer_UIColor.swift */,
-				0C5E634221644F7900A90762 /* String_time.swift */,
+				0C5E634221644F7900A90762 /* String.swift */,
 				0C5E63472164FE3900A90762 /* UIColor_Custom.swift */,
 				0C5E63522165ADF500A90762 /* NotificationName.swift */,
 				0CC35DCF21DD0BC8002244DA /* Date.swift */,
@@ -1692,7 +1692,7 @@
 				0CB5E8E42262DDF500CBE217 /* PJSearchTableViewCell.swift in Sources */,
 				0C5E63482164FE3900A90762 /* UIColor_Custom.swift in Sources */,
 				0C5E634F2165AB8C00A90762 /* PJTapic.swift in Sources */,
-				0C5E634321644F7900A90762 /* String_time.swift in Sources */,
+				0C5E634321644F7900A90762 /* String.swift in Sources */,
 				0C55E2ED215B7DB0000D8815 /* PJUserForgetViewController.swift in Sources */,
 				0C6A985C22729353003E4AA5 /* PJUserService.swift in Sources */,
 				0CE2618221C5420A00740582 /* PJAlbumCollectionFocusView.swift in Sources */,

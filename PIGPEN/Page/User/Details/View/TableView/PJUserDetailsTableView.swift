@@ -31,7 +31,7 @@ class PJUserDetailsTableView: UITableView {
         delegate = self
         dataSource = self
         
-        register(UINib(nibName: "PJUserSelfTableViewCell", bundle: nil),
+        register(UINib(nibName: "PJDetailUserTableViewCell", bundle: nil),
                  forCellReuseIdentifier: PJUserDetailsTableView.userIdentifier)
         register(PJUserDetailRealPetTableViewCell.self,
                  forCellReuseIdentifier: PJUserDetailsTableView.realPetIdentifier)
@@ -117,9 +117,8 @@ extension PJUserDetailsTableView: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: PJUserDetailsTableView.userIdentifier,
-                                                     for: indexPath) as! PJUserSelfTableViewCell
-            cell.viewDelegate = self
-            cell.model = userDetailsModel
+                                                     for: indexPath) as! PJDetailUserTableViewCell
+            cell.viewModel = PJDetailUserTableViewCell.ViewModel(avatar: 0, firstCount: String(PJUser.shared.userModel.level ?? 0).count, firstTitle: "\(PJUser.shared.userModel.level ?? 0)\n评分", secondCount: String(PJUser.shared.userModel.follow ?? 0).count, secondTitle: "\(PJUser.shared.userModel.follow ?? 0)\n关注", threeCount: 4, threeTitle: "2333\n收藏")
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: PJUserDetailsTableView.realPetIdentifier,

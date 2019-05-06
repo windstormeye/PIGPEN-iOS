@@ -381,7 +381,7 @@ extension PJUser {
         PJNetwork.shared.requstWithGet(path: UserUrl.friends.rawValue, parameters: params, complement: { (dataDict) in
             if dataDict["msgCode"]?.intValue == 0 {
                 let res = dataDict["msg"]?.dictionary
-                let users = res!["friends"]!.array!
+                let users = res!["frinds"]!.array!
                 var final_us = [Any]()
                 for u in users {
                     let d_u = u.dictionary!
