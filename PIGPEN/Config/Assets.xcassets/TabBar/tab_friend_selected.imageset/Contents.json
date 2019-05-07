@@ -6,12 +6,12 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "messages.png",
+      "filename" : "tab_friend_selected@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "messages-1.png",
+      "filename" : "tab_friend_selected@3x.png",
       "scale" : "3x"
     }
   ],

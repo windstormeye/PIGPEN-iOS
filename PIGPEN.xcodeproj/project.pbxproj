@@ -20,6 +20,7 @@
 		0C2019B9227F1EE800AE8C2B /* PJSideMenuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2019B8227F1EE800AE8C2B /* PJSideMenuTableView.swift */; };
 		0C2019C1227F228700AE8C2B /* PJSlideMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C2019BF227F228700AE8C2B /* PJSlideMenuTableViewCell.xib */; };
 		0C2019C2227F228700AE8C2B /* PJSlideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2019C0227F228700AE8C2B /* PJSlideMenuTableViewCell.swift */; };
+		0C2019C422814B0C00AE8C2B /* PJPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2019C322814B0C00AE8C2B /* PJPet.swift */; };
 		0C55E2C5215A61E3000D8815 /* PJHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2C4215A61E3000D8815 /* PJHomeViewController.swift */; };
 		0C55E2CE215A62BE000D8815 /* PJPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2CD215A62BE000D8815 /* PJPlayViewController.swift */; };
 		0C55E2D0215A62C7000D8815 /* PJBreedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2CF215A62C7000D8815 /* PJBreedsViewController.swift */; };
@@ -163,6 +164,7 @@
 		0C2019B8227F1EE800AE8C2B /* PJSideMenuTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJSideMenuTableView.swift; sourceTree = "<group>"; };
 		0C2019BF227F228700AE8C2B /* PJSlideMenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PJSlideMenuTableViewCell.xib; sourceTree = "<group>"; };
 		0C2019C0227F228700AE8C2B /* PJSlideMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PJSlideMenuTableViewCell.swift; sourceTree = "<group>"; };
+		0C2019C322814B0C00AE8C2B /* PJPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJPet.swift; sourceTree = "<group>"; };
 		0C55E2C4215A61E3000D8815 /* PJHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJHomeViewController.swift; sourceTree = "<group>"; };
 		0C55E2CD215A62BE000D8815 /* PJPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJPlayViewController.swift; sourceTree = "<group>"; };
 		0C55E2CF215A62C7000D8815 /* PJBreedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBreedsViewController.swift; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 			children = (
 				0C599EE72171931200FC2E37 /* virtualPet */,
 				0C599EE62171930B00FC2E37 /* realPet */,
+				0C2019C322814B0C00AE8C2B /* PJPet.swift */,
 			);
 			path = Pet;
 			sourceTree = "<group>";
@@ -1682,6 +1685,7 @@
 				0C55E2F7215F570D000D8815 /* PJUserRegisterViewController.swift in Sources */,
 				0C55E30A2162190B000D8815 /* CALayer_UIColor.swift in Sources */,
 				0C2019B9227F1EE800AE8C2B /* PJSideMenuTableView.swift in Sources */,
+				0C2019C422814B0C00AE8C2B /* PJPet.swift in Sources */,
 				0C8B75622198126D00353842 /* PJPickerView.swift in Sources */,
 				0C5B5D132261ADD300392E21 /* UIViewController.swift in Sources */,
 				0CB5E8DD2262D80F00CBE217 /* PJSearchBar.swift in Sources */,

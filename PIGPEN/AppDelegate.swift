@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         rootTabBar = UITabBarController()
         rootTabBar?.tabBar.isTranslucent = false
-        rootTabBar?.delegate = self
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = rootTabBar
         window?.makeKeyAndVisible()
@@ -37,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PJUser.shared.connectRC(completeHandler: {
             print("融云 IM 登录成功: " + $0)
         }) { (error) in
-            print(error.errorMsg ?? "")
+            print(error.errorMsg )
         }
         
         return true
@@ -76,35 +75,39 @@ extension AppDelegate {
         let homeNav = UINavigationController(rootViewController: homePage)
         homeNav.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0,
                                                       bottom: -5, right: 0)
-        homeNav.tabBarItem.image = UIImage(named: "tabBar_home")?.withRenderingMode(.alwaysOriginal)
+        homeNav.tabBarItem.image = UIImage(named: "tab_home")?.withRenderingMode(.alwaysOriginal)
+        homeNav.tabBarItem.selectedImage = UIImage(named: "tab_home_selected")?.withRenderingMode(.alwaysOriginal)
         
         let chatPage = PJMessageViewController()
         let chatNav = UINavigationController(rootViewController: chatPage)
         chatNav.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0,
                                                       bottom: -5, right: 0)
-        chatNav.tabBarItem.image = UIImage(named: "tabBar_chat")?.withRenderingMode(.alwaysOriginal)
+        chatNav.tabBarItem.image = UIImage(named: "tab_chat")?.withRenderingMode(.alwaysOriginal)
+        chatNav.tabBarItem.selectedImage = UIImage(named: "tab_chat_selected")?.withRenderingMode(.alwaysOriginal)
         
         let playPage = PJPlayViewController()
         let playNav = UINavigationController(rootViewController: playPage)
         playNav.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0,
                                                       bottom: -5, right: 0)
-        playNav.tabBarItem.image = UIImage(named: "tabBar_play")?.withRenderingMode(.alwaysOriginal)
+        playNav.tabBarItem.image = UIImage(named: "tab_play")?.withRenderingMode(.alwaysOriginal)
+        playNav.tabBarItem.selectedImage = UIImage(named: "tab_play_selected")?.withRenderingMode(.alwaysOriginal)
         
         let messagePage = PJPlayViewController()
         let messageNav = UINavigationController(rootViewController: messagePage)
         messageNav.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0,
                                                          bottom: -5, right: 0)
-        messageNav.tabBarItem.image = UIImage(named: "tabBar_message")?.withRenderingMode(.alwaysOriginal)
+        messageNav.tabBarItem.image = UIImage(named: "tab_friend")?.withRenderingMode(.alwaysOriginal)
+        messageNav.tabBarItem.selectedImage = UIImage(named: "tab_friend_selected")?.withRenderingMode(.alwaysOriginal)
         
         let userPage = PJUserDetailsViewController()
         let userNav = UINavigationController(rootViewController: userPage)
         userNav.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0,
                                                       bottom: -5, right: 0)
-        userNav.tabBarItem.image = UIImage(named: "tabBar_user")?.withRenderingMode(.alwaysOriginal)
+        userNav.tabBarItem.image = UIImage(named: "tab_user")?.withRenderingMode(.alwaysOriginal)
+        userNav.tabBarItem.selectedImage = UIImage(named: "tab_user_selected")?.withRenderingMode(.alwaysOriginal)
         
         
         rootTabBar?.viewControllers = [homeNav, chatNav, playNav, messageNav, userNav]
-        rootTabBar?.tabBar.showBottomLine(in: 0)
     }
 }
 
@@ -120,13 +123,6 @@ extension AppDelegate {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
-    }
-}
-
-extension AppDelegate: UITabBarControllerDelegate {
-    public func tabBarController(_ tabBarController: UITabBarController,
-                                 didSelect viewController: UIViewController) {
-        tabBarController.tabBar.showBottomLine(in: tabBarController.selectedIndex)
     }
 }
 
