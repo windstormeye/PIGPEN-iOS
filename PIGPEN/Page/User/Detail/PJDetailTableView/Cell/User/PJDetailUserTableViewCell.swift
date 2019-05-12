@@ -14,15 +14,30 @@ class PJDetailUserTableViewCell: UITableViewCell {
         didSet { didSetViewModel() }
     }
     
+    @IBOutlet private weak var avatarEditImageView: UIImageView!
     @IBOutlet private weak var avatarImageView: UIImageView!
     @IBOutlet private weak var firstButton: UIButton!
     @IBOutlet private weak var secondButton: UIButton!
     @IBOutlet private weak var threeButton: UIButton!
     @IBOutlet private weak var chatButton: UIButton!
+    @IBOutlet private weak var genderImageView: UIImageView!
+    @IBOutlet private weak var genderImageViewRightConstraint: NSLayoutConstraint!
     
     
     func isHiddenChatButton(_ isHidden: Bool) {
         chatButton.isHidden = isHidden
+        genderImageViewRightConstraint.constant = 30
+    }
+    
+    func isHiddenAvatarEditImageView(_ isHidden: Bool) {
+        avatarEditImageView.isHidden = isHidden
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        let avatarTap = UITapGestureRecognizer(target: self, action: .avatarTap)
+        avatarImageView.addGestureRecognizer(avatarTap)
     }
     
     private func didSetViewModel() {
@@ -59,6 +74,16 @@ class PJDetailUserTableViewCell: UITableViewCell {
     }
 }
 
+extension PJDetailUserTableViewCell {
+    @objc
+    fileprivate func avatarTap() {
+        
+    }
+}
+
+private extension Selector {
+    static let avatarTap = #selector(PJDetailUserTableViewCell.avatarTap)
+}
 
 extension PJDetailUserTableViewCell {
     struct ViewModel {

@@ -68,7 +68,7 @@ class PJUserSearchViewController: UIViewController, PJBaseViewControllerDelegate
                                     self.tableView.viewModels = $0
                                     PJHUD.shared.dismiss()
         }) {
-            print($0.errorMsg ?? "")
+            print($0.errorMsg)
             PJHUD.shared.dismiss()
         }
     }

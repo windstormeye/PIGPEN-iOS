@@ -99,7 +99,7 @@ extension AppDelegate {
         messageNav.tabBarItem.image = UIImage(named: "tab_friend")?.withRenderingMode(.alwaysOriginal)
         messageNav.tabBarItem.selectedImage = UIImage(named: "tab_friend_selected")?.withRenderingMode(.alwaysOriginal)
         
-        let userPage = PJUserDetailsViewController()
+        let userPage = PJUserCenterViewController()
         let userNav = UINavigationController(rootViewController: userPage)
         userNav.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0,
                                                       bottom: -5, right: 0)

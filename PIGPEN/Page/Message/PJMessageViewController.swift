@@ -18,8 +18,8 @@ class PJMessageViewController: UIViewController, PJBaseViewControllerDelegate {
         super.viewDidLoad()
         titleString = "信息"
         initBaseView()
-        leftBarButtonItemTapped(leftTapped: .addressBook,
-                                imageName: "message_book")
+        leftBarButtonItem(imageName: "message_book",
+                          leftSel: .addressBook)
         rightBarButtonItem(imageName: "message_search",
                            rightSel: .search)
         view.backgroundColor = .white

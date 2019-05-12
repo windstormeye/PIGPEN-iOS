@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pet Create View Controller-->
+        <scene sceneID="Eim-hn-mad">
+            <objects>
+                <viewController storyboardIdentifier="PJPetCreateViewController" id="lcT-cT-XkK" customClass="PJPetCreateViewController" customModule="PIGPEN" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4u9-3x-LVa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0l5-8f-PdN">
+                                <rect key="frame" x="83.5" y="120" width="208" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="208" id="F2n-qO-2nk"/>
+                                    <constraint firstAttribute="height" constant="150" id="LOu-Kd-jIR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".PingFang SC" pointSize="15"/>
+                                <state key="normal" title="添加狗狗" image="pet_create_dog">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88i-sf-Q6s">
+                                <rect key="frame" x="87.5" y="320" width="200" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="7ml-tX-eAJ"/>
+                                    <constraint firstAttribute="width" constant="200" id="88n-fi-TCI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".PingFang SC" pointSize="15"/>
+                                <state key="normal" title="添加猫咪" image="pet_create_cat">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0zB-tz-pvj">
+                                <rect key="frame" x="128" y="591" width="119" height="36"/>
+                                <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="17"/>
+                                <state key="normal" title="添加已入住宠物">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0l5-8f-PdN" firstAttribute="top" secondItem="Kgn-iw-MQx" secondAttribute="top" constant="100" id="5KS-HX-RIY"/>
+                            <constraint firstItem="88i-sf-Q6s" firstAttribute="top" secondItem="0l5-8f-PdN" secondAttribute="bottom" constant="50" id="5L9-IE-tjI"/>
+                            <constraint firstItem="0zB-tz-pvj" firstAttribute="centerX" secondItem="4u9-3x-LVa" secondAttribute="centerX" id="FXk-BX-Vv2"/>
+                            <constraint firstItem="88i-sf-Q6s" firstAttribute="centerX" secondItem="4u9-3x-LVa" secondAttribute="centerX" id="ORZ-JF-DDO"/>
+                            <constraint firstItem="0l5-8f-PdN" firstAttribute="centerX" secondItem="4u9-3x-LVa" secondAttribute="centerX" id="YEh-8a-Rul"/>
+                            <constraint firstItem="Kgn-iw-MQx" firstAttribute="bottom" secondItem="0zB-tz-pvj" secondAttribute="bottom" constant="40" id="edm-98-N9z"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Kgn-iw-MQx"/>
+                    </view>
+                    <connections>
+                        <outlet property="createCatButton" destination="88i-sf-Q6s" id="lbp-Yf-VjB"/>
+                        <outlet property="createCheckedPetButton" destination="0zB-tz-pvj" id="IU6-Fc-toy"/>
+                        <outlet property="createDogButton" destination="0l5-8f-PdN" id="uEs-5a-jks"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZF0-bn-A8C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-26.399999999999999" y="142.57871064467767"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="pet_create_cat" width="138" height="90"/>
+        <image name="pet_create_dog" width="146" height="99"/>
+    </resources>
+</document>

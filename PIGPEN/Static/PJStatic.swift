@@ -19,6 +19,7 @@ let statusBarHeight = UIApplication.shared.statusBarFrame.height;
 //导航栏高度
 let navigationBarHeight = CGFloat(44 + topSafeAreaHeight)
 
+let sideMenuWidth = screenWidth * 0.4
 
 // 屏幕相关
 let PJSCREEN_HEIGHT = CGFloat(UIScreen.main.bounds.height)

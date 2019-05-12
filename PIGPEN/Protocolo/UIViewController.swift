@@ -14,7 +14,7 @@ protocol PJBaseViewControllerDelegate: UIViewController {
     func initBaseView()
     func popBack()
     func backButtonTapped(backSel: Selector, imageName: String?)
-    func leftBarButtonItemTapped(leftTapped: Selector, imageName: String)
+    func leftBarButtonItem(imageName: String, leftSel: Selector)
     func rightBarButtonItem(imageName: String, rightSel: Selector)
 }
 
@@ -44,11 +44,11 @@ extension PJBaseViewControllerDelegate {
         dissmisCurrentVC(navc: navigationController, currenVC: self)
     }
     
-    func leftBarButtonItemTapped(leftTapped: Selector, imageName: String) {
+    func leftBarButtonItem(imageName: String, leftSel: Selector) {
         let leftButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40,
                                                 height: 40))
         leftButton.setImage(UIImage(named: imageName), for: .normal)
-        leftButton.addTarget(self, action: leftTapped, for: .touchUpInside)
+        leftButton.addTarget(self, action: leftSel, for: .touchUpInside)
         let leftBarButtonItem = UIBarButtonItem.init(customView: leftButton)
         navigationItem.setLeftBarButton(leftBarButtonItem, animated: true)
     }
@@ -58,8 +58,8 @@ extension PJBaseViewControllerDelegate {
                                                  height: 40))
         rightButton.setImage(UIImage(named: imageName), for: .normal)
         rightButton.addTarget(self, action: rightSel, for: .touchUpInside)
-        let leftBarButtonItem = UIBarButtonItem.init(customView: rightButton)
-        navigationItem.setRightBarButton(leftBarButtonItem, animated: true)
+        let rightBarButtonItem = UIBarButtonItem.init(customView: rightButton)
+        navigationItem.setRightBarButton(rightBarButtonItem, animated: true)
     }
     
     func backButtonTapped(backSel: Selector, imageName: String?) {
@@ -73,7 +73,7 @@ extension PJBaseViewControllerDelegate {
         leftButton.setImage(UIImage(named: finalImageName), for: .normal)
         leftButton.addTarget(self, action: backSel, for: .touchUpInside)
         
-        let leftBarButtonItem = UIBarButtonItem(customView: leftButton)
-        navigationItem.setLeftBarButton(leftBarButtonItem, animated: true)
+        let backBarButtonItem = UIBarButtonItem(customView: leftButton)
+        navigationItem.setLeftBarButton(backBarButtonItem, animated: true)
     }
 }

@@ -21,10 +21,16 @@
 		0C2019C1227F228700AE8C2B /* PJSlideMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C2019BF227F228700AE8C2B /* PJSlideMenuTableViewCell.xib */; };
 		0C2019C2227F228700AE8C2B /* PJSlideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2019C0227F228700AE8C2B /* PJSlideMenuTableViewCell.swift */; };
 		0C2019C422814B0C00AE8C2B /* PJPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2019C322814B0C00AE8C2B /* PJPet.swift */; };
+		0C2019D32283B44300AE8C2B /* PJPetCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2019D22283B44300AE8C2B /* PJPetCreateViewController.swift */; };
+		0C2019D52283B45800AE8C2B /* PJPetCreateViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C2019D42283B45800AE8C2B /* PJPetCreateViewController.storyboard */; };
+		0C2019D72283C1A200AE8C2B /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2019D62283C1A200AE8C2B /* UIButton.swift */; };
+		0C2019F02287FE1D00AE8C2B /* PJVistorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2019EF2287FE1D00AE8C2B /* PJVistorsViewController.swift */; };
+		0C2019FA2288591D00AE8C2B /* PJUserCenterPetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2019F82288591D00AE8C2B /* PJUserCenterPetTableViewCell.swift */; };
+		0C2019FB2288591D00AE8C2B /* PJUserCenterPetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C2019F92288591D00AE8C2B /* PJUserCenterPetTableViewCell.xib */; };
 		0C55E2C5215A61E3000D8815 /* PJHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2C4215A61E3000D8815 /* PJHomeViewController.swift */; };
 		0C55E2CE215A62BE000D8815 /* PJPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2CD215A62BE000D8815 /* PJPlayViewController.swift */; };
 		0C55E2D0215A62C7000D8815 /* PJBreedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2CF215A62C7000D8815 /* PJBreedsViewController.swift */; };
-		0C55E2D2215A62CD000D8815 /* PJUserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2D1215A62CD000D8815 /* PJUserDetailsViewController.swift */; };
+		0C55E2D2215A62CD000D8815 /* PJUserCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2D1215A62CD000D8815 /* PJUserCenterViewController.swift */; };
 		0C55E2D7215A795A000D8815 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0C55E2D9215A795A000D8815 /* Localizable.strings */; };
 		0C55E2DD215A8055000D8815 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2DC215A8055000D8815 /* TabBar.swift */; };
 		0C55E2E2215A8422000D8815 /* PJStatic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2E1215A8422000D8815 /* PJStatic.swift */; };
@@ -119,7 +125,7 @@
 		0CC35DDD21E637E8002244DA /* PJCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DDC21E637E8002244DA /* PJCalloutView.swift */; };
 		0CDB0C8F216705B000669331 /* PJUserSelfTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CDB0C8D216705B000669331 /* PJUserSelfTableViewCell.xib */; };
 		0CDB0C90216705B000669331 /* PJUserSelfTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0C8E216705B000669331 /* PJUserSelfTableViewCell.swift */; };
-		0CDB0C972167299A00669331 /* PJUserDetailsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0C962167299A00669331 /* PJUserDetailsTableView.swift */; };
+		0CDB0C972167299A00669331 /* PJUserCenterTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0C962167299A00669331 /* PJUserCenterTableView.swift */; };
 		0CDB0C9B21675F6E00669331 /* PJUserDetailsMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0C9A21675F6E00669331 /* PJUserDetailsMenuView.swift */; };
 		0CDB0C9D21675F7400669331 /* PJUserDetailsMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CDB0C9C21675F7400669331 /* PJUserDetailsMenuView.xib */; };
 		0CE2616821C500AF00740582 /* PJAlbumCollectiionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2616721C500AF00740582 /* PJAlbumCollectiionFlowLayout.swift */; };
@@ -165,10 +171,16 @@
 		0C2019BF227F228700AE8C2B /* PJSlideMenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PJSlideMenuTableViewCell.xib; sourceTree = "<group>"; };
 		0C2019C0227F228700AE8C2B /* PJSlideMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PJSlideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		0C2019C322814B0C00AE8C2B /* PJPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJPet.swift; sourceTree = "<group>"; };
+		0C2019D22283B44300AE8C2B /* PJPetCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJPetCreateViewController.swift; sourceTree = "<group>"; };
+		0C2019D42283B45800AE8C2B /* PJPetCreateViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PJPetCreateViewController.storyboard; sourceTree = "<group>"; };
+		0C2019D62283C1A200AE8C2B /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		0C2019EF2287FE1D00AE8C2B /* PJVistorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJVistorsViewController.swift; sourceTree = "<group>"; };
+		0C2019F82288591D00AE8C2B /* PJUserCenterPetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserCenterPetTableViewCell.swift; sourceTree = "<group>"; };
+		0C2019F92288591D00AE8C2B /* PJUserCenterPetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJUserCenterPetTableViewCell.xib; sourceTree = "<group>"; };
 		0C55E2C4215A61E3000D8815 /* PJHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJHomeViewController.swift; sourceTree = "<group>"; };
 		0C55E2CD215A62BE000D8815 /* PJPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJPlayViewController.swift; sourceTree = "<group>"; };
 		0C55E2CF215A62C7000D8815 /* PJBreedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBreedsViewController.swift; sourceTree = "<group>"; };
-		0C55E2D1215A62CD000D8815 /* PJUserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserDetailsViewController.swift; sourceTree = "<group>"; };
+		0C55E2D1215A62CD000D8815 /* PJUserCenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserCenterViewController.swift; sourceTree = "<group>"; };
 		0C55E2D8215A795A000D8815 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0C55E2DA215A79A9000D8815 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		0C55E2DC215A8055000D8815 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
@@ -267,7 +279,7 @@
 		0CC35DDC21E637E8002244DA /* PJCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJCalloutView.swift; sourceTree = "<group>"; };
 		0CDB0C8D216705B000669331 /* PJUserSelfTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PJUserSelfTableViewCell.xib; sourceTree = "<group>"; };
 		0CDB0C8E216705B000669331 /* PJUserSelfTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PJUserSelfTableViewCell.swift; sourceTree = "<group>"; };
-		0CDB0C962167299A00669331 /* PJUserDetailsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserDetailsTableView.swift; sourceTree = "<group>"; };
+		0CDB0C962167299A00669331 /* PJUserCenterTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserCenterTableView.swift; sourceTree = "<group>"; };
 		0CDB0C9A21675F6E00669331 /* PJUserDetailsMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserDetailsMenuView.swift; sourceTree = "<group>"; };
 		0CDB0C9C21675F7400669331 /* PJUserDetailsMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJUserDetailsMenuView.xib; sourceTree = "<group>"; };
 		0CE2616721C500AF00740582 /* PJAlbumCollectiionFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJAlbumCollectiionFlowLayout.swift; sourceTree = "<group>"; };
@@ -341,7 +353,7 @@
 		0C0A54AE216CF6D000195DF1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0C55E2D1215A62CD000D8815 /* PJUserDetailsViewController.swift */,
+				0C55E2D1215A62CD000D8815 /* PJUserCenterViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -454,6 +466,23 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		0C2019D12283B41400AE8C2B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0C2019D22283B44300AE8C2B /* PJPetCreateViewController.swift */,
+				0C2019D42283B45800AE8C2B /* PJPetCreateViewController.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0C2019EE2287FE0B00AE8C2B /* Vistors */ = {
+			isa = PBXGroup;
+			children = (
+				0C2019EF2287FE1D00AE8C2B /* PJVistorsViewController.swift */,
+			);
+			path = Vistors;
+			sourceTree = "<group>";
+		};
 		0C55E2C3215A61AD000D8815 /* Page */ = {
 			isa = PBXGroup;
 			children = (
@@ -499,9 +528,10 @@
 		0C55E2CA215A62A0000D8815 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				0C2019EE2287FE0B00AE8C2B /* Vistors */,
 				0CB5E8EA2264BD5800CBE217 /* Detail */,
 				0C55E2FE2161B1D0000D8815 /* Welcome */,
-				0C55E2FD2161B1A3000D8815 /* Details */,
+				0C55E2FD2161B1A3000D8815 /* Center */,
 				0C55E2F4215F5653000D8815 /* Register */,
 				0C55E2EA215B7D5C000D8815 /* Forget */,
 				0C55E2E5215B7028000D8815 /* Login */,
@@ -540,6 +570,7 @@
 				0C5E63472164FE3900A90762 /* UIColor_Custom.swift */,
 				0C5E63522165ADF500A90762 /* NotificationName.swift */,
 				0CC35DCF21DD0BC8002244DA /* Date.swift */,
+				0C2019D62283C1A200AE8C2B /* UIButton.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -610,13 +641,13 @@
 			path = User;
 			sourceTree = "<group>";
 		};
-		0C55E2FD2161B1A3000D8815 /* Details */ = {
+		0C55E2FD2161B1A3000D8815 /* Center */ = {
 			isa = PBXGroup;
 			children = (
 				0C0A54AE216CF6D000195DF1 /* Controller */,
 				0CDB0C8A2167055900669331 /* View */,
 			);
-			path = Details;
+			path = Center;
 			sourceTree = "<group>";
 		};
 		0C55E2FE2161B1D0000D8815 /* Welcome */ = {
@@ -648,6 +679,7 @@
 		0C599EB3216CFDAA00FC2E37 /* Create */ = {
 			isa = PBXGroup;
 			children = (
+				0C2019D12283B41400AE8C2B /* Controller */,
 				0C599ED121703CBF00FC2E37 /* RealPet */,
 				0C599ED021703C9300FC2E37 /* VirtualPet */,
 			);
@@ -668,6 +700,8 @@
 			children = (
 				0C599EC1217031C300FC2E37 /* VirtualPet */,
 				0C599EBF217031B300FC2E37 /* RealPet */,
+				0C2019F82288591D00AE8C2B /* PJUserCenterPetTableViewCell.swift */,
+				0C2019F92288591D00AE8C2B /* PJUserCenterPetTableViewCell.xib */,
 			);
 			path = Pet;
 			sourceTree = "<group>";
@@ -848,6 +882,7 @@
 		0C5E63502165AB9300A90762 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				0C2019B7227F1E6C00AE8C2B /* SideMenu */,
 				0C6A986B22729E55003E4AA5 /* LineCollectionView */,
 				0CB5FED52270ABEC00CBE217 /* ImagePicker */,
 				0CC35DDB21E6376C002244DA /* PopMenu */,
@@ -1194,7 +1229,6 @@
 		0CDB0C8A2167055900669331 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0C2019B7227F1E6C00AE8C2B /* SideMenu */,
 				0CDB0C9921675F2900669331 /* Menu */,
 				0CDB0C952167298000669331 /* TableView */,
 			);
@@ -1222,7 +1256,7 @@
 		0CDB0C952167298000669331 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
-				0CDB0C962167299A00669331 /* PJUserDetailsTableView.swift */,
+				0CDB0C962167299A00669331 /* PJUserCenterTableView.swift */,
 				0C0A54AF216CF6F700195DF1 /* Cell */,
 			);
 			path = TableView;
@@ -1480,6 +1514,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CE4F40021592C7D003AD0F5 /* LaunchScreen.storyboard in Resources */,
+				0C2019D52283B45800AE8C2B /* PJPetCreateViewController.storyboard in Resources */,
 				0C55E3022161B247000D8815 /* PJWelcomeViewController.xib in Resources */,
 				0C599EDA2170407500FC2E37 /* PJUserDetailsMoneyTableViewCell.xib in Resources */,
 				0C599EB8216CFE7A00FC2E37 /* PJRealPetDetailsViewController.xib in Resources */,
@@ -1505,6 +1540,7 @@
 				0CDB0C8F216705B000669331 /* PJUserSelfTableViewCell.xib in Resources */,
 				0CB5E8FA2264BE0C00CBE217 /* PJDetailPetTableViewCell.xib in Resources */,
 				0C599EE02170983D00FC2E37 /* PJCreateVirtualPetChoiceGenderViewController.xib in Resources */,
+				0C2019FB2288591D00AE8C2B /* PJUserCenterPetTableViewCell.xib in Resources */,
 				0CE2618621C5434000740582 /* PJAlbumCollectionFocusView.xib in Resources */,
 				0C599EE5217099E900FC2E37 /* PJUserCreateVirtualPetChoiceNameViewController.xib in Resources */,
 				0CDB0C9D21675F7400669331 /* PJUserDetailsMenuView.xib in Resources */,
@@ -1629,6 +1665,7 @@
 				0C55E2E8215B703C000D8815 /* PJUserLoginViewController.swift in Sources */,
 				0CDB0C9B21675F6E00669331 /* PJUserDetailsMenuView.swift in Sources */,
 				0C599EEB2171C00200FC2E37 /* VirtualPet.swift in Sources */,
+				0C2019D72283C1A200AE8C2B /* UIButton.swift in Sources */,
 				0C6A986722729C21003E4AA5 /* PJFriendTableViewCell.swift in Sources */,
 				0C5B5D3C2262C73F00392E21 /* CustomBubble.swift in Sources */,
 				0C5B5D06225DBF1500392E21 /* PJIMMessageHomeTableViewCell.swift in Sources */,
@@ -1642,6 +1679,7 @@
 				0CC35DAB21D0BC35002244DA /* PJGradeYesterdayViewController.swift in Sources */,
 				0C5B5D392262C73F00392E21 /* CustomCollectionView.swift in Sources */,
 				0C1F6FAF21B3925E00304CD8 /* PJAlbumTableViewCell.swift in Sources */,
+				0C2019FA2288591D00AE8C2B /* PJUserCenterPetTableViewCell.swift in Sources */,
 				0C599ECE21703C5200FC2E37 /* PJCreateRealPetViewController.swift in Sources */,
 				0C55E2CE215A62BE000D8815 /* PJPlayViewController.swift in Sources */,
 				0CC35DCE21DCFFDC002244DA /* PJImageUpload.swift in Sources */,
@@ -1675,6 +1713,7 @@
 				0C8B75592196934000353842 /* PJMessageViewController.swift in Sources */,
 				0CE2616821C500AF00740582 /* PJAlbumCollectiionFlowLayout.swift in Sources */,
 				0C6A98592270AFE5003E4AA5 /* PJImagePickerConfigue.swift in Sources */,
+				0C2019F02287FE1D00AE8C2B /* PJVistorsViewController.swift in Sources */,
 				0CB5E8EC2264BD7E00CBE217 /* PJDetailViewController.swift in Sources */,
 				0CC35DD921DF7025002244DA /* PJWaveView.swift in Sources */,
 				0CB5E8E72262F76000CBE217 /* PJSearchTableView.swift in Sources */,
@@ -1687,10 +1726,11 @@
 				0C2019B9227F1EE800AE8C2B /* PJSideMenuTableView.swift in Sources */,
 				0C2019C422814B0C00AE8C2B /* PJPet.swift in Sources */,
 				0C8B75622198126D00353842 /* PJPickerView.swift in Sources */,
+				0C2019D32283B44300AE8C2B /* PJPetCreateViewController.swift in Sources */,
 				0C5B5D132261ADD300392E21 /* UIViewController.swift in Sources */,
 				0CB5E8DD2262D80F00CBE217 /* PJSearchBar.swift in Sources */,
 				0C599EDF2170983D00FC2E37 /* PJCreateVirtualPetChoiceGenderViewController.swift in Sources */,
-				0C55E2D2215A62CD000D8815 /* PJUserDetailsViewController.swift in Sources */,
+				0C55E2D2215A62CD000D8815 /* PJUserCenterViewController.swift in Sources */,
 				0C6A986D22729E6A003E4AA5 /* PJFriendTableView.swift in Sources */,
 				0C599ED92170407500FC2E37 /* PJUserDetailsMoneyTableViewCell.swift in Sources */,
 				0CB5E8E42262DDF500CBE217 /* PJSearchTableViewCell.swift in Sources */,
@@ -1700,7 +1740,7 @@
 				0C55E2ED215B7DB0000D8815 /* PJUserForgetViewController.swift in Sources */,
 				0C6A985C22729353003E4AA5 /* PJUserService.swift in Sources */,
 				0CE2618221C5420A00740582 /* PJAlbumCollectionFocusView.swift in Sources */,
-				0CDB0C972167299A00669331 /* PJUserDetailsTableView.swift in Sources */,
+				0CDB0C972167299A00669331 /* PJUserCenterTableView.swift in Sources */,
 				0C55E2E4215A84EA000D8815 /* UIViewPosition.swift in Sources */,
 				0C1F6FA421B391E500304CD8 /* PJAlbumTableView.swift in Sources */,
 				0CC35DA221D0BAF6002244DA /* PJGradeViewController.swift in Sources */,

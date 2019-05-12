@@ -27,10 +27,10 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZMB-9d-803">
-                        <rect key="frame" x="90" y="10" width="145" height="59.5"/>
+                        <rect key="frame" x="90" y="10" width="140" height="59.5"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="pU7-M6-bae">
-                                <rect key="frame" x="0.0" y="12" width="48.5" height="36"/>
+                                <rect key="frame" x="0.0" y="12" width="46.5" height="36"/>
                                 <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".PingFang SC" pointSize="12"/>
                                 <state key="normal">
                                     <string key="title">2333
@@ -39,7 +39,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="hj0-ZQ-pXy">
-                                <rect key="frame" x="48.5" y="12" width="48" height="36"/>
+                                <rect key="frame" x="46.5" y="12" width="47" height="36"/>
                                 <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".PingFang SC" pointSize="12"/>
                                 <state key="normal">
                                     <string key="title">2333
@@ -48,7 +48,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="QZC-k2-cUm">
-                                <rect key="frame" x="96.5" y="12" width="48.5" height="36"/>
+                                <rect key="frame" x="93.5" y="12" width="46.5" height="36"/>
                                 <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".PingFang SC" pointSize="12"/>
                                 <state key="normal">
                                     <string key="title">2333
@@ -67,32 +67,44 @@
                         <state key="normal" image="search_send"/>
                     </button>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_female" translatesAutoresizingMaskIntoConstraints="NO" id="jET-v7-Okz">
-                        <rect key="frame" x="250" y="32.5" width="15" height="15"/>
+                        <rect key="frame" x="245" y="32.5" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="Hwj-Np-dnb"/>
                             <constraint firstAttribute="width" constant="15" id="qEv-eS-MOl"/>
                         </constraints>
                     </imageView>
+                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_avatar_edit" translatesAutoresizingMaskIntoConstraints="NO" id="rEY-wQ-cdJ">
+                        <rect key="frame" x="60" y="44.5" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="ATu-wY-ECh"/>
+                            <constraint firstAttribute="width" constant="15" id="i0q-bY-1eQ"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="w8P-Xk-stP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="1FK-7b-LkQ"/>
+                    <constraint firstAttribute="bottom" secondItem="rEY-wQ-cdJ" secondAttribute="bottom" constant="20" id="7Pu-zA-UDq"/>
                     <constraint firstAttribute="trailing" secondItem="t1l-6E-azP" secondAttribute="trailing" constant="15" id="G2h-Jg-aaC"/>
+                    <constraint firstAttribute="trailing" secondItem="jET-v7-Okz" secondAttribute="trailing" constant="60" id="GQs-eF-ZsD"/>
                     <constraint firstItem="jET-v7-Okz" firstAttribute="leading" secondItem="ZMB-9d-803" secondAttribute="trailing" constant="15" id="Q1F-MN-5az"/>
                     <constraint firstItem="t1l-6E-azP" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="W7H-ad-0JL"/>
                     <constraint firstAttribute="bottom" secondItem="ZMB-9d-803" secondAttribute="bottom" constant="10" id="WXU-Q1-Mya"/>
                     <constraint firstItem="jET-v7-Okz" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="XFj-a3-Ehm"/>
                     <constraint firstItem="ZMB-9d-803" firstAttribute="leading" secondItem="w8P-Xk-stP" secondAttribute="trailing" constant="15" id="ZDf-U6-TBp"/>
-                    <constraint firstItem="t1l-6E-azP" firstAttribute="leading" secondItem="jET-v7-Okz" secondAttribute="trailing" id="ctC-nM-spu"/>
                     <constraint firstItem="ZMB-9d-803" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="mid-li-vYi"/>
                     <constraint firstItem="ZMB-9d-803" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="p0a-Gi-7PW"/>
                     <constraint firstItem="w8P-Xk-stP" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="pIn-qi-01r"/>
+                    <constraint firstItem="rEY-wQ-cdJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="60" id="vlO-fm-UCs"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="avatarEditImageView" destination="rEY-wQ-cdJ" id="hyV-nV-2gy"/>
                 <outlet property="avatarImageView" destination="w8P-Xk-stP" id="Wgz-dh-pWD"/>
                 <outlet property="chatButton" destination="t1l-6E-azP" id="bkn-zc-CmI"/>
                 <outlet property="firstButton" destination="pU7-M6-bae" id="Hk1-Ne-TY4"/>
+                <outlet property="genderImageView" destination="jET-v7-Okz" id="31z-cn-HAG"/>
+                <outlet property="genderImageViewRightConstraint" destination="GQs-eF-ZsD" id="8Ad-pc-YR0"/>
                 <outlet property="secondButton" destination="hj0-ZQ-pXy" id="nOI-fd-gNg"/>
                 <outlet property="threeButton" destination="QZC-k2-cUm" id="kNh-7c-bTz"/>
             </connections>
@@ -102,6 +114,7 @@
     <resources>
         <image name="0" width="90" height="90"/>
         <image name="search_send" width="20" height="22"/>
+        <image name="user_avatar_edit" width="15" height="15"/>
         <image name="user_female" width="14" height="14"/>
     </resources>
 </document>
