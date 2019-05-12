@@ -27,6 +27,8 @@
 		0C2019F02287FE1D00AE8C2B /* PJVistorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2019EF2287FE1D00AE8C2B /* PJVistorsViewController.swift */; };
 		0C2019FA2288591D00AE8C2B /* PJUserCenterPetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2019F82288591D00AE8C2B /* PJUserCenterPetTableViewCell.swift */; };
 		0C2019FB2288591D00AE8C2B /* PJUserCenterPetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C2019F92288591D00AE8C2B /* PJUserCenterPetTableViewCell.xib */; };
+		0C201A00228867A800AE8C2B /* PJPetCreateNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2019FF228867A800AE8C2B /* PJPetCreateNameViewController.swift */; };
+		0C201A02228867B200AE8C2B /* PJPetCreateNameViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C201A01228867B200AE8C2B /* PJPetCreateNameViewController.storyboard */; };
 		0C55E2C5215A61E3000D8815 /* PJHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2C4215A61E3000D8815 /* PJHomeViewController.swift */; };
 		0C55E2CE215A62BE000D8815 /* PJPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2CD215A62BE000D8815 /* PJPlayViewController.swift */; };
 		0C55E2D0215A62C7000D8815 /* PJBreedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2CF215A62C7000D8815 /* PJBreedsViewController.swift */; };
@@ -177,6 +179,8 @@
 		0C2019EF2287FE1D00AE8C2B /* PJVistorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJVistorsViewController.swift; sourceTree = "<group>"; };
 		0C2019F82288591D00AE8C2B /* PJUserCenterPetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserCenterPetTableViewCell.swift; sourceTree = "<group>"; };
 		0C2019F92288591D00AE8C2B /* PJUserCenterPetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJUserCenterPetTableViewCell.xib; sourceTree = "<group>"; };
+		0C2019FF228867A800AE8C2B /* PJPetCreateNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJPetCreateNameViewController.swift; sourceTree = "<group>"; };
+		0C201A01228867B200AE8C2B /* PJPetCreateNameViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PJPetCreateNameViewController.storyboard; sourceTree = "<group>"; };
 		0C55E2C4215A61E3000D8815 /* PJHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJHomeViewController.swift; sourceTree = "<group>"; };
 		0C55E2CD215A62BE000D8815 /* PJPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJPlayViewController.swift; sourceTree = "<group>"; };
 		0C55E2CF215A62C7000D8815 /* PJBreedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBreedsViewController.swift; sourceTree = "<group>"; };
@@ -469,8 +473,8 @@
 		0C2019D12283B41400AE8C2B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0C2019D22283B44300AE8C2B /* PJPetCreateViewController.swift */,
-				0C2019D42283B45800AE8C2B /* PJPetCreateViewController.storyboard */,
+				0C2019FE2288669500AE8C2B /* Name */,
+				0C2019FD2288667F00AE8C2B /* Choice */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -481,6 +485,24 @@
 				0C2019EF2287FE1D00AE8C2B /* PJVistorsViewController.swift */,
 			);
 			path = Vistors;
+			sourceTree = "<group>";
+		};
+		0C2019FD2288667F00AE8C2B /* Choice */ = {
+			isa = PBXGroup;
+			children = (
+				0C2019D22283B44300AE8C2B /* PJPetCreateViewController.swift */,
+				0C2019D42283B45800AE8C2B /* PJPetCreateViewController.storyboard */,
+			);
+			path = Choice;
+			sourceTree = "<group>";
+		};
+		0C2019FE2288669500AE8C2B /* Name */ = {
+			isa = PBXGroup;
+			children = (
+				0C2019FF228867A800AE8C2B /* PJPetCreateNameViewController.swift */,
+				0C201A01228867B200AE8C2B /* PJPetCreateNameViewController.storyboard */,
+			);
+			path = Name;
 			sourceTree = "<group>";
 		};
 		0C55E2C3215A61AD000D8815 /* Page */ = {
@@ -1529,6 +1551,7 @@
 				0C55E2EE215B7DB0000D8815 /* PJUserForgetViewController.xib in Resources */,
 				0C5B5D3A2262C73F00392E21 /* CustomIncomingTextCell.xib in Resources */,
 				0C1F6FB021B3925E00304CD8 /* PJAlbumTableViewCell.xib in Resources */,
+				0C201A02228867B200AE8C2B /* PJPetCreateNameViewController.storyboard in Resources */,
 				0CB5E8F42264BDF700CBE217 /* PJDetailUserTableViewCell.xib in Resources */,
 				0CE4F3FD21592C7D003AD0F5 /* Assets.xcassets in Resources */,
 				0C55E2E9215B703C000D8815 /* PJUserLoginViewController.xib in Resources */,
@@ -1662,6 +1685,7 @@
 				0C0A54A6216B977E00195DF1 /* RealPet.swift in Sources */,
 				0C6A98762272A7A2003E4AA5 /* PJLineCollectionViewCell.swift in Sources */,
 				0C5B5D372262C73F00392E21 /* CustomOutgoingTextCell.swift in Sources */,
+				0C201A00228867A800AE8C2B /* PJPetCreateNameViewController.swift in Sources */,
 				0C55E2E8215B703C000D8815 /* PJUserLoginViewController.swift in Sources */,
 				0CDB0C9B21675F6E00669331 /* PJUserDetailsMenuView.swift in Sources */,
 				0C599EEB2171C00200FC2E37 /* VirtualPet.swift in Sources */,

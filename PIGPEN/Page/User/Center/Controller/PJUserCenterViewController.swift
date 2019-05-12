@@ -45,6 +45,12 @@ class PJUserCenterViewController: UIViewController, PJBaseViewControllerDelegate
         tableView?.pets = [PJPet.Pet(), PJPet.Pet(), PJPet.Pet(), PJPet.Pet()]
 //        tableView?.viewDelegate = self
         view.addSubview(tableView!)
+        tableView?.createPet = {
+            let sb = UIStoryboard(name: "PJPetCreateViewController", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "PJPetCreateViewController")
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
         
         menuBackViewButton = UIButton(frame: view.frame)
         menuBackViewButton?.addTarget(self, action: .menu, for: .touchUpInside)
@@ -90,25 +96,21 @@ extension PJUserCenterViewController {
     
     @objc
     fileprivate func menu() {
-        let sb = UIStoryboard(name: "PJPetCreateViewController", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "PJPetCreateViewController")
-        vc.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(vc, animated: true)
-//        if tableView!.left != 0 {
-//            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseIn, animations: {
-//                self.tableView!.left = 0
-//                self.navigationController?.navigationBar.left = 0
-//                self.tabBarController?.tabBar.left = 0
-//                self.menuTableView?.left = self.tableView!.right
-//            }, completion: nil)
-//        } else {
-//            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: {
-//                self.tableView!.left -= sideMenuWidth
-//                self.navigationController?.navigationBar.left -= sideMenuWidth
-//                self.menuTableView?.left = self.tableView!.right
-//                self.tabBarController?.tabBar.left -= sideMenuWidth
-//            }, completion: nil)
-//        }
+        if tableView!.left != 0 {
+            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseIn, animations: {
+                self.tableView!.left = 0
+                self.navigationController?.navigationBar.left = 0
+                self.tabBarController?.tabBar.left = 0
+                self.menuTableView?.left = self.tableView!.right
+            }, completion: nil)
+        } else {
+            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: {
+                self.tableView!.left -= sideMenuWidth
+                self.navigationController?.navigationBar.left -= sideMenuWidth
+                self.menuTableView?.left = self.tableView!.right
+                self.tabBarController?.tabBar.left -= sideMenuWidth
+            }, completion: nil)
+        }
     }
     
     func viewWillData() {

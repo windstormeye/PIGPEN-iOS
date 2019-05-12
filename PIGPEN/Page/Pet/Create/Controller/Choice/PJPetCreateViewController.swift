@@ -41,8 +41,22 @@ class PJPetCreateViewController: UIViewController, PJBaseViewControllerDelegate 
     fileprivate func back() {
         popBack()
     }
+    
+    @IBAction
+    fileprivate func choicePetType(_ sender: UIButton) {
+        let vc = UIStoryboard(name: "PJPetCreateNameViewController", bundle: nil).instantiateViewController(withIdentifier: "PJPetCreateNameViewController") as! PJPetCreateNameViewController
+        
+        if sender.tag == 1000 {
+            vc.petType = .dog
+        } else {
+            vc.petType = .cat
+        }
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 
 private extension Selector {
     static let back = #selector(PJPetCreateViewController.back)
+    static let choiceType = #selector(PJPetCreateViewController.choicePetType(_:))
 }

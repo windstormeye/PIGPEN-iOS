@@ -84,7 +84,7 @@ extension PJPet {
 }
 
 extension PJPet {
-    enum PetType: Int {
+    enum PetType: Int, Codable {
         case cat = 0
         case dog
     }
@@ -95,7 +95,7 @@ extension PJPet {
         /// 宠物昵称
         var nick_name: String
         /// 宠物类型：0 = 猫，1 = 狗
-        var pet_type: Int
+        var pet_type: PetType
         /// 体重
         var weight: Int
         /// 绝育状态
@@ -114,7 +114,7 @@ extension PJPet {
         init() {
             self.pet_id = -1
             self.nick_name = ""
-            self.pet_type = -1
+            self.pet_type = .cat
             self.weight = -1
             self.ppp_status = -1
             self.love_status = -1

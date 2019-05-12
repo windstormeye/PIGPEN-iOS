@@ -9,7 +9,8 @@
 import UIKit
 
 class PJUserCenterTableView: UITableView {
-    // MARK: - Public Properties
+    var createPet: (() -> Void)?
+    
     var userDetailsModel: PJUser.UserModel?
     
     var pets = [PJPet.Pet]() {
@@ -86,7 +87,7 @@ fileprivate extension Selector {
 extension PJUserCenterTableView {
     @objc
     fileprivate func addPet() {
-        
+        createPet?()
     }
 }
 

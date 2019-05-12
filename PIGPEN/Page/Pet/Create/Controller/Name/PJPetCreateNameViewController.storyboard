@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pet Create Name View Controller-->
+        <scene sceneID="cJd-wd-orb">
+            <objects>
+                <viewController storyboardIdentifier="PJPetCreateNameViewController" id="49T-x7-Hzg" customClass="PJPetCreateNameViewController" customModule="PIGPEN" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zbW-aD-5wB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="填写狗狗的名字" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ko4-SF-V5x">
+                                <rect key="frame" x="40" y="40" width="171" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="不能输入特殊字符" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAM-3e-aEO">
+                                <rect key="frame" x="40" y="179" width="115" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="115" id="NV1-1V-2JA"/>
+                                    <constraint firstAttribute="height" constant="17" id="ZDJ-bH-pBx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入狗狗的名字" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="aut-hY-PhB">
+                                <rect key="frame" x="40" y="109" width="295" height="40"/>
+                                <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ocr-3B-ARf"/>
+                                    <constraint firstAttribute="width" constant="295" id="tqG-as-7Jw"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="nickname"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zPy-zH-OSL">
+                                <rect key="frame" x="0.0" y="563" width="375" height="40"/>
+                                <color key="backgroundColor" red="0.99855905771255493" green="0.32609526813030243" blue="0.2649621963500976" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="daK-0z-nsQ"/>
+                                </constraints>
+                                <state key="normal" title="下一步">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aut-hY-PhB" firstAttribute="top" secondItem="ko4-SF-V5x" secondAttribute="bottom" constant="40" id="4Y2-q1-xR0"/>
+                            <constraint firstItem="aut-hY-PhB" firstAttribute="leading" secondItem="LKv-J7-Geq" secondAttribute="leading" constant="40" id="9BD-JV-ee8"/>
+                            <constraint firstItem="LKv-J7-Geq" firstAttribute="trailing" secondItem="aut-hY-PhB" secondAttribute="trailing" constant="40" id="BWP-OR-IAs"/>
+                            <constraint firstItem="LKv-J7-Geq" firstAttribute="trailing" secondItem="zPy-zH-OSL" secondAttribute="trailing" id="GeJ-yJ-OsT"/>
+                            <constraint firstItem="ko4-SF-V5x" firstAttribute="top" secondItem="LKv-J7-Geq" secondAttribute="top" constant="40" id="K54-gx-meO"/>
+                            <constraint firstItem="zAM-3e-aEO" firstAttribute="leading" secondItem="aut-hY-PhB" secondAttribute="leading" id="Sep-4F-3lk"/>
+                            <constraint firstItem="zAM-3e-aEO" firstAttribute="top" secondItem="aut-hY-PhB" secondAttribute="bottom" constant="30" id="a1T-L6-g0P"/>
+                            <constraint firstItem="zPy-zH-OSL" firstAttribute="bottom" secondItem="LKv-J7-Geq" secondAttribute="bottom" id="bLM-NE-Alm"/>
+                            <constraint firstItem="ko4-SF-V5x" firstAttribute="leading" secondItem="LKv-J7-Geq" secondAttribute="leading" constant="40" id="cMU-gH-ILk"/>
+                            <constraint firstItem="zPy-zH-OSL" firstAttribute="leading" secondItem="LKv-J7-Geq" secondAttribute="leading" id="lpp-HA-drs"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LKv-J7-Geq"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="doneButton" destination="zPy-zH-OSL" id="M5k-se-dC6"/>
+                        <outlet property="nameTextField" destination="aut-hY-PhB" id="6Eg-Uf-mBj"/>
+                        <outlet property="tipsTitleLabel" destination="ko4-SF-V5x" id="uUI-VA-Rd6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w8T-ug-VF5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="87" y="125"/>
+        </scene>
+    </scenes>
+</document>

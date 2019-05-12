@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0l5-8f-PdN">
+                            <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0l5-8f-PdN">
                                 <rect key="frame" x="83.5" y="120" width="208" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="208" id="F2n-qO-2nk"/>
@@ -28,8 +28,11 @@
                                 <state key="normal" title="添加狗狗" image="pet_create_dog">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="choicePetType:" destination="lcT-cT-XkK" eventType="touchUpInside" id="6KT-ml-KPa"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88i-sf-Q6s">
+                            <button opaque="NO" tag="1001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88i-sf-Q6s">
                                 <rect key="frame" x="87.5" y="320" width="200" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="7ml-tX-eAJ"/>
@@ -39,6 +42,9 @@
                                 <state key="normal" title="添加猫咪" image="pet_create_cat">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="choicePetType:" destination="lcT-cT-XkK" eventType="touchUpInside" id="4IF-a2-Swz"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0zB-tz-pvj">
                                 <rect key="frame" x="128" y="591" width="119" height="36"/>
