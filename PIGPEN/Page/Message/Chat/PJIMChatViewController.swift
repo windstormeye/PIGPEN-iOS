@@ -68,8 +68,8 @@ class PJIMChatViewController: MSGMessengerViewController, PJBaseViewControllerDe
         friendUser = ChatUser(displayName: messageCell!.nickName,
                               avatar: UIImage(named: "\(messageCell!.avatar)"),
                               isSender: false)
-        meUser = ChatUser(displayName: PJUser.shared.userModel.nick_name!,
-                          avatar: UIImage(named: "\(PJUser.shared.userModel.avatar!)"),
+        meUser = ChatUser(displayName: PJUser.shared.userModel.nick_name,
+                          avatar: UIImage(named: "\(PJUser.shared.userModel.avatar)"),
                               isSender: true)
         
         func update(_ ms: [RCMessage]) {
@@ -89,7 +89,7 @@ class PJIMChatViewController: MSGMessengerViewController, PJBaseViewControllerDe
                 }
                 
                 let c_m: MSGMessage?
-                if m.senderUserId != PJUser.shared.userModel.uid! {
+                if m.senderUserId != String(PJUser.shared.userModel.uid) {
                     c_m = MSGMessage(id: m.messageId,
                                      body: .text(text.content),
                                      user: friendUser!,
@@ -124,7 +124,7 @@ class PJIMChatViewController: MSGMessengerViewController, PJBaseViewControllerDe
             }
         } else {
             // TODO: 这部分有问题，需要交钱才能拉取到服务器上的历史消息
-            RCIMClient.shared()?.getRemoteHistoryMessages(.ConversationType_PRIVATE, targetId: PJUser.shared.userModel.uid!, recordTime: 0, count: 20, success: { (messages: [RCMessage]) in
+            RCIMClient.shared()?.getRemoteHistoryMessages(.ConversationType_PRIVATE, targetId: String(PJUser.shared.userModel.uid), recordTime: 0, count: 20, success: { (messages: [RCMessage]) in
                     update(messages)
                 } as? ([Any]?) -> Void, error: { (errorCode) in
                     print(errorCode.rawValue)

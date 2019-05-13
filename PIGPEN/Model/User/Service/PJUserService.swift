@@ -47,36 +47,21 @@ extension PJUser {
         PJNetwork.shared.requstWithGet(path: UserUrl.details.rawValue, parameters: ["details_uid": details_uid], complement: { (dataDic) in
             if dataDic["msgCode"]?.intValue == 0 {
                 var dataDic = dataDic["msg"]!
-                let userDic = dataDic["masuser"].dictionary!
-                let gender = userDic["gender"]?.intValue
-                let nickName = userDic["nick_name"]?.string
-                let avatar = userDic["avatar"]?.intValue
-                let uid = userDic["uid"]?.string
-                let money = userDic["money"]?.int
-                
-                let f_s = dataDic["feeding_status"].array
-                var feedingStatus = [Int]()
-                for s in f_s! {
-                    feedingStatus.append(s.int!)
-                }
+                let userDic = dataDic["masuser"].dictionaryValue
+                let gender = userDic["gender"]!.intValue
+                let nickName = userDic["nick_name"]!.stringValue
+                let avatar = userDic["avatar"]!.intValue
+                let uid = userDic["uid"]!.intValue
                 
                 var user = UserModel(nick_name: nickName,
                                      gender: gender,
                                      avatar: avatar,
-                                     feeding_status: feedingStatus,
-                                     level: -1,
-                                     follow: 0,
-                                     star: 0,
                                      token: nil,
                                      uid: uid,
-                                     money: money,
                                      rcToken: nil)
                 if getSelf {
                     user.token = self.userModel.token
                     user.rcToken = self.userModel.rcToken
-                    user.level = self.userModel.level
-                    user.follow = self.userModel.follow
-                    user.star = self.userModel.star
                     self.userModel = user
                     self.saveToSandBox()
                 }
@@ -147,25 +132,15 @@ extension PJUser {
                                                 var dataDic = dataDic["msg"]!
                                                 let userDic = dataDic["masuser"].dictionary!
                                                 self.userModel.nick_name = userDic["nick_name"]?.string ?? ""
-                                                self.userModel.gender = userDic["gender"]?.intValue ?? 0
-                                                self.userModel.avatar = userDic["avatar"]?.intValue ?? -1
+                                                self.userModel.gender = userDic["gender"]!.intValue
+                                                self.userModel.avatar = userDic["avatar"]!.intValue
                                                 self.userModel.token = dataDic["token"].string!
-                                                self.userModel.uid = userDic["uid"]?.string
-                                                self.userModel.level = userDic["level"]?.float ?? -1
-                                                self.userModel.follow = userDic["follow"]?.int ?? 0
-                                                self.userModel.star = userDic["star"]?.int ?? 0
+                                                self.userModel.uid = userDic["uid"]!.intValue
                                                 
-                                                
-                                                let f_s = dataDic["feeding_status"].array
-                                                var feedingStatus = [Int]()
-                                                for s in f_s! {
-                                                    feedingStatus.append(s.int!)
-                                                }
-                                                self.userModel.feeding_status = feedingStatus
-                                                Bugly.setUserIdentifier(self.userModel.uid!)
+                                                Bugly.setUserIdentifier(String(self.userModel.uid))
                                                 
                                                 // 登录成功后获取融云token，并持久化
-                                                self.rcToken(uid: self.userModel.uid!, complateHandler: {
+                                                self.rcToken(uid: String(self.userModel.uid), complateHandler: {
                                                     self.userModel.rcToken = $0
                                                     self.saveToSandBox()
                                                     
@@ -200,27 +175,17 @@ extension PJUser {
             if dataDic["msgCode"]?.intValue == 0 {
                 self.logout()
                 var dataDic = dataDic["msg"]!
-                let userDic = dataDic["masuser"].dictionary!
-                self.userModel.nick_name = userDic["nick_name"]?.string ?? ""
-                self.userModel.gender = userDic["gender"]?.intValue ?? 0
-                self.userModel.avatar = userDic["avatar"]?.intValue ?? -1
+                let userDic = dataDic["masuser"].dictionaryValue
+                self.userModel.nick_name = userDic["nick_name"]!.stringValue
+                self.userModel.gender = userDic["gender"]!.intValue
+                self.userModel.avatar = userDic["avatar"]!.intValue
                 self.userModel.token = dataDic["token"].string!
-                self.userModel.uid = userDic["uid"]?.string!
-                self.userModel.level = userDic["level"]?.float ?? -1
-                self.userModel.follow = userDic["follow"]?.int ?? 0
-                self.userModel.star = userDic["star"]?.int ?? 0
+                self.userModel.uid = userDic["uid"]!.intValue
                 
-                let f_s = dataDic["feeding_status"].array
-                var feedingStatus = [Int]()
-                for s in f_s! {
-                    feedingStatus.append(s.int!)
-                }
-                
-                self.userModel.feeding_status = feedingStatus
-                Bugly.setUserIdentifier(self.userModel.uid!)
+                Bugly.setUserIdentifier(String(self.userModel.uid))
                 
                 // 登录成功后获取融云token，并持久化
-                self.rcToken(uid: self.userModel.uid!, complateHandler: {
+                self.rcToken(uid: String(self.userModel.uid), complateHandler: {
                     self.userModel.rcToken = $0
                     self.saveToSandBox()
                     
@@ -349,16 +314,11 @@ extension PJUser {
                 var final_us = [UserModel]()
                 for u in users {
                     let d_u = u.dictionary!
-                    let final_u = UserModel(nick_name: d_u["nick_name"]?.string,
-                                            gender: d_u["gender"]?.int!,
-                                            avatar: d_u["avatar"]?.int!,
-                                            feeding_status: nil,
-                                            level: nil,
-                                            follow: nil,
-                                            star: nil,
+                    let final_u = UserModel(nick_name: d_u["nick_name"]!.string!,
+                                            gender: d_u["gender"]!.int!,
+                                            avatar: d_u["avatar"]!.int!,
                                             token: nil,
-                                            uid: d_u["uid"]?.string!,
-                                            money: nil,
+                                            uid: d_u["uid"]!.int!,
                                             rcToken: nil)
                     final_us.append(final_u)
                 }
@@ -386,16 +346,11 @@ extension PJUser {
                 for u in users {
                     let d_u = u.dictionary!
                     if type == .user {
-                        let final_u = UserModel(nick_name: d_u["nick_name"]?.string,
-                                                gender: d_u["gender"]?.int!,
-                                                avatar: d_u["avatar"]?.int!,
-                                                feeding_status: nil,
-                                                level: nil,
-                                                follow: nil,
-                                                star: nil,
+                        let final_u = UserModel(nick_name: d_u["nick_name"]!.string!,
+                                                gender: d_u["gender"]!.int!,
+                                                avatar: d_u["avatar"]!.int!,
                                                 token: nil,
-                                                uid: d_u["uid"]?.string!,
-                                                money: nil,
+                                                uid: d_u["uid"]!.int!,
                                                 rcToken: nil)
                         final_us.append(final_u)
                     } else {
@@ -448,27 +403,26 @@ extension PJUser {
     }
     struct UserModel: Codable {
         /// 昵称
-        var nick_name: String?
+        var nick_name: String
         /// 性别
-        var gender: Int?
+        var gender: Int
         /// 头像索引
-        var avatar: Int?
-        /// 饲养状态
-        var feeding_status: [Int]?
-        /// 评分
-        var level: Float?
-        /// 关注
-        var follow: Int?
-        /// 收藏
-        var star: Int?
+        var avatar: Int
         /// 校验 token
         var token: String?
         /// 用户唯一标识符
-        var uid: String?
-        /// 猪饲料
-        var money: Int?
+        var uid: Int
         /// 融云IM token
         var rcToken: String?
+        
+        init(nick_name: String? = nil, gender: Int? = nil, avatar: Int? = nil, token: String? = nil, uid: Int? = nil, rcToken: String? = nil) {
+            self.nick_name = nick_name ?? ""
+            self.gender = gender ?? 0
+            self.avatar = avatar ?? -1
+            self.token = token
+            self.uid = uid ?? -1
+            self.rcToken = rcToken
+        }
     }
     
     // 用户注册时的中转 model

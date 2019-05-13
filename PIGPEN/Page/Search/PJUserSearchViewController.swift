@@ -41,9 +41,9 @@ class PJUserSearchViewController: UIViewController, PJBaseViewControllerDelegate
             let chat = PJIMChatViewController()
             chat.hidesBottomBarWhenPushed = true
             self?.navigationController?.pushViewController(chat, animated: true)
-            chat.messageCell = PJIM.MessageListCell(avatar: viewModel.avatar!,
-                                                    nickName: viewModel.nick_name!,
-                                                    uid: viewModel.uid!,
+            chat.messageCell = PJIM.MessageListCell(avatar: viewModel.avatar,
+                                                    nickName: viewModel.nick_name,
+                                                    uid: String(viewModel.uid),
                                                     message: nil)
         }
         

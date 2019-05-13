@@ -66,7 +66,7 @@ class PJUserLoginViewController: PJBaseViewController {
         }) { (error) in
             PJHUD.shared.dismiss()
             PJTapic.error()
-            print(error.errorMsg ?? "未知错误")
+            PJHUD.shared.showError(view: self.view, text: error.errorMsg)
         }
     }
     

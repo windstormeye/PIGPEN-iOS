@@ -114,7 +114,7 @@ extension PJUserCenterViewController {
     }
     
     func viewWillData() {
-        if PJUser.shared.userModel.uid != nil {
+        if PJUser.shared.userModel.token != nil {
 //            PJUser.shared.pets(complateHandler: { [weak self] realPetModels, virtualPetModels in
 //                guard let `self` = self else { return }
 //                self.tableView?.realPetModels = realPetModels
@@ -125,7 +125,7 @@ extension PJUserCenterViewController {
 //                print(error)
 //            }
             
-            PJUser.shared.details(details_uid: PJUser.shared.userModel.uid ?? "",
+            PJUser.shared.details(details_uid: String(PJUser.shared.userModel.uid),
                                   getSelf: true,
                                   completeHandler: { (userModel) in
                                     self.tableView?.userDetailsModel = userModel

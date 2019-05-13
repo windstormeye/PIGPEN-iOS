@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pet Create Avatar View Controller-->
+        <scene sceneID="kIS-zo-jZl">
+            <objects>
+                <viewController storyboardIdentifier="PJPetCreateAvatarViewController" id="5KO-1t-uxr" customClass="PJPetCreateAvatarViewController" customModule="PIGPEN" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lbc-G3-9oA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择狗狗头像" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZz-Zc-mb0">
+                                <rect key="frame" x="114.5" y="60" width="146" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择狗狗性别" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DW1-Xe-pgB">
+                                <rect key="frame" x="114.5" y="279" width="146" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="BU9-Fg-afK">
+                                <rect key="frame" x="137.5" y="129" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="1Ut-AH-NRt"/>
+                                    <constraint firstAttribute="height" constant="100" id="c8u-em-MfV"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tsl-Qu-ttO">
+                                <rect key="frame" x="114" y="358" width="53" height="22"/>
+                                <state key="normal" title="女生" image="gender_female_unselected">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="selected" title="女生" image="gender_female"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJg-WO-Cdf">
+                                <rect key="frame" x="208.5" y="358" width="53" height="22"/>
+                                <state key="normal" title="男生" image="gender_male_unselected">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="selected" image="gender__male"/>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OJk-NK-TpC">
+                                <rect key="frame" x="187" y="354" width="1.5" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="1.5" id="7rp-r1-gmQ"/>
+                                    <constraint firstAttribute="height" constant="30" id="pif-ze-5bt"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHG-jb-pK3">
+                                <rect key="frame" x="40" y="607" width="295" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="dGV-pZ-Wiq"/>
+                                </constraints>
+                                <state key="normal" title="下一步"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JZz-Zc-mb0" firstAttribute="centerX" secondItem="lbc-G3-9oA" secondAttribute="centerX" id="4qL-71-pPb"/>
+                            <constraint firstItem="BU9-Fg-afK" firstAttribute="top" secondItem="JZz-Zc-mb0" secondAttribute="bottom" constant="40" id="5F7-Vb-S7C"/>
+                            <constraint firstItem="DW1-Xe-pgB" firstAttribute="centerX" secondItem="lbc-G3-9oA" secondAttribute="centerX" id="AVh-Lc-tU6"/>
+                            <constraint firstItem="BU9-Fg-afK" firstAttribute="centerX" secondItem="lbc-G3-9oA" secondAttribute="centerX" id="Dwz-Hf-w12"/>
+                            <constraint firstItem="Tsl-Qu-ttO" firstAttribute="top" secondItem="DW1-Xe-pgB" secondAttribute="bottom" constant="50" id="Nk5-jh-rq8"/>
+                            <constraint firstItem="OJk-NK-TpC" firstAttribute="leading" secondItem="Tsl-Qu-ttO" secondAttribute="trailing" constant="20" id="QOb-rz-hGB"/>
+                            <constraint firstItem="oHG-jb-pK3" firstAttribute="leading" secondItem="Y8i-7f-zGN" secondAttribute="leading" constant="40" id="RsQ-ol-K4a"/>
+                            <constraint firstItem="OJk-NK-TpC" firstAttribute="centerY" secondItem="Tsl-Qu-ttO" secondAttribute="centerY" id="ay1-lJ-aHH"/>
+                            <constraint firstItem="Y8i-7f-zGN" firstAttribute="trailing" secondItem="oHG-jb-pK3" secondAttribute="trailing" constant="40" id="f1s-jl-JZ4"/>
+                            <constraint firstItem="iJg-WO-Cdf" firstAttribute="leading" secondItem="OJk-NK-TpC" secondAttribute="trailing" constant="20" id="hYi-1u-aZv"/>
+                            <constraint firstItem="JZz-Zc-mb0" firstAttribute="top" secondItem="Y8i-7f-zGN" secondAttribute="top" constant="40" id="hfb-HA-l9B"/>
+                            <constraint firstItem="Y8i-7f-zGN" firstAttribute="bottom" secondItem="oHG-jb-pK3" secondAttribute="bottom" constant="20" id="jas-8S-UWT"/>
+                            <constraint firstItem="OJk-NK-TpC" firstAttribute="centerX" secondItem="lbc-G3-9oA" secondAttribute="centerX" id="jw3-Uw-iie"/>
+                            <constraint firstItem="oHG-jb-pK3" firstAttribute="centerX" secondItem="lbc-G3-9oA" secondAttribute="centerX" id="obP-Z9-WRf"/>
+                            <constraint firstItem="iJg-WO-Cdf" firstAttribute="top" secondItem="Tsl-Qu-ttO" secondAttribute="top" id="tTl-MU-V0K"/>
+                            <constraint firstItem="DW1-Xe-pgB" firstAttribute="top" secondItem="BU9-Fg-afK" secondAttribute="bottom" constant="50" id="vMS-AX-yge"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Y8i-7f-zGN"/>
+                    </view>
+                    <connections>
+                        <outlet property="avatarImageView" destination="BU9-Fg-afK" id="2JA-dv-eIQ"/>
+                        <outlet property="doneButton" destination="oHG-jb-pK3" id="OAU-QT-hNZ"/>
+                        <outlet property="femaleButton" destination="Tsl-Qu-ttO" id="h2P-iJ-O4x"/>
+                        <outlet property="maleButton" destination="iJg-WO-Cdf" id="gUT-MD-YMh"/>
+                        <outlet property="tipsTitleLabel" destination="JZz-Zc-mb0" id="BC2-yy-Eba"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YeF-pT-jBL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-74" y="157"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="default_avatar" width="98" height="98"/>
+        <image name="gender__male" width="14" height="14"/>
+        <image name="gender_female" width="14" height="14"/>
+        <image name="gender_female_unselected" width="14" height="14"/>
+        <image name="gender_male_unselected" width="14" height="14"/>
+    </resources>
+</document>

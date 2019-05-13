@@ -36,8 +36,9 @@ class PJHUD {
     func showError(view: UIView, text: String) {
         DispatchQueue.main.async {
             self.hud.textLabel.text = text
+            self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
             self.hud.show(in: view)
-            self.hud.dismiss(afterDelay: 1.5)
+            self.hud.dismiss(afterDelay: 3)
         }
     }
 }

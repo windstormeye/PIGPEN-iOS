@@ -31,13 +31,8 @@ class PJUser {
             userModel = UserModel(nick_name: "",
                                   gender: 0,
                                   avatar: -1,
-                                  feeding_status: [0, 0, 0],
-                                  level: 0,
-                                  follow: 0,
-                                  star: 0,
                                   token: nil,
-                                  uid: "",
-                                  money: 0,
+                                  uid: -1,
                                   rcToken: nil)
         }
     }

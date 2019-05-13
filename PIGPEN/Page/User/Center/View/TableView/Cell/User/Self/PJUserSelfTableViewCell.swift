@@ -38,32 +38,32 @@ class PJUserSelfTableViewCell: UITableViewCell {
         avatarImageView.image = UIImage(named: String(model?.avatar ?? 0))
         genderImageView.image = UIImage(named: "user_info_gender_\(String(model?.gender ?? 0))")
     
-        var feedingStatusString = ""
-        if model?.feeding_status![0] == 1 {
-            feedingStatusString.append("猫 &")
-        }
-        if model?.feeding_status![1] == 1 {
-            feedingStatusString.append("狗 &")
-        }
-        if model?.feeding_status![2] == 1 {
-            feedingStatusString.append("虚拟狗 &")
-        }
-        if feedingStatusString == "" {
-            feedingStatusString = "暂无宠物"
-        } else {
-            feedingStatusString.removeLast()
-            feedingStatusString.removeLast()
-        }
-        statusLabel.text = feedingStatusString
-        
-        if model?.level == -1.0 {
-            levelLabel.text = "暂无评分"
-        } else {
-            levelLabel.text = String(model?.level ?? 0)
-        }
-
-        followLabel.text = String(model?.follow ?? 0)
-        starLabel.text = String(model?.star ?? 0)
+//        var feedingStatusString = ""
+//        if model?.feeding_status![0] == 1 {
+//            feedingStatusString.append("猫 &")
+//        }
+//        if model?.feeding_status![1] == 1 {
+//            feedingStatusString.append("狗 &")
+//        }
+//        if model?.feeding_status![2] == 1 {
+//            feedingStatusString.append("虚拟狗 &")
+//        }
+//        if feedingStatusString == "" {
+//            feedingStatusString = "暂无宠物"
+//        } else {
+//            feedingStatusString.removeLast()
+//            feedingStatusString.removeLast()
+//        }
+//        statusLabel.text = feedingStatusString
+//        
+//        if model?.level == -1.0 {
+//            levelLabel.text = "暂无评分"
+//        } else {
+//            levelLabel.text = String(model?.level ?? 0)
+//        }
+//
+//        followLabel.text = String(model?.follow ?? 0)
+//        starLabel.text = String(model?.star ?? 0)
     }
     
     @IBAction func levelButtonTapped(_ sender: UIButton) {

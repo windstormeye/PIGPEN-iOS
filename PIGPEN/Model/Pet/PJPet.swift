@@ -119,7 +119,8 @@ extension PJPet {
             self.ppp_status = -1
             self.love_status = -1
             self.birth_time = -1
-            self.gender = -1
+            // 默认是女生
+            self.gender = 0
             self.breed_type = ""
             self.created_time = -1
         }

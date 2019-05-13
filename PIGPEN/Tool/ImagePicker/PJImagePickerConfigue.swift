@@ -15,10 +15,16 @@ func pj_YPImagePicker() -> YPImagePickerConfiguration {
     config.screens = [.library]
     config.hidesStatusBar = false
     config.hidesBottomBar = true
+    config.colors.tintColor = .black
+    config.showsFilters = false
+    config.targetImageSize = YPImageSize.cappedTo(size: 100)
+    
+    let overlayView = UIImageView(image: UIImage(named: "avatar_overlayer"))
+    overlayView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth)
+    config.overlayView = overlayView
     
     config.library.numberOfItemsInRow = 3
     config.library.spacingBetweenItems = 3.0
-    config.library.skipSelectionsGallery = false
-    
+
     return config
 }

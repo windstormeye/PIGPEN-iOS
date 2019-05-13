@@ -68,9 +68,9 @@ import Foundation
                     PJUser.shared.details(details_uid: c.targetId,
                                           getSelf: false,
                                           completeHandler: {
-                                            let msgCell = MessageListCell(avatar: $0.avatar!,
-                                                                          nickName: $0.nick_name!,
-                                                                          uid: $0.uid!,
+                                            let msgCell = MessageListCell(avatar: $0.avatar,
+                                                                          nickName: $0.nick_name,
+                                                                          uid: String($0.uid),
                                                                           message: message!)
                                             msgListCells.append(msgCell)
                                             

@@ -122,7 +122,7 @@ extension PJUserCenterTableView: UITableViewDelegate, UITableViewDataSource {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: PJUserCenterTableView.userIdentifier,
                                                      for: indexPath) as! PJDetailUserTableViewCell
-            cell.viewModel = PJDetailUserTableViewCell.ViewModel(avatar: 0, firstCount: String(PJUser.shared.userModel.level ?? 0).count, firstTitle: "\(PJUser.shared.userModel.level ?? 0)\n评分", secondCount: String(PJUser.shared.userModel.follow ?? 0).count, secondTitle: "\(PJUser.shared.userModel.follow ?? 0)\n关注", threeCount: 4, threeTitle: "2333\n收藏")
+            cell.viewModel = PJDetailUserTableViewCell.ViewModel(avatar: 0, firstCount: String(8.5).count, firstTitle: "\(8.5)\n评分", secondCount: String(231).count, secondTitle: "\(231)\n关注", threeCount: String(14).count, threeTitle: "\(14)\n收藏")
             cell.isHiddenChatButton(true)
             cell.isHiddenAvatarEditImageView(false)
             return cell

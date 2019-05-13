@@ -25,6 +25,8 @@ class PJPetCreateNameViewController: UIViewController, PJBaseViewControllerDeleg
         initBaseView()
         backButtonTapped(backSel: .back, imageName: nil)
         
+        doneButton.addTarget(self, action: .done, for: .touchUpInside)
+        
         nameTextField.becomeFirstResponder()
         nameTextField.layer.cornerRadius = nameTextField.pj_height / 2
         nameTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 0))
@@ -60,7 +62,19 @@ extension PJPetCreateNameViewController {
     
     @objc
     fileprivate func done() {
-        popBack()
+        guard nameTextField.text?.count != 0 else {
+            PJHUD.shared.showError(view: view, text: "请重填名字")
+            return
+        }
+        
+        var pet = PJPet.Pet()
+        pet.nick_name = nameTextField.text!
+        pet.pet_type = petType
+        print(nameTextField.text!)
+        
+        let vc = UIStoryboard(name: "PJPetCreateAvatarViewController", bundle: nil).instantiateViewController(withIdentifier: "PJPetCreateAvatarViewController") as! PJPetCreateAvatarViewController
+        vc.pet = pet
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc

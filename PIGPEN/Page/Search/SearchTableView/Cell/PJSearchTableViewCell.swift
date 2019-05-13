@@ -48,8 +48,8 @@ class PJSearchTableViewCell: UITableViewCell {
             accessImageView.isHidden = false
             rightButton.setImage(UIImage(named: "search_send"),
                                  for: .normal)
-            avatarImageView.image = UIImage(named: String(viewModel!.avatar!))
-            nickNameLabel.text = viewModel!.nick_name!
+            avatarImageView.image = UIImage(named: String(viewModel!.avatar))
+            nickNameLabel.text = viewModel!.nick_name
             
         }
     }
