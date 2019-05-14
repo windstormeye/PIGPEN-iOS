@@ -10,10 +10,14 @@ import UIKit
 
 class PJPetCreateNameViewController: UIViewController, PJBaseViewControllerDelegate {
     var petType: PJPet.PetType = .dog
+    var viewModel: ViewModel?
+    
+    var complateHandler: ((String) -> Void)?
     
     @IBOutlet private weak var tipsTitleLabel: UILabel!
     @IBOutlet private weak var nameTextField: UITextField!
     @IBOutlet private weak var doneButton: UIButton!
+    @IBOutlet weak var bottomTipsLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -43,6 +47,13 @@ class PJPetCreateNameViewController: UIViewController, PJBaseViewControllerDeleg
             nameTextField.placeholder = "请输入狗狗名字"
         }
         
+        if viewModel != nil {
+            tipsTitleLabel.text = viewModel!.title
+            nameTextField.placeholder = viewModel?.placeholder
+            bottomTipsLabel.text = viewModel?.bottomString
+            doneButton.setTitle(viewModel?.doneString, for: .normal)
+        }
+        
         NotificationCenter.default.addObserver(self, selector: .keyboardFrame, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
 
@@ -57,24 +68,37 @@ private extension Selector {
 extension PJPetCreateNameViewController {
     @objc
     fileprivate func back() {
+        if viewModel != nil {
+            guard nameTextField.text != nil else { return }
+            complateHandler?("其它")
+            
+            var vcs = self.navigationController?.viewControllers
+            vcs!.remove(at: vcs!.count - 2)
+            self.navigationController?.viewControllers = vcs!
+        }
+        
         popBack()
     }
     
     @objc
     fileprivate func done() {
         guard nameTextField.text?.count != 0 else {
-            PJHUD.shared.showError(view: view, text: "请重填名字")
+            PJHUD.shared.showError(view: view, text: "请重填信息")
             return
         }
         
-        var pet = PJPet.Pet()
-        pet.nick_name = nameTextField.text!
-        pet.pet_type = petType
-        print(nameTextField.text!)
-        
-        let vc = UIStoryboard(name: "PJPetCreateAvatarViewController", bundle: nil).instantiateViewController(withIdentifier: "PJPetCreateAvatarViewController") as! PJPetCreateAvatarViewController
-        vc.pet = pet
-        navigationController?.pushViewController(vc, animated: true)
+        if viewModel != nil {
+            // 提交
+        } else {
+            var pet = PJPet.Pet()
+            pet.nick_name = nameTextField.text!
+            pet.pet_type = petType
+            print(nameTextField.text!)
+            
+            let vc = UIStoryboard(name: "PJPetCreateAvatarViewController", bundle: nil).instantiateViewController(withIdentifier: "PJPetCreateAvatarViewController") as! PJPetCreateAvatarViewController
+            vc.pet = pet
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     @objc
@@ -90,6 +114,14 @@ extension PJPetCreateNameViewController {
             }
         }
     }
-    
-    
+}
+
+
+extension PJPetCreateNameViewController {
+    struct ViewModel {
+        var title: String
+        var placeholder: String
+        var bottomString: String
+        var doneString: String
+    }
 }

@@ -131,9 +131,8 @@ extension PJPetCreateBreedsViewController {
             return
         }
         
-        if selectComplation != nil {
-            selectComplation!(selectedModel!)
-        }
+        selectComplation?(selectedModel!)
+
         
         navigationController?.popViewController(animated: true)
     }
@@ -223,7 +222,7 @@ extension PJPetCreateBreedsViewController: UITableViewDataSource {
         cell.setTipsTitleText(model.zh_name)
         cell.selectionStyle = .none
         
-        if (selectedModel != nil && selectedModel?.id == model.id) {
+        if (selectedModel != nil && selectedModel?.zh_name == model.zh_name) {
             cell.isHiddenTipImageView(false)
         } else {
             cell.isHiddenTipImageView(true)
@@ -251,6 +250,20 @@ extension PJPetCreateBreedsViewController: UITableViewDataSource {
         }
         
         return indexPath
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableViewModels[indexPath.section].breeds[indexPath.row].zh_name == "其它" {
+            let vc = UIStoryboard(name: "PJPetCreateNameViewController", bundle: nil).instantiateViewController(withIdentifier: "PJPetCreateNameViewController") as! PJPetCreateNameViewController
+            var breedString = "请输入狗狗品种"
+            if petType == .cat {
+                breedString = "请输入猫咪品种"
+            }
+            vc.viewModel = PJPetCreateNameViewController.ViewModel(title: "其它品种", placeholder: breedString, bottomString: "您填写的品种将会提交至后台审核，\n请耐心等待", doneString: "提交")
+            
+            selectComplation?(PJPet.PetBreedModel(id: -1, zh_name: "其它"))
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 
