@@ -61,6 +61,8 @@
 		0C5AD135228A4B9100326E63 /* PJPetCreateBreedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5AD134228A4B9100326E63 /* PJPetCreateBreedsViewController.swift */; };
 		0C5AD138228A648A00326E63 /* PJPetCreateBreedsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5AD136228A648A00326E63 /* PJPetCreateBreedsTableViewCell.swift */; };
 		0C5AD139228A648A00326E63 /* PJPetCreateBreedsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C5AD137228A648A00326E63 /* PJPetCreateBreedsTableViewCell.xib */; };
+		0C5AD13E228A87C900326E63 /* PJBreedsPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5AD13D228A87C900326E63 /* PJBreedsPopView.swift */; };
+		0C5AD140228A87D100326E63 /* PJBreedsPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C5AD13F228A87D100326E63 /* PJBreedsPopView.xib */; };
 		0C5B5D01225DBEE400392E21 /* PJIMMessageHomeTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5B5D00225DBEE400392E21 /* PJIMMessageHomeTableView.swift */; };
 		0C5B5D06225DBF1500392E21 /* PJIMMessageHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5B5D04225DBF1500392E21 /* PJIMMessageHomeTableViewCell.swift */; };
 		0C5B5D07225DBF1500392E21 /* PJIMMessageHomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C5B5D05225DBF1500392E21 /* PJIMMessageHomeTableViewCell.xib */; };
@@ -208,6 +210,8 @@
 		0C5AD134228A4B9100326E63 /* PJPetCreateBreedsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PJPetCreateBreedsViewController.swift; sourceTree = "<group>"; };
 		0C5AD136228A648A00326E63 /* PJPetCreateBreedsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJPetCreateBreedsTableViewCell.swift; sourceTree = "<group>"; };
 		0C5AD137228A648A00326E63 /* PJPetCreateBreedsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJPetCreateBreedsTableViewCell.xib; sourceTree = "<group>"; };
+		0C5AD13D228A87C900326E63 /* PJBreedsPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBreedsPopView.swift; sourceTree = "<group>"; };
+		0C5AD13F228A87D100326E63 /* PJBreedsPopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJBreedsPopView.xib; sourceTree = "<group>"; };
 		0C5B5D00225DBEE400392E21 /* PJIMMessageHomeTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJIMMessageHomeTableView.swift; sourceTree = "<group>"; };
 		0C5B5D04225DBF1500392E21 /* PJIMMessageHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJIMMessageHomeTableViewCell.swift; sourceTree = "<group>"; };
 		0C5B5D05225DBF1500392E21 /* PJIMMessageHomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJIMMessageHomeTableViewCell.xib; sourceTree = "<group>"; };
@@ -762,6 +766,32 @@
 			path = Food;
 			sourceTree = "<group>";
 		};
+		0C5AD13A228A6F3800326E63 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0C5AD136228A648A00326E63 /* PJPetCreateBreedsTableViewCell.swift */,
+				0C5AD137228A648A00326E63 /* PJPetCreateBreedsTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		0C5AD13B228A6F4500326E63 /* SlideSliderView */ = {
+			isa = PBXGroup;
+			children = (
+				0C8B755C2196FF8B00353842 /* PJBreedsSideSliderView.swift */,
+			);
+			path = SlideSliderView;
+			sourceTree = "<group>";
+		};
+		0C5AD13C228A87AF00326E63 /* Pop */ = {
+			isa = PBXGroup;
+			children = (
+				0C5AD13D228A87C900326E63 /* PJBreedsPopView.swift */,
+				0C5AD13F228A87D100326E63 /* PJBreedsPopView.xib */,
+			);
+			path = Pop;
+			sourceTree = "<group>";
+		};
 		0C5B5CFD225DBEA100392E21 /* List */ = {
 			isa = PBXGroup;
 			children = (
@@ -964,7 +994,9 @@
 		0C8B755A2196FE1E00353842 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0C8B755C2196FF8B00353842 /* PJBreedsSideSliderView.swift */,
+				0C5AD13C228A87AF00326E63 /* Pop */,
+				0C5AD13B228A6F4500326E63 /* SlideSliderView */,
+				0C5AD13A228A6F3800326E63 /* Cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -973,8 +1005,6 @@
 			isa = PBXGroup;
 			children = (
 				0C5AD134228A4B9100326E63 /* PJPetCreateBreedsViewController.swift */,
-				0C5AD136228A648A00326E63 /* PJPetCreateBreedsTableViewCell.swift */,
-				0C5AD137228A648A00326E63 /* PJPetCreateBreedsTableViewCell.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1466,6 +1496,7 @@
 				0C2019FB2288591D00AE8C2B /* PJUserCenterPetTableViewCell.xib in Resources */,
 				0CE2618621C5434000740582 /* PJAlbumCollectionFocusView.xib in Resources */,
 				0CDB0C9D21675F7400669331 /* PJUserDetailsMenuView.xib in Resources */,
+				0C5AD140228A87D100326E63 /* PJBreedsPopView.xib in Resources */,
 				0C5B5D382262C73F00392E21 /* CustomOutgoingTextCell.xib in Resources */,
 				0CB5E8E02262D82300CBE217 /* PJSearchBar.xib in Resources */,
 			);
@@ -1592,6 +1623,7 @@
 				0C6A986722729C21003E4AA5 /* PJFriendTableViewCell.swift in Sources */,
 				0C5B5D3C2262C73F00392E21 /* CustomBubble.swift in Sources */,
 				0C5B5D06225DBF1500392E21 /* PJIMMessageHomeTableViewCell.swift in Sources */,
+				0C5AD13E228A87C900326E63 /* PJBreedsPopView.swift in Sources */,
 				0CB5E903226AC87600CBE217 /* PJHUD.swift in Sources */,
 				0C0A54AC216CF64600195DF1 /* PJUserDetailRealPetTableViewCell.swift in Sources */,
 				0C8B755D2196FF8B00353842 /* PJBreedsSideSliderView.swift in Sources */,

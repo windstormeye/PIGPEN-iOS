@@ -12,16 +12,19 @@ fileprivate extension Selector {
     static let back = #selector(PJPetCreateBreedsViewController.back)
 }
 
-class PJPetCreateBreedsViewController: UIViewController, PJBaseViewControllerDelegate, UITableViewDelegate,
-UITableViewDataSource {
+class PJPetCreateBreedsViewController: UIViewController, PJBaseViewControllerDelegate {
     static let cellIdentifier = "PJPetCreateBreedsTableViewCell"
+    
+    private var pop = PJBreedsPopView.newInstance()
+    private var tableView: UITableView?
+    private var tableViewRefresh: UIRefreshControl?
+    private var timeStamp = 0
+
     
     var selectedModel: PJPet.PetBreedModel?
     var sectionTitles = [String]()
     var tableViewModels = [PJPet.PetBreedGroupModel]()
-    var tableView: UITableView?
-    var tableViewRefresh: UIRefreshControl?
-    var sideSliderView: PJBreedsSideSliderView?
+    var sideSliderView = PJBreedsSideSliderView()
     var selectComplation: ((PJPet.PetBreedModel) -> Void)?
     var petType = PJPet.PetType.dog {
         didSet {
@@ -45,28 +48,32 @@ UITableViewDataSource {
         let sideSiderViewWidth: CGFloat = 15
         let siderSliderView_X = view.pj_width - sideSiderViewWidth
         let siderSliderView_Y = 35 + navigationBarHeight
-        sideSliderView = PJBreedsSideSliderView(frame: CGRect(x: siderSliderView_X,
-                                                              y: siderSliderView_Y,
-                                                              width: sideSiderViewWidth,
-                                                              height: 0))
-        view.addSubview(sideSliderView!)
-        sideSliderView?.selectedComplation = { [weak self] index in
+        sideSliderView = PJBreedsSideSliderView(frame: CGRect(x: siderSliderView_X, y: siderSliderView_Y, width: sideSiderViewWidth, height: 0))
+        sideSliderView.isHidden = true
+        sideSliderView.alpha = 0
+        view.addSubview(sideSliderView)
+        sideSliderView.selectedComplation = { [weak self] index in
             if let `self` = self {
                 PJTapic.select()
                 let indexPath = IndexPath(row: 0,
                                           section: index)
                 self.tableView?.scrollToRow(at: indexPath,
                                             at: .top,
-                                            animated: true)
+                                            animated: false)
+                
+                self.pop.y = self.sideSliderView.y + 5 + self.sideSliderView.buttonHeight * CGFloat(index)
+                self.pop.setTitle(self.sideSliderView.itemStrings[index])
+                self.pop.isHidden = false
+                
+                self.timeStamp = Int(Date().timeIntervalSince1970)
             }
         }
         
-        let tableView_width = view.pj_width - sideSliderView!.pj_width
+        let tableView_width = view.pj_width - sideSliderView.pj_width
         let tableView_height = view.pj_height - navigationBarHeight
-        tableView = UITableView(frame: CGRect(x: 0, y: navigationBarHeight,
-                                              width: tableView_width,
-                                              height: tableView_height), style: .grouped)
+        tableView = UITableView(frame: CGRect(x: 0, y: navigationBarHeight, width: tableView_width, height: tableView_height), style: .grouped)
         view.addSubview(tableView!)
+        tableView?.backgroundColor = .white
         tableView?.delegate = self
         tableView?.dataSource = self
         tableView?.separatorStyle = .none
@@ -78,29 +85,76 @@ UITableViewDataSource {
                                 for model in models {
                                     self.sectionTitles.append(model.group)
                                 }
-                                self.sideSliderView?.itemStrings = self.sectionTitles
-                                self.sideSliderView?.pj_height = CGFloat(self.sectionTitles.count * 25)
-                                self.sideSliderView?.centerY = self.view.centerY
-                                self.sideSliderView?.roundingCorners(corners: [.topLeft, .bottomLeft], radius: self.sideSliderView!.pj_width / 2)
+                
+                                self.sideSliderView.itemStrings = self.sectionTitles
+                                self.sideSliderView.pj_height = CGFloat(self.sectionTitles.count * 25)
+                                self.sideSliderView.centerY = self.view.centerY
+                                self.sideSliderView.roundingCorners(corners: [.topLeft, .bottomLeft], radius: self.sideSliderView.pj_width / 2)
                                 self.tableViewModels = models
                                 self.tableView?.reloadData()
                             }
             }, failedHandler: {
                 PJHUD.shared.showError(view: self.view, text: $0.errorMsg)
         })
-        
     
         tableView?.register(UINib(nibName: "PJPetCreateBreedsTableViewCell", bundle: nil
         ), forCellReuseIdentifier: "PJPetCreateBreedsTableViewCell")
+        
+        
+        pop.x = sideSliderView.left - 30
+        pop.isHidden = true
+        view.addSubview(pop)
+        
+        // 监听器
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+            if Int(Date().timeIntervalSince1970) - self.timeStamp == 2 {
+                self.pop.isHidden = true
+                self.sideSliderView.isHidden = true
+            }
+        }
     }
-    
-    // MAKR: - Actions
+}
+
+private extension Selector {
+    static let done = #selector(PJPetCreateBreedsViewController.done)
+}
+
+extension PJPetCreateBreedsViewController {
     @objc fileprivate func back() {
         navigationController?.popViewController(animated: true)
     }
     
+    @objc
+    fileprivate func done() {
+        guard selectedModel != nil else {
+            PJHUD.shared.showError(view: view, text: "还未选择品种哦")
+            return
+        }
+        
+        if selectComplation != nil {
+            selectComplation!(selectedModel!)
+        }
+        
+        navigationController?.popViewController(animated: true)
+    }
     
-    // MARK: - Delegate
+    func hiddenSideSliderView() {
+        delay(by: 3) {
+            UIView.animate(withDuration: 0.25, animations: {
+                self.sideSliderView.alpha = 0
+                self.pop.alpha = 0
+            }) {
+                if $0 {
+                    self.sideSliderView.isHidden = true
+                    self.pop.isHidden = true
+                }
+            }
+        }
+    }
+}
+
+
+extension PJPetCreateBreedsViewController: UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return tableViewModels.count
     }
@@ -109,7 +163,7 @@ UITableViewDataSource {
                    numberOfRowsInSection section: Int) -> Int {
         return tableViewModels[section].breeds.count
     }
-
+    
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 35
@@ -123,17 +177,19 @@ UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 35
     }
-    
+}
+
+extension PJPetCreateBreedsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    viewForHeaderInSection section: Int) -> UIView? {
         let sectionView = UIView(frame: CGRect(x: 0, y: 0,
                                                width: PJSCREEN_WIDTH,
                                                height: 35))
         sectionView.backgroundColor = .white
-
+        
         let sectionLabel = UILabel(frame: CGRect(x: 15, y: 0,
-                                               width: PJSCREEN_WIDTH - 15,
-                                               height: 35))
+                                                 width: PJSCREEN_WIDTH - 15,
+                                                 height: 35))
         sectionLabel.text = tableViewModels[section].group
         sectionLabel.font = UIFont.systemFont(ofSize: 14)
         sectionLabel.textColor = PJRGB(102, 102, 102)
@@ -174,19 +230,16 @@ UITableViewDataSource {
         }
         return cell
     }
-
-    func tableView(_ tableView: UITableView,
-                   didSelectRowAt indexPath: IndexPath) {
-        
-    }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         PJTapic.select()
         
         let previousIndexPath = tableView.indexPathForSelectedRow
         if previousIndexPath != nil {
-            let previousCell = tableView.cellForRow(at: previousIndexPath!) as! PJPetCreateBreedsTableViewCell
-            previousCell.isHiddenTipImageView(true)
+            let previousCell = tableView.cellForRow(at: previousIndexPath!) as? PJPetCreateBreedsTableViewCell
+            if previousCell != nil {
+                previousCell!.isHiddenTipImageView(true)
+            }
         }
         
         let cell = tableView.cellForRow(at: indexPath) as! PJPetCreateBreedsTableViewCell
@@ -201,22 +254,27 @@ UITableViewDataSource {
     }
 }
 
-private extension Selector {
-    static let done = #selector(PJPetCreateBreedsViewController.done)
-}
-
-extension PJPetCreateBreedsViewController {
-    @objc
-    fileprivate func done() {
-        guard selectedModel != nil else {
-            PJHUD.shared.showError(view: view, text: "还未选择品种哦")
-            return
+extension PJPetCreateBreedsViewController: UIScrollViewDelegate {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.sideSliderView.isHidden = false
+        UIView.animate(withDuration: 0.25) {
+            self.sideSliderView.alpha = 1
         }
-        
-        if selectComplation != nil {
-            selectComplation!(selectedModel!)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if !scrollView.isTracking && !scrollView.isDragging && !scrollView.isDecelerating {
+            scrollViewEndScrolling()
         }
-        
-        navigationController?.popViewController(animated: true)
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if scrollView.isTracking && !scrollView.isDragging && !scrollView.isDecelerating {
+            scrollViewEndScrolling()
+        }
+    }
+    
+    func scrollViewEndScrolling() {
+        self.timeStamp = Int(Date().timeIntervalSince1970)
     }
 }

@@ -74,7 +74,8 @@ extension PJCreatePetDetailsViewController {
         vc.selectComplation = {
             self.breed = $0
             self.pet.breed_type = $0.zh_name
-            print($0)
+            self.breedButton.setTitle($0.zh_name, for: .normal)
+            self.breedButton.isSelected = true
         }
     }
 }

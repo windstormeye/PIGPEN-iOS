@@ -8,18 +8,16 @@
 
 import UIKit
 
-fileprivate extension Selector {
-    static let buttonSelected = #selector(PJBreedsSideSliderView.buttonSelected(button:))
-}
-
 class PJBreedsSideSliderView: UIView {
 
     var selectedComplation: ((Int) -> Void)?
-    var itemStrings: [String]? {
+    var itemStrings = [String]() {
         didSet {
             didSetItemString()
         }
     }
+    
+    let buttonHeight: CGFloat = 25
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,13 +31,16 @@ class PJBreedsSideSliderView: UIView {
     
     private func initView() {
         backgroundColor = .boderColor
+        isUserInteractionEnabled = true
+        
+        let pan = UIPanGestureRecognizer(target: self, action: .pan)
+        addGestureRecognizer(pan)
     }
 
     // MARK: - Actions
     private func didSetItemString() {
         var index = 0
-        let buttonHeight: CGFloat = 25
-        for item in itemStrings! {
+        for item in itemStrings {
             let button = UIButton(frame: CGRect(x: 0,
                                                 y: CGFloat(index) * buttonHeight,
                                                 width: pj_width,
@@ -59,13 +60,32 @@ class PJBreedsSideSliderView: UIView {
     @objc fileprivate func buttonSelected(button: UIButton) {
         if selectedComplation != nil {
             selectedComplation!(button.tag)
-            for v in subviews {
-                if v.isKind(of: UIButton.self) {
-                    let v = v as! UIButton
-                    v.setTitleColor(.white, for: .normal)
-                }
-            }
-            button.setTitleColor(.pinkColor, for: .normal)
         }
+    }
+    
+}
+
+private extension Selector {
+    static let pan = #selector(PJBreedsSideSliderView.pan(panGesture:))
+    static let buttonSelected = #selector(PJBreedsSideSliderView.buttonSelected(button:))
+}
+
+
+extension PJBreedsSideSliderView {
+    @objc
+    fileprivate func pan(panGesture: UIPanGestureRecognizer) {
+        var point = panGesture.location(in: self)
+        
+        if point.y < 0 {
+            point.y = 0
+        }
+        
+        var index = Int(point.y / buttonHeight)
+        
+        if index > itemStrings.count - 1 {
+            index = itemStrings.count - 1
+        }
+        
+        selectedComplation?(index)
     }
 }

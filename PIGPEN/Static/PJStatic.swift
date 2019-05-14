@@ -100,3 +100,9 @@ func dataConvertToModel<T: Codable>(_ model: T, from data: Data) -> T? {
     }
     return nil
 }
+
+public func delay(by delayTime: TimeInterval, qosClass: DispatchQoS.QoSClass? = nil,
+                  _ closure: @escaping () -> Void) {
+    let dispatchQueue = qosClass != nil ? DispatchQueue.global(qos: qosClass!) : .main
+    dispatchQueue.asyncAfter(deadline: DispatchTime.now() + delayTime, execute: closure)
+}
