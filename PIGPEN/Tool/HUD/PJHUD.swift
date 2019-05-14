@@ -38,7 +38,7 @@ class PJHUD {
             self.hud.textLabel.text = text
             self.hud.indicatorView = JGProgressHUDErrorIndicatorView()
             self.hud.show(in: view)
-            self.hud.dismiss(afterDelay: 3)
+            self.hud.dismiss(afterDelay: 2)
         }
     }
 }

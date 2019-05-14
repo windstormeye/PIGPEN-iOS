@@ -12,6 +12,8 @@ class PJCreatePetDetailsViewController: UIViewController, PJBaseViewControllerDe
     // 上传
     var imgKey = ""
     
+    private var breed = PJPet.PetBreedModel(id: -1, zh_name: "")
+    
     @IBOutlet weak var breedButton: UIButton!
     @IBOutlet weak var relationButton: UIButton!
     @IBOutlet weak var singleButton: UIButton!
@@ -30,6 +32,8 @@ class PJCreatePetDetailsViewController: UIViewController, PJBaseViewControllerDe
     private func initView() {
         initBaseView()
         backButtonTapped(backSel: .back, imageName: nil)
+        
+        breedButton.addTarget(self, action: .choiceBreeds, for: .touchUpInside)
         
         switch pet.pet_type {
         case .cat:
@@ -51,11 +55,26 @@ class PJCreatePetDetailsViewController: UIViewController, PJBaseViewControllerDe
 
 private extension Selector {
     static let back = #selector(PJCreatePetDetailsViewController.back)
+    static let choiceBreeds = #selector(PJCreatePetDetailsViewController.choiceBreeds)
 }
 
 extension PJCreatePetDetailsViewController {
     @objc
     fileprivate func back() {
         popBack()
+    }
+    
+    @objc
+    fileprivate func choiceBreeds() {
+        let vc = PJPetCreateBreedsViewController()
+        vc.petType = pet.pet_type
+        vc.selectedModel = breed
+        navigationController?.pushViewController(vc, animated: true)
+        
+        vc.selectComplation = {
+            self.breed = $0
+            self.pet.breed_type = $0.zh_name
+            print($0)
+        }
     }
 }
