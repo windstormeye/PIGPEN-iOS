@@ -25,8 +25,8 @@ class PJPetCreateViewController: UIViewController, PJBaseViewControllerDelegate 
         titleString = "添加宠物"
         backButtonTapped(backSel: .back, imageName: nil)
         
-        UIButton.topImageBottomTitle(button: createDogButton, titleTop: 80)
-        UIButton.topImageBottomTitle(button: createCatButton, titleTop: 80)
+        createDogButton.topImageBottomTitle(titleTop: 80)
+        createCatButton.topImageBottomTitle(titleTop: 80)
         
         let str = NSMutableAttributedString(string: createCheckedPetButton.currentTitle!)
         let strRange = NSRange.init(location: 0, length: str.length)

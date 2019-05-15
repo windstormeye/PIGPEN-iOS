@@ -22,7 +22,7 @@ extension PJUserInfoAvatarSelectCollectionViewDelegate {
 class PJUserInfoAvatarSelectCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource {
 
     static let cellIdentifierString = "PJUserInfoAvatarSelectCollectionViewCell"
-    let collectionViewCellCount = 5
+    let collectionViewCellCount = 6
     
     var viewDelegate: PJUserInfoAvatarSelectCollectionViewDelegate?
     
@@ -50,19 +50,14 @@ class PJUserInfoAvatarSelectCollectionView: UICollectionView, UICollectionViewDe
     }
     
     // MARK: delegate
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionViewCellCount
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PJUserInfoAvatarSelectCollectionView.cellIdentifierString, for: indexPath)
-        let cellImage = UIImage(named: "\(indexPath.row)")
+        let cellImage = UIImage(named: "0")
         cell.backgroundView = UIImageView(image: cellImage!)
         let backImage = UIImage(named: "user_info_avatar_selected")
         cell.selectedBackgroundView = UIImageView(image: backImage)

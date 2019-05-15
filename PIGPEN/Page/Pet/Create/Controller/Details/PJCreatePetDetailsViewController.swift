@@ -11,6 +11,8 @@ class PJCreatePetDetailsViewController: UIViewController, PJBaseViewControllerDe
     var pet = PJPet.Pet()
     // 上传
     var imgKey = ""
+    // 关系代码 -1 黑户
+    var relation_code = 0
     
     private var breed = PJPet.PetBreedModel(id: -1, zh_name: "")
     
@@ -34,6 +36,7 @@ class PJCreatePetDetailsViewController: UIViewController, PJBaseViewControllerDe
         backButtonTapped(backSel: .back, imageName: nil)
         
         breedButton.addTarget(self, action: .choiceBreeds, for: .touchUpInside)
+        relationButton.addTarget(self, action: .choiceRelation, for: .touchUpInside)
         
         switch pet.pet_type {
         case .cat:
@@ -56,6 +59,7 @@ class PJCreatePetDetailsViewController: UIViewController, PJBaseViewControllerDe
 private extension Selector {
     static let back = #selector(PJCreatePetDetailsViewController.back)
     static let choiceBreeds = #selector(PJCreatePetDetailsViewController.choiceBreeds)
+    static let choiceRelation = #selector(PJCreatePetDetailsViewController.choiceRelation)
 }
 
 extension PJCreatePetDetailsViewController {
@@ -77,5 +81,22 @@ extension PJCreatePetDetailsViewController {
             self.breedButton.setTitle($0.zh_name, for: .normal)
             self.breedButton.isSelected = true
         }
+    }
+    
+    @objc
+    fileprivate func choiceRelation() {
+        let vc = PJPetCreateRelationViewController()
+        vc.selectedIndex = relation_code
+        vc.selected = {
+            self.relation_code = $0
+            if $1 == "其它" {
+                self.relationButton.setTitle($1, for: .normal)
+            } else {
+                self.relationButton.setTitle("我是狗狗的" + $1, for: .normal)
+            }
+            
+            self.relationButton.isSelected = true
+        }
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

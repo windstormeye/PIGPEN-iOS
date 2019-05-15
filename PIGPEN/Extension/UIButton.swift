@@ -9,10 +9,10 @@
 import Foundation
 
 extension UIButton {
-    static func topImageBottomTitle(button: UIButton, titleTop: CGFloat) {
-        button.titleEdgeInsets = UIEdgeInsets(top: button.imageView!.frame.size.height + titleTop, left: -button.imageView!.bounds.size.width, bottom: 0, right: 0);
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: button.titleLabel!.bounds.size.width / 2, bottom: 0, right: -button.titleLabel!.bounds.size.width / 2);
-//        button.contentEdgeInsets = UIEdgeInsets(top: 20, left: 0, bottom: 20.0, right: 0)
+    func topImageBottomTitle(titleTop: CGFloat) {
+        imageEdgeInsets = UIEdgeInsets(top: -imageView!.pj_height / 2, left: titleLabel!.bounds.size.width / 2, bottom: 0, right: -titleLabel!.bounds.size.width / 2);
+        let titleTop = titleLabel!.pj_height / 2 + imageView!.pj_height / 2 + titleTop
+        titleEdgeInsets = UIEdgeInsets(top: titleTop, left: -imageView!.bounds.size.width, bottom: 0, right: 0);
     }
     
     func defualtStyle(_ title: String?) {

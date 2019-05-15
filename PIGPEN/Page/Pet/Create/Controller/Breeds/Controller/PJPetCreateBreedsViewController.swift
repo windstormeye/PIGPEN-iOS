@@ -42,7 +42,7 @@ class PJPetCreateBreedsViewController: UIViewController, PJBaseViewControllerDel
         
         initBaseView()
         backButtonTapped(backSel: .back, imageName: nil)
-        rightBarButtonItem(imageName: "breeds_done", rightSel: .done)
+        rightBarButtonItem(imageName: "ok_0", rightSel: .done)
         view.backgroundColor = .white
         
         let sideSiderViewWidth: CGFloat = 15

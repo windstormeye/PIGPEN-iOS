@@ -1,6 +1,9 @@
 PODS:
   - Alamofire (4.8.1)
   - Bugly (2.5.0)
+  - CollectionKit (2.3.0):
+    - CollectionKit/Core (= 2.3.0)
+  - CollectionKit/Core (2.3.0)
   - CryptoSwift (0.15.0)
   - HappyDNS (0.3.15)
   - IQKeyboardManagerSwift (6.2.0)
@@ -24,6 +27,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - Bugly
+  - CollectionKit
   - CryptoSwift
   - IQKeyboardManagerSwift
   - JGProgressHUD
@@ -40,6 +44,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - Bugly
+    - CollectionKit
     - CryptoSwift
     - HappyDNS
     - IQKeyboardManagerSwift
@@ -67,6 +72,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
+  CollectionKit: 6910479bf865bfe49040e73322ce4b8fe8991231
   CryptoSwift: 769f58a9e89f64e8796c2e59ce5f002dc81a2438
   HappyDNS: 00c15e651a347206e58a20503a32a5564589b56a
   IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
@@ -83,6 +89,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   YPImagePicker: 5dd3814b47b1208e9c8cc8f6ef77fe90db3723b6
 
-PODFILE CHECKSUM: 60cda0cacfa4a98669b06731633ba66566ec1b47
+PODFILE CHECKSUM: 15b9fc2b181108f29d48a6354573d3d709bdb379
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1
