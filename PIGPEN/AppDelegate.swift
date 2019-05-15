@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        guard PJUser.shared.userModel.uid != nil else { return }
+        guard PJUser.shared.userModel.uid != -1 else { return }
         RCIMClient.shared()?.setDeviceToken(deviceToken.toHexString())
     }
     
