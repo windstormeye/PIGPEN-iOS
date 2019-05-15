@@ -38,6 +38,15 @@ class PJCreatePetDetailsViewController: UIViewController, PJBaseViewControllerDe
         breedButton.addTarget(self, action: .choiceBreeds, for: .touchUpInside)
         relationButton.addTarget(self, action: .choiceRelation, for: .touchUpInside)
         
+        singleButton.addTarget(self, action: .choiceLoveStatus, for: .touchUpInside)
+        datingButton.addTarget(self, action: .choiceLoveStatus, for: .touchUpInside)
+        alienButton.addTarget(self, action: .choiceLoveStatus, for: .touchUpInside)
+        
+        pButton.addTarget(self, action: .choiceP, for: .touchUpInside)
+        unpButton.addTarget(self, action: .choiceP, for: .touchUpInside)
+        
+        doneButton.addTarget(self, action: .done, for: .touchUpInside)
+        
         switch pet.pet_type {
         case .cat:
             titleString = "添加猫咪"
@@ -53,6 +62,9 @@ class PJCreatePetDetailsViewController: UIViewController, PJBaseViewControllerDe
         relationButton.layer.cornerRadius = relationButton.pj_height / 2
         
         doneButton.defualtStyle(nil)
+        
+        pet.love_status = 0
+        pet.ppp_status = 0
     }
 }
 
@@ -60,12 +72,24 @@ private extension Selector {
     static let back = #selector(PJCreatePetDetailsViewController.back)
     static let choiceBreeds = #selector(PJCreatePetDetailsViewController.choiceBreeds)
     static let choiceRelation = #selector(PJCreatePetDetailsViewController.choiceRelation)
+    static let choiceLoveStatus = #selector(PJCreatePetDetailsViewController.choiceLoveStatus(sender:))
+    static let done = #selector(PJCreatePetDetailsViewController.done)
+    static let choiceP = #selector(PJCreatePetDetailsViewController.choiceP)
 }
 
 extension PJCreatePetDetailsViewController {
     @objc
     fileprivate func back() {
         popBack()
+    }
+    
+    @objc
+    fileprivate func done() {
+        let vc = UIStoryboard(name: "PJCreatePetSelfDetailsViewController", bundle: nil).instantiateViewController(withIdentifier: "PJCreatePetSelfDetailsViewController") as! PJCreatePetSelfDetailsViewController
+        vc.pet = pet
+        vc.imgKey = imgKey
+        vc.relation_code = relation_code
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc
@@ -98,5 +122,24 @@ extension PJCreatePetDetailsViewController {
             self.relationButton.isSelected = true
         }
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc
+    fileprivate func choiceLoveStatus(sender: UIButton) {
+        singleButton.isSelected = false
+        datingButton.isSelected = false
+        alienButton.isSelected = false
+        
+        sender.isSelected = true
+        pet.love_status = sender.tag
+    }
+    
+    @objc
+    fileprivate func choiceP(sender: UIButton) {
+        pButton.isSelected = false
+        unpButton.isSelected = false
+        
+        sender.isSelected = true
+        pet.ppp_status = sender.tag
     }
 }

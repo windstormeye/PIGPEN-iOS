@@ -81,7 +81,7 @@
                                 <state key="normal" image="user_create_pet_single_unselected"/>
                                 <state key="selected" image="user_create_pet_single"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFE-Vz-6T3">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFE-Vz-6T3">
                                 <rect key="frame" x="159.5" y="260" width="56" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="CH6-ps-a20"/>
@@ -90,7 +90,7 @@
                                 <state key="normal" image="user_create_pet_dating_unselected"/>
                                 <state key="selected" image="user_create_pet_dating"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CMo-qf-L9L">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CMo-qf-L9L">
                                 <rect key="frame" x="257" y="260" width="56" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="56" id="J2b-jl-7Le"/>
@@ -110,9 +110,10 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="acd-9p-egi">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="acd-9p-egi">
                                 <rect key="frame" x="208.5" y="340" width="56" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="已绝育">
                                     <color key="titleColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
