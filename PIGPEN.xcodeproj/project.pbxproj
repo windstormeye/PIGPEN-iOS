@@ -90,6 +90,7 @@
 		0C5E634D2165A5F800A90762 /* PJSmallHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E634C2165A5F800A90762 /* PJSmallHUD.swift */; };
 		0C5E634F2165AB8C00A90762 /* PJTapic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E634E2165AB8C00A90762 /* PJTapic.swift */; };
 		0C5E63532165ADF500A90762 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E63522165ADF500A90762 /* NotificationName.swift */; };
+		0C5F4F6F228CEBE700B32F1F /* PJRulerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5F4F6E228CEBE700B32F1F /* PJRulerPickerView.swift */; };
 		0C6A98592270AFE5003E4AA5 /* PJImagePickerConfigue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6A98582270AFE5003E4AA5 /* PJImagePickerConfigue.swift */; };
 		0C6A985C22729353003E4AA5 /* PJUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6A985B22729353003E4AA5 /* PJUserService.swift */; };
 		0C6A986022729BFE003E4AA5 /* PJFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6A985F22729BFE003E4AA5 /* PJFriendViewController.swift */; };
@@ -244,6 +245,7 @@
 		0C5E634E2165AB8C00A90762 /* PJTapic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PJTapic.swift; sourceTree = "<group>"; };
 		0C5E63522165ADF500A90762 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		0C5E63542165B6D400A90762 /* PIGPEN_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIGPEN_bridge.h; sourceTree = "<group>"; };
+		0C5F4F6E228CEBE700B32F1F /* PJRulerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJRulerPickerView.swift; sourceTree = "<group>"; };
 		0C6A98582270AFE5003E4AA5 /* PJImagePickerConfigue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJImagePickerConfigue.swift; sourceTree = "<group>"; };
 		0C6A985B22729353003E4AA5 /* PJUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserService.swift; sourceTree = "<group>"; };
 		0C6A985F22729BFE003E4AA5 /* PJFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJFriendViewController.swift; sourceTree = "<group>"; };
@@ -907,6 +909,7 @@
 		0C5E63502165AB9300A90762 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				0C5F4F6D228CEBCE00B32F1F /* RulerPicker */,
 				0C2019B7227F1E6C00AE8C2B /* SideMenu */,
 				0CB5FED52270ABEC00CBE217 /* ImagePicker */,
 				0CC35DDB21E6376C002244DA /* PopMenu */,
@@ -954,6 +957,14 @@
 			children = (
 			);
 			path = Others;
+			sourceTree = "<group>";
+		};
+		0C5F4F6D228CEBCE00B32F1F /* RulerPicker */ = {
+			isa = PBXGroup;
+			children = (
+				0C5F4F6E228CEBE700B32F1F /* PJRulerPickerView.swift */,
+			);
+			path = RulerPicker;
 			sourceTree = "<group>";
 		};
 		0C6A985A22729340003E4AA5 /* Service */ = {
@@ -1681,6 +1692,7 @@
 				0C5E63392162444400A90762 /* PJUserInfoSeleteAvatarView.swift in Sources */,
 				0CC35DD221DF39E7002244DA /* PJSegmentView.swift in Sources */,
 				0C599EC3217032A000FC2E37 /* PJUserDetailsVirtualPetTableViewCell.swift in Sources */,
+				0C5F4F6F228CEBE700B32F1F /* PJRulerPickerView.swift in Sources */,
 				0C6A986022729BFE003E4AA5 /* PJFriendViewController.swift in Sources */,
 				0CED02E2219D45AC00294033 /* PJPetCreateDogFoodViewController.swift in Sources */,
 				0C5E633E216309C300A90762 /* PJNetwork.swift in Sources */,
