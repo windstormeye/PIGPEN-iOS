@@ -24,28 +24,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         rootTabBar = UITabBarController()
         rootTabBar?.tabBar.isTranslucent = false
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = PJCreatePetSelfDetailsViewController()
+        window?.rootViewController = rootTabBar
         window?.makeKeyAndVisible()
         
-//        initTabBarControler()
-//        IQKeyboardManager.shared.enable = true
-//        requestPushNotification(application)
-//        Bugly.start(withAppId: "i1400197107")
-//
-//        RCIMClient.shared()?.initWithAppKey("kj7swf8ok3sq2")
-//        PJUser.shared.connectRC(completeHandler: {
-//            print("融云 IM 登录成功: " + $0)
-//        }) { (error) in
-//            print(error.errorMsg )
-//        }
-//
+        initTabBarControler()
+        IQKeyboardManager.shared.enable = true
+        requestPushNotification(application)
+        Bugly.start(withAppId: "i1400197107")
+        
+        RCIMClient.shared()?.initWithAppKey("kj7swf8ok3sq2")
+        PJUser.shared.connectRC(completeHandler: {
+            print("融云 IM 登录成功: " + $0)
+        }) { (error) in
+            print(error.errorMsg )
+        }
+        
         return true
     }
 
     func application(_ application: UIApplication,
                      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-//        guard PJUser.shared.userModel.uid != -1 else { return }
-//        RCIMClient.shared()?.setDeviceToken(deviceToken.toHexString())
+        guard PJUser.shared.userModel.uid != -1 else { return }
+        RCIMClient.shared()?.setDeviceToken(deviceToken.toHexString())
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {

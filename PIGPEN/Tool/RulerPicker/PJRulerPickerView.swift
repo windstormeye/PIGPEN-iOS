@@ -44,13 +44,12 @@ class PJRulerPickerView: UIView {
         scrollView.delegate = self
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
-        scrollView.decelerationRate = .fast
         scrollView.bounces = false
 
         // 从屏幕左边到屏幕中心占据的个数
-        startIndex = (Int(ceil(centerX / 10.5)) + 1)
+        startIndex = (Int(ceil(centerX / 10.5)))
         // 总共需要渲染的子视图加上头尾占据的个数
-        pickCount += startIndex * 2
+        pickCount += startIndex * 2 + 1
         
         var finalW: CGFloat = 0
         
@@ -72,22 +71,18 @@ class PJRulerPickerView: UIView {
                 sv.backgroundColor = .black
                 // 先赋值给中心视图
                 centerView = sv
-                
             } else if abs(sv.centerX - centerX) < 16 {
                 
                 sv.pj_height = 14
                 sv.pj_width = 1
-                
             } else if abs(sv.centerX - centerX) < 26 {
                 
                 sv.pj_height = 8
                 sv.pj_width = 1
-                
             } else {
                 
                 sv.pj_height = 4
                 sv.pj_width = 1
-                
             }
             
             sv.y = (scrollView.pj_height - sv.pj_height) * 0.5
@@ -95,7 +90,6 @@ class PJRulerPickerView: UIView {
             if index == pickCount - 1 {
                 
                 finalW = sv.right
-                
             }
         }
         
@@ -122,35 +116,27 @@ extension PJRulerPickerView: UIScrollViewDelegate {
                     PJTapic.select()
                     centerView = $0
                     
-                    moved?(Int(ceil($0.centerX / 10.5)) - startIndex)
-                    
+                    moved?($0.tag - 100 - startIndex)
                 }
-                
             } else if abs($0.centerX - offSetX  - centerX) < 16 {
                 
                 $0.pj_height = 14
                 $0.pj_width = 1
                 $0.backgroundColor = .lightGray
-                
             } else if abs($0.centerX - offSetX - centerX) < 26 {
                 
                 $0.pj_height = 8
                 $0.pj_width = 1
                 $0.backgroundColor = .lightGray
-                
             } else {
                 
                 $0.pj_height = 4
                 $0.pj_width = 1
                 $0.backgroundColor = .lightGray
-                
             }
 
             $0.y = (scrollView.pj_height - $0.pj_height) * 0.5
             return true
-            
         }
-        
     }
-    
 }
