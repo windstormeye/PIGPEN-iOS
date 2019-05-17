@@ -15,6 +15,9 @@ class PJCreatePetSelfDetailsViewController: UIViewController, PJBaseViewControll
     // 关系代码 -1 黑户
     var relation_code = 0
 
+    @IBOutlet private weak var bithButtonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var weightButtonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var foodButtonBottomConstrain: NSLayoutConstraint!
     
     @IBOutlet private weak var birthButton: UIButton!
     @IBOutlet private weak var weightButton: UIButton!
@@ -25,27 +28,26 @@ class PJCreatePetSelfDetailsViewController: UIViewController, PJBaseViewControll
     @IBOutlet private weak var doneButton: UIButton!
     
     private var rulerView = PJRulerPickerView()
+    
     private var btns = [UIButton]()
     private var originBtns = [UIButton]()
+    
+    // 生日开始年份
+    private var startYear = 1990
+    // 体重上限（kg）
+    private let maxWeight = 100
+    // 喂食量上限（g）
+    private var maxFood = 5000
+    
     private var birthButtonTop: CGFloat = 0
     private var weightButtonTop: CGFloat = 0
     private var foodButtonTop: CGFloat = 0
+    
     private var currentButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
-    }
-    
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        rulerView.top = birthButton.bottom
-        
-        birthButtonTop = birthButton.top
-        weightButtonTop = weightButton.top
-        foodButtonTop = foodButton.top
     }
     
     private func initView() {
@@ -62,6 +64,7 @@ class PJCreatePetSelfDetailsViewController: UIViewController, PJBaseViewControll
         
         weightButton.layer.cornerRadius = weightButton.pj_height / 2
         weightButton.addTarget(self, action: .btnTapper, for: .touchUpInside)
+        weightButton.adjustsImageWhenHighlighted = false
         btns.append(weightButton)
         originBtns.append(weightButton)
         
@@ -92,8 +95,18 @@ class PJCreatePetSelfDetailsViewController: UIViewController, PJBaseViewControll
         rulerView.isHidden = true
         rulerView.alpha = 0
         rulerView.moved = {
-            print($0)
+            switch self.currentButton.tag % 100 {
+            case 1:
+                self.currentButton.setTitle("\($0)", for: .normal)
+                self.currentButton.setTitleColor(.black, for: .normal)
+            default:
+                break
+            }
         }
+    }
+    
+    private func initData() {
+        
     }
 }
 
@@ -114,58 +127,109 @@ extension PJCreatePetSelfDetailsViewController {
         print(pet)
     }
     
-    @objc
-    fileprivate func btnTapper(sender: UIButton) {
-        let btnTag = sender.tag
+    func updateRulerView(_ top: CGFloat?) {
+        
         rulerView.isHidden = true
         rulerView.alpha = 0
         
-        for index in 0..<originBtns.count {
-            UIView.animate(withDuration: 0.25) {
-                switch index {
-                case 0:
-                    self.btns[0].top = self.birthButtonTop
-                case 1:
-                    self.btns[1].top = self.weightButtonTop
-                case 2:
-                    self.btns[2].top = self.foodButtonTop
-                default:
-                    break
+        if top != nil {
+            UIView.animate(withDuration: 0.25, animations: {
+                self.rulerView.top = top!
+            }) { (finished) in
+                if finished {
+                    self.rulerView.isHidden = false
+                    UIView.animate(withDuration: 0.25, animations: {
+                        self.rulerView.alpha = 1
+                    })
                 }
             }
         }
+    }
+    
+    @objc
+    fileprivate func btnTapper(sender: UIButton) {
         
-        if currentButton != sender {
-            currentButton = sender
-            
-            var moveHeight: CGFloat = 40
-            switch sender.tag {
-            case 0:
-                moveHeight = 70
-            case 1:
-                moveHeight = 40
-            case 2:
-                moveHeight = 70
-            default:
-                break
-            }
-            
-            let _ = btns.filter { b in
-                if b.tag <= btnTag {
-                    UIView.animate(withDuration: 0.25, animations: {
-                        b.top -= moveHeight
-                    })
+        switch sender.tag % 100 {
+        case 0:
+            if sender.tag < 100 {
+                UIView.animate(withDuration: 0.25) {
+                    self.bithButtonBottomConstraint.constant = 70 + 40
+                    sender.tag += 100
+
+                    self.weightButtonBottomConstraint.constant = 40
+                    self.weightButton.tag %= 100
+                    
+                    self.foodButtonBottomConstrain.constant = 40
+                    self.foodButton.tag %= 100
+                    
+                    self.view.layoutIfNeeded()
+                    self.updateRulerView(sender.bottom + 20)
+                    self.currentButton = sender
                 }
-                return true
+            } else {
+                UIView.animate(withDuration: 0.25) {
+                    self.bithButtonBottomConstraint.constant = 40
+                    
+                    self.updateRulerView(nil)
+                    sender.tag %= 100
+                    self.view.layoutIfNeeded()
+                    self.currentButton = UIButton()
+                }
             }
-            
-            rulerView.isHidden = false
-            UIView.animate(withDuration: 0.85) {
-                self.rulerView.alpha = 1
+        case 1:
+            if sender.tag < 100 {
+                UIView.animate(withDuration: 0.25) {
+                    self.weightButtonBottomConstraint.constant = 40 + self.rulerView.pj_height
+                    sender.tag += 100
+                    
+                    self.bithButtonBottomConstraint.constant = 40
+                    self.birthButton.tag %= 100
+                    
+                    self.foodButtonBottomConstrain.constant = 40
+                    self.foodButton.tag %= 100
+                    
+                    self.view.layoutIfNeeded()
+                    self.updateRulerView(sender.bottom + 20)
+                    self.currentButton = sender
+                }
+            } else {
+                UIView.animate(withDuration: 0.25) {
+                    self.weightButtonBottomConstraint.constant = 40
+                    
+                    self.updateRulerView(nil)
+                    sender.tag %= 100
+                    self.view.layoutIfNeeded()
+                    self.currentButton = UIButton()
+                }
             }
-            rulerView.top = sender.bottom + 10
-        } else {
-            currentButton = UIButton()
+        case 2:
+            if sender.tag < 100 {
+                UIView.animate(withDuration: 0.25) {
+                    self.foodButtonBottomConstrain.constant = 70 + 40
+                    sender.tag += 100
+                    
+                    self.weightButtonBottomConstraint.constant = 40
+                    self.weightButton.tag %= 100
+                    
+                    self.bithButtonBottomConstraint.constant = 40
+                    self.birthButton.tag %= 100
+
+                    self.view.layoutIfNeeded()
+                    self.updateRulerView(sender.bottom + 20)
+                    self.currentButton = sender
+                }
+            } else {
+                UIView.animate(withDuration: 0.25) {
+                    self.foodButtonBottomConstrain.constant = 40
+                    
+                    self.updateRulerView(nil)
+                    sender.tag %= 100
+                    self.view.layoutIfNeeded()
+                    self.currentButton = UIButton()
+                }
+            }
+        default:
+            break
         }
     }
 }

@@ -13,28 +13,34 @@ class PJRulerPickerView: UIView {
     /// 获取拨动次数
     var moved: ((Int) -> Void)?
     /// 需要拨动的次数
-    var pickCount  = 0
+    var pickCount  = 0 {
+        didSet {
+            updateScrollView()
+        }
+    }
     // 中心视图
     private var centerView = UIView()
     private var startIndex = 0
     
     override init(frame: CGRect) {
-        
         super.init(frame: frame)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
     convenience init(frame: CGRect, pickCount: Int) {
-        
         self.init(frame: frame)
         self.pickCount = pickCount
-        initView()
+        updateScrollView()
     }
     
-    private func initView() {
+    private func updateScrollView() {
+        let _ = subviews.filter {
+            $0.removeFromSuperview()
+            return true
+        }
         
         let scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: pj_width, height: pj_height))
         addSubview(scrollView)
@@ -42,15 +48,15 @@ class PJRulerPickerView: UIView {
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         scrollView.bounces = false
-
+        
         // 从屏幕左边到屏幕中心占据的个数
         startIndex = (Int(ceil(centerX / 10.5)))
         // 总共需要渲染的子视图加上头尾占据的个数
-        pickCount += startIndex * 2 + 1
+        let suvCount = startIndex * 2 + 1 + pickCount
         
         var finalW: CGFloat = 0
         
-        for index in 0..<pickCount {
+        for index in 0..<suvCount {
             
             // 子视图之间的间距
             let inner = 10
@@ -84,7 +90,7 @@ class PJRulerPickerView: UIView {
             
             sv.y = (scrollView.pj_height - sv.pj_height) * 0.5
             
-            if index == pickCount - 1 {
+            if index == suvCount - 1 {
                 
                 finalW = sv.right
             }
