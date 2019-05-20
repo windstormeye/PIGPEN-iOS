@@ -234,37 +234,25 @@ extension PJUser {
         saveToSandBox()
     }
     
-    func pets(complateHandler: @escaping ([PJRealPet.RealPetModel], [PJVirtualPet.VirtualPetModel]) -> Void,
+    func pets(complateHandler: @escaping ([PJPet.Pet]) -> Void,
               failedHandler: @escaping (PJNetwork.Error) -> Void) {
-        PJNetwork.shared.requstWithGet(path: UserUrl.pets.rawValue,
-                                       parameters: [:],
-                                       complement: { (dataDict) in
-                                        if dataDict["msgCode"]?.intValue == 0 {
-                                            let realPetDicts = dataDict["msg"]!["real_pet"].arrayValue
-                                            let virtualPetDicts = dataDict["msg"]!["virtual_pet"].arrayValue
-                                            
-                                            var realPetModels = [PJRealPet.RealPetModel]()
-                                            var virtualPetModels = [PJVirtualPet.VirtualPetModel]()
-                                            
-                                            for dict in realPetDicts {
-                                                // TODO: JSONDecoder 改
-                                                let model = dataConvertToModel(PJRealPet.RealPetModel(), from: try! dict.rawData())
-                                                realPetModels.append(model!)
-                                            }
-                                            
-                                            for dict in virtualPetDicts {
-                                                // TODO: JSONDecoder 改
-                                                if let model = try? JSONDecoder().decode(PJVirtualPet.VirtualPetModel.self,
-                                                                                         from: dict.rawData()) {
-                                                    virtualPetModels.append(model)
-                                                }
-                                            }
-                                            
-                                            complateHandler(realPetModels, virtualPetModels)
-                                        } else {
-                                            let error = PJNetwork.Error(errorCode: dataDict["msgCode"]?.intValue ?? 0, errorMsg: dataDict["msg"]?.string ?? "未知错误")
-                                            failedHandler(error)
-                                        }
+        PJNetwork.shared.requstWithGet(path: UserUrl.pets.rawValue, parameters: [:], complement: { (dataDict) in
+            if dataDict["msgCode"]?.intValue == 0 {
+                let petDicts = dataDict["msg"]!["pets"].arrayValue
+                
+                var petModels = [PJPet.Pet]()
+                
+                for dict in petDicts {
+                    // TODO: JSONDecoder 改
+                    let model = dataConvertToModel(PJPet.Pet(), from: try! dict.rawData())
+                    petModels.append(model!)
+                }
+                
+                complateHandler(petModels)
+            } else {
+                let error = PJNetwork.Error(errorCode: dataDict["msgCode"]?.intValue ?? 0, errorMsg: dataDict["msg"]?.string ?? "未知错误")
+                failedHandler(error)
+            }
         }) { (errorString) in
             failedHandler(PJNetwork.Error(errorCode: -1, errorMsg: errorString))
         }

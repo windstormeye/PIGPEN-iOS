@@ -127,7 +127,8 @@ extension PJUserCenterTableView: UITableViewDelegate, UITableViewDataSource {
             cell.isHiddenAvatarEditImageView(false)
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: PJUserCenterTableView.petIdentifier, for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: PJUserCenterTableView.petIdentifier, for: indexPath) as! PJUserCenterPetTableViewCell
+            cell.pet = pets[indexPath.row]
             return cell
         default:
             return UITableViewCell()

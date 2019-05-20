@@ -10,7 +10,7 @@ import UIKit
 
 class PJUserCenterViewController: UIViewController, PJBaseViewControllerDelegate {
 
-    var tableView: PJUserCenterTableView?
+    var tableView = PJUserCenterTableView()
     var menuTableView: PJSideMenuTableView?
     var menuBackViewButton: UIButton?
     var isFirstLoad = false
@@ -32,7 +32,7 @@ class PJUserCenterViewController: UIViewController, PJBaseViewControllerDelegate
 
     private func initView() {
         initBaseView()
-        titleString = PJUser.shared.userModel.nick_name ?? "未登录"
+        titleString = PJUser.shared.userModel.nick_name
         view.backgroundColor = .white
         view.isUserInteractionEnabled = true
         
@@ -42,10 +42,9 @@ class PJUserCenterViewController: UIViewController, PJBaseViewControllerDelegate
         navigationItem.title = PJUser.shared.userModel.nick_name
         
         tableView = PJUserCenterTableView(frame: CGRect(x: 0, y: 0, width: view.pj_width, height: view.pj_height), style: .plain)
-        tableView?.pets = [PJPet.Pet(), PJPet.Pet(), PJPet.Pet(), PJPet.Pet()]
 //        tableView?.viewDelegate = self
-        view.addSubview(tableView!)
-        tableView?.createPet = {
+        view.addSubview(tableView)
+        tableView.createPet = {
             let sb = UIStoryboard(name: "PJPetCreateViewController", bundle: nil)
             let vc = sb.instantiateViewController(withIdentifier: "PJPetCreateViewController")
             vc.hidesBottomBarWhenPushed = true
@@ -96,18 +95,18 @@ extension PJUserCenterViewController {
     
     @objc
     fileprivate func menu() {
-        if tableView!.left != 0 {
+        if tableView.left != 0 {
             UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseIn, animations: {
-                self.tableView!.left = 0
+                self.tableView.left = 0
                 self.navigationController?.navigationBar.left = 0
                 self.tabBarController?.tabBar.left = 0
-                self.menuTableView?.left = self.tableView!.right
+                self.menuTableView?.left = self.tableView.right
             }, completion: nil)
         } else {
             UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: {
-                self.tableView!.left -= sideMenuWidth
+                self.tableView.left -= sideMenuWidth
                 self.navigationController?.navigationBar.left -= sideMenuWidth
-                self.menuTableView?.left = self.tableView!.right
+                self.menuTableView?.left = self.tableView.right
                 self.tabBarController?.tabBar.left -= sideMenuWidth
             }, completion: nil)
         }
@@ -115,21 +114,18 @@ extension PJUserCenterViewController {
     
     func viewWillData() {
         if PJUser.shared.userModel.token != nil {
-//            PJUser.shared.pets(complateHandler: { [weak self] realPetModels, virtualPetModels in
-//                guard let `self` = self else { return }
-//                self.tableView?.realPetModels = realPetModels
-//                self.tableView?.virtualPetModels = virtualPetModels
-//                self.tableView?.reloadData()
-//            }) { (error) in
-//                PJTapic.error()
-//                print(error)
-//            }
+            PJUser.shared.pets(complateHandler: {
+                self.tableView.pets = $0
+            }) { (error) in
+                PJTapic.error()
+                print(error)
+            }
             
             PJUser.shared.details(details_uid: String(PJUser.shared.userModel.uid),
                                   getSelf: true,
                                   completeHandler: { (userModel) in
-                                    self.tableView?.userDetailsModel = userModel
-                                    self.tableView?.reloadData()
+                                    self.tableView.userDetailsModel = userModel
+                                    self.tableView.reloadData()
             }) { (error) in
                 PJTapic.error()
                 print(error)

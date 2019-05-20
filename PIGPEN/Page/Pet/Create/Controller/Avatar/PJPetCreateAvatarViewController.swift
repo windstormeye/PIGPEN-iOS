@@ -12,10 +12,9 @@ import YPImagePicker
 
 class PJPetCreateAvatarViewController: UIViewController, PJBaseViewControllerDelegate {
     var pet = PJPet.Pet()
-    // 上传
-    private var imgKey = ""
     
     @IBOutlet weak var tipsTitleLabel: UILabel!
+    @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet private weak var avatarImageView: UIImageView!
     @IBOutlet private weak var femaleButton: UIButton!
     @IBOutlet private weak var maleButton: UIButton!
@@ -40,6 +39,8 @@ class PJPetCreateAvatarViewController: UIViewController, PJBaseViewControllerDel
         case .cat:
             tipsTitleLabel.text = "请选择猫咪头像"
             titleString = "添加猫咪"
+            avatarImageView.image = UIImage(named: "pet_avatar_cat")
+            genderLabel.text = "请选择猫咪性别"
         case .dog:
             tipsTitleLabel.text = "请选择狗狗头像"
             titleString = "添加狗狗"
@@ -77,12 +78,10 @@ extension PJPetCreateAvatarViewController {
     
     @objc
     fileprivate func done() {
-        print(pet.gender)
-        print(imgKey)
+        print(pet)
         
         let vc = UIStoryboard(name: "PJCreatePetDetailsViewController", bundle: nil).instantiateViewController(withIdentifier: "PJCreatePetDetailsViewController") as! PJCreatePetDetailsViewController
         vc.pet = pet
-        vc.imgKey = imgKey
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -97,7 +96,8 @@ extension PJPetCreateAvatarViewController {
                 PJImageUploader.upload(assets: [photo.asset!],
                                        complateHandler: { [weak self] imgUrls,keys in
                                         guard let `self` = self else { return }
-                                        self.imgKey = keys[0]
+                                        self.pet.avatar_url = keys[0]
+                                        
                                         PJHUD.shared.dismiss()
                 }) { (error) in
                     PJHUD.shared.showError(view: self.view, text: error.errorMsg)

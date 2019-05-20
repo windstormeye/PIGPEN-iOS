@@ -41,24 +41,22 @@ class PJPet {
     }
     
     /// 创建新宠物
-    class func createPet(model: Pet,
-                         relation_code: Int,
-                         avatar_key: String,
-                         food_weight: Int,
-                         complateHandler: @escaping ((Pet) -> Void),
-                         failureHandler: @escaping ((PJNetwork.Error) -> Void)) {
+    func createPet(model: Pet,
+                   complateHandler: @escaping ((Pet) -> Void),
+                   failureHandler: @escaping ((PJNetwork.Error) -> Void)) {
         let parameters = [
             "pet_nick_name": model.nick_name,
             "gender": model.gender,
-            "pet_type": model.pet_type,
+            "pet_type": model.pet_type.rawValue,
             "birth_time": model.birth_time,
             "weight": model.weight,
             "ppp_status": model.ppp_status,
             "love_status": model.love_status,
-            "relation_code": relation_code,
-            "avatar_key": avatar_key,
+            "relation_code": model.relationship,
+            "avatar_key": model.avatar_url,
             "breed_type": model.breed_type,
-            "food_weight": food_weight
+            "food_weight": model.food_weight,
+            "activity": model.activity
             ] as [String : Any]
         
         PJNetwork.shared.requstWithPost(path: Url.create.rawValue,
@@ -102,14 +100,22 @@ extension PJPet {
         var ppp_status: Int
         /// 感情状态
         var love_status: Int
+        /// 进食量
+        var food_weight: Int
         /// 生日
         var birth_time: Int
         /// 性别
         var gender: Int
         /// 品种
         var breed_type: String
+        /// 宠物活跃程度
+        var activity: Int = 0
         /// 创建时间
         var created_time: Int
+        /// 宠物头像
+        var avatar_url: String
+        /// 宠物关系
+        var relationship: Int
         
         init() {
             self.pet_id = -1
@@ -119,10 +125,13 @@ extension PJPet {
             self.ppp_status = -1
             self.love_status = -1
             self.birth_time = -1
+            self.food_weight = -1
             // 默认是女生
             self.gender = 0
             self.breed_type = ""
             self.created_time = -1
+            self.avatar_url = ""
+            self.relationship = -1
         }
     }
     

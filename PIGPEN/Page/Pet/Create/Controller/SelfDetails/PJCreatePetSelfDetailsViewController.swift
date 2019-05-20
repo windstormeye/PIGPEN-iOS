@@ -10,12 +10,9 @@ import UIKit
 
 class PJCreatePetSelfDetailsViewController: UIViewController, PJBaseViewControllerDelegate {
     var pet = PJPet.Pet()
-    // 上传
-    var imgKey = ""
-    // 关系代码 -1 黑户
-    var relation_code = 0
 
     @IBOutlet private weak var bithButtonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var birthButtonTopConstraint: NSLayoutConstraint!
     @IBOutlet private weak var weightButtonBottomConstraint: NSLayoutConstraint!
     @IBOutlet private weak var foodButtonBottomConstrain: NSLayoutConstraint!
     
@@ -32,9 +29,6 @@ class PJCreatePetSelfDetailsViewController: UIViewController, PJBaseViewControll
     private var birthView = PJPetCreateBirthView.newInstance()
     private var rulerView = PJRulerPickerView()
     
-    private var btns = [UIButton]()
-    private var originBtns = [UIButton]()
-    
     private var birthViewSelectedIndex = 0
     // 生日开始年份
     private var startYear = 1990
@@ -44,9 +38,6 @@ class PJCreatePetSelfDetailsViewController: UIViewController, PJBaseViewControll
     private var maxFood = 5000
     private var daysArray = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     
-    private var birthButtonTop: CGFloat = 0
-    private var weightButtonTop: CGFloat = 0
-    private var foodButtonTop: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,26 +50,7 @@ class PJCreatePetSelfDetailsViewController: UIViewController, PJBaseViewControll
         backButtonTapped(backSel: .back, imageName: nil)
         
         doneButton.defualtStyle(nil)
-        
-        birthButton.layer.cornerRadius = birthButton.pj_height / 2
-        birthButton.addTarget(self, action: .btnTapper, for: .touchUpInside)
-        btns.append(birthButton)
-        originBtns.append(birthButton)
-        
-        weightButton.layer.cornerRadius = weightButton.pj_height / 2
-        weightButton.addTarget(self, action: .btnTapper, for: .touchUpInside)
-        weightButton.adjustsImageWhenHighlighted = false
-        btns.append(weightButton)
-        originBtns.append(weightButton)
-        
-        foodButton.layer.cornerRadius = foodButton.pj_height / 2
-        foodButton.addTarget(self, action: .btnTapper, for: .touchUpInside)
-        btns.append(foodButton)
-        originBtns.append(foodButton)
-        
-        petStatus0Button.topImageBottomTitle(titleTop: 20)
-        petStatus1Button.topImageBottomTitle(titleTop: 20)
-        petStatus2Button.topImageBottomTitle(titleTop: 20)
+        doneButton.addTarget(self, action: .done, for: .touchUpInside)
         
         switch pet.pet_type {
         case .cat:
@@ -86,13 +58,45 @@ class PJCreatePetSelfDetailsViewController: UIViewController, PJBaseViewControll
             birthButton.setTitle("猫咪的生日", for: .normal)
             weightButton.setTitle("请选择猫咪的体重", for: .normal)
             foodButton.setTitle("请选择猫咪的每日喂食量", for: .normal)
+            
+            birthButtonTopConstraint.constant = view.pj_height * 0.2
+            
+            petStatus0Button.isHidden = true
+            petStatus1Button.isHidden = true
+            petStatus2Button.isHidden = true
         case .dog:
             titleString = "添加狗狗"
             birthButton.setTitle("狗狗的生日", for: .normal)
             weightButton.setTitle("请选择狗狗的体重", for: .normal)
             foodButton.setTitle("请选择狗狗的每日喂食量", for: .normal)
+            
+            petStatus0Button.topImageBottomTitle(titleTop: 20)
+            petStatus1Button.topImageBottomTitle(titleTop: 20)
+            petStatus2Button.topImageBottomTitle(titleTop: 20)
+            
+            moreFoodCheckButton.pj_width = 100
+            moreFoodCheckButton.pj_height = 30
+            moreFoodCheckButton.centerX = view.centerX
+            moreFoodCheckButton.setTitleColor(.black, for: .normal)
+            moreFoodCheckButton.setTitle("每日进食量参考", for: .normal)
+            moreFoodCheckButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+            moreFoodCheckButton.alpha = 0
+            moreFoodCheckButton.isHidden = true
+            moreFoodCheckButton.addTarget(self, action: .moreFood, for: .touchUpInside)
+            view.addSubview(moreFoodCheckButton)
         }
         
+        birthButton.layer.cornerRadius = birthButton.pj_height / 2
+        birthButton.addTarget(self, action: .btnTapper, for: .touchUpInside)
+        
+        weightButton.layer.cornerRadius = weightButton.pj_height / 2
+        weightButton.addTarget(self, action: .btnTapper, for: .touchUpInside)
+        weightButton.adjustsImageWhenHighlighted = false
+        
+        foodButton.layer.cornerRadius = foodButton.pj_height / 2
+        foodButton.addTarget(self, action: .btnTapper, for: .touchUpInside)
+        
+
         rulerView = PJRulerPickerView(frame: CGRect(x: 0, y: 0, width: view.pj_width, height: 30), pickCount: 100)
         view.addSubview(rulerView)
         rulerView.isHidden = true
@@ -111,9 +115,11 @@ class PJCreatePetSelfDetailsViewController: UIViewController, PJBaseViewControll
                     break
                 }
             case 1:
+                self.pet.weight = $0
                 self.currentButton.setTitle("\($0)kg", for: .normal)
                 self.currentButton.setTitleColor(.black, for: .normal)
             case 2:
+                self.pet.food_weight = $0
                 self.currentButton.setTitle("\($0)g", for: .normal)
                 self.currentButton.setTitleColor(.black, for: .normal)
             default:
@@ -152,8 +158,6 @@ class PJCreatePetSelfDetailsViewController: UIViewController, PJBaseViewControll
         birthView.monthSelected = {
             self.birthViewSelectedIndex = 1
             self.rulerView.pickCount = 12
-            
-            
         }
         birthView.daySelected = {
             self.birthViewSelectedIndex = 2
@@ -165,24 +169,34 @@ class PJCreatePetSelfDetailsViewController: UIViewController, PJBaseViewControll
                 self.daysArray[2] = 28
             }
             
-            self.rulerView.pickCount = self.daysArray[self.birthView.currentMonth]
+            self.rulerView.pickCount = self.daysArray[self.birthView.currentMonth - 1]
         }
-        
-        moreFoodCheckButton.pj_width = 100
-        moreFoodCheckButton.pj_height = 30
-        moreFoodCheckButton.centerX = view.centerX
-        moreFoodCheckButton.setTitleColor(.black, for: .normal)
-        moreFoodCheckButton.setTitle("每日进食量参考", for: .normal)
-        moreFoodCheckButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .bold)
-        moreFoodCheckButton.alpha = 0
-        moreFoodCheckButton.isHidden = true
-        moreFoodCheckButton.addTarget(self, action: .moreFood, for: .touchUpInside)
-        view.addSubview(moreFoodCheckButton)
     }
     
     private func initData() {
         
     }
+    
+    @IBAction func activityTapped(_ sender: UIButton) {
+        pet.activity = sender.tag
+        
+        switch sender.tag {
+        case 0:
+            sender.isSelected = !sender.isSelected
+            petStatus1Button.isSelected = false
+            petStatus2Button.isSelected = false
+        case 1:
+            petStatus0Button.isSelected = false
+            petStatus2Button.isSelected = false
+        case 2:
+            petStatus0Button.isSelected = false
+            petStatus1Button.isSelected = false
+        default:
+            break;
+        }
+    }
+    
+    
 }
 
 private extension Selector {
@@ -200,7 +214,39 @@ extension PJCreatePetSelfDetailsViewController {
     
     @objc
     fileprivate func done() {
-        print(pet)
+        guard birthButton.title(for: .normal) != nil else {
+            PJHUD.shared.showError(view: view, text: "请设置生日")
+            return
+        }
+        
+        guard birthButton.title(for: .normal)!.contains("日") else {
+            PJHUD.shared.showError(view: view, text: "请重设生日")
+            return
+        }
+        
+        guard weightButton.title(for: .normal) != nil else {
+            PJHUD.shared.showError(view: view, text: "请设置体重")
+            return
+        }
+        
+        guard foodButton.title(for: .normal) != nil else {
+            PJHUD.shared.showError(view: view, text: "请设置进食量")
+            return
+        }
+        
+        let datefmatter = DateFormatter()
+        datefmatter.dateFormat = "yyyy年MM月dd日"
+        let date = datefmatter.date(from: birthButton.title(for: .normal)!)
+        let dateStamp: TimeInterval = date!.timeIntervalSince1970
+        pet.birth_time = Int(dateStamp)
+        
+        PJHUD.shared.showLoading(view: self.view)
+        PJPet.shared.createPet(model: pet, complateHandler: { _ in
+            PJHUD.shared.dismiss()
+            self.navigationController?.popToRootViewController(animated: true)
+        }) {
+            PJHUD.shared.showError(view: self.view, text: $0.errorMsg)
+        }
     }
     
     @objc
@@ -276,6 +322,9 @@ extension PJCreatePetSelfDetailsViewController {
 
                 UIView.animate(withDuration: 0.25) {
                     self.bithButtonBottomConstraint.constant = 40
+                    
+                    self.birthView.isHidden = true
+                    self.birthView.alpha = 0
                     
                     self.updateRulerView(nil)
                     sender.tag %= 100

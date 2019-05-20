@@ -9,10 +9,6 @@
 import UIKit
 class PJCreatePetDetailsViewController: UIViewController, PJBaseViewControllerDelegate {
     var pet = PJPet.Pet()
-    // 上传
-    var imgKey = ""
-    // 关系代码 -1 黑户
-    var relation_code = 0
     
     private var breed = PJPet.PetBreedModel(id: -1, zh_name: "")
     
@@ -87,8 +83,6 @@ extension PJCreatePetDetailsViewController {
     fileprivate func done() {
         let vc = UIStoryboard(name: "PJCreatePetSelfDetailsViewController", bundle: nil).instantiateViewController(withIdentifier: "PJCreatePetSelfDetailsViewController") as! PJCreatePetSelfDetailsViewController
         vc.pet = pet
-        vc.imgKey = imgKey
-        vc.relation_code = relation_code
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -110,9 +104,10 @@ extension PJCreatePetDetailsViewController {
     @objc
     fileprivate func choiceRelation() {
         let vc = PJPetCreateRelationViewController()
-        vc.selectedIndex = relation_code
+        vc.selectedIndex = pet.relationship == -1 ? 0 : pet.relationship
         vc.selected = {
-            self.relation_code = $0
+            self.pet.relationship = $0
+            
             if $1 == "其它" {
                 self.relationButton.setTitle($1, for: .normal)
             } else {

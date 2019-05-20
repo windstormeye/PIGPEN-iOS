@@ -10,6 +10,18 @@ import UIKit
 
 class PJUserCenterPetTableViewCell: UITableViewCell {
 
+    var pet = PJPet.Pet() {
+        didSet {
+            avatarImageView.kf.setImage(with: URL(string: pet.avatar_url))
+            titleLabel.text = pet.nick_name
+            if pet.gender == 0 {
+                genderImageView.image = UIImage(named: "gender_female")
+            } else {
+                genderImageView.image = UIImage(named: "gender_male")
+            }
+        }
+    }
+    
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var genderImageView: UIImageView!
@@ -18,6 +30,7 @@ class PJUserCenterPetTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        avatarImageView.layer.cornerRadius = avatarImageView.pj_height / 2
     }
 }
