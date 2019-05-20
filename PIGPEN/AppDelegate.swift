@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         rootTabBar?.tabBar.isTranslucent = false
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = UIStoryboard(name: "PJCreatePetSelfDetailsViewController", bundle: nil).instantiateViewController(withIdentifier: "PJCreatePetSelfDetailsViewController")
+//        window?.rootViewController = rootTabBar
         window?.makeKeyAndVisible()
         
 //        initTabBarControler()

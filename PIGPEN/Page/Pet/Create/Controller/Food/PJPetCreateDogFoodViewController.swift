@@ -12,7 +12,7 @@ fileprivate extension Selector {
     static let back = #selector(PJPetCreateDogFoodViewController.back)
 }
 
-class PJPetCreateDogFoodViewController: PJBaseViewController {
+class PJPetCreateDogFoodViewController: UIViewController, PJBaseViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +20,9 @@ class PJPetCreateDogFoodViewController: PJBaseViewController {
     }
     
     private func initView() {
-        title = "每日进食量参考"
-        backButtonTapped(backSel: .back)
+        initBaseView()
+        titleString = "每日进食量参考"
+        backButtonTapped(backSel: .back, imageName: nil)
     }
     
     // MARK: - Actions
