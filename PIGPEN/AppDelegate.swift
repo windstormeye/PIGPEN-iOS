@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import IQKeyboardManagerSwift
+//import IQKeyboardManagerSwift
 import UserNotifications
 
 @UIApplicationMain
@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         initTabBarControler()
-        IQKeyboardManager.shared.enable = true
+//        IQKeyboardManager.shared.enable = true
         requestPushNotification(application)
         Bugly.start(withAppId: "i1400197107")
 
@@ -92,7 +92,7 @@ extension AppDelegate {
         playNav.tabBarItem.image = UIImage(named: "tab_play")?.withRenderingMode(.alwaysOriginal)
         playNav.tabBarItem.selectedImage = UIImage(named: "tab_play_selected")?.withRenderingMode(.alwaysOriginal)
         
-        let messagePage = PJPlayViewController()
+        let messagePage = PJInfoViewController()
         let messageNav = UINavigationController(rootViewController: messagePage)
         messageNav.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0,
                                                          bottom: -5, right: 0)

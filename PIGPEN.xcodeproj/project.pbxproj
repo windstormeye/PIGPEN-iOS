@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -34,6 +34,10 @@
 		0C2FE29B229249D300070068 /* PJPetCreateBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2FE29A229249D300070068 /* PJPetCreateBirthView.swift */; };
 		0C2FE29D229249D800070068 /* PJPetCreateBirthView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C2FE29C229249D800070068 /* PJPetCreateBirthView.xib */; };
 		0C439B42228E813F00FC7D77 /* PJPetCreateDogFoodViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C439B41228E813F00FC7D77 /* PJPetCreateDogFoodViewController.storyboard */; };
+		0C4CC27B22AF52C90031148F /* PJPlayCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CC27A22AF52C90031148F /* PJPlayCollectionView.swift */; };
+		0C4CC27D22AF6E3C0031148F /* PJPlayCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CC27C22AF6E3C0031148F /* PJPlayCellView.swift */; };
+		0C4CC27F22AF6E470031148F /* PJPlayCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C4CC27E22AF6E470031148F /* PJPlayCellView.xib */; };
+		0C4CC28122AF902F0031148F /* PJPlayCellDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4CC28022AF902F0031148F /* PJPlayCellDrawView.swift */; };
 		0C55E2C5215A61E3000D8815 /* PJHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2C4215A61E3000D8815 /* PJHomeViewController.swift */; };
 		0C55E2CE215A62BE000D8815 /* PJPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2CD215A62BE000D8815 /* PJPlayViewController.swift */; };
 		0C55E2D2215A62CD000D8815 /* PJUserCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C55E2D1215A62CD000D8815 /* PJUserCenterViewController.swift */; };
@@ -122,6 +126,7 @@
 		0CC35DD621DF653C002244DA /* YXWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DD521DF653C002244DA /* YXWaveView.swift */; };
 		0CC35DD921DF7025002244DA /* PJWaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DD821DF7025002244DA /* PJWaveView.swift */; };
 		0CC35DDD21E637E8002244DA /* PJCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC35DDC21E637E8002244DA /* PJCalloutView.swift */; };
+		0CCC6C1122ADF32500337CD4 /* PJInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCC6C1022ADF32500337CD4 /* PJInfoViewController.swift */; };
 		0CDB0C8F216705B000669331 /* PJUserSelfTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CDB0C8D216705B000669331 /* PJUserSelfTableViewCell.xib */; };
 		0CDB0C90216705B000669331 /* PJUserSelfTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0C8E216705B000669331 /* PJUserSelfTableViewCell.swift */; };
 		0CDB0C972167299A00669331 /* PJUserCenterTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0C962167299A00669331 /* PJUserCenterTableView.swift */; };
@@ -183,6 +188,10 @@
 		0C2FE29A229249D300070068 /* PJPetCreateBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJPetCreateBirthView.swift; sourceTree = "<group>"; };
 		0C2FE29C229249D800070068 /* PJPetCreateBirthView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJPetCreateBirthView.xib; sourceTree = "<group>"; };
 		0C439B41228E813F00FC7D77 /* PJPetCreateDogFoodViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PJPetCreateDogFoodViewController.storyboard; sourceTree = "<group>"; };
+		0C4CC27A22AF52C90031148F /* PJPlayCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJPlayCollectionView.swift; sourceTree = "<group>"; };
+		0C4CC27C22AF6E3C0031148F /* PJPlayCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJPlayCellView.swift; sourceTree = "<group>"; };
+		0C4CC27E22AF6E470031148F /* PJPlayCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJPlayCellView.xib; sourceTree = "<group>"; };
+		0C4CC28022AF902F0031148F /* PJPlayCellDrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJPlayCellDrawView.swift; sourceTree = "<group>"; };
 		0C55E2C4215A61E3000D8815 /* PJHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJHomeViewController.swift; sourceTree = "<group>"; };
 		0C55E2CD215A62BE000D8815 /* PJPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJPlayViewController.swift; sourceTree = "<group>"; };
 		0C55E2D1215A62CD000D8815 /* PJUserCenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserCenterViewController.swift; sourceTree = "<group>"; };
@@ -275,6 +284,7 @@
 		0CC35DD521DF653C002244DA /* YXWaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YXWaveView.swift; sourceTree = "<group>"; };
 		0CC35DD821DF7025002244DA /* PJWaveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJWaveView.swift; sourceTree = "<group>"; };
 		0CC35DDC21E637E8002244DA /* PJCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJCalloutView.swift; sourceTree = "<group>"; };
+		0CCC6C1022ADF32500337CD4 /* PJInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJInfoViewController.swift; sourceTree = "<group>"; };
 		0CDB0C8D216705B000669331 /* PJUserSelfTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PJUserSelfTableViewCell.xib; sourceTree = "<group>"; };
 		0CDB0C8E216705B000669331 /* PJUserSelfTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PJUserSelfTableViewCell.swift; sourceTree = "<group>"; };
 		0CDB0C962167299A00669331 /* PJUserCenterTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserCenterTableView.swift; sourceTree = "<group>"; };
@@ -515,9 +525,29 @@
 			path = BirthView;
 			sourceTree = "<group>";
 		};
+		0C4CC27422AF50940031148F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				0C4CC27C22AF6E3C0031148F /* PJPlayCellView.swift */,
+				0C4CC27E22AF6E470031148F /* PJPlayCellView.xib */,
+				0C4CC28022AF902F0031148F /* PJPlayCellDrawView.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		0C4CC27922AF52B70031148F /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				0C4CC27422AF50940031148F /* Cell */,
+				0C4CC27A22AF52C90031148F /* PJPlayCollectionView.swift */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
 		0C55E2C3215A61AD000D8815 /* Page */ = {
 			isa = PBXGroup;
 			children = (
+				0CCC6C0F22ADF30C00337CD4 /* Info */,
 				0C6A985E22729BF2003E4AA5 /* Friend */,
 				0CB5E8D72262D5B500CBE217 /* Search */,
 				0CC35DA021D0BA33002244DA /* Grade */,
@@ -542,6 +572,7 @@
 		0C55E2C8215A61F5000D8815 /* Play */ = {
 			isa = PBXGroup;
 			children = (
+				0C4CC27922AF52B70031148F /* CollectionView */,
 				0C55E2CD215A62BE000D8815 /* PJPlayViewController.swift */,
 			);
 			path = Play;
@@ -1229,6 +1260,21 @@
 			path = PopMenu;
 			sourceTree = "<group>";
 		};
+		0CC4CC6022A9B07F0050C233 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0CCC6C0F22ADF30C00337CD4 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				0CCC6C1022ADF32500337CD4 /* PJInfoViewController.swift */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
 		0CDB0C8A2167055900669331 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1250,6 +1296,7 @@
 		0CDB0C9821675F1C00669331 /* Pet */ = {
 			isa = PBXGroup;
 			children = (
+				0CC4CC6022A9B07F0050C233 /* Home */,
 				0C599EB3216CFDAA00FC2E37 /* Create */,
 			);
 			path = Pet;
@@ -1496,6 +1543,7 @@
 				0C5B5D3A2262C73F00392E21 /* CustomIncomingTextCell.xib in Resources */,
 				0C1F6FB021B3925E00304CD8 /* PJAlbumTableViewCell.xib in Resources */,
 				0C201A02228867B200AE8C2B /* PJPetCreateNameViewController.storyboard in Resources */,
+				0C4CC27F22AF6E470031148F /* PJPlayCellView.xib in Resources */,
 				0CB5E8F42264BDF700CBE217 /* PJDetailUserTableViewCell.xib in Resources */,
 				0CE4F3FD21592C7D003AD0F5 /* Assets.xcassets in Resources */,
 				0C55E2E9215B703C000D8815 /* PJUserLoginViewController.xib in Resources */,
@@ -1562,13 +1610,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PIGPEN/Pods-PIGPEN-resources.sh",
-				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RCConfig.plist",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PIGPEN/Pods-PIGPEN-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RCConfig.plist",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PIGPEN/Pods-PIGPEN-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1580,39 +1627,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PIGPEN/Pods-PIGPEN-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/CollectionKit/CollectionKit.framework",
-				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/HappyDNS/HappyDNS.framework",
-				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/MessengerKit/MessengerKit.framework",
-				"${BUILT_PRODUCTS_DIR}/PryntTrimmerView/PryntTrimmerView.framework",
-				"${BUILT_PRODUCTS_DIR}/Qiniu/Qiniu.framework",
-				"${BUILT_PRODUCTS_DIR}/Schedule/Schedule.framework",
-				"${BUILT_PRODUCTS_DIR}/SteviaLayout/Stevia.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-				"${BUILT_PRODUCTS_DIR}/YPImagePicker/YPImagePicker.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PIGPEN/Pods-PIGPEN-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CollectionKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HappyDNS.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessengerKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PryntTrimmerView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Qiniu.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Schedule.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stevia.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YPImagePicker.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PIGPEN/Pods-PIGPEN-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1648,6 +1668,7 @@
 				0CC35DAB21D0BC35002244DA /* PJGradeYesterdayViewController.swift in Sources */,
 				0C5B5D392262C73F00392E21 /* CustomCollectionView.swift in Sources */,
 				0C1F6FAF21B3925E00304CD8 /* PJAlbumTableViewCell.swift in Sources */,
+				0C4CC28122AF902F0031148F /* PJPlayCellDrawView.swift in Sources */,
 				0C2019FA2288591D00AE8C2B /* PJUserCenterPetTableViewCell.swift in Sources */,
 				0C55E2CE215A62BE000D8815 /* PJPlayViewController.swift in Sources */,
 				0CC35DCE21DCFFDC002244DA /* PJImageUpload.swift in Sources */,
@@ -1686,6 +1707,7 @@
 				0CB5E8E72262F76000CBE217 /* PJSearchTableView.swift in Sources */,
 				0CE4F3FB21592C7C003AD0F5 /* PIGPEN.xcdatamodeld in Sources */,
 				0CEC156E225CCF2D001F1533 /* PJIM.swift in Sources */,
+				0C4CC27D22AF6E3C0031148F /* PJPlayCellView.swift in Sources */,
 				0C55E2FC215F5EA9000D8815 /* PJUser.swift in Sources */,
 				0C2019C2227F228700AE8C2B /* PJSlideMenuTableViewCell.swift in Sources */,
 				0C55E2F7215F570D000D8815 /* PJUserRegisterViewController.swift in Sources */,
@@ -1704,6 +1726,7 @@
 				0C5E63482164FE3900A90762 /* UIColor_Custom.swift in Sources */,
 				0C5AD14F228BB23E00326E63 /* PJRelationAvatarView.swift in Sources */,
 				0C5E634F2165AB8C00A90762 /* PJTapic.swift in Sources */,
+				0CCC6C1122ADF32500337CD4 /* PJInfoViewController.swift in Sources */,
 				0C5E634321644F7900A90762 /* String.swift in Sources */,
 				0C55E2ED215B7DB0000D8815 /* PJUserForgetViewController.swift in Sources */,
 				0C6A985C22729353003E4AA5 /* PJUserService.swift in Sources */,
@@ -1713,6 +1736,7 @@
 				0C1F6FA421B391E500304CD8 /* PJAlbumTableView.swift in Sources */,
 				0CC35DA221D0BAF6002244DA /* PJGradeViewController.swift in Sources */,
 				0CC35DD621DF653C002244DA /* YXWaveView.swift in Sources */,
+				0C4CC27B22AF52C90031148F /* PJPlayCollectionView.swift in Sources */,
 				0C5AD143228B0DB200326E63 /* PJPetCreateRelationViewController.swift in Sources */,
 				0C5AD138228A648A00326E63 /* PJPetCreateBreedsTableViewCell.swift in Sources */,
 				0CB5FED72270ABFF00CBE217 /* PJImagePickerViewController.swift in Sources */,

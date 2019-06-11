@@ -30,8 +30,8 @@
                         <rect key="frame" x="90" y="10" width="140" height="59.5"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="pU7-M6-bae">
-                                <rect key="frame" x="0.0" y="12" width="46.5" height="36"/>
-                                <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".PingFang SC" pointSize="12"/>
+                                <rect key="frame" x="0.0" y="10" width="46.5" height="40"/>
+                                <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".PingFang SC" pointSize="14"/>
                                 <state key="normal">
                                     <string key="title">2333
 这是字</string>
@@ -39,8 +39,8 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="hj0-ZQ-pXy">
-                                <rect key="frame" x="46.5" y="12" width="47" height="36"/>
-                                <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".PingFang SC" pointSize="12"/>
+                                <rect key="frame" x="46.5" y="10" width="47" height="40"/>
+                                <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".PingFang SC" pointSize="14"/>
                                 <state key="normal">
                                     <string key="title">2333
 这是字</string>
@@ -48,8 +48,8 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="QZC-k2-cUm">
-                                <rect key="frame" x="93.5" y="12" width="46.5" height="36"/>
-                                <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".PingFang SC" pointSize="12"/>
+                                <rect key="frame" x="93.5" y="10" width="46.5" height="40"/>
+                                <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".PingFang SC" pointSize="14"/>
                                 <state key="normal">
                                     <string key="title">2333
 这是字</string>

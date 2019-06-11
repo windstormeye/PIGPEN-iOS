@@ -34,12 +34,12 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="旺财     粉丝 16123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3P-1c-S2m">
-                        <rect key="frame" x="70" y="20" width="175" height="20"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <rect key="frame" x="70" y="21.5" width="175" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gender__male" translatesAutoresizingMaskIntoConstraints="NO" id="eg8-XH-lzt">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gender_male" translatesAutoresizingMaskIntoConstraints="NO" id="eg8-XH-lzt">
                         <rect key="frame" x="255" y="22.5" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="15" id="Q5i-2o-HK5"/>
@@ -70,7 +70,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="gender__male" width="14" height="14"/>
+        <image name="gender_male" width="14" height="14"/>
         <image name="pet_avatar" width="90" height="90"/>
         <image name="user_pet_edit" width="20" height="20"/>
     </resources>

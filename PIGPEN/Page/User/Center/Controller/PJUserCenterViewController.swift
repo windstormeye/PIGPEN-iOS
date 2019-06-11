@@ -39,9 +39,9 @@ class PJUserCenterViewController: UIViewController, PJBaseViewControllerDelegate
         rightBarButtonItem(imageName: "user_sideMenu", rightSel: .menu)
         leftBarButtonItem(imageName: "user_visitors", leftSel: .vistors)
         
-        navigationItem.title = PJUser.shared.userModel.nick_name
         
-        tableView = PJUserCenterTableView(frame: CGRect(x: 0, y: 0, width: view.pj_width, height: view.pj_height), style: .plain)
+        tableView = PJUserCenterTableView(frame: CGRect(x: 0, y: 0, width: view.pj_width , height: view.pj_height - PJTABBAR_HEIGHT), style: .plain)
+        tableView.frame = view.bounds
 //        tableView?.viewDelegate = self
         view.addSubview(tableView)
         tableView.createPet = {

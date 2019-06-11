@@ -49,31 +49,31 @@
                                 </state>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YMi-oL-uoV">
-                                <rect key="frame" x="138" y="265" width="1.5" height="30"/>
+                                <rect key="frame" x="137.5" y="265" width="2" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="9Iy-d1-Y04"/>
-                                    <constraint firstAttribute="width" constant="1.5" id="ILo-lh-jik"/>
+                                    <constraint firstAttribute="width" constant="2" id="ILo-lh-jik"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ch-4G-KqA">
-                                <rect key="frame" x="187" y="342" width="1.5" height="30"/>
+                                <rect key="frame" x="186.5" y="342" width="2" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="1.5" id="Grq-Sp-RLF"/>
+                                    <constraint firstAttribute="width" constant="2" id="Grq-Sp-RLF"/>
                                     <constraint firstAttribute="height" constant="30" id="WYO-dy-fON"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nd2-mR-mfe">
-                                <rect key="frame" x="235.5" y="265" width="1.5" height="30"/>
+                                <rect key="frame" x="235.5" y="265" width="2" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="1.5" id="Mho-Hf-BcA"/>
+                                    <constraint firstAttribute="width" constant="2" id="Mho-Hf-BcA"/>
                                     <constraint firstAttribute="height" constant="30" id="STk-uu-pN2"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FMi-IH-4Ie">
-                                <rect key="frame" x="62" y="260" width="56" height="40"/>
+                                <rect key="frame" x="61.5" y="260" width="56" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="1FT-2o-kHb"/>
                                     <constraint firstAttribute="width" constant="56" id="MBw-LB-ucI"/>
@@ -91,7 +91,7 @@
                                 <state key="selected" image="user_create_pet_dating"/>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CMo-qf-L9L">
-                                <rect key="frame" x="257" y="260" width="56" height="40"/>
+                                <rect key="frame" x="257.5" y="260" width="56" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="56" id="J2b-jl-7Le"/>
                                     <constraint firstAttribute="height" constant="40" id="TWv-Hf-lQ3"/>
@@ -100,7 +100,7 @@
                                 <state key="selected" image="user_create_pet_alien"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mOe-rF-3dz">
-                                <rect key="frame" x="111" y="340" width="56" height="34"/>
+                                <rect key="frame" x="110.5" y="340" width="56" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="未绝育">

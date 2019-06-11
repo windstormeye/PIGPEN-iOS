@@ -19,6 +19,7 @@ class PJPetCreateNameViewController: UIViewController, PJBaseViewControllerDeleg
     @IBOutlet private weak var doneButton: UIButton!
     @IBOutlet weak var bottomTipsLabel: UILabel!
     
+    @IBOutlet weak var doneButtonBottomConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +55,7 @@ class PJPetCreateNameViewController: UIViewController, PJBaseViewControllerDeleg
             doneButton.setTitle(viewModel?.doneString, for: .normal)
         }
         
-        NotificationCenter.default.addObserver(self, selector: .keyboardFrame, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: .keyboardFrame, name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
     }
 
 }
@@ -105,14 +106,8 @@ extension PJPetCreateNameViewController {
     fileprivate func keyBoardFrameChange(_ notification: Notification){
         let info = notification.userInfo
         let kbRect = (info?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        let offsetY = kbRect.origin.y - view.pj_width
-        UIView.animate(withDuration: 0.25) {
-            if offsetY == 0 {
-                self.doneButton.bottom = self.view.pj_height
-            }else{
-                self.doneButton.bottom = offsetY
-            }
-        }
+        doneButtonBottomConstraint.constant = -kbRect.size.height
+        view.layoutIfNeeded()
     }
 }
 

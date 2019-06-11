@@ -17,4 +17,5 @@ target 'PIGPEN' do
     pod 'CollectionKit'
     pod 'Schedule'
     pod 'Kingfisher'
+    pod 'NVActivityIndicatorView'
 end

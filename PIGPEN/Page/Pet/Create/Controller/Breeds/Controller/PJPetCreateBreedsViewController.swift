@@ -54,14 +54,15 @@ class PJPetCreateBreedsViewController: UIViewController, PJBaseViewControllerDel
         view.addSubview(sideSliderView)
         sideSliderView.selectedComplation = { [weak self] index in
             if let `self` = self {
-                PJTapic.select()
+                
                 let indexPath = IndexPath(row: 0,
                                           section: index)
                 self.tableView?.scrollToRow(at: indexPath,
                                             at: .top,
                                             animated: false)
                 
-                self.pop.y = self.sideSliderView.y + 5 + self.sideSliderView.buttonHeight * CGFloat(index)
+                let newPopY = self.sideSliderView.y + 5 + self.sideSliderView.buttonHeight * CGFloat(index)
+                self.pop.y = newPopY
                 self.pop.setTitle(self.sideSliderView.itemStrings[index])
                 self.pop.isHidden = false
                 
@@ -108,8 +109,8 @@ class PJPetCreateBreedsViewController: UIViewController, PJBaseViewControllerDel
         // 监听器
         Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
             if Int(Date().timeIntervalSince1970) - self.timeStamp == 2 {
-                self.pop.isHidden = true
                 self.sideSliderView.isHidden = true
+                PJTapic.select()
             }
         }
     }

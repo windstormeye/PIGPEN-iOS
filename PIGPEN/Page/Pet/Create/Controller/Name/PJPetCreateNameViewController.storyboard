@@ -73,6 +73,7 @@
                     <connections>
                         <outlet property="bottomTipsLabel" destination="zAM-3e-aEO" id="FNc-1w-ZL5"/>
                         <outlet property="doneButton" destination="zPy-zH-OSL" id="M5k-se-dC6"/>
+                        <outlet property="doneButtonBottomConstraint" destination="bLM-NE-Alm" id="hEu-KT-RM4"/>
                         <outlet property="nameTextField" destination="aut-hY-PhB" id="6Eg-Uf-mBj"/>
                         <outlet property="tipsTitleLabel" destination="ko4-SF-V5x" id="uUI-VA-Rd6"/>
                     </connections>

@@ -34,7 +34,7 @@ class PJUserCenterTableView: UITableView {
         delegate = self
         dataSource = self
         
-        let footerView = UITableViewHeaderFooterView(frame: CGRect(x: 0, y: 0, width: pj_width, height: 80))
+        let footerView = UITableViewHeaderFooterView(frame: CGRect(x: 0, y: 0, width: pj_width, height: 50))
         let createButton = UIButton(frame: CGRect(x: 0, y: 0, width: pj_width * 0.8, height: 40))
         footerView.addSubview(createButton)
         createButton.layer.cornerRadius = createButton.pj_height / 2
@@ -123,11 +123,13 @@ extension PJUserCenterTableView: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: PJUserCenterTableView.userIdentifier,
                                                      for: indexPath) as! PJDetailUserTableViewCell
             cell.viewModel = PJDetailUserTableViewCell.ViewModel(avatar: 0, firstCount: String(8.5).count, firstTitle: "\(8.5)\n评分", secondCount: String(231).count, secondTitle: "\(231)\n关注", threeCount: String(14).count, threeTitle: "\(14)\n收藏")
+            cell.selectionStyle = .none
             cell.isHiddenChatButton(true)
             cell.isHiddenAvatarEditImageView(false)
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: PJUserCenterTableView.petIdentifier, for: indexPath) as! PJUserCenterPetTableViewCell
+            cell.selectionStyle = .none
             cell.pet = pets[indexPath.row]
             return cell
         default:
