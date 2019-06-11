@@ -28,22 +28,18 @@ class PJPlayCellView: UIView {
         layer.masksToBounds = true
         
         let cellY = (pj_height - statusLabel.bottom - 28) / 2 + statusLabel.bottom
-        let cellView = PJPlayCellDrawView(frame: CGRect(x: 0, y: 0, width: 28, height: 28))
+        let foodStatusView = PJPlayCellDrawView(frame: CGRect(x: 0, y: 0, width: 28, height: 28), imageName: "pet_food_logo", score: 7.7)
+        let drinkStatusView = PJPlayCellDrawView(frame: CGRect(x: 0, y: 0, width: 28, height: 28), imageName: "pet_drink_logo", score: 7.9)
+        let playStatusView = PJPlayCellDrawView(frame: CGRect(x: 0, y: 0, width: 28, height: 28), imageName: "pet_play_logo", score: 8.7)
+        let happyStatusView = PJPlayCellDrawView(frame: CGRect(x: 0, y: 0, width: 28, height: 28), imageName: "pet_happy_logo", score: 5.7)
+
         
-        let cellView2 = PJPlayCellDrawView(frame: CGRect(x: 0, y: 0, width: 28, height: 28))
-//        addSubview(cellView2)
-        
-        let cellView3 = PJPlayCellDrawView(frame: CGRect(x: 0, y: 0, width: 28, height: 28))
-//        addSubview(cellView3)
-        
-        let cellView4 = PJPlayCellDrawView(frame: CGRect(x: 0, y: 0, width: 28, height: 28))
-//        addSubview(cellView4)
-        
-        let hStack = UIStackView(arrangedSubviews: [cellView, cellView2, cellView3, cellView4])
+        let hStack = UIStackView(arrangedSubviews: [foodStatusView, drinkStatusView, playStatusView, happyStatusView])
         hStack.frame = CGRect(x: 0, y: cellY, width: pj_width, height: 28)
         addSubview(hStack)
         hStack.axis = .horizontal
         hStack.distribution = .fillEqually
-        
+        hStack.alignment = .center
+        hStack.sizeThatFits(CGSize(width: 28, height: 28))
     }
 }

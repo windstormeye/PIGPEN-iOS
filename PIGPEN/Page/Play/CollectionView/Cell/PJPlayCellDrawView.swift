@@ -12,23 +12,29 @@ class PJPlayCellDrawView: UIImageView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .clear
-        image = UIImage(named: "smile")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    convenience init(frame: CGRect, imageName: String, score: CGFloat) {
+        self.init(frame: frame)
         
-        let aPath = UIBezierPath(arcCenter: CGPoint(x: 14, y: 14), radius: 14,
-                                 startAngle: 0,
-                                 endAngle: (CGFloat)(90 * Double.pi / 180),
-                                 clockwise: true)
-        aPath.addLine(to: CGPoint(x: 14, y: 14))
+        backgroundColor = .clear
+        image = UIImage(named: imageName)
+        contentMode = .scaleAspectFit
+        
+        let aPath = UIBezierPath(arcCenter: CGPoint(x: centerX + 7, y: centerY), radius: pj_height,
+                                 startAngle: (CGFloat)(-90 * Double.pi / 180),
+                                 endAngle: (score * 3.6 - 90) * CGFloat.pi / 180,
+                                 clockwise: false)
+        aPath.addLine(to: CGPoint(x: centerX + 7, y: centerY))
         
         
         let maskLayer = CAShapeLayer(layer: layer)
         maskLayer.fillRule = .nonZero
         maskLayer.path = aPath.cgPath
         layer.mask = maskLayer
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

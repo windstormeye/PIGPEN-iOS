@@ -27,6 +27,9 @@ class PJPlayViewController: UIViewController, PJBaseViewControllerDelegate {
         let hStack = UIStackView(arrangedSubviews: [UIView()])
         hStack.alignment = .center
         hStack.axis = .horizontal
-        hStack.distribution = .fillEqually
+        hStack.spacing = 10
+        hStack.distribution = .equalSpacing
+        hStack.alignment = .center
+        hStack.sizeThatFits(CGSize(width: 28, height: 28))
     }
 }
