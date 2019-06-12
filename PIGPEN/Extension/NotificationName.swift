@@ -16,4 +16,8 @@ extension NSNotification.Name {
     static func gotoLogin() -> NSNotification.Name {
         return NSNotification.Name("PJNotificationGotoLogin")
     }
+    
+    static func enterBackground() -> NSNotification.Name {
+        return NSNotification.Name("PJNotificationEnterBackground")
+    }
 }

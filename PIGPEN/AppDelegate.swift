@@ -52,6 +52,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        NotificationCenter.default.post(name: .enterBackground(), object: nil)
+    }
+    
     func applicationWillTerminate(_ application: UIApplication) {
         self.saveContext()
     }
