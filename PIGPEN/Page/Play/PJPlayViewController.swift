@@ -21,7 +21,7 @@ class PJPlayViewController: UIViewController, PJBaseViewControllerDelegate {
         
         view.backgroundColor = .white
         
-        let collectionView = PJPlayCollectionView(frame: CGRect(x: 0, y: 0, width: view.pj_width, height: view.pj_height))
+        let collectionView = PJPlayCollectionView(frame: CGRect(x: 0, y: 0, width: view.pj_width, height: view.pj_height - navigationBarHeight))
         view.addSubview(collectionView)
         
         let hStack = UIStackView(arrangedSubviews: [UIView()])
