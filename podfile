@@ -18,4 +18,5 @@ target 'PIGPEN' do
     pod 'Schedule'
     pod 'Kingfisher'
     pod 'NVActivityIndicatorView'
+    pod 'SwiftGifOrigin', '~> 1.7.0'
 end
