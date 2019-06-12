@@ -16,7 +16,7 @@ func pj_YPImagePicker() -> YPImagePickerConfiguration {
     config.hidesStatusBar = false
     config.hidesBottomBar = true
     config.colors.tintColor = .black
-    config.showsFilters = false
+    config.showsPhotoFilters = false
     config.targetImageSize = YPImageSize.cappedTo(size: 100)
     
     let overlayView = UIImageView(image: UIImage(named: "avatar_overlayer"))

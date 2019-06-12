@@ -1,29 +1,29 @@
 PODS:
-  - Alamofire (4.8.1)
+  - Alamofire (4.8.2)
   - Bugly (2.5.0)
-  - CollectionKit (2.3.0):
-    - CollectionKit/Core (= 2.3.0)
-  - CollectionKit/Core (2.3.0)
-  - CryptoSwift (0.15.0)
+  - CollectionKit (2.4.0):
+    - CollectionKit/Core (= 2.4.0)
+  - CollectionKit/Core (2.4.0)
+  - CryptoSwift (1.0.0)
   - HappyDNS (0.3.15)
-  - IQKeyboardManagerSwift (6.2.0)
+  - IQKeyboardManagerSwift (6.3.0)
   - JGProgressHUD (2.0.3)
-  - Kingfisher (5.3.0)
+  - Kingfisher (5.6.0)
   - MessengerKit (1.0.4)
   - mob_smssdk (3.2.3):
     - MOBFoundation
-  - MOBFoundation (3.2.2)
-  - NVActivityIndicatorView (4.6.1):
-    - NVActivityIndicatorView/Presenter (= 4.6.1)
-  - NVActivityIndicatorView/Presenter (4.6.1)
+  - MOBFoundation (3.2.3)
+  - NVActivityIndicatorView (4.7.0):
+    - NVActivityIndicatorView/Presenter (= 4.7.0)
+  - NVActivityIndicatorView/Presenter (4.7.0)
   - PryntTrimmerView (3.0.0)
   - Qiniu (7.2.5):
     - HappyDNS (~> 0.3)
   - RongCloudIM/IMLib (2.8.32)
-  - Schedule (1.0.0)
+  - Schedule (2.0.2)
   - SteviaLayout (4.4.4)
-  - SwiftyJSON (4.2.0)
-  - YPImagePicker (3.5.3):
+  - SwiftyJSON (5.0.0)
+  - YPImagePicker (4.0.0):
     - PryntTrimmerView (~> 3.0.0)
     - SteviaLayout (~> 4.4.1)
 
@@ -71,29 +71,29 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   MessengerKit:
-    :commit: 3c6fda020cba538aeeca90bf12a4816147011655
+    :commit: 6917ef22129d0e9cae417b796509158505eac4d1
     :git: https://github.com/steve228uk/MessengerKit.git
 
 SPEC CHECKSUMS:
-  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
-  CollectionKit: 6910479bf865bfe49040e73322ce4b8fe8991231
-  CryptoSwift: 769f58a9e89f64e8796c2e59ce5f002dc81a2438
+  CollectionKit: 8f01e7629185bb81072c4aa734d105df5c2d1c8b
+  CryptoSwift: d81eeaa59dc5a8d03720fe919a6fd07b51f7439f
   HappyDNS: 00c15e651a347206e58a20503a32a5564589b56a
-  IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
+  IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
   JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
-  Kingfisher: 4692c783ffb99e9e2e40a6eb3e518c3b96c6fa8c
-  MessengerKit: 39abeb652e7837b2ced80c4813b20368a994571d
+  Kingfisher: 1a50df6880a60bae26f3e21a0df3d17b892f5e0b
+  MessengerKit: 41a5742a03e3f9638cb3b4ae310f69161ac1e659
   mob_smssdk: cdb6a31d4fd4667ed928e2eca03f21ad89ebc05c
-  MOBFoundation: b5ff4038ddb9a0f06b685b86408f905a10aa147c
-  NVActivityIndicatorView: 4ca19fccc84595a78957336a086d00a49be6ce61
+  MOBFoundation: 246159a97f5e6c8a271b674dd885dc4b0953e45e
+  NVActivityIndicatorView: b19ddab2576f805cbe0fb2306cba3476e09a1dea
   PryntTrimmerView: 53ac64053c7ce63cb3e27f54090f52da0734891d
   Qiniu: 909b408ee489ea54827e9717be90b94bc9dfbc48
   RongCloudIM: 48bfc2fcb8d7cae8ce1e19cb5fb26d6d90616375
-  Schedule: 64f334e01daa6f80201ab147b59cb4f1e118ae74
+  Schedule: 937b2b998a1502e943e37d1b67f38c9e53429c7e
   SteviaLayout: 523469269059f2c6da02820bb2ff28a5fe0780aa
-  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
-  YPImagePicker: 5dd3814b47b1208e9c8cc8f6ef77fe90db3723b6
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  YPImagePicker: 8039f89ad79281545fa868486f32d9bf5d65ede1
 
 PODFILE CHECKSUM: 637a0d634daba8f2825897010d7c7c820d53afaf
 
