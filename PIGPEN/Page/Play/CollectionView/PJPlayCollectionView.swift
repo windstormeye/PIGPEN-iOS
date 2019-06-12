@@ -11,6 +11,9 @@ import CollectionKit
 
 class PJPlayCollectionView: UIView {
     
+    var selectedActivity: ((Int) -> Void)?
+    var selectedCell: ((Int) -> Void)?
+    
     let viewModels = [PJPet(), PJPet(), PJPet()]
     
     private var selectedIndexs = [Int]()
@@ -102,7 +105,9 @@ class PJPlayCollectionView: UIView {
                                            viewSource: footerViewSource,
                                            sizeSource: footerSizeSource,
                                            layout: footerLayout,
-                                           animator: nil)
+                                           animator: nil) {
+                                            self.selectedActivity?($0.index)
+        }
         
         let finalProvider = ComposedProvider(sections: [cellprovider, footerProvider])
         let collectionView = CollectionView(frame: CGRect(x: 0, y: navigationBarHeight, width: pj_width, height: pj_height - navigationBarHeight))
