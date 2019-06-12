@@ -13,7 +13,19 @@ class PJPlayCellView: UIView {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var dotView: UIView!
     
+    var isSelected = false {
+        didSet {
+            dotView.isHidden = !isSelected
+            
+            if isSelected {
+                backgroundColor = PJRGB(255, 248, 245)
+            } else {
+                backgroundColor = PJRGB(240, 240, 240)
+            }
+        }
+    }
     
     class func newInstance() -> PJPlayCellView {
         return Bundle.main.loadNibNamed("PJPlayCellView",
@@ -26,6 +38,10 @@ class PJPlayCellView: UIView {
         
         layer.cornerRadius = 14
         layer.masksToBounds = true
+        
+        dotView.layer.cornerRadius = dotView.pj_height / 2
+        dotView.layer.borderColor = UIColor.white.cgColor
+        dotView.layer.borderWidth = 2
         
         let cellY = (pj_height - statusLabel.bottom - 28) / 2 + statusLabel.bottom
         let foodStatusView = PJPlayCellDrawView(frame: CGRect(x: 0, y: 0, width: 28, height: 28), imageName: "pet_food_logo", score: 7.7)

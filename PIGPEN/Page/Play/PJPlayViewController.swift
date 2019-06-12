@@ -21,15 +21,21 @@ class PJPlayViewController: UIViewController, PJBaseViewControllerDelegate {
         
         view.backgroundColor = .white
         
-        let collectionView = PJPlayCollectionView(frame: CGRect(x: 0, y: 0, width: view.pj_width, height: view.pj_height))
+        let collectionView = PJPlayCollectionView(frame: CGRect(x: 0, y: 0, width: view.pj_width, height: view.pj_height - navigationBarHeight))
         view.addSubview(collectionView)
-        
-        let hStack = UIStackView(arrangedSubviews: [UIView()])
-        hStack.alignment = .center
-        hStack.axis = .horizontal
-        hStack.spacing = 10
-        hStack.distribution = .equalSpacing
-        hStack.alignment = .center
-        hStack.sizeThatFits(CGSize(width: 28, height: 28))
+        collectionView.selectedActivity = {
+            switch $0 {
+            case 0:
+                break
+            case 1:
+                break
+            case 2:
+                let vc = PJCatPlayViewController()
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
+            default:
+                break
+            }
+        }
     }
 }
