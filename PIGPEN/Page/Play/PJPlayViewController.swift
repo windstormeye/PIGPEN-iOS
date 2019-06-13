@@ -30,7 +30,8 @@ class PJPlayViewController: UIViewController, PJBaseViewControllerDelegate {
             case 1:
                 break
             case 2:
-                let vc = PJCatPlayViewController()
+//                let vc = PJCatPlayViewController()
+                let vc = PJDogPlayViewController()
                 vc.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(vc, animated: true)
             default:

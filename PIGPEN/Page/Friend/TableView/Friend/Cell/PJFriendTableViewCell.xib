@@ -26,7 +26,7 @@
                             <constraint firstAttribute="width" constant="50" id="xxA-Oz-RlT"/>
                         </constraints>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_female" translatesAutoresizingMaskIntoConstraints="NO" id="bna-VK-yVJ">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gender_female" translatesAutoresizingMaskIntoConstraints="NO" id="bna-VK-yVJ">
                         <rect key="frame" x="179.5" y="5" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="U2J-5w-yFA"/>
@@ -78,7 +78,7 @@
     </objects>
     <resources>
         <image name="0" width="90" height="90"/>
+        <image name="gender_female" width="14" height="14"/>
         <image name="search_send" width="20" height="22"/>
-        <image name="user_female" width="14" height="14"/>
     </resources>
 </document>

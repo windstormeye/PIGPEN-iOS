@@ -8,7 +8,6 @@ target 'PIGPEN' do
     pod 'JGProgressHUD'
     pod 'YPImagePicker'
     pod 'RongCloudIM/IMLib', '~> 2.8.3'
-    
     pod 'MessengerKit', :git => 'https://github.com/steve228uk/MessengerKit.git'
     pod 'IQKeyboardManagerSwift'
     pod 'Alamofire'
@@ -19,4 +18,7 @@ target 'PIGPEN' do
     pod 'Kingfisher'
     pod 'NVActivityIndicatorView'
     pod 'SwiftGifOrigin', '~> 1.7.0'
+    pod 'AMap3DMap' # 2D 地图 SDK
+    pod 'AMapLocation' # 定位 SDK
+    pod 'AMapSearch' # 搜索（天气等）SDK
 end
