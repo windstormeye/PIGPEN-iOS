@@ -10,12 +10,29 @@ import UIKit
 
 class PJDogPlayDetailsView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var remainingDistanceLabel: UILabel!
+    
+    var viewModel: ViewModel? {
+        didSet {
+            timeLabel.text = viewModel?.time
+            distanceLabel.text = viewModel?.distance
+            remainingDistanceLabel.text = viewModel?.remainningDistance
+        }
     }
-    */
+    
+    class func newInstance() -> PJDogPlayDetailsView {
+        return Bundle.main.loadNibNamed("PJDogPlayDetailsView",
+                                        owner: self,
+                                        options: nil)!.first as! PJDogPlayDetailsView
+    }
+}
 
+extension PJDogPlayDetailsView {
+    struct ViewModel {
+        var time: String
+        var distance: String
+        var remainningDistance: String
+    }
 }
