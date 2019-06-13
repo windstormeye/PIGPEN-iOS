@@ -14,6 +14,7 @@
 #import <Bugly/Bugly.h>
 #import <MAMapKit/MAMapKit.h>
 #import <AMapSearchKit/AMapSearchKit.h>
+#import <AMapLocationKit/AMapLocationKit.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
 
 #endif /* PIGPEN_bridge_h */

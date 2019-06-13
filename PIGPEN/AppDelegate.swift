@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        IQKeyboardManager.shared.enable = true
         requestPushNotification(application)
         Bugly.start(withAppId: "i1400197107")
+        AMapServices.shared().apiKey = "613ec57d63c2ff0b1025088a4ddbe1e0"
 
         RCIMClient.shared()?.initWithAppKey("kj7swf8ok3sq2")
         PJUser.shared.connectRC(completeHandler: {
