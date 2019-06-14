@@ -11,6 +11,7 @@ import UIKit
 class PJPlayViewController: UIViewController, PJBaseViewControllerDelegate {
 
     private var collectionView: PJPetPlayCollectionView?
+    private var petTypes = Set<PJPet.PetType>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,27 +38,58 @@ class PJPlayViewController: UIViewController, PJBaseViewControllerDelegate {
         view.addSubview(collectionView!)
         
         collectionView?.cellSelected = {
-            print($0)
-            self.collectionView?.footerView.foodImageView.isHighlighted = true
+            guard $0.count != 0 else {
+                self.collectionView?.footerView.unHightlight()
+                return
+            }
+            
+            for index in $0 {
+                self.petTypes.insert(self.collectionView!.viewModels[index].pet_type)
+            }
+            
+            self.collectionView?.footerView.hightlight()
+        
+            // 猫
+            if !self.petTypes.contains(.dog) {
+                // 可同 吃喝玩
+                self.collectionView?.footerView.allCats()
+                return
+            }
+            
+            if !self.petTypes.contains(.cat) {
+                // 都是狗
+                if $0.count > 1 {
+                    // 可同 喝玩
+                    self.collectionView?.footerView.allDogs()
+                    return
+                }
+                // 一只狗
+                self.collectionView?.footerView.dog()
+                return
+            }
+            
+            // 猫狗。可同 喝
+            self.collectionView?.footerView.catAndDog()
         }
         
-//        let collectionView = PJPlayCollectionView(frame: CGRect(x: 0, y: 0, width: view.pj_width, height: view.pj_height - navigationBarHeight))
-//        view.addSubview(collectionView)
-//        collectionView.selectedActivity = {
-//            switch $0 {
-//            case 0:
-//                break
-//            case 1:
-//                break
-//            case 2:
-////                let vc = PJCatPlayViewController()
-//                let vc = PJDogPlayViewController()
-//                vc.hidesBottomBarWhenPushed = true
-//                self.navigationController?.pushViewController(vc, animated: true)
-//            default:
-//                break
-//            }
-//        }
+        collectionView?.footerView.itemSelected = {
+            switch $0 {
+            case 0:
+                break
+            case 1:
+                break
+            case 2:
+                var vc = UIViewController()
+                if self.petTypes.contains(.cat) {
+                    vc = PJCatPlayViewController()
+                } else {
+                    vc = PJDogPlayViewController()
+                }
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
+            default: break
+            }
+        }
         
         initData()
     }
