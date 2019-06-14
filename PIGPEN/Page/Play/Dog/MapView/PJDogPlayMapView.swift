@@ -16,6 +16,8 @@ class PJDogPlayMapView: UIView {
     private let req = AMapWeatherSearchRequest()
     private var r = MAUserLocationRepresentation()
     private var locationManager = AMapLocationManager()
+    private var lineLocations = [CLLocation]()
+    private var lineCoordinates = [CLLocationCoordinate2D]()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,8 +43,12 @@ class PJDogPlayMapView: UIView {
         mapView.customMapStyleEnabled = true;
         // 显示显示用户位置
         mapView.showsUserLocation = true
+        // 禁止倾斜手势
+        mapView.isRotateCameraEnabled = false
         // 用户模式跟踪
         mapView.userTrackingMode = .follow
+        mapView.allowsBackgroundLocationUpdates = true
+        
         mapView.zoomLevel = 19
         addSubview(mapView)
         
@@ -63,19 +69,25 @@ class PJDogPlayMapView: UIView {
         locationManager.locatingWithReGeocode = true
         locationManager.startUpdatingLocation()
     }
-
 }
 
 extension PJDogPlayMapView: AMapSearchDelegate {
-    
+    func onDistanceSearchDone(_ request: AMapDistanceSearchRequest!, response: AMapDistanceSearchResponse!) {
+        print(response.results[0].distance)
+    }
 }
 
 extension PJDogPlayMapView: MAMapViewDelegate {
     func mapView(_ mapView: MAMapView!, rendererFor overlay: MAOverlay!) -> MAOverlayRenderer! {
-        let render = MAOverlayRenderer(overlay: overlay)
-        var point = CGPoint(x: 200, y: 200)
-        render?.renderLines(withPoints: &(point), pointCount: 1, strokeColors: [PJRGB(255, 85, 67)], drawStyleIndexes: [0], isGradient: false, lineWidth: 3, looped: false, lineJoinType: .init(2), lineCapType: .init(3), lineDash: .none)
-        return render
+        if overlay.isKind(of: MAPolyline.self) {
+            let renderer: MAPolylineRenderer = MAPolylineRenderer(overlay: overlay)
+            renderer.lineWidth = 3
+            renderer.strokeColor = PJRGB(255, 85, 67)
+            renderer.lineJoinType = .init(2)
+            renderer.lineCapType = .init(3)
+            return renderer
+        }
+        return nil
     }
 }
 
@@ -89,17 +101,36 @@ extension PJDogPlayMapView: AMapLocationManagerDelegate {
             print("reGeocode:%@", reGeocode)
         }
         
-        
-        let movingAnnotation = MAAnimatedAnnotation()
-        
-        var coords = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
+        let coords = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
                                             longitude: location.coordinate.longitude)
         
-        movingAnnotation.addMoveAnimation(withKeyCoordinates:&(coords),
-                                          count: 1,
-                                          withDuration: 0.25,
-                                          withName: nil,
-                                          completeCallback:nil)
-        mapView.addAnnotation(movingAnnotation)
+        lineLocations.append(location)
+        lineCoordinates.append(coords)
+        let polyline = MAGeodesicPolyline(coordinates: &lineCoordinates, count: UInt(lineCoordinates.count))
+        mapView.add(polyline)
+        
+        
+        
+        if lineLocations.last != nil {
+            let lastCoord = lineLocations.last!
+            //1.将两个经纬度点转成投影点
+            let point1 = MAMapPointForCoordinate(CLLocationCoordinate2D(latitude: lastCoord.coordinate.latitude, longitude: lastCoord.coordinate.longitude))
+            let point2 = MAMapPointForCoordinate(CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
+            
+            let distanceRequest = AMapDistanceSearchRequest()
+            distanceRequest.type = 0
+            distanceRequest.origins = [AMapGeoPoint.location(withLatitude: CGFloat(lastCoord.coordinate.latitude), longitude: CGFloat(lastCoord.coordinate.longitude))]
+            distanceRequest.destination = AMapGeoPoint.location(withLatitude: CGFloat(location.coordinate.latitude), longitude: CGFloat(location.coordinate.longitude))
+
+            //2.计算距离
+//            let distance = MAMetersBetweenMapPoints(point1, point2);
+//            print(distance)
+            
+//            print(lastCoord.course)
+            
+            AMapSearchAPI()?.aMapDistanceSearch(distanceRequest)
+            
+        } else {
+        }
     }
 }

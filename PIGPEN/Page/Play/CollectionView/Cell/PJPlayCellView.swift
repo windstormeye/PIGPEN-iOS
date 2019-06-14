@@ -8,14 +8,20 @@
 
 import UIKit
 
-class PJPlayCellView: UIView {
+class PJPlayCellView: UICollectionViewCell {
     
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var dotView: UIView!
     
-    var isSelected = false {
+    var viewModel = PJPet.Pet() {
+        didSet {
+            updateData()
+        }
+    }
+    
+    override var isSelected: Bool  {
         didSet {
             dotView.isHidden = !isSelected
             
@@ -39,6 +45,8 @@ class PJPlayCellView: UIView {
         layer.cornerRadius = 14
         layer.masksToBounds = true
         
+        avatarImageView.layer.cornerRadius = avatarImageView.pj_width / 2
+        
         dotView.layer.cornerRadius = dotView.pj_height / 2
         dotView.layer.borderColor = UIColor.white.cgColor
         dotView.layer.borderWidth = 2
@@ -57,5 +65,10 @@ class PJPlayCellView: UIView {
         hStack.distribution = .fillEqually
         hStack.alignment = .center
         hStack.sizeThatFits(CGSize(width: 28, height: 28))
+    }
+    
+    private func updateData() {
+        avatarImageView.kf.setImage(with: URL(string: viewModel.avatar_url))
+        nicknameLabel.text = viewModel.nick_name
     }
 }

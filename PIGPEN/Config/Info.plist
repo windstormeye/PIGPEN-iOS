@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>PIGPEN 想获取您的位置信息进行遛狗</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>PIGPEN 想访问您的麦克风以供拍摄视频</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -35,11 +31,16 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>PIGPEN 想访问您的相机以供拍摄照片</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>PIGPEN 想获取您的位置信息进行遛狗</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>PIGPEN 想访问您的麦克风以供拍摄视频</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>PIGPEN 想访问您的相册以供选择照片</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
+		<string>location</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
