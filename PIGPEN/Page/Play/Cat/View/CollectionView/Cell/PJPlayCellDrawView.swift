@@ -25,9 +25,10 @@ class PJPlayCellDrawView: UIImageView {
         image = UIImage(named: imageName)
         contentMode = .scaleAspectFit
         
-        let aPath = UIBezierPath(arcCenter: CGPoint(x: centerX + 7, y: centerY), radius: pj_height,
+        let aPath = UIBezierPath(arcCenter: CGPoint(x: centerX + 7, y: centerY),
+                                 radius: pj_height,
                                  startAngle: (CGFloat)(-90 * Double.pi / 180),
-                                 endAngle: (score * 3.6 - 90) * CGFloat.pi / 180,
+                                 endAngle: (score * 10 * 3.6 - 90) * CGFloat.pi / 180,
                                  clockwise: false)
         aPath.addLine(to: CGPoint(x: centerX + 7, y: centerY))
         

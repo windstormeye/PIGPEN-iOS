@@ -141,6 +141,8 @@
 		0CDB0C972167299A00669331 /* PJUserCenterTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0C962167299A00669331 /* PJUserCenterTableView.swift */; };
 		0CDB0C9B21675F6E00669331 /* PJUserDetailsMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB0C9A21675F6E00669331 /* PJUserDetailsMenuView.swift */; };
 		0CDB0C9D21675F7400669331 /* PJUserDetailsMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CDB0C9C21675F7400669331 /* PJUserDetailsMenuView.xib */; };
+		0CDB3E5722B4D9CD0075A3AF /* PJPetPlayDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDB3E5622B4D9CD0075A3AF /* PJPetPlayDetailsView.swift */; };
+		0CDB3E5922B4D9F90075A3AF /* PJPetPlayDetailsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CDB3E5822B4D9F90075A3AF /* PJPetPlayDetailsView.xib */; };
 		0CE2616821C500AF00740582 /* PJAlbumCollectiionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2616721C500AF00740582 /* PJAlbumCollectiionFlowLayout.swift */; };
 		0CE2617F21C5346800740582 /* PJAlbumDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2617E21C5346800740582 /* PJAlbumDetailsViewController.swift */; };
 		0CE2618221C5420A00740582 /* PJAlbumCollectionFocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE2618121C5420A00740582 /* PJAlbumCollectionFocusView.swift */; };
@@ -309,6 +311,8 @@
 		0CDB0C962167299A00669331 /* PJUserCenterTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserCenterTableView.swift; sourceTree = "<group>"; };
 		0CDB0C9A21675F6E00669331 /* PJUserDetailsMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserDetailsMenuView.swift; sourceTree = "<group>"; };
 		0CDB0C9C21675F7400669331 /* PJUserDetailsMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJUserDetailsMenuView.xib; sourceTree = "<group>"; };
+		0CDB3E5622B4D9CD0075A3AF /* PJPetPlayDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJPetPlayDetailsView.swift; sourceTree = "<group>"; };
+		0CDB3E5822B4D9F90075A3AF /* PJPetPlayDetailsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJPetPlayDetailsView.xib; sourceTree = "<group>"; };
 		0CE2616721C500AF00740582 /* PJAlbumCollectiionFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJAlbumCollectiionFlowLayout.swift; sourceTree = "<group>"; };
 		0CE2617E21C5346800740582 /* PJAlbumDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJAlbumDetailsViewController.swift; sourceTree = "<group>"; };
 		0CE2618121C5420A00740582 /* PJAlbumCollectionFocusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJAlbumCollectionFocusView.swift; sourceTree = "<group>"; };
@@ -1408,6 +1412,8 @@
 		0CDB3E5522B4C86E0075A3AF /* Details */ = {
 			isa = PBXGroup;
 			children = (
+				0CDB3E5622B4D9CD0075A3AF /* PJPetPlayDetailsView.swift */,
+				0CDB3E5822B4D9F90075A3AF /* PJPetPlayDetailsView.xib */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -1646,6 +1652,7 @@
 				0C2FE29D229249D800070068 /* PJPetCreateBirthView.xib in Resources */,
 				0CE4F40021592C7D003AD0F5 /* LaunchScreen.storyboard in Resources */,
 				0C2019D52283B45800AE8C2B /* PJPetCreateViewController.storyboard in Resources */,
+				0CDB3E5922B4D9F90075A3AF /* PJPetPlayDetailsView.xib in Resources */,
 				0C55E3022161B247000D8815 /* PJWelcomeViewController.xib in Resources */,
 				0C201A0C22896DE600AE8C2B /* PJCreatePetDetailsViewController.storyboard in Resources */,
 				0CED02E3219D45AC00294033 /* PJDogFoodViewController.xib in Resources */,
@@ -1858,6 +1865,7 @@
 				0C55E2ED215B7DB0000D8815 /* PJUserForgetViewController.swift in Sources */,
 				0C6A985C22729353003E4AA5 /* PJUserService.swift in Sources */,
 				0CE2618221C5420A00740582 /* PJAlbumCollectionFocusView.swift in Sources */,
+				0CDB3E5722B4D9CD0075A3AF /* PJPetPlayDetailsView.swift in Sources */,
 				0C5D72D622B3D8D600670100 /* PJPetPlayCollectionFooterView.swift in Sources */,
 				0CDB0C972167299A00669331 /* PJUserCenterTableView.swift in Sources */,
 				0C55E2E4215A84EA000D8815 /* UIView.swift in Sources */,
