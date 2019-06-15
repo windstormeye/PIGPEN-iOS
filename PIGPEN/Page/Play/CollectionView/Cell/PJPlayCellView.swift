@@ -44,6 +44,7 @@ class PJPlayCellView: UICollectionViewCell {
         
         layer.cornerRadius = 14
         layer.masksToBounds = true
+        backgroundColor = PJRGB(240, 240, 240)
         
         avatarImageView.layer.cornerRadius = avatarImageView.pj_width / 2
         

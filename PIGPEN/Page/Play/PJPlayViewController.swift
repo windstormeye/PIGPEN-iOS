@@ -47,8 +47,6 @@ class PJPlayViewController: UIViewController, PJBaseViewControllerDelegate {
                 self.petTypes.insert(self.collectionView!.viewModels[index].pet_type)
             }
             
-            self.collectionView?.footerView.hightlight()
-        
             // 猫
             if !self.petTypes.contains(.dog) {
                 // 可同 吃喝玩
@@ -72,7 +70,7 @@ class PJPlayViewController: UIViewController, PJBaseViewControllerDelegate {
             self.collectionView?.footerView.catAndDog()
         }
         
-        collectionView?.footerView.itemSelected = {
+        collectionView?.footerSelected = {
             switch $0 {
             case 0:
                 break
