@@ -43,6 +43,7 @@ class PJPlayViewController: UIViewController, PJBaseViewControllerDelegate {
                 return
             }
             
+            self.petTypes.removeAll()
             for index in $0 {
                 self.petTypes.insert(self.collectionView!.viewModels[index].pet_type)
             }
@@ -77,14 +78,22 @@ class PJPlayViewController: UIViewController, PJBaseViewControllerDelegate {
             case 1:
                 break
             case 2:
-                var vc = UIViewController()
                 if self.petTypes.contains(.cat) {
-                    vc = PJCatPlayViewController()
+                    
+                    var pets = [PJPet.Pet]()
+                    for item in self.collectionView!.selectedPets {
+                        pets.append((self.collectionView?.viewModels[item])!)
+                    }
+                    let vc = PJCatPlayHomeViewController(viewModels: pets)
+                    vc.hidesBottomBarWhenPushed = true
+                    self.navigationController?.pushViewController(vc, animated: true)
                 } else {
-                    vc = PJDogPlayViewController()
+                    
+                    let vc = PJDogPlayViewController()
+                    
+                    vc.hidesBottomBarWhenPushed = true
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }
-                vc.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(vc, animated: true)
             default: break
             }
         }

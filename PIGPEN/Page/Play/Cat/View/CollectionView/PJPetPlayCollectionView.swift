@@ -16,6 +16,7 @@ class PJPetPlayCollectionView: UICollectionView {
     var viewModels = [PJPet.Pet]() {
         didSet { reloadData() }
     }
+    var selectedPets = [Int]()
     
     var footerView = PJPetPlayCollectionFooterView()
     
@@ -70,14 +71,16 @@ extension PJPetPlayCollectionView: UICollectionViewDataSource {
 
 extension PJPetPlayCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        cellSelected?(collectionView.indexPathsForSelectedItems!.map({ (index) -> Int in
+        selectedPets = collectionView.indexPathsForSelectedItems!.map({ (index) -> Int in
             return index.row
-        }))
+        })
+        cellSelected?(selectedPets)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        cellSelected?(collectionView.indexPathsForSelectedItems!.map({ (index) -> Int in
+        selectedPets = collectionView.indexPathsForSelectedItems!.map({ (index) -> Int in
             return index.row
-        }))
+        })
+        cellSelected?(selectedPets)
     }
 }

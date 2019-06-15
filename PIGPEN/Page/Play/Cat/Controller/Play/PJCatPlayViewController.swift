@@ -11,7 +11,9 @@ import SwiftGifOrigin
 
 class PJCatPlayViewController: UIViewController, PJBaseViewControllerDelegate {
 
-    var cat = PJPet()
+    var viewModels = [PJPet.Pet]()
+    
+    private var avatarImageView = UIImageView()
     
     /// 撸猫持续时间
     private var durationSeconds = 0
@@ -33,9 +35,8 @@ class PJCatPlayViewController: UIViewController, PJBaseViewControllerDelegate {
         backButtonTapped(backSel: .back, imageName: nil)
         
         // 头像
-        let avatarImageView = UIImageView(frame: CGRect(x: 15, y: 10 + navigationBarHeight, width: 36, height: 36))
+        avatarImageView = UIImageView(frame: CGRect(x: 15, y: 10 + navigationBarHeight, width: 36, height: 36))
         view.addSubview(avatarImageView)
-        avatarImageView.image = UIImage(named: "pet_avatar")
         avatarImageView.layer.cornerRadius = avatarImageView.pj_width / 2
         
         // 撸猫动图
@@ -85,6 +86,10 @@ class PJCatPlayViewController: UIViewController, PJBaseViewControllerDelegate {
                                                selector: .stop,
                                                name: .enterBackground(),
                                                object: nil)
+    }
+    
+    func updateData() {
+//        avatarImageView.kf.setImage(with: URL(string: viewModel.avatar_url))
     }
 }
 

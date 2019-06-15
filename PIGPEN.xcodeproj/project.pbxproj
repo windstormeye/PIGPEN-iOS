@@ -100,6 +100,7 @@
 		0C5E634F2165AB8C00A90762 /* PJTapic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E634E2165AB8C00A90762 /* PJTapic.swift */; };
 		0C5E63532165ADF500A90762 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5E63522165ADF500A90762 /* NotificationName.swift */; };
 		0C5F4F6F228CEBE700B32F1F /* PJRulerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5F4F6E228CEBE700B32F1F /* PJRulerPickerView.swift */; };
+		0C648D1622B4A628004D7898 /* PJPetAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C648D1522B4A628004D7898 /* PJPetAvatarView.swift */; };
 		0C6A98592270AFE5003E4AA5 /* PJImagePickerConfigue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6A98582270AFE5003E4AA5 /* PJImagePickerConfigue.swift */; };
 		0C6A985C22729353003E4AA5 /* PJUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6A985B22729353003E4AA5 /* PJUserService.swift */; };
 		0C6A986022729BFE003E4AA5 /* PJFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6A985F22729BFE003E4AA5 /* PJFriendViewController.swift */; };
@@ -155,6 +156,7 @@
 		0CED02E3219D45AC00294033 /* PJDogFoodViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CED02E1219D45AC00294033 /* PJDogFoodViewController.xib */; };
 		0CED02E6219D510F00294033 /* PJBaseAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CED02E5219D510F00294033 /* PJBaseAlertViewController.swift */; };
 		0CED02E9219D5A8400294033 /* PJAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CED02E8219D5A8400294033 /* PJAlertView.swift */; };
+		0CF11D5D22B4B50E00D92F0C /* PJCatPlayHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF11D5B22B4B50E00D92F0C /* PJCatPlayHomeViewController.swift */; };
 		1D380E7C3274F4367974E080 /* Pods_PIGPEN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E67D2961E371F2F024277FE /* Pods_PIGPEN.framework */; };
 /* End PBXBuildFile section */
 
@@ -265,6 +267,7 @@
 		0C5E63522165ADF500A90762 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		0C5E63542165B6D400A90762 /* PIGPEN_bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIGPEN_bridge.h; sourceTree = "<group>"; };
 		0C5F4F6E228CEBE700B32F1F /* PJRulerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJRulerPickerView.swift; sourceTree = "<group>"; };
+		0C648D1522B4A628004D7898 /* PJPetAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJPetAvatarView.swift; sourceTree = "<group>"; };
 		0C6A98582270AFE5003E4AA5 /* PJImagePickerConfigue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJImagePickerConfigue.swift; sourceTree = "<group>"; };
 		0C6A985B22729353003E4AA5 /* PJUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserService.swift; sourceTree = "<group>"; };
 		0C6A985F22729BFE003E4AA5 /* PJFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJFriendViewController.swift; sourceTree = "<group>"; };
@@ -324,6 +327,7 @@
 		0CED02E1219D45AC00294033 /* PJDogFoodViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJDogFoodViewController.xib; sourceTree = "<group>"; };
 		0CED02E5219D510F00294033 /* PJBaseAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBaseAlertViewController.swift; sourceTree = "<group>"; };
 		0CED02E8219D5A8400294033 /* PJAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJAlertView.swift; sourceTree = "<group>"; };
+		0CF11D5B22B4B50E00D92F0C /* PJCatPlayHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJCatPlayHomeViewController.swift; sourceTree = "<group>"; };
 		4E67D2961E371F2F024277FE /* Pods_PIGPEN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PIGPEN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6472681005EABAD7037BD786 /* Pods-PIGPEN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PIGPEN.release.xcconfig"; path = "Pods/Target Support Files/Pods-PIGPEN/Pods-PIGPEN.release.xcconfig"; sourceTree = "<group>"; };
 		8BD192072D34D432799FE1CF /* Pods-PIGPEN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PIGPEN.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PIGPEN/Pods-PIGPEN.debug.xcconfig"; sourceTree = "<group>"; };
@@ -544,7 +548,9 @@
 		0C332B3E22B0D8CC009CAE4C /* Cat */ = {
 			isa = PBXGroup;
 			children = (
-				0C332B3F22B0D8E0009CAE4C /* PJCatPlayViewController.swift */,
+				0CDB3E5422B4C85E0075A3AF /* Controller */,
+				0CF11D6022B4C84700D92F0C /* View */,
+				0CF11D5B22B4B50E00D92F0C /* PJCatPlayHomeViewController.swift */,
 			);
 			path = Cat;
 			sourceTree = "<group>";
@@ -600,7 +606,6 @@
 				0C55E2CD215A62BE000D8815 /* PJPlayViewController.swift */,
 				0C5D72BC22B1E1F200670100 /* Dog */,
 				0C332B3E22B0D8CC009CAE4C /* Cat */,
-				0C4CC27922AF52B70031148F /* CollectionView */,
 			);
 			path = Play;
 			sourceTree = "<group>";
@@ -977,6 +982,7 @@
 		0C5E63502165AB9300A90762 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				0C648D1422B4A612004D7898 /* PetAvatar */,
 				0C5D72CE22B2A6EF00670100 /* PageControl */,
 				0C5F4F6D228CEBCE00B32F1F /* RulerPicker */,
 				0C2019B7227F1E6C00AE8C2B /* SideMenu */,
@@ -1034,6 +1040,14 @@
 				0C5F4F6E228CEBE700B32F1F /* PJRulerPickerView.swift */,
 			);
 			path = RulerPicker;
+			sourceTree = "<group>";
+		};
+		0C648D1422B4A612004D7898 /* PetAvatar */ = {
+			isa = PBXGroup;
+			children = (
+				0C648D1522B4A628004D7898 /* PJPetAvatarView.swift */,
+			);
+			path = PetAvatar;
 			sourceTree = "<group>";
 		};
 		0C6A985A22729340003E4AA5 /* Service */ = {
@@ -1383,6 +1397,21 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
+		0CDB3E5422B4C85E0075A3AF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0CF11D5F22B4B52400D92F0C /* Play */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0CDB3E5522B4C86E0075A3AF /* Details */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
 		0CE2616621C5009000740582 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
@@ -1484,6 +1513,23 @@
 				0CED02E8219D5A8400294033 /* PJAlertView.swift */,
 			);
 			path = Alert;
+			sourceTree = "<group>";
+		};
+		0CF11D5F22B4B52400D92F0C /* Play */ = {
+			isa = PBXGroup;
+			children = (
+				0C332B3F22B0D8E0009CAE4C /* PJCatPlayViewController.swift */,
+			);
+			path = Play;
+			sourceTree = "<group>";
+		};
+		0CF11D6022B4C84700D92F0C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0CDB3E5522B4C86E0075A3AF /* Details */,
+				0C4CC27922AF52B70031148F /* CollectionView */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		71C7822EAE774E46944FBDC6 /* Pods */ = {
@@ -1725,6 +1771,7 @@
 				0C5D72D022B2A71400670100 /* PJPageControl.swift in Sources */,
 				0C0A54A6216B977E00195DF1 /* RealPet.swift in Sources */,
 				0C5B5D372262C73F00392E21 /* CustomOutgoingTextCell.swift in Sources */,
+				0CF11D5D22B4B50E00D92F0C /* PJCatPlayHomeViewController.swift in Sources */,
 				0C201A0A22896DDC00AE8C2B /* PJCreatePetDetailsViewController.swift in Sources */,
 				0C201A00228867A800AE8C2B /* PJPetCreateNameViewController.swift in Sources */,
 				0C55E2E8215B703C000D8815 /* PJUserLoginViewController.swift in Sources */,
@@ -1798,6 +1845,7 @@
 				0C2019D32283B44300AE8C2B /* PJPetCreateViewController.swift in Sources */,
 				0C5B5D132261ADD300392E21 /* UIViewController.swift in Sources */,
 				0CB5E8DD2262D80F00CBE217 /* PJSearchBar.swift in Sources */,
+				0C648D1622B4A628004D7898 /* PJPetAvatarView.swift in Sources */,
 				0C201A052288EDC300AE8C2B /* PJPetCreateAvatarViewController.swift in Sources */,
 				0C55E2D2215A62CD000D8815 /* PJUserCenterViewController.swift in Sources */,
 				0C6A986D22729E6A003E4AA5 /* PJFriendTableView.swift in Sources */,
