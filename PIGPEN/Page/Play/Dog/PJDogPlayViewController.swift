@@ -13,6 +13,7 @@ class PJDogPlayViewController: UIViewController, PJBaseViewControllerDelegate {
     
     private var detailsScrollView = UIScrollView()
     private var detailsScrollViewPage = PJPageControl()
+    private var mapView = PJDogPlayMapView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +60,7 @@ class PJDogPlayViewController: UIViewController, PJBaseViewControllerDelegate {
         view.addSubview(detailsScrollViewPage)
         
         
-        let mapView = PJDogPlayMapView(frame: CGRect(x: 0, y: 0, width: view.pj_width, height: view.pj_height))
+        mapView = PJDogPlayMapView(frame: CGRect(x: 0, y: 0, width: view.pj_width, height: view.pj_height))
         view.addSubview(mapView)
         view.sendSubviewToBack(mapView)
         
@@ -84,7 +85,7 @@ extension PJDogPlayViewController {
     
     @objc
     fileprivate func stop() {
-        
+        mapView.stopLocating()
     }
     
     @objc

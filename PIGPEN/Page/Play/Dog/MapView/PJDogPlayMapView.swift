@@ -71,6 +71,12 @@ class PJDogPlayMapView: UIView {
     }
 }
 
+extension PJDogPlayMapView {
+    func stopLocating() {
+        locationManager.stopUpdatingLocation()
+    }
+}
+
 extension PJDogPlayMapView: AMapSearchDelegate {
     func onDistanceSearchDone(_ request: AMapDistanceSearchRequest!, response: AMapDistanceSearchResponse!) {
         print(response.results[0].distance)

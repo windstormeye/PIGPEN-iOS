@@ -31,6 +31,7 @@
 		0C201A072288EDCE00AE8C2B /* PJPetCreateAvatarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C201A062288EDCE00AE8C2B /* PJPetCreateAvatarViewController.storyboard */; };
 		0C201A0A22896DDC00AE8C2B /* PJCreatePetDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C201A0922896DDC00AE8C2B /* PJCreatePetDetailsViewController.swift */; };
 		0C201A0C22896DE600AE8C2B /* PJCreatePetDetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C201A0B22896DE600AE8C2B /* PJCreatePetDetailsViewController.storyboard */; };
+		0C24258B22B52A4300B23DC2 /* PJBottomDotButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C24258A22B52A4300B23DC2 /* PJBottomDotButtonView.swift */; };
 		0C2FE29B229249D300070068 /* PJPetCreateBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2FE29A229249D300070068 /* PJPetCreateBirthView.swift */; };
 		0C2FE29D229249D800070068 /* PJPetCreateBirthView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C2FE29C229249D800070068 /* PJPetCreateBirthView.xib */; };
 		0C332B4022B0D8E0009CAE4C /* PJCatPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C332B3F22B0D8E0009CAE4C /* PJCatPlayViewController.swift */; };
@@ -197,6 +198,7 @@
 		0C201A062288EDCE00AE8C2B /* PJPetCreateAvatarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PJPetCreateAvatarViewController.storyboard; sourceTree = "<group>"; };
 		0C201A0922896DDC00AE8C2B /* PJCreatePetDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJCreatePetDetailsViewController.swift; sourceTree = "<group>"; };
 		0C201A0B22896DE600AE8C2B /* PJCreatePetDetailsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PJCreatePetDetailsViewController.storyboard; sourceTree = "<group>"; };
+		0C24258A22B52A4300B23DC2 /* PJBottomDotButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBottomDotButtonView.swift; sourceTree = "<group>"; };
 		0C2FE29A229249D300070068 /* PJPetCreateBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJPetCreateBirthView.swift; sourceTree = "<group>"; };
 		0C2FE29C229249D800070068 /* PJPetCreateBirthView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJPetCreateBirthView.xib; sourceTree = "<group>"; };
 		0C332B3F22B0D8E0009CAE4C /* PJCatPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJCatPlayViewController.swift; sourceTree = "<group>"; };
@@ -986,6 +988,7 @@
 		0C5E63502165AB9300A90762 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				0CDB3E5A22B52A150075A3AF /* BottomDotButtonView */,
 				0C648D1422B4A612004D7898 /* PetAvatar */,
 				0C5D72CE22B2A6EF00670100 /* PageControl */,
 				0C5F4F6D228CEBCE00B32F1F /* RulerPicker */,
@@ -1418,6 +1421,14 @@
 			path = Details;
 			sourceTree = "<group>";
 		};
+		0CDB3E5A22B52A150075A3AF /* BottomDotButtonView */ = {
+			isa = PBXGroup;
+			children = (
+				0C24258A22B52A4300B23DC2 /* PJBottomDotButtonView.swift */,
+			);
+			path = BottomDotButtonView;
+			sourceTree = "<group>";
+		};
 		0CE2616621C5009000740582 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
@@ -1806,6 +1817,7 @@
 				0CE4F3F321592C7C003AD0F5 /* AppDelegate.swift in Sources */,
 				0C55E2F2215D2D76000D8815 /* PJUserInfoViewController.swift in Sources */,
 				0C1F6FAA21B3924400304CD8 /* PJAlbumDetailCollectionViewCell.swift in Sources */,
+				0C24258B22B52A4300B23DC2 /* PJBottomDotButtonView.swift in Sources */,
 				0C1F6FB421B392EF00304CD8 /* PJAlbumDataController.swift in Sources */,
 				0C5B5D01225DBEE400392E21 /* PJIMMessageHomeTableView.swift in Sources */,
 				0CDB0C90216705B000669331 /* PJUserSelfTableViewCell.swift in Sources */,

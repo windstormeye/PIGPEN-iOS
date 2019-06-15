@@ -10,7 +10,9 @@ import UIKit
 
 class PJPetAvatarView: UIView {
 
+    /// 当前选择的宠物头像
     var currentIndex = 0
+    var itemSelected: ((Int) -> Void)?
     
     private var pets = [PJPet.Pet]()
     private var scrollView = UIScrollView()
@@ -80,6 +82,7 @@ extension PJPetAvatarView {
     @objc
     fileprivate func tapped(sender: UIButton) {
         scrollToButton(sender.tag)
+        itemSelected?(sender.tag)
     }
 }
 
