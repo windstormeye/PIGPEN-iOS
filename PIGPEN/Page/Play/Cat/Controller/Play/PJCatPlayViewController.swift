@@ -12,9 +12,7 @@ import SwiftGifOrigin
 class PJCatPlayViewController: UIViewController, PJBaseViewControllerDelegate {
 
     var viewModels = [PJPet.Pet]()
-    
-    private var avatarImageView = UIImageView()
-    
+        
     /// 撸猫持续时间
     private var durationSeconds = 0
     private var durationMins = 0
@@ -34,13 +32,8 @@ class PJCatPlayViewController: UIViewController, PJBaseViewControllerDelegate {
         titleString = "撸猫"
         backButtonTapped(backSel: .back, imageName: nil)
         
-        // 头像
-        avatarImageView = UIImageView(frame: CGRect(x: 15, y: 10 + navigationBarHeight, width: 36, height: 36))
-        view.addSubview(avatarImageView)
-        avatarImageView.layer.cornerRadius = avatarImageView.pj_width / 2
-        
         // 撸猫动图
-        let activityImageView = UIImageView(frame: CGRect(x: 0, y: avatarImageView.bottom + 40, width: view.pj_width * 0.53, height: view.pj_width * 0.53 * 1.124))
+        let activityImageView = UIImageView(frame: CGRect(x: 0, y: 36 * 1.385 + 40 + navigationBarHeight, width: view.pj_width * 0.53, height: view.pj_width * 0.53 * 1.124))
         activityImageView.centerX = view.centerX
         activityImageView.loadGif(asset: "timg")
         view.addSubview(activityImageView)
@@ -48,7 +41,8 @@ class PJCatPlayViewController: UIViewController, PJBaseViewControllerDelegate {
         // 计时器
         timeLabel.frame = CGRect(x: 0, y: activityImageView.bottom + 80, width: view.pj_width, height: 87)
         timeLabel.textAlignment = .center
-        timeLabel.textColor = .black
+        timeLabel.textColor = PJRGB(61, 44, 79)
+        timeLabel.text = "00:00:00"
         timeLabel.font = UIFont.systemFont(ofSize: 72, weight: .medium)
         view.addSubview(timeLabel)
         

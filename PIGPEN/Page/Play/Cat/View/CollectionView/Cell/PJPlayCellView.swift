@@ -51,13 +51,18 @@ class PJPlayCellView: UICollectionViewCell {
         dotView.layer.cornerRadius = dotView.pj_height / 2
         dotView.layer.borderColor = UIColor.white.cgColor
         dotView.layer.borderWidth = 2
+    }
+    
+    private func updateData() {
+        avatarImageView.kf.setImage(with: URL(string: viewModel.avatar_url))
+        nicknameLabel.text = viewModel.nick_name
         
         let cellY = (pj_height - statusLabel.bottom - 28) / 2 + statusLabel.bottom
-        let foodStatusView = PJPlayCellDrawView(frame: CGRect(x: 0, y: 0, width: 28, height: 28), imageName: "pet_food_logo", score: 7.7)
-        let drinkStatusView = PJPlayCellDrawView(frame: CGRect(x: 0, y: 0, width: 28, height: 28), imageName: "pet_drink_logo", score: 7.9)
-        let playStatusView = PJPlayCellDrawView(frame: CGRect(x: 0, y: 0, width: 28, height: 28), imageName: "pet_play_logo", score: 8.7)
-        let happyStatusView = PJPlayCellDrawView(frame: CGRect(x: 0, y: 0, width: 28, height: 28), imageName: "pet_happy_logo", score: 5.7)
-
+        let foodStatusView = PJPlayCellDrawView(frame: CGRect(x: 0, y: 0, width: 28, height: 28), imageName: "pet_food_logo", score: CGFloat(viewModel.score.food_s))
+        let drinkStatusView = PJPlayCellDrawView(frame: CGRect(x: 0, y: 0, width: 28, height: 28), imageName: "pet_drink_logo", score: CGFloat(viewModel.score.water_s))
+        let playStatusView = PJPlayCellDrawView(frame: CGRect(x: 0, y: 0, width: 28, height: 28), imageName: "pet_play_logo", score: CGFloat(viewModel.score.play_s))
+        let happyStatusView = PJPlayCellDrawView(frame: CGRect(x: 0, y: 0, width: 28, height: 28), imageName: "pet_happy_logo", score: CGFloat(viewModel.score.happy_s))
+        
         
         let hStack = UIStackView(arrangedSubviews: [foodStatusView, drinkStatusView, playStatusView, happyStatusView])
         hStack.frame = CGRect(x: 0, y: cellY, width: pj_width, height: 28)
@@ -66,10 +71,5 @@ class PJPlayCellView: UICollectionViewCell {
         hStack.distribution = .fillEqually
         hStack.alignment = .center
         hStack.sizeThatFits(CGSize(width: 28, height: 28))
-    }
-    
-    private func updateData() {
-        avatarImageView.kf.setImage(with: URL(string: viewModel.avatar_url))
-        nicknameLabel.text = viewModel.nick_name
     }
 }

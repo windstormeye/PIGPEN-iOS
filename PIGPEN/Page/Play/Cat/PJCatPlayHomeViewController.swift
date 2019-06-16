@@ -57,6 +57,12 @@ class PJCatPlayHomeViewController: UIViewController, PJBaseViewControllerDelegat
         bottomView = PJBottomDotButtonView(frame: CGRect(x: 0, y: view.pj_height - bottomSafeAreaHeight - 40, width: view.pj_width, height: 36), pageCount: viewModels.count - 1)
         view.addSubview(bottomView)
         
+        bottomView.startSelected = {
+            let vc = PJCatPlayViewController()
+            vc.viewModels = self.viewModels
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
         avatarView.itemSelected = {
             self.bottomView.updateDot($0)
             scrollView.setContentOffset(CGPoint(x: CGFloat($0) * self.view.pj_width, y: 0), animated: true)
@@ -92,8 +98,6 @@ extension PJCatPlayHomeViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let offsetX = scrollView.contentOffset.x
         let page = offsetX / view.pj_width
-        
-        print(Int(page))
         
         avatarView.scrollToButton(Int(page))
         bottomView.updateDot(Int(page))

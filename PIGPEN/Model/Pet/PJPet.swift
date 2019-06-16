@@ -116,6 +116,8 @@ extension PJPet {
         var avatar_url: String
         /// 宠物关系
         var relationship: Int
+        /// 宠物分数
+        var score: PetScore
         
         init() {
             self.pet_id = -1
@@ -132,6 +134,7 @@ extension PJPet {
             self.created_time = -1
             self.avatar_url = ""
             self.relationship = -1
+            self.score = PetScore()
         }
     }
     
@@ -147,6 +150,20 @@ extension PJPet {
         init() {
             self.group = ""
             self.breeds = []
+        }
+    }
+    
+    struct PetScore: Codable {
+        var food_s: Float
+        var water_s: Float
+        var play_s: Float
+        var happy_s: Float
+        
+        init() {
+            food_s = 0
+            water_s = 0
+            play_s = 0
+            happy_s = 0
         }
     }
 }

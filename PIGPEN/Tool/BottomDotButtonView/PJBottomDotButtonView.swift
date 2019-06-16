@@ -10,6 +10,7 @@ import UIKit
 
 class PJBottomDotButtonView: UIView {
 
+    var startSelected: (() -> Void)?
     /// 页数
     var pageCount = 0
     /// 当前页数
@@ -97,7 +98,7 @@ class PJBottomDotButtonView: UIView {
 extension PJBottomDotButtonView {
     @objc
     fileprivate func start() {
-        
+        startSelected?()
     }
 }
 

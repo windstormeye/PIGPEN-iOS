@@ -63,6 +63,15 @@ class PJUserCenterViewController: UIViewController, PJBaseViewControllerDelegate
                               ["user_aboutMe", "user_share", "user_out"])
         menuTableView?.didSelectedCell = {
             print($0)
+            switch $0 {
+            case 0:
+                break
+            case 1:
+                break
+            case 2:
+                NotificationCenter.default.post(name: .gotoLogin(), object: nil)
+            default: break
+            }
         }
         
         
@@ -128,7 +137,7 @@ extension PJUserCenterViewController {
                                     self.tableView.reloadData()
             }) { (error) in
                 PJTapic.error()
-                print(error)
+                PJHUD.shared.showError(view: self.view, text: error.errorMsg)
             }
         }
     }
