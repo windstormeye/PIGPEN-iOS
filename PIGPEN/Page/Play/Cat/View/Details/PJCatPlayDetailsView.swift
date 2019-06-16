@@ -29,8 +29,9 @@ class PJCatPlayDetailsView: UIView {
         let timeMsgView = UIView(frame: CGRect(x: 15, y: activityImageView.bottom + 30, width: pj_width - 30, height: 80))
         timeMsgView.layer.cornerRadius = timeMsgView.pj_height / 2
         let msgDetailsView = PJPetPlayDetailsView.newInstance()
-        msgDetailsView.pj_width = timeMsgView.pj_width
+        msgDetailsView.pj_width = timeMsgView.pj_width - 30
         msgDetailsView.y = (timeMsgView.pj_height - msgDetailsView.pj_height) / 2
+        msgDetailsView.x = 15
         timeMsgView.backgroundColor = msgDetailsView.backgroundColor
         
         timeMsgView.addSubview(msgDetailsView)

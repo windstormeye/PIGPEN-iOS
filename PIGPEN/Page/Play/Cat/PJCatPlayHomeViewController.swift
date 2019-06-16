@@ -89,9 +89,11 @@ private extension Selector {
 
 extension PJCatPlayHomeViewController: UIScrollViewDelegate {
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let offsetX = scrollView.contentOffset.x
         let page = offsetX / view.pj_width
+        
+        print(Int(page))
         
         avatarView.scrollToButton(Int(page))
         bottomView.updateDot(Int(page))
