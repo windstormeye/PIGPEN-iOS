@@ -10,21 +10,28 @@ import UIKit
 
 class PJPetPlayDetailsView: UIView {
 
+    var viewModel = PJPet.CatPlay() {
+        didSet {
+            dayTargetLabel.text = "60 min"
+            timesLabel.text = String(viewModel.times)
+            durationsLabel.text = String(viewModel.duration_today)
+            
+            circleOfDots(view: circleView)
+        }
+    }
+    
+    /// 今日目标
     @IBOutlet weak var dayTargetLabel: UILabel!
+    /// 今日次数
     @IBOutlet weak var timesLabel: UILabel!
-    @IBOutlet weak var todayTimesLabel: UILabel!
+    /// 今日持续时间
+    @IBOutlet weak var durationsLabel: UILabel!
     @IBOutlet weak var circleView: UIView!
     
     class func newInstance() -> PJPetPlayDetailsView {
         return Bundle.main.loadNibNamed("PJPetPlayDetailsView",
                                         owner: self,
                                         options: nil)?.first! as! PJPetPlayDetailsView
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        circleOfDots(view: circleView)
     }
     
     private func circleOfDots(view: UIView) {

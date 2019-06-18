@@ -99,12 +99,18 @@ class PJPlayViewController: UIViewController, PJBaseViewControllerDelegate {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         if collectionView != nil {
             initData()
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        collectionView?.unHighlightFooterView()
     }
     
     private func initData() {

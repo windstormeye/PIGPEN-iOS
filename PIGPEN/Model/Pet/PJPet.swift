@@ -72,12 +72,35 @@ class PJPet {
             failureHandler(error)
         }
     }
+    
+    /// 获取撸猫详情
+    func getCatPlayDetails(pet: Pet,
+                           complateHandler: @escaping ((CatPlay) -> Void),
+                           failedHandler: @escaping ((PJNetwork.Error) -> Void)) {
+        let parameters = [
+            "pet_type": String(pet.pet_type.rawValue),
+            "pet_id": String(pet.pet_id)
+        ]
+        
+        PJNetwork.shared.requstWithGet(path: Url.catPlay.rawValue,
+                                        parameters: parameters,
+                                        complement: { (resDict) in
+                                            if resDict["msgCode"]?.intValue == 0 {
+                                                let catPlayModel = dataConvertToModel(CatPlay(), from: try! (resDict["msg"]?.rawData())!)
+                                                complateHandler(catPlayModel!)
+                                            }
+        }) { (errorString) in
+            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
+            failedHandler(error)
+        }
+    }
 }
 
 extension PJPet {
     enum Url: String {
         case create = "pet/"
         case breeds = "pet/breeds"
+        case catPlay = "catPlay"
     }
 }
 
@@ -153,6 +176,7 @@ extension PJPet {
         }
     }
     
+    /// 娱乐圈宠物分数看板
     struct PetScore: Codable {
         var food_s: Float
         var water_s: Float
@@ -164,6 +188,21 @@ extension PJPet {
             water_s = 0
             play_s = 0
             happy_s = 0
+        }
+    }
+
+    /// 撸猫看板
+    struct CatPlay: Codable {
+        var times: Int
+        var duration_today: Int
+        var created_time: Int
+        var update_time: Int
+        
+        init() {
+            times = 0
+            duration_today = 0
+            created_time = 0
+            update_time = 0
         }
     }
 }

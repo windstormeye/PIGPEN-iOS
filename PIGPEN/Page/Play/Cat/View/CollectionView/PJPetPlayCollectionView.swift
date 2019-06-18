@@ -17,9 +17,9 @@ class PJPetPlayCollectionView: UICollectionView {
         didSet { reloadData() }
     }
     var selectedPets = [Int]()
-    
     var footerView = PJPetPlayCollectionFooterView()
     
+    // MARK: - init
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
         initView()
@@ -39,6 +39,12 @@ class PJPetPlayCollectionView: UICollectionView {
         register(UINib(nibName: "PJPlayCellView", bundle: nil),
                  forCellWithReuseIdentifier: "PJPlayCellView")
         register(UINib(nibName: "PJPetPlayCollectionFooterView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "PJPetPlayCollectionFooterView")
+    }
+}
+
+extension PJPetPlayCollectionView {
+    func unHighlightFooterView() {
+        footerView.unHightlight()
     }
 }
 
