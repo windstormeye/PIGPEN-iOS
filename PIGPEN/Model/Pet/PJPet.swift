@@ -124,6 +124,30 @@ class PJPet {
             failedHandler(error)
         }
     }
+    
+    /// 上传撸猫数据
+    func catPlayUpload(durations: Int,
+                       pet: PJPet.Pet,
+                       complateHandler: @escaping (() -> Void),
+                       failedHandler: @escaping ((PJNetwork.Error) -> Void)) {
+        
+        let parameters = [
+            "durations": durations,
+            "pet_id": pet.pet_id,
+            "pet_type": pet.pet_type.rawValue
+        ]
+        
+        PJNetwork.shared.requstWithPost(path: Url.catPlayUpload.rawValue,
+                                        parameters: parameters,
+                                        complement: { (resDict) in
+                                            if resDict["msgCode"]?.intValue == 0 {
+                                                complateHandler()
+                                            }
+        }) { (errorString) in
+            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
+            failedHandler(error)
+        }
+    }
 }
 
 extension PJPet {
@@ -136,6 +160,8 @@ extension PJPet {
         case catPlay = "catPlay"
         /// 获取娱乐圈宠物看板数据
         case playDetails = "pet/playDetails"
+        /// 上传撸猫数据
+        case catPlayUpload = "catPlay/update"
     }
 }
 

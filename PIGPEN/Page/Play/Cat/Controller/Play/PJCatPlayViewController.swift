@@ -148,7 +148,19 @@ extension PJCatPlayViewController {
         timer!.invalidate()
         
         let duration = durationSeconds + durationMins * 60 + durationHours * 3600
-        print(duration)
+        var uploadIndex = 0
+        
+        for model in viewModels {
+            PJPet.shared.catPlayUpload(durations: duration, pet: model, complateHandler: {
+                uploadIndex += 1
+                
+                if uploadIndex == self.viewModels.count - 1 {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }) {
+                PJHUD.shared.showError(view: self.view, text: $0.errorMsg)
+            }
+        }
     }
 }
 
