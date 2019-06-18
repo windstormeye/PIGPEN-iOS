@@ -15,7 +15,7 @@ class PJPlayCellView: UICollectionViewCell {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var dotView: UIView!
     
-    var viewModel = PJPet.Pet() {
+    var viewModel = ViewModel() {
         didSet {
             updateData()
         }
@@ -54,8 +54,8 @@ class PJPlayCellView: UICollectionViewCell {
     }
     
     private func updateData() {
-        avatarImageView.kf.setImage(with: URL(string: viewModel.avatar_url))
-        nicknameLabel.text = viewModel.nick_name
+        avatarImageView.kf.setImage(with: URL(string: viewModel.pet.avatar_url))
+        nicknameLabel.text = viewModel.pet.nick_name
         
         let cellY = (pj_height - statusLabel.bottom - 28) / 2 + statusLabel.bottom
         let foodStatusView = PJPlayCellDrawView(frame: CGRect(x: 0, y: 0, width: 28, height: 28), imageName: "pet_food_logo", score: CGFloat(viewModel.score.food_s))
@@ -71,5 +71,17 @@ class PJPlayCellView: UICollectionViewCell {
         hStack.distribution = .fillEqually
         hStack.alignment = .center
         hStack.sizeThatFits(CGSize(width: 28, height: 28))
+    }
+}
+
+extension PJPlayCellView {
+    struct ViewModel {
+        var pet: PJPet.Pet
+        var score: PJPet.PetScore
+        
+        init() {
+            pet = PJPet.Pet()
+            score = PJPet.PetScore()
+        }
     }
 }

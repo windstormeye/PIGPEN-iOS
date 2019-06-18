@@ -243,7 +243,6 @@ extension PJUser {
                 var petModels = [PJPet.Pet]()
                 
                 for dict in petDicts {
-                    // TODO: JSONDecoder 改
                     let model = dataConvertToModel(PJPet.Pet(), from: try! dict.rawData())
                     petModels.append(model!)
                 }

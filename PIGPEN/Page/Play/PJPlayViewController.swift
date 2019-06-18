@@ -45,7 +45,7 @@ class PJPlayViewController: UIViewController, PJBaseViewControllerDelegate {
             
             self.petTypes.removeAll()
             for index in $0 {
-                self.petTypes.insert(self.collectionView!.viewModels[index].pet_type)
+                self.petTypes.insert(self.collectionView!.viewModels[index].pet.pet_type)
             }
             
             // 猫
@@ -82,7 +82,7 @@ class PJPlayViewController: UIViewController, PJBaseViewControllerDelegate {
                     
                     var pets = [PJPet.Pet]()
                     for item in self.collectionView!.selectedPets {
-                        pets.append((self.collectionView?.viewModels[item])!)
+                        pets.append((self.collectionView?.viewModels[item].pet)!)
                     }
                     let vc = PJCatPlayHomeViewController(viewModels: pets)
                     vc.hidesBottomBarWhenPushed = true
@@ -114,10 +114,10 @@ class PJPlayViewController: UIViewController, PJBaseViewControllerDelegate {
     }
     
     private func initData() {
-        PJUser.shared.pets(complateHandler: {
+        PJPet.shared.getPlayData(complateHandler: {
             self.collectionView!.viewModels = $0
         }) {
-            print($0.errorMsg)
+            PJHUD.shared.show(view: self.view, text: $0.errorMsg)
         }
     }
 }

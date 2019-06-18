@@ -13,7 +13,7 @@ class PJPetPlayCollectionView: UICollectionView {
     var cellSelected: (([Int]) -> Void)?
     var footerSelected: ((Int) -> Void)?
 
-    var viewModels = [PJPet.Pet]() {
+    var viewModels = [PJPlayCellView.ViewModel]() {
         didSet { reloadData() }
     }
     var selectedPets = [Int]()
@@ -55,7 +55,10 @@ extension PJPetPlayCollectionView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PJPlayCellView", for: indexPath) as! PJPlayCellView
-        cell.viewModel = viewModels[indexPath.row]
+        var viewModel = PJPlayCellView.ViewModel()
+        viewModel.pet = viewModels[indexPath.row].pet
+        viewModel.score = viewModels[indexPath.row].score
+        cell.viewModel = viewModel
         return cell
     }
     

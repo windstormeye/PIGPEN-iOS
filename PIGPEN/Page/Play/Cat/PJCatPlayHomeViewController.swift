@@ -14,6 +14,8 @@ class PJCatPlayHomeViewController: UIViewController, PJBaseViewControllerDelegat
     
     private var avatarView = PJPetAvatarView()
     private var bottomView = PJBottomDotButtonView()
+    private var detailsViews = [PJCatPlayDetailsView]()
+    
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -49,6 +51,7 @@ class PJCatPlayHomeViewController: UIViewController, PJBaseViewControllerDelegat
         for index in 0..<viewModels.count {
             let detailsView = PJCatPlayDetailsView(frame: CGRect(x: CGFloat(index) * view.pj_width, y: 0, width: view.pj_width, height: scrollView.pj_height))
             scrollView.addSubview(detailsView)
+            self.detailsViews.append(detailsView)
             
             scrollView.contentSize = CGSize(width: detailsView.right, height: 0)
         }
@@ -63,10 +66,27 @@ class PJCatPlayHomeViewController: UIViewController, PJBaseViewControllerDelegat
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
-        avatarView.itemSelected = {
-            self.bottomView.updateDot($0)
-            scrollView.setContentOffset(CGPoint(x: CGFloat($0) * self.view.pj_width, y: 0), animated: true)
+        avatarView.itemSelected = { index in
+            self.bottomView.updateDot(index)
+            scrollView.setContentOffset(CGPoint(x: CGFloat(index) * self.view.pj_width, y: 0), animated: true)
+            
+            self.requestData(index)
         }
+        
+        // 页面都初始化完成后，先请求第一个撸猫看板页面数据
+        self.requestData(0)
+    }
+}
+
+extension PJCatPlayHomeViewController {
+    /// 请求当前索引的撸猫看板页面数据
+    func requestData(_ index: Int) {
+        PJPet.shared.getCatPlayDetails(pet: self.viewModels[index], complateHandler: { catPlay in
+            let dV = self.detailsViews[index]
+            dV.viewModel = catPlay
+        }, failedHandler: {
+            PJHUD.shared.showError(view: self.view, text: $0.errorMsg)
+        })
     }
 }
 

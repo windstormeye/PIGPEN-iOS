@@ -63,13 +63,43 @@ class PJPet {
                                         parameters: parameters,
                                         complement: { (resDict) in
                                             if resDict["msgCode"]?.intValue == 0 {
-                                                let petModel = dataConvertToModel(Pet(),
-                                                                                  from: try! (resDict["msg"]?.rawData())!)
+                                                let petModel = dataConvertToModel(Pet(), from: try! (resDict["msg"]?.rawData())!)
                                                 complateHandler(petModel!)
                                             }
         }) { (errorString) in
             let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
             failureHandler(error)
+        }
+    }
+    
+    /// 获取娱乐圈首页数据
+    func getPlayData(complateHandler: @escaping (([PJPlayCellView.ViewModel]) -> Void),
+                     failedHandler: @escaping ((PJNetwork.Error) -> Void)) {
+        PJNetwork.shared.requstWithGet(path: Url.playDetails.rawValue,
+                                       parameters: [:],
+                                       complement: { (resDict) in
+                                        var viewModels = [PJPlayCellView.ViewModel]()
+
+                                        if resDict["msgCode"]?.intValue == 0 {
+                                            let petDicts = resDict["msg"]!["pets"].arrayValue
+                                            
+                                            
+                                            for p in petDicts {
+                                                let petModel = dataConvertToModel(PJPet.Pet(), from: try! p["pet"].rawData())
+                                                let scoreModel = dataConvertToModel(PJPet.PetScore(), from: try! p["score"].rawData())
+                                                
+                                                var model = PJPlayCellView.ViewModel()
+                                                model.pet = petModel!
+                                                model.score = scoreModel!
+                                                
+                                                viewModels.append(model)
+                                            }
+                                            
+                                            complateHandler(viewModels)
+                                        }
+        }) { (errorString) in
+            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
+            failedHandler(error)
         }
     }
     
@@ -98,9 +128,14 @@ class PJPet {
 
 extension PJPet {
     enum Url: String {
+        /// 创建宠物
         case create = "pet/"
+        /// 获取宠物品种
         case breeds = "pet/breeds"
+        /// 获取撸猫看板数据
         case catPlay = "catPlay"
+        /// 获取娱乐圈宠物看板数据
+        case playDetails = "pet/playDetails"
     }
 }
 
@@ -139,8 +174,6 @@ extension PJPet {
         var avatar_url: String
         /// 宠物关系
         var relationship: Int
-        /// 宠物分数
-        var score: PetScore
         
         init() {
             self.pet_id = -1
@@ -157,7 +190,6 @@ extension PJPet {
             self.created_time = -1
             self.avatar_url = ""
             self.relationship = -1
-            self.score = PetScore()
         }
     }
     

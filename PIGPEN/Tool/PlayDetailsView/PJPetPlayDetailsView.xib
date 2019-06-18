@@ -91,7 +91,6 @@
                 <outlet property="dayTargetLabel" destination="KHF-UO-H23" id="PFd-9z-VQL"/>
                 <outlet property="durationsLabel" destination="u48-65-BhY" id="ndq-Hd-PK0"/>
                 <outlet property="timesLabel" destination="KrT-o6-aAX" id="LRu-ZM-D3z"/>
-                <outlet property="todayTimesLabel" destination="wnD-2A-Kx3" id="0fu-gY-Aen"/>
             </connections>
         </view>
         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" id="B9S-jp-BL3">
