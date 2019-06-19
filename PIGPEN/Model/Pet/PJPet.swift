@@ -134,10 +134,40 @@ class PJPet {
         let parameters = [
             "durations": durations,
             "pet_id": pet.pet_id,
-            "pet_type": pet.pet_type.rawValue
+            "pet_type": 0
         ]
         
         PJNetwork.shared.requstWithPost(path: Url.catPlayUpload.rawValue,
+                                        parameters: parameters,
+                                        complement: { (resDict) in
+                                            if resDict["msgCode"]?.intValue == 0 {
+                                                complateHandler()
+                                            }
+        }) { (errorString) in
+            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
+            failedHandler(error)
+        }
+    }
+    
+    /// 获取遛狗看板数据
+    func getDogPlayDetails(pet: PJPet.Pet,
+                           complateHandler: @escaping (() -> Void),
+                           failedHandler: @escaping ((PJNetwork.Error) -> Void)) {
+        
+    }
+    
+    /// 上传遛狗数据
+    func dogPlaUpload(pet: PJPet.Pet,
+                      distance: Int,
+                      complateHandler: @escaping (() -> Void),
+                      failedHandler: @escaping ((PJNetwork.Error) -> Void)) {
+        let parameters = [
+            "distance": distance,
+            "pet_id": pet.pet_id,
+            "pet_type": 1
+        ]
+        
+        PJNetwork.shared.requstWithPost(path: Url.dogPlayUpload.rawValue,
                                         parameters: parameters,
                                         complement: { (resDict) in
                                             if resDict["msgCode"]?.intValue == 0 {
@@ -156,12 +186,16 @@ extension PJPet {
         case create = "pet/"
         /// 获取宠物品种
         case breeds = "pet/breeds"
-        /// 获取撸猫看板数据
-        case catPlay = "catPlay"
         /// 获取娱乐圈宠物看板数据
         case playDetails = "pet/playDetails"
+        /// 获取撸猫看板数据
+        case catPlay = "play/cat"
         /// 上传撸猫数据
-        case catPlayUpload = "catPlay/update"
+        case catPlayUpload = "play/updateCat"
+        /// 上传遛狗数据
+        case dogPlayUpload = "play/updateDog"
+        /// 获取遛狗看板数据
+        case dogPlay = "play/dog"
     }
 }
 

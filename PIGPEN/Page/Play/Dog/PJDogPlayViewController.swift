@@ -86,6 +86,8 @@ extension PJDogPlayViewController {
     @objc
     fileprivate func stop() {
         mapView.stopLocating()
+        
+        
     }
     
     @objc

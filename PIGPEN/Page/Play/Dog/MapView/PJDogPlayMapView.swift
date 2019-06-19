@@ -18,6 +18,9 @@ class PJDogPlayMapView: UIView {
     private var locationManager = AMapLocationManager()
     private var lineLocations = [CLLocation]()
     private var lineCoordinates = [CLLocationCoordinate2D]()
+    private var smoothedTrace = MAPolyline()
+    private var smoothedTracePoints = [MALonLatPoint]()
+    private var origTracePoints = [MALonLatPoint]()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -101,42 +104,34 @@ extension PJDogPlayMapView: AMapLocationManagerDelegate {
     func amapLocationManager(_ manager: AMapLocationManager!,
                              didUpdate location: CLLocation!,
                              reGeocode: AMapLocationReGeocode!) {
-        print("location:{lat:%f; lon:%f; accuracy:%f}", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy)
-        
-        if ((reGeocode) != nil) {
-            print("reGeocode:%@", reGeocode)
-        }
-        
         let coords = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
                                             longitude: location.coordinate.longitude)
         
         lineLocations.append(location)
         lineCoordinates.append(coords)
-        let polyline = MAGeodesicPolyline(coordinates: &lineCoordinates, count: UInt(lineCoordinates.count))
-        mapView.add(polyline)
+        
+        let oPoint = MALonLatPoint()
+        oPoint.lat = coords.latitude
+        oPoint.lon = coords.longitude
+        origTracePoints.append(oPoint)
         
         
+        let tool = MASmoothPathTool()
+        tool.intensity = 3
+        tool.threshHold = 0.3
+        tool.noiseThreshhold = 10
         
-        if lineLocations.last != nil {
-            let lastCoord = lineLocations.last!
-            //1.将两个经纬度点转成投影点
-            let point1 = MAMapPointForCoordinate(CLLocationCoordinate2D(latitude: lastCoord.coordinate.latitude, longitude: lastCoord.coordinate.longitude))
-            let point2 = MAMapPointForCoordinate(CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
-            
-            let distanceRequest = AMapDistanceSearchRequest()
-            distanceRequest.type = 0
-            distanceRequest.origins = [AMapGeoPoint.location(withLatitude: CGFloat(lastCoord.coordinate.latitude), longitude: CGFloat(lastCoord.coordinate.longitude))]
-            distanceRequest.destination = AMapGeoPoint.location(withLatitude: CGFloat(location.coordinate.latitude), longitude: CGFloat(location.coordinate.longitude))
-
-            //2.计算距离
-//            let distance = MAMetersBetweenMapPoints(point1, point2);
-//            print(distance)
-            
-//            print(lastCoord.course)
-            
-            AMapSearchAPI()?.aMapDistanceSearch(distanceRequest)
-            
-        } else {
+        let smoothPoints = tool.pathOptimize(origTracePoints)
+        if smoothPoints != nil {
+            smoothedTracePoints = smoothPoints!
         }
+        
+        var pCoords:[CLLocationCoordinate2D] = Array()
+        for onePoint in self.smoothedTracePoints {
+            let cor = CLLocationCoordinate2D(latitude: onePoint.lat, longitude: onePoint.lon)
+            pCoords.append(cor)
+        }
+        smoothedTrace = MAPolyline.init(coordinates: &pCoords, count: UInt(pCoords.count))
+        mapView.add(self.smoothedTrace)
     }
 }

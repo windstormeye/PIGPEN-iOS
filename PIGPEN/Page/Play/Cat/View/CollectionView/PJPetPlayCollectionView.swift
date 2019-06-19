@@ -73,7 +73,7 @@ extension PJPetPlayCollectionView: UICollectionViewDataSource {
             }
             return footerView
         default:
-            assert(false, "Unexpected element kind")
+            return UIView() as! UICollectionReusableView
         }
     }
 }

@@ -112,6 +112,7 @@
 		0C8B75592196934000353842 /* PJMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8B75582196934000353842 /* PJMessageViewController.swift */; };
 		0C8B755D2196FF8B00353842 /* PJBreedsSideSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8B755C2196FF8B00353842 /* PJBreedsSideSliderView.swift */; };
 		0C8B75622198126D00353842 /* PJPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8B75612198126D00353842 /* PJPickerView.swift */; };
+		0CA1411522BA19B000698BD6 /* MASmoothPathTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA1411422BA19B000698BD6 /* MASmoothPathTool.m */; };
 		0CA365F821B26CF300E7D2F7 /* PJAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA365F721B26CF300E7D2F7 /* PJAlbumViewController.swift */; };
 		0CB5E8DA2262D6F200CBE217 /* PJUserSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB5E8D82262D6F200CBE217 /* PJUserSearchViewController.swift */; };
 		0CB5E8DD2262D80F00CBE217 /* PJSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB5E8DC2262D80F00CBE217 /* PJSearchBar.swift */; };
@@ -283,6 +284,8 @@
 		0C8B75582196934000353842 /* PJMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJMessageViewController.swift; sourceTree = "<group>"; };
 		0C8B755C2196FF8B00353842 /* PJBreedsSideSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBreedsSideSliderView.swift; sourceTree = "<group>"; };
 		0C8B75612198126D00353842 /* PJPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PJPickerView.swift; sourceTree = "<group>"; };
+		0CA1411322BA19B000698BD6 /* MASmoothPathTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASmoothPathTool.h; sourceTree = "<group>"; };
+		0CA1411422BA19B000698BD6 /* MASmoothPathTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASmoothPathTool.m; sourceTree = "<group>"; };
 		0CA365F721B26CF300E7D2F7 /* PJAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJAlbumViewController.swift; sourceTree = "<group>"; };
 		0CB5E8D82262D6F200CBE217 /* PJUserSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserSearchViewController.swift; sourceTree = "<group>"; };
 		0CB5E8DC2262D80F00CBE217 /* PJSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJSearchBar.swift; sourceTree = "<group>"; };
@@ -590,6 +593,15 @@
 				0C5D72D122B3C91100670100 /* PJPetPlayCollectionView.swift */,
 			);
 			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		0C4F627522BA195F00BDF799 /* MASmoothPathTool */ = {
+			isa = PBXGroup;
+			children = (
+				0CA1411322BA19B000698BD6 /* MASmoothPathTool.h */,
+				0CA1411422BA19B000698BD6 /* MASmoothPathTool.m */,
+			);
+			path = MASmoothPathTool;
 			sourceTree = "<group>";
 		};
 		0C55E2C3215A61AD000D8815 /* Page */ = {
@@ -999,6 +1011,7 @@
 		0C5E63502165AB9300A90762 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				0C4F627522BA195F00BDF799 /* MASmoothPathTool */,
 				0C24258E22B540CD00B23DC2 /* PlayDetailsView */,
 				0CDB3E5A22B52A150075A3AF /* BottomDotButtonView */,
 				0C648D1422B4A612004D7898 /* PetAvatar */,
@@ -1828,6 +1841,7 @@
 				0CE4F3F321592C7C003AD0F5 /* AppDelegate.swift in Sources */,
 				0C55E2F2215D2D76000D8815 /* PJUserInfoViewController.swift in Sources */,
 				0C1F6FAA21B3924400304CD8 /* PJAlbumDetailCollectionViewCell.swift in Sources */,
+				0CA1411522BA19B000698BD6 /* MASmoothPathTool.m in Sources */,
 				0C24258B22B52A4300B23DC2 /* PJBottomDotButtonView.swift in Sources */,
 				0C1F6FB421B392EF00304CD8 /* PJAlbumDataController.swift in Sources */,
 				0C5B5D01225DBEE400392E21 /* PJIMMessageHomeTableView.swift in Sources */,

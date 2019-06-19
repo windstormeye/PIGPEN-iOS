@@ -147,6 +147,8 @@ extension PJCatPlayViewController {
     fileprivate func stop() {
         timer!.invalidate()
         
+        PJHUD.shared.showLoading(view: self.view)
+        
         let duration = durationSeconds + durationMins * 60 + durationHours * 3600
         var uploadIndex = 0
         
@@ -154,7 +156,8 @@ extension PJCatPlayViewController {
             PJPet.shared.catPlayUpload(durations: duration, pet: model, complateHandler: {
                 uploadIndex += 1
                 
-                if uploadIndex == self.viewModels.count - 1 {
+                if uploadIndex == self.viewModels.count {
+                    PJHUD.shared.dismiss()
                     self.navigationController?.popViewController(animated: true)
                 }
             }) {

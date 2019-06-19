@@ -10,8 +10,12 @@
 #define PIGPEN_bridge_h
 
 #import <SMS_SDK/SMSSDK.h>
+
 #import <RongIMLib/RongIMLib.h>
+
 #import <Bugly/Bugly.h>
+
+#import "MASmoothPathTool.h"
 #import <MAMapKit/MAMapKit.h>
 #import <AMapSearchKit/AMapSearchKit.h>
 #import <AMapLocationKit/AMapLocationKit.h>
