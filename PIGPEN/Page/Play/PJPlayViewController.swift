@@ -89,8 +89,13 @@ class PJPlayViewController: UIViewController, PJBaseViewControllerDelegate {
                     self.navigationController?.pushViewController(vc, animated: true)
                 } else {
                     
-                    let vc = PJDogPlayViewController()
+                    var viewModels = [PJPet.Pet]()
+                    for item in self.collectionView!.selectedPets {
+                        viewModels.append((self.collectionView?.viewModels[item].pet)!)
+                    }
                     
+                    let vc = PJDogPlayViewController(viewModels: viewModels)
+                    vc.viewModels = viewModels
                     vc.hidesBottomBarWhenPushed = true
                     self.navigationController?.pushViewController(vc, animated: true)
                 }

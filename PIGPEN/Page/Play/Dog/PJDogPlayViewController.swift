@@ -11,15 +11,28 @@ import CoreMotion
 
 class PJDogPlayViewController: UIViewController, PJBaseViewControllerDelegate {
     
+    var viewModels = [PJPet.Pet]()
+    
     private var detailsScrollView = UIScrollView()
     private var detailsScrollViewPage = PJPageControl()
     private var mapView = PJDogPlayMapView()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    private var detailsViews = [PJDogPlayDetailsView]()
+
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    convenience init(viewModels: [PJPet.Pet]) {
+        self.init(nibName: nil, bundle: nil)
+        self.viewModels = viewModels
         initView()
     }
-
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private func initView() {
         view.backgroundColor = .white
         
@@ -36,23 +49,22 @@ class PJDogPlayViewController: UIViewController, PJBaseViewControllerDelegate {
         detailsScrollView.layer.cornerRadius = detailsScrollView.pj_height / 2
         view.addSubview(detailsScrollView)
         
-        let dogDetailsView = PJDogPlayDetailsView.newInstance()
-        dogDetailsView.frame = CGRect(x: 0, y: 0, width: detailsScrollView.pj_width, height: detailsScrollView.pj_height)
-        detailsScrollView.addSubview(dogDetailsView)
+        for (index, pet) in viewModels.enumerated() {
+            let dV = PJDogPlayDetailsView.newInstance()
+            dV.frame = CGRect(x: CGFloat(index) * detailsScrollView.pj_width, y: 0, width: detailsScrollView.pj_width, height: detailsScrollView.pj_height)
+            dV.viewModel = PJDogPlayDetailsView.ViewModel()
+            dV.viewModel.pet = pet
+            
+            detailsViews.append(dV)
+            detailsScrollView.addSubview(dV)
+            detailsScrollView.contentSize = CGSize(width: dV.right, height: 0)
+        }
         
-        let dogDetailsView1 = PJDogPlayDetailsView.newInstance()
-        dogDetailsView1.frame = CGRect(x: dogDetailsView.right, y: 0, width: detailsScrollView.pj_width, height: detailsScrollView.pj_height)
-        detailsScrollView.addSubview(dogDetailsView1)
         
-        let dogDetailsView2 = PJDogPlayDetailsView.newInstance()
-        dogDetailsView2.frame = CGRect(x: dogDetailsView1.right, y: 0, width: detailsScrollView.pj_width, height: detailsScrollView.pj_height)
-        detailsScrollView.addSubview(dogDetailsView2)
-        
-        detailsScrollView.contentSize = CGSize(width: dogDetailsView2.right, height: 0)
-        
-        detailsScrollViewPage = PJPageControl(frame: CGRect(x: 0, y: detailsScrollView.bottom - 10, width:50, height: 7))
+        detailsScrollViewPage = PJPageControl(frame: CGRect(x: 0, y: Int(detailsScrollView.bottom - 10), width:7 * viewModels.count, height: 7))
         detailsScrollViewPage.centerX = view.centerX
-        detailsScrollViewPage.numberOfPages = 3
+        detailsScrollViewPage.centerX = view.centerX
+        detailsScrollViewPage.numberOfPages = viewModels.count
         detailsScrollViewPage.currentPage = 0
         detailsScrollViewPage.setValue(UIImage(named: "pageControl_unselected"), forKey: "_pageImage")
         detailsScrollViewPage.setValue(UIImage(named: "pageControl_selected"), forKey: "_currentPageImage")
@@ -63,6 +75,18 @@ class PJDogPlayViewController: UIViewController, PJBaseViewControllerDelegate {
         mapView = PJDogPlayMapView(frame: CGRect(x: 0, y: 0, width: view.pj_width, height: view.pj_height))
         view.addSubview(mapView)
         view.sendSubviewToBack(mapView)
+        
+        mapView.updateMsg = {
+            for dV in self.detailsViews {
+                var viewModel = dV.viewModel
+                viewModel.time = $0
+                viewModel.distance = $1
+                dV.viewModel = viewModel
+            }
+            
+            // TODO: 后续再考虑单独结束遛狗
+//            self.detailsViews[self.detailsScrollViewPage.currentPage].viewModel = viewModel
+        }
         
         // 停止撸猫
         let stopButton = UIButton(frame: CGRect(x: 0, y: view.pj_height - 36 - 20 - bottomSafeAreaHeight, width: 120, height: 36))
@@ -76,7 +100,6 @@ class PJDogPlayViewController: UIViewController, PJBaseViewControllerDelegate {
     }
 }
 
-
 extension PJDogPlayViewController {
     @objc
     fileprivate func back() {
@@ -87,7 +110,23 @@ extension PJDogPlayViewController {
     fileprivate func stop() {
         mapView.stopLocating()
         
+        PJHUD.shared.showLoading(view: self.view)
         
+        var petIndex = 0
+        
+        for (index, pet) in viewModels.enumerated() {
+            let viewModel = self.detailsViews[index].viewModel
+            PJPet.shared.dogPlaUpload(pet: pet, distance: Int(viewModel.distance)!, complateHandler: {
+                petIndex += 1
+                
+                if index == self.detailsViews.count {
+                    PJHUD.shared.dismiss()
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }) {
+                PJHUD.shared.showError(view: self.view, text: $0.errorMsg)
+            }
+        }
     }
     
     @objc

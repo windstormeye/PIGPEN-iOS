@@ -12,15 +12,28 @@ import CoreMotion
 
 class PJDogPlayMapView: UIView {
 
+    var updateMsg: ((String, String) -> Void)?
+    
     private(set) var mapView: MAMapView = MAMapView()
     private let req = AMapWeatherSearchRequest()
     private var r = MAUserLocationRepresentation()
     private var locationManager = AMapLocationManager()
     private var lineLocations = [CLLocation]()
     private var lineCoordinates = [CLLocationCoordinate2D]()
+    // 圆滑轨迹线
     private var smoothedTrace = MAPolyline()
+    // 圆滑轨迹点集合
     private var smoothedTracePoints = [MALonLatPoint]()
+    // 初始轨迹点集合
     private var origTracePoints = [MALonLatPoint]()
+    // 狗狗运动的总距离
+    private var finalDistance = 0.0
+    // 狗狗运动时间
+    private var timer: Timer?
+    private var durationSeconds = 0
+    private var durationHours = 0
+    
+    private var currentTimeString = "0 min"
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -71,18 +84,43 @@ class PJDogPlayMapView: UIView {
         locationManager.distanceFilter = 5
         locationManager.locatingWithReGeocode = true
         locationManager.startUpdatingLocation()
+        
+        timer = Timer.scheduledTimer(timeInterval: 1,
+                                     target: self,
+                                     selector: .repeatTimer,
+                                     userInfo: nil,
+                                     repeats: true)
     }
 }
 
 extension PJDogPlayMapView {
     func stopLocating() {
         locationManager.stopUpdatingLocation()
+        timer!.invalidate()
+        
+        locationManager = AMapLocationManager()
     }
-}
-
-extension PJDogPlayMapView: AMapSearchDelegate {
-    func onDistanceSearchDone(_ request: AMapDistanceSearchRequest!, response: AMapDistanceSearchResponse!) {
-        print(response.results[0].distance)
+    
+    @objc
+    fileprivate func repeatTimer() {
+        durationSeconds += 1
+        
+        var hourString = ""
+        var minsString = ""
+        
+        if durationSeconds > 60 {
+            minsString = "\(durationSeconds / 60) min"
+        }
+        
+        if durationSeconds > 3600 {
+            hourString = "\(durationSeconds / 3600) H"
+        }
+        
+        let finalTiemString = hourString + minsString
+        
+        if currentTimeString != finalTiemString {
+            currentTimeString = finalTiemString
+        }
     }
 }
 
@@ -127,11 +165,25 @@ extension PJDogPlayMapView: AMapLocationManagerDelegate {
         }
         
         var pCoords:[CLLocationCoordinate2D] = Array()
-        for onePoint in self.smoothedTracePoints {
+        for onePoint in smoothedTracePoints {
             let cor = CLLocationCoordinate2D(latitude: onePoint.lat, longitude: onePoint.lon)
             pCoords.append(cor)
         }
         smoothedTrace = MAPolyline.init(coordinates: &pCoords, count: UInt(pCoords.count))
         mapView.add(self.smoothedTrace)
+        
+        if smoothedTracePoints.last != nil && smoothedTracePoints.count > 2 {
+            let point1 = MAMapPointForCoordinate(CLLocationCoordinate2D(latitude: smoothedTracePoints.last!.lat, longitude: smoothedTracePoints.last!.lon))
+            let point2 = MAMapPointForCoordinate(CLLocationCoordinate2D(latitude: smoothedTracePoints[smoothedTracePoints.count - 2].lat, longitude: smoothedTracePoints[smoothedTracePoints.count - 2].lon))
+            
+            finalDistance += MAMetersBetweenMapPoints(point1,point2)
+            
+            updateMsg?(currentTimeString, "\(Double(finalDistance * 0.001).roundTo(places: 2)) KM")
+        }
     }
+}
+
+
+private extension Selector {
+    static let repeatTimer = #selector(PJDogPlayMapView.repeatTimer)
 }

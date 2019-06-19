@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="345" height="70"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pet_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="SQw-0I-wcB">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pet_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="SQw-0I-wcB">
                     <rect key="frame" x="10" y="7" width="56" height="56"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="56" id="9tO-wt-fGI"/>
@@ -93,6 +93,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="avatarImageView" destination="SQw-0I-wcB" id="7dR-by-UvH"/>
                 <outlet property="distanceLabel" destination="kGU-Ej-VcX" id="OFM-Q5-xDG"/>
                 <outlet property="remainingDistanceLabel" destination="lH0-fA-ccc" id="SXI-Mj-ali"/>
                 <outlet property="timeLabel" destination="56G-I1-NCf" id="aii-zz-phj"/>
