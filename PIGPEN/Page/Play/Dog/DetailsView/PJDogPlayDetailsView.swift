@@ -18,9 +18,19 @@ class PJDogPlayDetailsView: UIView {
     var viewModel = ViewModel() {
         didSet {
             avatarImageView.kf.setImage(with: URL(string: viewModel.pet.avatar_url))
-            timeLabel.text = viewModel.time
-            distanceLabel.text = viewModel.distance
-            remainingDistanceLabel.text = viewModel.remainningDistance
+            var finalTiemString = "0 min"
+            
+            if viewModel.time > 60 {
+                finalTiemString = "\(viewModel.time / 60) min"
+            }
+            
+            if viewModel.time > 3600 {
+                finalTiemString = "\(viewModel.time / 3600) H"
+            }
+            
+            timeLabel.text = finalTiemString
+            distanceLabel.text = "\(Double(viewModel.distance * 0.001).roundTo(places: 2)) KM"
+            remainingDistanceLabel.text = "\(viewModel.remainningDistance) KM"
         }
     }
     
@@ -39,15 +49,15 @@ class PJDogPlayDetailsView: UIView {
 
 extension PJDogPlayDetailsView {
     struct ViewModel {
-        var time: String
-        var distance: String
-        var remainningDistance: String
+        var time: Int
+        var distance: Double
+        var remainningDistance: Int
         var pet: PJPet.Pet
         
         init() {
-            time = "0 min"
-            distance = "0 KM"
-            remainningDistance = "0 KM"
+            time = 0
+            distance = 0
+            remainningDistance = 0
             pet = PJPet.Pet()
         }
     }

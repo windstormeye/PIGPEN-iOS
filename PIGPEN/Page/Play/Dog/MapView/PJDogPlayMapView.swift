@@ -12,7 +12,7 @@ import CoreMotion
 
 class PJDogPlayMapView: UIView {
 
-    var updateMsg: ((String, String) -> Void)?
+    var updateMsg: ((Int, Double) -> Void)?
     
     private(set) var mapView: MAMapView = MAMapView()
     private let req = AMapWeatherSearchRequest()
@@ -104,23 +104,6 @@ extension PJDogPlayMapView {
     @objc
     fileprivate func repeatTimer() {
         durationSeconds += 1
-        
-        var hourString = ""
-        var minsString = ""
-        
-        if durationSeconds > 60 {
-            minsString = "\(durationSeconds / 60) min"
-        }
-        
-        if durationSeconds > 3600 {
-            hourString = "\(durationSeconds / 3600) H"
-        }
-        
-        let finalTiemString = hourString + minsString
-        
-        if currentTimeString != finalTiemString {
-            currentTimeString = finalTiemString
-        }
     }
 }
 
@@ -178,7 +161,7 @@ extension PJDogPlayMapView: AMapLocationManagerDelegate {
             
             finalDistance += MAMetersBetweenMapPoints(point1,point2)
             
-            updateMsg?(currentTimeString, "\(Double(finalDistance * 0.001).roundTo(places: 2)) KM")
+            updateMsg?(durationSeconds, finalDistance)
         }
     }
 }

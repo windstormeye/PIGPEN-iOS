@@ -116,10 +116,10 @@ extension PJDogPlayViewController {
         
         for (index, pet) in viewModels.enumerated() {
             let viewModel = self.detailsViews[index].viewModel
-            PJPet.shared.dogPlaUpload(pet: pet, distance: Int(viewModel.distance)!, complateHandler: {
+            PJPet.shared.dogPlaUpload(pet: pet, distance: Int(viewModel.distance), complateHandler: {
                 petIndex += 1
                 
-                if index == self.detailsViews.count {
+                if petIndex == self.detailsViews.count {
                     PJHUD.shared.dismiss()
                     self.navigationController?.popViewController(animated: true)
                 }
