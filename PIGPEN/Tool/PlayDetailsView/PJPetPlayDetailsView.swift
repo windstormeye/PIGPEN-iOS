@@ -12,21 +12,21 @@ class PJPetPlayDetailsView: UIView {
 
     var viewModel = PJPet.CatPlay() {
         didSet {
-            dayTargetLabel.text = "60 min"
-            timesLabel.text = String(viewModel.times)
-            durationsLabel.text = String(viewModel.duration_today)
+            firstLabel.text = "60 min"
+            secondLabel.text = String(viewModel.times)
+            thirdLabel.text = String(viewModel.duration_today)
             
             circleOfDots(view: circleView)
         }
     }
     
-    /// 今日目标
-    @IBOutlet weak var dayTargetLabel: UILabel!
-    /// 今日次数
-    @IBOutlet weak var timesLabel: UILabel!
-    /// 今日持续时间
-    @IBOutlet weak var durationsLabel: UILabel!
+    @IBOutlet weak var firstLabel: UILabel!
+    @IBOutlet weak var secondLabel: UILabel!
+    @IBOutlet weak var thirdLabel: UILabel!
     @IBOutlet weak var circleView: UIView!
+    @IBOutlet weak var firstTextLabel: UILabel!
+    @IBOutlet weak var secondTextLabel: UILabel!
+    @IBOutlet weak var thirdTextLabel: UILabel!
     
     class func newInstance() -> PJPetPlayDetailsView {
         return Bundle.main.loadNibNamed("PJPetPlayDetailsView",

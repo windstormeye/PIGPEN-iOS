@@ -17,7 +17,7 @@ class PJDogPlayViewController: UIViewController, PJBaseViewControllerDelegate {
     private var detailsScrollViewPage = PJPageControl()
     private var mapView = PJDogPlayMapView()
     
-    private var detailsViews = [PJDogPlayDetailsView]()
+    private var detailsViews = [PJDogPlayDetailsHeaderView]()
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
@@ -50,9 +50,9 @@ class PJDogPlayViewController: UIViewController, PJBaseViewControllerDelegate {
         view.addSubview(detailsScrollView)
         
         for (index, pet) in viewModels.enumerated() {
-            let dV = PJDogPlayDetailsView.newInstance()
+            let dV = PJDogPlayDetailsHeaderView.newInstance()
             dV.frame = CGRect(x: CGFloat(index) * detailsScrollView.pj_width, y: 0, width: detailsScrollView.pj_width, height: detailsScrollView.pj_height)
-            dV.viewModel = PJDogPlayDetailsView.ViewModel()
+            dV.viewModel = PJDogPlayDetailsHeaderView.ViewModel()
             dV.viewModel.pet = pet
             
             detailsViews.append(dV)

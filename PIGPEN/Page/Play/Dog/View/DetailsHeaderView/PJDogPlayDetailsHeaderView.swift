@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PJDogPlayDetailsView: UIView {
+class PJDogPlayDetailsHeaderView: UIView {
 
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
@@ -34,10 +34,10 @@ class PJDogPlayDetailsView: UIView {
         }
     }
     
-    class func newInstance() -> PJDogPlayDetailsView {
-        return Bundle.main.loadNibNamed("PJDogPlayDetailsView",
+    class func newInstance() -> PJDogPlayDetailsHeaderView {
+        return Bundle.main.loadNibNamed("PJDogPlayDetailsHeaderView",
                                         owner: self,
-                                        options: nil)!.first as! PJDogPlayDetailsView
+                                        options: nil)!.first as! PJDogPlayDetailsHeaderView
     }
     
     override func awakeFromNib() {
@@ -47,7 +47,7 @@ class PJDogPlayDetailsView: UIView {
     }
 }
 
-extension PJDogPlayDetailsView {
+extension PJDogPlayDetailsHeaderView {
     struct ViewModel {
         var time: Int
         var distance: Double
