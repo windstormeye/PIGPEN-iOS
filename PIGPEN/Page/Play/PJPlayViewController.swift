@@ -78,8 +78,7 @@ class PJPlayViewController: UIViewController, PJBaseViewControllerDelegate {
             case 1:
                 break
             case 2:
-                if self.petTypes.contains(.cat) {
-                    
+                if self.petTypes.contains(.cat) && !self.petTypes.contains(.dog) {
                     var pets = [PJPet.Pet]()
                     for item in self.collectionView!.selectedPets {
                         pets.append((self.collectionView?.viewModels[item].pet)!)
@@ -87,8 +86,8 @@ class PJPlayViewController: UIViewController, PJBaseViewControllerDelegate {
                     let vc = PJCatPlayHomeViewController(viewModels: pets)
                     vc.hidesBottomBarWhenPushed = true
                     self.navigationController?.pushViewController(vc, animated: true)
-                } else {
-                    
+                }
+                if self.petTypes.contains(.dog) && !self.petTypes.contains(.cat) {
                     var viewModels = [PJPet.Pet]()
                     for item in self.collectionView!.selectedPets {
                         viewModels.append((self.collectionView?.viewModels[item].pet)!)

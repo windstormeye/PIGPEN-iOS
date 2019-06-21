@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreMotion
+import Schedule
 
 
 class PJDogPlayMapView: UIView {
@@ -18,8 +19,7 @@ class PJDogPlayMapView: UIView {
     private let req = AMapWeatherSearchRequest()
     private var r = MAUserLocationRepresentation()
     private var locationManager = AMapLocationManager()
-    private var lineLocations = [CLLocation]()
-    private var lineCoordinates = [CLLocationCoordinate2D]()
+
     // 圆滑轨迹线
     private var smoothedTrace = MAPolyline()
     // 圆滑轨迹点集合
@@ -28,12 +28,8 @@ class PJDogPlayMapView: UIView {
     private var origTracePoints = [MALonLatPoint]()
     // 狗狗运动的总距离
     private var finalDistance = 0.0
-    // 狗狗运动时间
-    private var timer: Timer?
-    private var durationSeconds = 0
-    private var durationHours = 0
+    private var nowTimestamp = 0
     
-    private var currentTimeString = "0 min"
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,28 +42,24 @@ class PJDogPlayMapView: UIView {
     
     private func initView() {
         AMapServices.shared().enableHTTPS = true
-        
+
         req.type = AMapWeatherType.live
-        
+
         mapView.frame = frame
         mapView.delegate = self
         mapView.showsScale = false
         mapView.showsCompass = false
-        // 设置罗盘原点位置
-        mapView.compassOrigin = CGPoint(x: PJSCREEN_WIDTH - 50, y: 30)
         // 开启地图自定义样式
         mapView.customMapStyleEnabled = true;
-        // 显示显示用户位置
+        // 显示用户位置
         mapView.showsUserLocation = true
         // 禁止倾斜手势
         mapView.isRotateCameraEnabled = false
         // 用户模式跟踪
         mapView.userTrackingMode = .follow
-        mapView.allowsBackgroundLocationUpdates = true
-        
         mapView.zoomLevel = 19
         addSubview(mapView)
-        
+
         r.image = UIImage(named: "map_userlocation")
         r.showsAccuracyRing = false
         mapView.update(r)
@@ -79,31 +71,19 @@ class PJDogPlayMapView: UIView {
         mapOptions.styleData = mapData
         mapView.setCustomMapStyleOptions(mapOptions)
         
-        locationManager = AMapLocationManager()
         locationManager.delegate = self
         locationManager.distanceFilter = 5
+        locationManager.allowsBackgroundLocationUpdates = true
         locationManager.locatingWithReGeocode = true
         locationManager.startUpdatingLocation()
         
-        timer = Timer.scheduledTimer(timeInterval: 1,
-                                     target: self,
-                                     selector: .repeatTimer,
-                                     userInfo: nil,
-                                     repeats: true)
+        nowTimestamp = Int(Date().timeIntervalSince1970)
     }
 }
 
 extension PJDogPlayMapView {
     func stopLocating() {
         locationManager.stopUpdatingLocation()
-        timer!.invalidate()
-        
-        locationManager = AMapLocationManager()
-    }
-    
-    @objc
-    fileprivate func repeatTimer() {
-        durationSeconds += 1
     }
 }
 
@@ -127,26 +107,23 @@ extension PJDogPlayMapView: AMapLocationManagerDelegate {
                              reGeocode: AMapLocationReGeocode!) {
         let coords = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
                                             longitude: location.coordinate.longitude)
-        
-        lineLocations.append(location)
-        lineCoordinates.append(coords)
-        
+
         let oPoint = MALonLatPoint()
         oPoint.lat = coords.latitude
         oPoint.lon = coords.longitude
         origTracePoints.append(oPoint)
-        
-        
+
+
         let tool = MASmoothPathTool()
         tool.intensity = 3
         tool.threshHold = 0.3
         tool.noiseThreshhold = 10
-        
+
         let smoothPoints = tool.pathOptimize(origTracePoints)
         if smoothPoints != nil {
             smoothedTracePoints = smoothPoints!
         }
-        
+
         var pCoords:[CLLocationCoordinate2D] = Array()
         for onePoint in smoothedTracePoints {
             let cor = CLLocationCoordinate2D(latitude: onePoint.lat, longitude: onePoint.lon)
@@ -154,19 +131,14 @@ extension PJDogPlayMapView: AMapLocationManagerDelegate {
         }
         smoothedTrace = MAPolyline.init(coordinates: &pCoords, count: UInt(pCoords.count))
         mapView.add(self.smoothedTrace)
-        
+
         if smoothedTracePoints.last != nil && smoothedTracePoints.count > 2 {
-            let point1 = MAMapPointForCoordinate(CLLocationCoordinate2D(latitude: smoothedTracePoints.last!.lat, longitude: smoothedTracePoints.last!.lon))
+            let point1 = MAMapPointForCoordinate(CLLocationCoordinate2D(latitude: smoothedTracePoints.last!.lat,longitude: smoothedTracePoints.last!.lon))
             let point2 = MAMapPointForCoordinate(CLLocationCoordinate2D(latitude: smoothedTracePoints[smoothedTracePoints.count - 2].lat, longitude: smoothedTracePoints[smoothedTracePoints.count - 2].lon))
-            
+
             finalDistance += MAMetersBetweenMapPoints(point1,point2)
             
-            updateMsg?(durationSeconds, finalDistance)
+            updateMsg?(Int(Date().timeIntervalSince1970) - nowTimestamp, finalDistance)
         }
     }
-}
-
-
-private extension Selector {
-    static let repeatTimer = #selector(PJDogPlayMapView.repeatTimer)
 }

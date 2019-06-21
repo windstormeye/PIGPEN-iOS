@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0C0A54A6216B977E00195DF1 /* RealPet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0A54A5216B977E00195DF1 /* RealPet.swift */; };
 		0C17E65D22BB8E570045DE93 /* PJDogPlayHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C17E65C22BB8E570045DE93 /* PJDogPlayHomeViewController.swift */; };
+		0C17E66222BBA69D0045DE93 /* mapView.data in Resources */ = {isa = PBXBuildFile; fileRef = 0C17E66122BBA6580045DE93 /* mapView.data */; };
 		0C1F6FA421B391E500304CD8 /* PJAlbumTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1F6FA321B391E500304CD8 /* PJAlbumTableView.swift */; };
 		0C1F6FA621B3920500304CD8 /* PJAlbumDetailCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1F6FA521B3920500304CD8 /* PJAlbumDetailCollectionView.swift */; };
 		0C1F6FAA21B3924400304CD8 /* PJAlbumDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1F6FA821B3924400304CD8 /* PJAlbumDetailCollectionViewCell.swift */; };
@@ -85,7 +86,6 @@
 		0C5B5D3C2262C73F00392E21 /* CustomBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5B5D352262C73F00392E21 /* CustomBubble.swift */; };
 		0C5D72C122B1E22F00670100 /* PJDogPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5D72C022B1E22F00670100 /* PJDogPlayViewController.swift */; };
 		0C5D72C422B1E7CF00670100 /* PJDogPlayMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5D72C322B1E7CF00670100 /* PJDogPlayMapView.swift */; };
-		0C5D72C822B1F50100670100 /* mapView.data in Resources */ = {isa = PBXBuildFile; fileRef = 0C5D72C722B1F50100670100 /* mapView.data */; };
 		0C5D72CB22B1F6A000670100 /* PJDogPlayDetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5D72CA22B1F6A000670100 /* PJDogPlayDetailsHeaderView.swift */; };
 		0C5D72CD22B2140700670100 /* PJDogPlayDetailsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C5D72CC22B2140700670100 /* PJDogPlayDetailsHeaderView.xib */; };
 		0C5D72D022B2A71400670100 /* PJPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5D72CF22B2A71400670100 /* PJPageControl.swift */; };
@@ -180,6 +180,7 @@
 /* Begin PBXFileReference section */
 		0C0A54A5216B977E00195DF1 /* RealPet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealPet.swift; sourceTree = "<group>"; };
 		0C17E65C22BB8E570045DE93 /* PJDogPlayHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJDogPlayHomeViewController.swift; sourceTree = "<group>"; };
+		0C17E66122BBA6580045DE93 /* mapView.data */ = {isa = PBXFileReference; lastKnownFileType = file; path = mapView.data; sourceTree = "<group>"; };
 		0C1F6FA321B391E500304CD8 /* PJAlbumTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJAlbumTableView.swift; sourceTree = "<group>"; };
 		0C1F6FA521B3920500304CD8 /* PJAlbumDetailCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJAlbumDetailCollectionView.swift; sourceTree = "<group>"; };
 		0C1F6FA821B3924400304CD8 /* PJAlbumDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJAlbumDetailCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -257,7 +258,6 @@
 		0C5B5D352262C73F00392E21 /* CustomBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBubble.swift; sourceTree = "<group>"; };
 		0C5D72C022B1E22F00670100 /* PJDogPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJDogPlayViewController.swift; sourceTree = "<group>"; };
 		0C5D72C322B1E7CF00670100 /* PJDogPlayMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJDogPlayMapView.swift; sourceTree = "<group>"; };
-		0C5D72C722B1F50100670100 /* mapView.data */ = {isa = PBXFileReference; lastKnownFileType = file; path = mapView.data; sourceTree = "<group>"; };
 		0C5D72CA22B1F6A000670100 /* PJDogPlayDetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJDogPlayDetailsHeaderView.swift; sourceTree = "<group>"; };
 		0C5D72CC22B2140700670100 /* PJDogPlayDetailsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJDogPlayDetailsHeaderView.xib; sourceTree = "<group>"; };
 		0C5D72CF22B2A71400670100 /* PJPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJPageControl.swift; sourceTree = "<group>"; };
@@ -698,9 +698,9 @@
 			children = (
 				0C55E2D4215A792F000D8815 /* Muti-Language */,
 				0C5E63412163696F00A90762 /* style.data */,
+				0C17E66122BBA6580045DE93 /* mapView.data */,
 				0C5E63542165B6D400A90762 /* PIGPEN_bridge.h */,
 				0CE4F3FC21592C7D003AD0F5 /* Assets.xcassets */,
-				0C5D72C722B1F50100670100 /* mapView.data */,
 				0CE4F40121592C7D003AD0F5 /* Info.plist */,
 				0CE4F3F921592C7C003AD0F5 /* PIGPEN.xcdatamodeld */,
 			);
@@ -1735,7 +1735,6 @@
 				0C6A986822729C21003E4AA5 /* PJFriendTableViewCell.xib in Resources */,
 				0C5AD139228A648A00326E63 /* PJPetCreateBreedsTableViewCell.xib in Resources */,
 				0C5AD151228BB24300326E63 /* PJRelationAvatarView.xib in Resources */,
-				0C5D72C822B1F50100670100 /* mapView.data in Resources */,
 				0C55E2D7215A795A000D8815 /* Localizable.strings in Resources */,
 				0C55E2F8215F570D000D8815 /* PJUserRegisterViewController.xib in Resources */,
 				0C1F6FAB21B3924400304CD8 /* PJAlbumDetailCollectionViewCell.xib in Resources */,
@@ -1744,6 +1743,7 @@
 				0C1F6FB021B3925E00304CD8 /* PJAlbumTableViewCell.xib in Resources */,
 				0C201A02228867B200AE8C2B /* PJPetCreateNameViewController.storyboard in Resources */,
 				0C4CC27F22AF6E470031148F /* PJPlayCellView.xib in Resources */,
+				0C17E66222BBA69D0045DE93 /* mapView.data in Resources */,
 				0CB5E8F42264BDF700CBE217 /* PJDetailUserTableViewCell.xib in Resources */,
 				0CE4F3FD21592C7D003AD0F5 /* Assets.xcassets in Resources */,
 				0C55E2E9215B703C000D8815 /* PJUserLoginViewController.xib in Resources */,
