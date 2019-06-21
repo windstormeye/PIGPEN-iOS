@@ -58,7 +58,7 @@ class PJPetAvatarView: UIView {
 
     
     /// 放大某个下标的头像，并缩小其它下标的头像（带动画）
-    func scrollToButton(_ index: Int) {
+    func scrollToButton(at index: Int) {
         
         currentIndex = index
         
@@ -81,7 +81,7 @@ class PJPetAvatarView: UIView {
 extension PJPetAvatarView {
     @objc
     fileprivate func tapped(sender: UIButton) {
-        scrollToButton(sender.tag)
+        scrollToButton(at: sender.tag)
         itemSelected?(sender.tag)
     }
 }

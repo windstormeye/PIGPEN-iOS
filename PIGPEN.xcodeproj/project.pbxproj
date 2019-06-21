@@ -398,7 +398,6 @@
 			isa = PBXGroup;
 			children = (
 				0C17E66022BB912E0045DE93 /* DetailsHeaderView */,
-				0C5D72C922B1F68B00670100 /* DetailsView */,
 				0C5D72C222B1E7BB00670100 /* MapView */,
 			);
 			path = View;
@@ -664,6 +663,7 @@
 			isa = PBXGroup;
 			children = (
 				0C55E2CD215A62BE000D8815 /* PJPlayViewController.swift */,
+				0CDB3E5522B4C86E0075A3AF /* Details */,
 				0C5D72BC22B1E1F200670100 /* Dog */,
 				0C332B3E22B0D8CC009CAE4C /* Cat */,
 			);
@@ -986,13 +986,6 @@
 				0C5D72C322B1E7CF00670100 /* PJDogPlayMapView.swift */,
 			);
 			path = MapView;
-			sourceTree = "<group>";
-		};
-		0C5D72C922B1F68B00670100 /* DetailsView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DetailsView;
 			sourceTree = "<group>";
 		};
 		0C5D72CE22B2A6EF00670100 /* PageControl */ = {
@@ -1480,7 +1473,8 @@
 			children = (
 				0C24258C22B540BC00B23DC2 /* PJCatPlayDetailsView.swift */,
 			);
-			path = Details;
+			name = Details;
+			path = Cat/View/Details;
 			sourceTree = "<group>";
 		};
 		0CDB3E5A22B52A150075A3AF /* BottomDotButtonView */ = {
@@ -1605,7 +1599,6 @@
 		0CF11D6022B4C84700D92F0C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0CDB3E5522B4C86E0075A3AF /* Details */,
 				0C4CC27922AF52B70031148F /* CollectionView */,
 			);
 			path = View;

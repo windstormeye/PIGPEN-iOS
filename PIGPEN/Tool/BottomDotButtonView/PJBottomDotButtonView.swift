@@ -61,7 +61,7 @@ class PJBottomDotButtonView: UIView {
         }
     }
     
-    func updateDot(_ index: Int) {
+    func updateDot(at index: Int) {
         guard index <= pageCount else { return }
         
         if index == pageCount {

@@ -10,13 +10,13 @@ import UIKit
 
 class PJPetPlayDetailsView: UIView {
 
-    var viewModel = PJPet.CatPlay() {
+    var viewModel = ViewModel() {
         didSet {
-            firstLabel.text = "60 min"
-            secondLabel.text = String(viewModel.times)
-            thirdLabel.text = String(viewModel.duration_today)
+            firstLabel.text = viewModel.firstString
+            secondLabel.text = viewModel.secondString
+            thirdLabel.text = viewModel.thirdString
             
-            circleOfDots(view: circleView)
+            circleOfDots(view: circleView, score: 8.5)
         }
     }
     
@@ -34,8 +34,7 @@ class PJPetPlayDetailsView: UIView {
                                         options: nil)?.first! as! PJPetPlayDetailsView
     }
     
-    private func circleOfDots(view: UIView) {
-        let score = CGFloat(8.5)
+    private func circleOfDots(view: UIView, score: CGFloat) {
         let startAngle = -CGFloat.pi * 0.5
         let endAngle = -(CGFloat.pi * 2 * 0.1 * score) + startAngle
         let radius = CGFloat(22.5)
@@ -70,5 +69,21 @@ class PJPetPlayDetailsView: UIView {
         shapeLayer.lineDashPattern = [1, 6]
         shapeLayer.lineCap = CAShapeLayerLineCap.round
         view.layer.addSublayer(shapeLayer)
+    }
+}
+
+extension PJPetPlayDetailsView {
+    struct ViewModel {
+        var firstString: String
+        var secondString: String
+        var thirdString: String
+        var score: CGFloat
+        
+        init() {
+            firstString = ""
+            secondString = ""
+            thirdString = ""
+            score = 0
+        }
     }
 }

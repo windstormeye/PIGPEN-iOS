@@ -14,7 +14,7 @@ class PJDogPlayHomeViewController: UIViewController, PJBaseViewControllerDelegat
     
     private var avatarView = PJPetAvatarView()
     private var bottomView = PJBottomDotButtonView()
-    private var detailsViews = [PJCatPlayDetailsView]()
+    private var detailsViews = [PJPetPlayHomeDetailsView]()
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
@@ -37,7 +37,7 @@ class PJDogPlayHomeViewController: UIViewController, PJBaseViewControllerDelegat
         backButtonTapped(backSel: .back, imageName: nil)
         
         avatarView = PJPetAvatarView(frame: CGRect(x: 20, y: navigationBarHeight, width: view.pj_width - 40, height: 36 * 1.385), viewModel: viewModels)
-        avatarView.scrollToButton(0)
+        avatarView.scrollToButton(at: 0)
         view.addSubview(avatarView)
         
         let scrollView = UIScrollView(frame: CGRect(x: 0, y: navigationBarHeight, width: view.pj_width, height: view.pj_height - navigationBarHeight))
@@ -48,7 +48,7 @@ class PJDogPlayHomeViewController: UIViewController, PJBaseViewControllerDelegat
         view.sendSubviewToBack(scrollView)
         
         for index in 0..<viewModels.count {
-            let detailsView = PJCatPlayDetailsView(frame: CGRect(x: CGFloat(index) * view.pj_width, y: 0, width: view.pj_width, height: scrollView.pj_height))
+            let detailsView = PJPetPlayHomeDetailsView(frame: CGRect(x: CGFloat(index) * view.pj_width, y: 0, width: view.pj_width, height: scrollView.pj_height))
             scrollView.addSubview(detailsView)
             self.detailsViews.append(detailsView)
             
@@ -56,7 +56,7 @@ class PJDogPlayHomeViewController: UIViewController, PJBaseViewControllerDelegat
         }
         
         
-        bottomView = PJBottomDotButtonView(frame: CGRect(x: 0, y: view.pj_height - bottomSafeAreaHeight - 40, width: view.pj_width, height: 36), pageCount: viewModels.count - 1)
+        bottomView = PJBottomDotButtonView(frame: CGRect(x: 0, y: view.pj_height - bottomSafeAreaHeight - 36 - 20, width: view.pj_width, height: 36), pageCount: viewModels.count - 1)
         view.addSubview(bottomView)
         
         bottomView.startSelected = {
@@ -66,7 +66,7 @@ class PJDogPlayHomeViewController: UIViewController, PJBaseViewControllerDelegat
         }
         
         avatarView.itemSelected = { index in
-            self.bottomView.updateDot(index)
+            self.bottomView.updateDot(at: index)
             scrollView.setContentOffset(CGPoint(x: CGFloat(index) * self.view.pj_width, y: 0), animated: true)
             
             self.requestData(index)
@@ -82,8 +82,10 @@ extension PJDogPlayHomeViewController {
     /// 请求当前索引的撸猫看板页面数据
     func requestData(_ index: Int) {
         PJPet.shared.getCatPlayDetails(pet: self.viewModels[index], complateHandler: { catPlay in
-            let dV = self.detailsViews[index]
-            dV.viewModel = catPlay
+//            let dV = self.detailsViews[index]
+//            let viewModel = PJPetPlayDetailsView.ViewModel()
+//            viewModel.
+//            dV.viewModel = catPlay
         }, failedHandler: {
             PJHUD.shared.showError(view: self.view, text: $0.errorMsg)
         })
@@ -117,9 +119,9 @@ extension PJDogPlayHomeViewController: UIScrollViewDelegate {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let offsetX = scrollView.contentOffset.x
-        let page = offsetX / view.pj_width
+        let page = Int(offsetX / view.pj_width)
         
-        avatarView.scrollToButton(Int(page))
-        bottomView.updateDot(Int(page))
+        avatarView.scrollToButton(at: page)
+        bottomView.updateDot(at: page)
     }
 }

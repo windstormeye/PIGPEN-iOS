@@ -1,5 +1,5 @@
 //
-//  PJCatPlayDetailsView.swift
+//  PJPetPlayHomeDetailsView.swift
 //  PIGPEN
 //
 //  Created by 翁培钧 on 2019/6/15.
@@ -8,11 +8,20 @@
 
 import UIKit
 
-class PJCatPlayDetailsView: UIView {
+class PJPetPlayHomeDetailsView: UIView {
 
-    var viewModel = PJPet.CatPlay() {
+    var viewModel = ViewModel() {
         didSet {
-            msgDetailsView.viewModel = viewModel
+            var detailsViewModel = PJPetPlayDetailsView.ViewModel()
+            if viewModel.pet.pet_type == .cat {
+                detailsViewModel.firstString = "60 min"
+                detailsViewModel.secondString = String(viewModel.catPlay!.times)
+                detailsViewModel.thirdString = String(viewModel.catPlay!.duration_today)
+                detailsViewModel.score = 8.5
+            } else {
+                // TODO: 狗的还没做
+            }
+            msgDetailsView.viewModel = detailsViewModel
         }
     }
     
@@ -30,7 +39,7 @@ class PJCatPlayDetailsView: UIView {
     
     private func initView() {
         // 撸猫动图
-        let activityImageView = UIImageView(frame: CGRect(x: 0, y: 36 * 1.385 + 40, width: pj_width * 0.53, height: pj_width * 0.53 * 1.124))
+        let activityImageView = UIImageView(frame: CGRect(x: 0, y: 36 * 1.385 + 20, width: pj_width * 0.53, height: pj_width * 0.53 * 1.124))
         activityImageView.x = (pj_width - pj_width * 0.53) / 2
         activityImageView.loadGif(asset: "timg")
         addSubview(activityImageView)
@@ -74,7 +83,7 @@ class PJCatPlayDetailsView: UIView {
 
 }
 
-extension PJCatPlayDetailsView {
+extension PJPetPlayHomeDetailsView {
     @objc
     fileprivate func edit() {
         
@@ -87,6 +96,19 @@ extension PJCatPlayDetailsView {
 }
 
 private extension Selector {
-    static let edit = #selector(PJCatPlayDetailsView.edit)
-    static let add = #selector(PJCatPlayDetailsView.add)
+    static let edit = #selector(PJPetPlayHomeDetailsView.edit)
+    static let add = #selector(PJPetPlayHomeDetailsView.add)
+}
+
+extension PJPetPlayHomeDetailsView {
+    struct ViewModel {
+        var catPlay: PJPet.CatPlay?
+//        var dogPlay: PJPet.Dog
+        var pet: PJPet.Pet
+        
+        init() {
+            catPlay = PJPet.CatPlay()
+            pet = PJPet.Pet()
+        }
+    }
 }
