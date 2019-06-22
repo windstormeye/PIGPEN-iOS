@@ -32,10 +32,11 @@ class PJBottomDotButtonView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(frame: CGRect, pageCount: Int) {
+    convenience init(frame: CGRect, pageCount: Int, centerButtonText: String) {
         self.init(frame: frame)
         self.pageCount = pageCount
         initView()
+        centerButton.setTitle(centerButtonText, for: .normal)
     }
     
     private func initView() {

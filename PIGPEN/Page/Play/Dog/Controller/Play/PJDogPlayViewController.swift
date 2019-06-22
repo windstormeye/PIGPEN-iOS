@@ -10,7 +10,6 @@ import UIKit
 import CoreMotion
 
 class PJDogPlayViewController: UIViewController, PJBaseViewControllerDelegate {
-    
     var viewModels = [PJPet.Pet]()
     
     private var detailsScrollView = UIScrollView()
@@ -88,7 +87,7 @@ class PJDogPlayViewController: UIViewController, PJBaseViewControllerDelegate {
 //            self.detailsViews[self.detailsScrollViewPage.currentPage].viewModel = viewModel
         }
         
-        // 停止撸猫
+        // 停止遛狗
         let stopButton = UIButton(frame: CGRect(x: 0, y: view.pj_height - 36 - 20 - bottomSafeAreaHeight, width: 120, height: 36))
         view.addSubview(stopButton)
         stopButton.setTitle("结束遛狗", for: .normal)
@@ -109,23 +108,23 @@ extension PJDogPlayViewController {
     @objc
     fileprivate func stop() {
         mapView.stopLocating()
-        
-        PJHUD.shared.showLoading(view: self.view)
-        
-        var petIndex = 0
-        
-        for (index, pet) in viewModels.enumerated() {
-            let viewModel = self.detailsViews[index].viewModel
-            PJPet.shared.dogPlaUpload(pet: pet, distance: Int(viewModel.distance), complateHandler: {
-                petIndex += 1
+        mapView.stopLocation = {
+            let vc = PJDogPlayFinishViewController()
+            var viewModels = [PJDogPlayFinishViewController.ViewModel]()
+            
+            for pet in self.viewModels {
+                var vm = PJDogPlayFinishViewController.ViewModel()
+                vm.pet = pet
                 
-                if petIndex == self.detailsViews.count {
-                    PJHUD.shared.dismiss()
-                    self.navigationController?.popViewController(animated: true)
-                }
-            }) {
-                PJHUD.shared.showError(view: self.view, text: $0.errorMsg)
+                var detailsViewModel = PJDogPlayFinishDetailsView.ViewModel()
+                detailsViewModel.mapImage = $0
+                vm.details = detailsViewModel
+                
+                viewModels.append(vm)
             }
+            
+            vc.viewModels = viewModels
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     

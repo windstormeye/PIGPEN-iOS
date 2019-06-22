@@ -35,6 +35,8 @@
 		0C201A0C22896DE600AE8C2B /* PJCreatePetDetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C201A0B22896DE600AE8C2B /* PJCreatePetDetailsViewController.storyboard */; };
 		0C24258B22B52A4300B23DC2 /* PJBottomDotButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C24258A22B52A4300B23DC2 /* PJBottomDotButtonView.swift */; };
 		0C24258D22B540BC00B23DC2 /* PJCatPlayDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C24258C22B540BC00B23DC2 /* PJCatPlayDetailsView.swift */; };
+		0C2B055722BE230B0077200D /* PJDogPlayFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2B055522BE230B0077200D /* PJDogPlayFinishViewController.swift */; };
+		0C2B055A22BE77E90077200D /* PJDogPlayFinishDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2B055922BE77E90077200D /* PJDogPlayFinishDetailsView.swift */; };
 		0C2FE29B229249D300070068 /* PJPetCreateBirthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2FE29A229249D300070068 /* PJPetCreateBirthView.swift */; };
 		0C2FE29D229249D800070068 /* PJPetCreateBirthView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C2FE29C229249D800070068 /* PJPetCreateBirthView.xib */; };
 		0C332B4022B0D8E0009CAE4C /* PJCatPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C332B3F22B0D8E0009CAE4C /* PJCatPlayViewController.swift */; };
@@ -206,6 +208,8 @@
 		0C201A0B22896DE600AE8C2B /* PJCreatePetDetailsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PJCreatePetDetailsViewController.storyboard; sourceTree = "<group>"; };
 		0C24258A22B52A4300B23DC2 /* PJBottomDotButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBottomDotButtonView.swift; sourceTree = "<group>"; };
 		0C24258C22B540BC00B23DC2 /* PJCatPlayDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJCatPlayDetailsView.swift; sourceTree = "<group>"; };
+		0C2B055522BE230B0077200D /* PJDogPlayFinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJDogPlayFinishViewController.swift; sourceTree = "<group>"; };
+		0C2B055922BE77E90077200D /* PJDogPlayFinishDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJDogPlayFinishDetailsView.swift; sourceTree = "<group>"; };
 		0C2FE29A229249D300070068 /* PJPetCreateBirthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJPetCreateBirthView.swift; sourceTree = "<group>"; };
 		0C2FE29C229249D800070068 /* PJPetCreateBirthView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJPetCreateBirthView.xib; sourceTree = "<group>"; };
 		0C332B3F22B0D8E0009CAE4C /* PJCatPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJCatPlayViewController.swift; sourceTree = "<group>"; };
@@ -406,6 +410,7 @@
 		0C17E65F22BB8E770045DE93 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0C17E66522BE1EBB0045DE93 /* About */,
 				0CA1411822BB8E1900698BD6 /* Play */,
 			);
 			path = Controller;
@@ -418,6 +423,15 @@
 				0C5D72CC22B2140700670100 /* PJDogPlayDetailsHeaderView.xib */,
 			);
 			path = DetailsHeaderView;
+			sourceTree = "<group>";
+		};
+		0C17E66522BE1EBB0045DE93 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				0C2B055522BE230B0077200D /* PJDogPlayFinishViewController.swift */,
+				0C2B055922BE77E90077200D /* PJDogPlayFinishDetailsView.swift */,
+			);
+			path = About;
 			sourceTree = "<group>";
 		};
 		0C1F6F9E21B3912900304CD8 /* AlbumTableView */ = {
@@ -1920,6 +1934,8 @@
 				0C2019C422814B0C00AE8C2B /* PJPet.swift in Sources */,
 				0C8B75622198126D00353842 /* PJPickerView.swift in Sources */,
 				0C2019D32283B44300AE8C2B /* PJPetCreateViewController.swift in Sources */,
+				0C2B055A22BE77E90077200D /* PJDogPlayFinishDetailsView.swift in Sources */,
+				0C2B055722BE230B0077200D /* PJDogPlayFinishViewController.swift in Sources */,
 				0C5B5D132261ADD300392E21 /* UIViewController.swift in Sources */,
 				0CB5E8DD2262D80F00CBE217 /* PJSearchBar.swift in Sources */,
 				0C648D1622B4A628004D7898 /* PJPetAvatarView.swift in Sources */,

@@ -12,8 +12,10 @@ import Schedule
 
 
 class PJDogPlayMapView: UIView {
-
+    var stopLocation: ((UIImage) -> Void)?
     var updateMsg: ((Int, Double) -> Void)?
+    /// 遛狗完成缩略图
+    var mapImage: UIImage?
     
     private(set) var mapView: MAMapView = MAMapView()
     private let req = AMapWeatherSearchRequest()
@@ -29,6 +31,10 @@ class PJDogPlayMapView: UIView {
     // 狗狗运动的总距离
     private var finalDistance = 0.0
     private var nowTimestamp = 0
+    /// 地图是否加载完成
+    private var isMapviewInit = false
+    /// 遛狗结束后地图截图
+    private var screenshotViewModel = ScreenShotViewModel()
     
     
     override init(frame: CGRect) {
@@ -82,12 +88,55 @@ class PJDogPlayMapView: UIView {
 }
 
 extension PJDogPlayMapView {
+    /// 停止遛狗
+    /// 返回遛狗缩略图
     func stopLocating() {
         locationManager.stopUpdatingLocation()
+        // 主动停止时，调用一次保障时间的完整性
+        updateMsg?(Int(Date().timeIntervalSince1970) - nowTimestamp, finalDistance)
+        
+        mapView.takeSnapshot(in: CGRect(x: screenshotViewModel.left, y: screenshotViewModel.top, width: screenshotViewModel.right - screenshotViewModel.left, height: screenshotViewModel.bottom - screenshotViewModel.top - 30)) { (resultImage, status) in
+            if status == 1 {
+                self.stopLocation?(resultImage!)
+            }
+        }
+    }
+    
+    private func updateScreenShotPoint(point: CGPoint) {
+        guard isMapviewInit else { return }
+        
+        // 第一次记录
+        if screenshotViewModel.left == 0 &&
+            screenshotViewModel.top == 0 &&
+            screenshotViewModel.right == 0 &&
+            screenshotViewModel.bottom == 0 {
+            
+            let midScreenWidth = PJSCREEN_WIDTH / 2
+            // 画出正方形区域
+            screenshotViewModel.left = point.x - midScreenWidth - 20
+            screenshotViewModel.top = point.y - midScreenWidth - 20
+            screenshotViewModel.right = point.x + midScreenWidth + 20
+            screenshotViewModel.bottom = point.y + midScreenWidth + 20
+        } else {
+            if point.x < screenshotViewModel.left {
+                screenshotViewModel.left = point.x - 20
+            } else if point.x > screenshotViewModel.right {
+                screenshotViewModel.right = point.x + 20
+            }
+            if point.y < screenshotViewModel.top {
+                screenshotViewModel.top = point.y - 20
+            } else if point.y > screenshotViewModel.bottom {
+                screenshotViewModel.bottom = point.y + 20
+            }
+        }
     }
 }
 
 extension PJDogPlayMapView: MAMapViewDelegate {
+    func mapInitComplete(_ mapView: MAMapView!) {
+        isMapviewInit = true
+    }
+    
     func mapView(_ mapView: MAMapView!, rendererFor overlay: MAOverlay!) -> MAOverlayRenderer! {
         if overlay.isKind(of: MAPolyline.self) {
             let renderer: MAPolylineRenderer = MAPolylineRenderer(overlay: overlay)
@@ -139,6 +188,24 @@ extension PJDogPlayMapView: AMapLocationManagerDelegate {
             finalDistance += MAMetersBetweenMapPoints(point1,point2)
             
             updateMsg?(Int(Date().timeIntervalSince1970) - nowTimestamp, finalDistance)
+        }
+        
+        updateScreenShotPoint(point: mapView.convert(coords, toPointTo: mapView))
+    }
+}
+
+extension PJDogPlayMapView {
+    struct ScreenShotViewModel {
+        var left: CGFloat
+        var top: CGFloat
+        var right: CGFloat
+        var bottom: CGFloat
+        
+        init() {
+            left = 0
+            top = 0
+            right = 0
+            bottom = 0
         }
     }
 }

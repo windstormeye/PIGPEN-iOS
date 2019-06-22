@@ -56,12 +56,11 @@ class PJDogPlayHomeViewController: UIViewController, PJBaseViewControllerDelegat
         }
         
         
-        bottomView = PJBottomDotButtonView(frame: CGRect(x: 0, y: view.pj_height - bottomSafeAreaHeight - 36 - 20, width: view.pj_width, height: 36), pageCount: viewModels.count - 1)
+        bottomView = PJBottomDotButtonView(frame: CGRect(x: 0, y: view.pj_height - bottomSafeAreaHeight - 36 - 20, width: view.pj_width, height: 36), pageCount: viewModels.count - 1, centerButtonText: "开始遛狗")
         view.addSubview(bottomView)
         
         bottomView.startSelected = {
-            let vc = PJCatPlayViewController()
-            vc.viewModels = self.viewModels
+            let vc = PJDogPlayViewController(viewModels: self.viewModels)
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
