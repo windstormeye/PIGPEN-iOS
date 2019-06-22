@@ -19,7 +19,10 @@ class PJPetPlayHomeDetailsView: UIView {
                 detailsViewModel.thirdString = String(viewModel.catPlay!.duration_today)
                 detailsViewModel.score = 8.5
             } else {
-                // TODO: 狗的还没做
+                detailsViewModel.firstString = "\(viewModel.dogPlay!.kcal_target_today) kcal"
+                detailsViewModel.secondString = "\(viewModel.dogPlay!.times)"
+                detailsViewModel.thirdString = "\(viewModel.dogPlay!.kcal_today) kcal"
+                detailsViewModel.score = 8.5
             }
             msgDetailsView.viewModel = detailsViewModel
         }
@@ -103,11 +106,10 @@ private extension Selector {
 extension PJPetPlayHomeDetailsView {
     struct ViewModel {
         var catPlay: PJPet.CatPlay?
-//        var dogPlay: PJPet.Dog
+        var dogPlay: PJPet.DogPlay?
         var pet: PJPet.Pet
         
         init() {
-            catPlay = PJPet.CatPlay()
             pet = PJPet.Pet()
         }
     }

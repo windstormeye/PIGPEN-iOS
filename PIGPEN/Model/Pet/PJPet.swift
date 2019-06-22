@@ -151,9 +151,23 @@ class PJPet {
     
     /// 获取遛狗看板数据
     func getDogPlayDetails(pet: PJPet.Pet,
-                           complateHandler: @escaping (() -> Void),
+                           complateHandler: @escaping ((DogPlay) -> Void),
                            failedHandler: @escaping ((PJNetwork.Error) -> Void)) {
+        let parameters = [
+            "pet_id": String(pet.pet_id),
+        ]
         
+        PJNetwork.shared.requstWithGet(path: Url.dogPlay.rawValue,
+                                       parameters: parameters,
+                                       complement: { (resDict) in
+                                        if resDict["msgCode"]?.intValue == 0 {
+                                            let catPlayModel = dataConvertToModel(DogPlay(), from: try! (resDict["msg"]?.rawData())!)
+                                            complateHandler(catPlayModel!)
+                                        }
+        }) { (errorString) in
+            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
+            failedHandler(error)
+        }
     }
     
     /// 上传遛狗数据
@@ -194,8 +208,8 @@ extension PJPet {
         case catPlayUpload = "play/updateCat"
         /// 上传遛狗数据
         case dogPlayUpload = "play/updateDog"
-        /// 获取遛狗看板数据
-        case dogPlay = "play/dog"
+        /// 获取今日遛狗看板数据
+        case dogPlay = "play/dogTodayPlay"
     }
 }
 
@@ -253,6 +267,7 @@ extension PJPet {
         }
     }
     
+    /// 宠物品种模型
     struct PetBreedModel: Codable {
         var id: Int
         var zh_name: String
@@ -295,6 +310,22 @@ extension PJPet {
             duration_today = 0
             created_time = 0
             update_time = 0
+        }
+    }
+    
+    /// 遛狗看板数据
+    struct DogPlay: Codable {
+        // 遛狗次数
+        var times: Int
+        // 当天遛狗消耗卡路里
+        var kcal_today: Int
+        // 每日卡路里目标
+        var kcal_target_today: Int
+        
+        init() {
+            times = 0
+            kcal_today = 0
+            kcal_target_today = 0
         }
     }
 }

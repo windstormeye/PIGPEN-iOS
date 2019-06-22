@@ -81,12 +81,13 @@ class PJCatPlayHomeViewController: UIViewController, PJBaseViewControllerDelegat
 extension PJCatPlayHomeViewController {
     /// 请求当前索引的撸猫看板页面数据
     func requestData(at index: Int) {
+        // 获取过数据就不要在拉取了
+        guard detailsViews[index].viewModel.catPlay == nil else { return }
+        
         PJPet.shared.getCatPlayDetails(pet: self.viewModels[index], complateHandler: { catPlay in
             let dV = self.detailsViews[index]
-            
             var viewModel = PJPetPlayHomeDetailsView.ViewModel()
             viewModel.catPlay = catPlay
-            
             dV.viewModel = viewModel
         }, failedHandler: {
             PJHUD.shared.showError(view: self.view, text: $0.errorMsg)

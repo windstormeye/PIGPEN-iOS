@@ -69,23 +69,27 @@ class PJDogPlayHomeViewController: UIViewController, PJBaseViewControllerDelegat
             self.bottomView.updateDot(at: index)
             scrollView.setContentOffset(CGPoint(x: CGFloat(index) * self.view.pj_width, y: 0), animated: true)
             
-            self.requestData(index)
+            self.requestData(at: index)
         }
         
         // 页面都初始化完成后，先请求第一个遛狗看板页面数据
-        self.requestData(0)
+        self.requestData(at: 0)
     }
 
 }
 
 extension PJDogPlayHomeViewController {
-    /// 请求当前索引的撸猫看板页面数据
-    func requestData(_ index: Int) {
-        PJPet.shared.getCatPlayDetails(pet: self.viewModels[index], complateHandler: { catPlay in
-//            let dV = self.detailsViews[index]
-//            let viewModel = PJPetPlayDetailsView.ViewModel()
-//            viewModel.
-//            dV.viewModel = catPlay
+    /// 请求当前索引的遛狗看板页面数据
+    func requestData(at index: Int) {
+        // 获取过数据就不要在拉取了
+        guard detailsViews[index].viewModel.dogPlay == nil else { return }
+        
+        PJPet.shared.getDogPlayDetails(pet: self.viewModels[index], complateHandler: { dogPlay in
+            let dV = self.detailsViews[index]
+            var viewModel = PJPetPlayHomeDetailsView.ViewModel()
+            viewModel.dogPlay = dogPlay
+            viewModel.pet = self.viewModels[index]
+            dV.viewModel = viewModel
         }, failedHandler: {
             PJHUD.shared.showError(view: self.view, text: $0.errorMsg)
         })
@@ -123,5 +127,6 @@ extension PJDogPlayHomeViewController: UIScrollViewDelegate {
         
         avatarView.scrollToButton(at: page)
         bottomView.updateDot(at: page)
+        requestData(at: page)
     }
 }
