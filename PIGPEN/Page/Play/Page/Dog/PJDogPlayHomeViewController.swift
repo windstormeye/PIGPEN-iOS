@@ -52,8 +52,13 @@ class PJDogPlayHomeViewController: UIViewController, PJBaseViewControllerDelegat
             var detailsViewModel = PJPetPlayHomeDetailsView.ViewModel()
             detailsViewModel.pet = viewModels[index]
             
-            let detailsView = PJPetPlayHomeDetailsView(frame: CGRect(x: CGFloat(index) * view.pj_width, y: 0, width: view.pj_width, height: scrollView.pj_height), viewModel: detailsViewModel)
+            let detailsView = PJPetPlayHomeDetailsView(frame: CGRect(x: CGFloat(index) * scrollView.pj_width, y: 0, width: view.pj_width, height: scrollView.pj_height), viewModel: detailsViewModel)
             scrollView.addSubview(detailsView)
+            
+            detailsView.editSelected = {
+                let vc = PJDogPlayEditViewController(viewModels: self.viewModels)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
             
             self.detailsViews.append(detailsView)
             scrollView.contentSize = CGSize(width: detailsView.right, height: 0)
@@ -104,22 +109,10 @@ extension PJDogPlayHomeViewController {
     fileprivate func back() {
         popBack()
     }
-    
-    @objc
-    fileprivate func edit() {
-        
-    }
-    
-    @objc
-    fileprivate func add() {
-        
-    }
 }
 
 private extension Selector {
     static let back = #selector(PJDogPlayHomeViewController.back)
-    static let edit = #selector(PJDogPlayHomeViewController.edit)
-    static let add = #selector(PJDogPlayHomeViewController.add)
 }
 
 extension PJDogPlayHomeViewController: UIScrollViewDelegate {

@@ -19,14 +19,80 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="57.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hzg-n8-nX4">
-                        <rect key="frame" x="-25" y="-28" width="240" height="128"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pet_play_edit_side_cell0" translatesAutoresizingMaskIntoConstraints="NO" id="0gP-Ea-vgN">
+                        <rect key="frame" x="74" y="2" width="236" height="53.5"/>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="jUy-Wu-zyQ">
+                        <rect key="frame" x="84" y="15" width="236" height="27.5"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="R1R-kj-Vu5">
+                                <rect key="frame" x="0.0" y="0.0" width="78.5" height="27.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWp-Xe-IfR">
+                                        <rect key="frame" x="0.0" y="0.0" width="78.5" height="12.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="遛狗时间" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iV7-nH-K7C">
+                                        <rect key="frame" x="0.0" y="15.5" width="78.5" height="12"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="V4e-M0-xjv">
+                                <rect key="frame" x="78.5" y="0.0" width="79" height="27.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxB-wz-jcE">
+                                        <rect key="frame" x="0.0" y="0.0" width="79" height="12.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="消耗热量" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBE-oz-Lye">
+                                        <rect key="frame" x="0.0" y="15.5" width="79" height="12"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYz-xO-R3O">
+                                <rect key="frame" x="157.5" y="0.0" width="78.5" height="27.5"/>
+                                <state key="normal" image="pet_play_edit"/>
+                                <connections>
+                                    <action selector="editButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="G0N-bt-cTv"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </stackView>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="0gP-Ea-vgN" secondAttribute="bottom" constant="2" id="9MB-Db-MEt"/>
+                    <constraint firstItem="jUy-Wu-zyQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="84" id="NHk-LD-VAW"/>
+                    <constraint firstItem="0gP-Ea-vgN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="P0x-QH-jgI"/>
+                    <constraint firstItem="0gP-Ea-vgN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="74" id="P7F-OU-hOt"/>
+                    <constraint firstAttribute="bottom" secondItem="jUy-Wu-zyQ" secondAttribute="bottom" constant="15" id="PtB-fz-Mld"/>
+                    <constraint firstAttribute="trailing" secondItem="0gP-Ea-vgN" secondAttribute="trailing" constant="10" id="bVi-8m-KJU"/>
+                    <constraint firstItem="jUy-Wu-zyQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="c8K-hJ-Vdb"/>
+                    <constraint firstAttribute="trailing" secondItem="jUy-Wu-zyQ" secondAttribute="trailing" id="chK-YS-Xnd"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="firstTextLabel" destination="iV7-nH-K7C" id="yde-H2-oIl"/>
+                <outlet property="firstValueLabel" destination="sWp-Xe-IfR" id="Pu3-lz-eG2"/>
+                <outlet property="secondTextLabel" destination="JBE-oz-Lye" id="5j5-yz-bi4"/>
+                <outlet property="secondValueLabel" destination="uxB-wz-jcE" id="NjK-th-bxf"/>
+            </connections>
+            <point key="canvasLocation" x="53.623188405797109" y="34.821428571428569"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="pet_play_edit" width="20" height="20"/>
+        <image name="pet_play_edit_side_cell0" width="286" height="48"/>
+    </resources>
 </document>

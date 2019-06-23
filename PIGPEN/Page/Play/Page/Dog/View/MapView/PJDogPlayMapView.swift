@@ -133,6 +133,10 @@ extension PJDogPlayMapView {
 }
 
 extension PJDogPlayMapView: MAMapViewDelegate {
+    func mapViewRequireLocationAuth(_ locationManager: CLLocationManager!) {
+        locationManager.requestAlwaysAuthorization()
+    }
+    
     func mapInitComplete(_ mapView: MAMapView!) {
         isMapviewInit = true
     }

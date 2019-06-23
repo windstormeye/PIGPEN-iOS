@@ -83,7 +83,6 @@ class PJPet {
                                         if resDict["msgCode"]?.intValue == 0 {
                                             let petDicts = resDict["msg"]!["pets"].arrayValue
                                             
-                                            
                                             for p in petDicts {
                                                 let petModel = dataConvertToModel(PJPet.Pet(), from: try! p["pet"].rawData())
                                                 let scoreModel = dataConvertToModel(PJPet.PetScore(), from: try! p["score"].rawData())
@@ -192,6 +191,31 @@ class PJPet {
             failedHandler(error)
         }
     }
+    
+    /// 获取遛狗历史数据
+    func dogPlayHistory(pet: PJPet.Pet, page: Int,complateHandler: @escaping (([DogPlayHistory]) -> Void), failedHandler: @escaping ((PJNetwork.Error) -> Void)) {
+        let parameters = [
+            "pet_id": String(pet.pet_id),
+            "page": String(page)
+        ]
+        
+        PJNetwork.shared.requstWithGet(path: Url.dogPlayHistory.rawValue, parameters: parameters, complement: { (resDict) in
+            if resDict["msgCode"]?.intValue == 0 {
+                let petDicts = resDict["msg"]!.arrayValue
+                var viewModels = [DogPlayHistory]()
+                
+                for p in petDicts {
+                    let dogPlayModel = dataConvertToModel(DogPlayHistory(), from: try! p.rawData())
+                    viewModels.append(dogPlayModel!)
+                }
+                
+                complateHandler(viewModels)
+            }
+        }) { (errorString) in
+            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
+            failedHandler(error)
+        }
+    }
 }
 
 extension PJPet {
@@ -210,6 +234,8 @@ extension PJPet {
         case dogPlayUpload = "play/updateDog"
         /// 获取今日遛狗看板数据
         case dogPlay = "play/dogTodayPlay"
+        /// 获取历史遛狗数据
+        case dogPlayHistory = "play/dog"
     }
 }
 
@@ -326,6 +352,17 @@ extension PJPet {
             times = 0
             kcal_today = 0
             kcal_target_today = 0
+        }
+    }
+    
+    /// 遛狗历史数据
+    struct DogPlayHistory: Codable {
+        var kcals: Int
+        var durations: Int
+
+        init() {
+            kcals = 0
+            durations = 0
         }
     }
 }

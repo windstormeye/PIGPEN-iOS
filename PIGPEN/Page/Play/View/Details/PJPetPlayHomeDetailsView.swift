@@ -10,6 +10,8 @@ import UIKit
 
 class PJPetPlayHomeDetailsView: UIView {
 
+    var editSelected: (() -> Void)?
+    
     var viewModel = ViewModel() {
         didSet {
             var detailsViewModel = PJPetPlayDetailsView.ViewModel()
@@ -99,15 +101,15 @@ class PJPetPlayHomeDetailsView: UIView {
 extension PJPetPlayHomeDetailsView {
     @objc
     fileprivate func edit() {
-        manualAddKcalView.isHidden = false
-        UIView.animate(withDuration: 0.25) {
-            self.manualAddKcalView.alpha = 1
-        }
+        editSelected?()
     }
     
     @objc
     fileprivate func add() {
-        
+        manualAddKcalView.isHidden = false
+        UIView.animate(withDuration: 0.25) {
+            self.manualAddKcalView.alpha = 1
+        }
     }
 }
 
