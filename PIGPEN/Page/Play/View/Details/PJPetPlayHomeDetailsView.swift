@@ -29,15 +29,21 @@ class PJPetPlayHomeDetailsView: UIView {
     }
     
     private var msgDetailsView = PJPetPlayDetailsView()
+    private var manualAddKcalView = PJManualAddKcalView()
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        initView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    convenience init(frame: CGRect, viewModel: ViewModel) {
+        self.init(frame: frame)
+        self.viewModel = viewModel
+        initView()
     }
     
     private func initView() {
@@ -82,14 +88,21 @@ class PJPetPlayHomeDetailsView: UIView {
         addButton.clipsToBounds = true
         addButton.layer.borderColor = editButton.layer.borderColor
         addButton.layer.borderWidth = editButton.layer.borderWidth
+        
+        manualAddKcalView = PJManualAddKcalView(frame: CGRect(x: 0, y: editButton.bottom + 10, width: pj_width, height: 60), pickCount: 2000)
+        manualAddKcalView.isHidden = true
+        manualAddKcalView.alpha = 0
+        addSubview(manualAddKcalView)
     }
-
 }
 
 extension PJPetPlayHomeDetailsView {
     @objc
     fileprivate func edit() {
-        
+        manualAddKcalView.isHidden = false
+        UIView.animate(withDuration: 0.25) {
+            self.manualAddKcalView.alpha = 1
+        }
     }
     
     @objc

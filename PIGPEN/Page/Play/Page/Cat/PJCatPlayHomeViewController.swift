@@ -49,10 +49,13 @@ class PJCatPlayHomeViewController: UIViewController, PJBaseViewControllerDelegat
         view.sendSubviewToBack(scrollView)
         
         for index in 0..<viewModels.count {
-            let detailsView = PJPetPlayHomeDetailsView(frame: CGRect(x: CGFloat(index) * view.pj_width, y: 0, width: view.pj_width, height: scrollView.pj_height))
-            scrollView.addSubview(detailsView)
-            self.detailsViews.append(detailsView)
+            var detailsViewModel = PJPetPlayHomeDetailsView.ViewModel()
+            detailsViewModel.pet = viewModels[index]
             
+            let detailsView = PJPetPlayHomeDetailsView(frame: CGRect(x: CGFloat(index) * view.pj_width, y: 0, width: view.pj_width, height: scrollView.pj_height), viewModel: detailsViewModel)
+            scrollView.addSubview(detailsView)
+            
+            self.detailsViews.append(detailsView)
             scrollView.contentSize = CGSize(width: detailsView.right, height: 0)
         }
         

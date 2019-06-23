@@ -42,16 +42,20 @@ class PJDogPlayHomeViewController: UIViewController, PJBaseViewControllerDelegat
         
         let scrollView = UIScrollView(frame: CGRect(x: 0, y: navigationBarHeight, width: view.pj_width, height: view.pj_height - navigationBarHeight))
         scrollView.showsHorizontalScrollIndicator = false
+        scrollView.isUserInteractionEnabled = true
         scrollView.isPagingEnabled = true
         scrollView.delegate = self
         view.addSubview(scrollView)
         view.sendSubviewToBack(scrollView)
         
         for index in 0..<viewModels.count {
-            let detailsView = PJPetPlayHomeDetailsView(frame: CGRect(x: CGFloat(index) * view.pj_width, y: 0, width: view.pj_width, height: scrollView.pj_height))
-            scrollView.addSubview(detailsView)
-            self.detailsViews.append(detailsView)
+            var detailsViewModel = PJPetPlayHomeDetailsView.ViewModel()
+            detailsViewModel.pet = viewModels[index]
             
+            let detailsView = PJPetPlayHomeDetailsView(frame: CGRect(x: CGFloat(index) * view.pj_width, y: 0, width: view.pj_width, height: scrollView.pj_height), viewModel: detailsViewModel)
+            scrollView.addSubview(detailsView)
+            
+            self.detailsViews.append(detailsView)
             scrollView.contentSize = CGSize(width: detailsView.right, height: 0)
         }
         

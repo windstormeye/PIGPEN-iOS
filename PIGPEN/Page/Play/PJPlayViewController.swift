@@ -13,6 +13,7 @@ class PJPlayViewController: UIViewController, PJBaseViewControllerDelegate {
     private var collectionView: PJPetPlayCollectionView?
     private var petTypes = Set<PJPet.PetType>()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initView()
