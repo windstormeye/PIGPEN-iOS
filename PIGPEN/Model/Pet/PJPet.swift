@@ -176,7 +176,7 @@ class PJPet {
                       complateHandler: @escaping (() -> Void),
                       failedHandler: @escaping ((PJNetwork.Error) -> Void)) {
         let parameters = [
-            "distance": distance,
+            "kcal": distanceToKcal(distance: distance),
             "pet_id": pet.pet_id,
             "pet_type": 1
         ]

@@ -106,3 +106,9 @@ public func delay(by delayTime: TimeInterval, qosClass: DispatchQoS.QoSClass? = 
     let dispatchQueue = qosClass != nil ? DispatchQueue.global(qos: qosClass!) : .main
     dispatchQueue.asyncAfter(deadline: DispatchTime.now() + delayTime, execute: closure)
 }
+
+
+/// 遛狗距离转化为千卡
+func distanceToKcal(distance: Int) -> Int {
+    return distance * 3
+}
