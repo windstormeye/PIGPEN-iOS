@@ -116,6 +116,7 @@
 		0C6A986722729C21003E4AA5 /* PJFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6A986522729C21003E4AA5 /* PJFriendTableViewCell.swift */; };
 		0C6A986822729C21003E4AA5 /* PJFriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C6A986622729C21003E4AA5 /* PJFriendTableViewCell.xib */; };
 		0C6A986D22729E6A003E4AA5 /* PJFriendTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6A986C22729E6A003E4AA5 /* PJFriendTableView.swift */; };
+		0C770C6322C103370099A0FB /* PJBottomSelectedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C770C6222C103370099A0FB /* PJBottomSelectedButtonView.swift */; };
 		0C8B75592196934000353842 /* PJMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8B75582196934000353842 /* PJMessageViewController.swift */; };
 		0C8B755D2196FF8B00353842 /* PJBreedsSideSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8B755C2196FF8B00353842 /* PJBreedsSideSliderView.swift */; };
 		0C8B75622198126D00353842 /* PJPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8B75612198126D00353842 /* PJPickerView.swift */; };
@@ -296,6 +297,7 @@
 		0C6A986522729C21003E4AA5 /* PJFriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJFriendTableViewCell.swift; sourceTree = "<group>"; };
 		0C6A986622729C21003E4AA5 /* PJFriendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJFriendTableViewCell.xib; sourceTree = "<group>"; };
 		0C6A986C22729E6A003E4AA5 /* PJFriendTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJFriendTableView.swift; sourceTree = "<group>"; };
+		0C770C6222C103370099A0FB /* PJBottomSelectedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBottomSelectedButtonView.swift; sourceTree = "<group>"; };
 		0C8B75582196934000353842 /* PJMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJMessageViewController.swift; sourceTree = "<group>"; };
 		0C8B755C2196FF8B00353842 /* PJBreedsSideSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBreedsSideSliderView.swift; sourceTree = "<group>"; };
 		0C8B75612198126D00353842 /* PJPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PJPickerView.swift; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 		0C17E65E22BB8E6F0045DE93 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0C770C6622C107C20099A0FB /* About */,
 				0C28FDD422BF64F4002B4A78 /* EditTableView */,
 				0C17E66022BB912E0045DE93 /* DetailsHeaderView */,
 				0C5D72C222B1E7BB00670100 /* MapView */,
@@ -439,7 +442,6 @@
 			isa = PBXGroup;
 			children = (
 				0C2B055522BE230B0077200D /* PJDogPlayFinishViewController.swift */,
-				0C2B055922BE77E90077200D /* PJDogPlayFinishDetailsView.swift */,
 			);
 			path = About;
 			sourceTree = "<group>";
@@ -626,6 +628,14 @@
 				0C28FDD922BF651F002B4A78 /* PJDogPlayEditTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		0C28FDDC22C102FB002B4A78 /* BottomSelectButtonView */ = {
+			isa = PBXGroup;
+			children = (
+				0C770C6222C103370099A0FB /* PJBottomSelectedButtonView.swift */,
+			);
+			path = BottomSelectButtonView;
 			sourceTree = "<group>";
 		};
 		0C2FE299229249B900070068 /* BirthView */ = {
@@ -1074,6 +1084,7 @@
 		0C5E63502165AB9300A90762 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				0C28FDDC22C102FB002B4A78 /* BottomSelectButtonView */,
 				0C4F627522BA195F00BDF799 /* MASmoothPathTool */,
 				0C24258E22B540CD00B23DC2 /* PlayDetailsView */,
 				0CDB3E5A22B52A150075A3AF /* BottomDotButtonView */,
@@ -1194,6 +1205,14 @@
 			children = (
 			);
 			path = Menu;
+			sourceTree = "<group>";
+		};
+		0C770C6622C107C20099A0FB /* About */ = {
+			isa = PBXGroup;
+			children = (
+				0C2B055922BE77E90077200D /* PJDogPlayFinishDetailsView.swift */,
+			);
+			path = About;
 			sourceTree = "<group>";
 		};
 		0C7E5B6922B3D9F60063C125 /* Footer */ = {
@@ -1935,6 +1954,7 @@
 				0C8B755D2196FF8B00353842 /* PJBreedsSideSliderView.swift in Sources */,
 				0C55E2E2215A8422000D8815 /* PJStatic.swift in Sources */,
 				0C28FDD322BF63D5002B4A78 /* PJDogPlayEditViewController.swift in Sources */,
+				0C770C6322C103370099A0FB /* PJBottomSelectedButtonView.swift in Sources */,
 				0C5E63532165ADF500A90762 /* NotificationName.swift in Sources */,
 				0CC35DD021DD0BC8002244DA /* Date.swift in Sources */,
 				0CC35DAB21D0BC35002244DA /* PJGradeYesterdayViewController.swift in Sources */,

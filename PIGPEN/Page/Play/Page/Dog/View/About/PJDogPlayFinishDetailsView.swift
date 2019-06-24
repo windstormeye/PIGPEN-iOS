@@ -9,7 +9,8 @@
 import UIKit
 
 class PJDogPlayFinishDetailsView: UIView {
-
+    var backSelected: (() -> Void)?
+    var finishSelected: (() -> Void)?
     var viewModel = ViewModel()
     
     override init(frame: CGRect) {
@@ -30,6 +31,19 @@ class PJDogPlayFinishDetailsView: UIView {
         let mapImageView = UIImageView(frame: CGRect(x: 15, y: 0, width: pj_width - 30, height: pj_width - 30))
         addSubview(mapImageView)
         mapImageView.image = viewModel.mapImage
+        
+        var bottomViewModel = PJBottomSelectedButtonView.ViewModel()
+        bottomViewModel.firstValue = "继续遛狗"
+        bottomViewModel.secondValue = "提交"
+        
+        let bottomButtonView = PJBottomSelectedButtonView(frame: CGRect(x: 0, y: pj_height - 60, width: pj_width, height: 40), viewModel: bottomViewModel)
+        addSubview(bottomButtonView)
+        bottomButtonView.firstSelected = {
+            self.backSelected?()
+        }
+        bottomButtonView.secondSelected = {
+            self.finishSelected?()
+        }
     }
 }
 

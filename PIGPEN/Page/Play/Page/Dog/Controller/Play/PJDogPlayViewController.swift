@@ -97,6 +97,12 @@ class PJDogPlayViewController: UIViewController, PJBaseViewControllerDelegate {
         stopButton.centerX = view.centerX
         stopButton.addTarget(self, action: .stop, for: .touchUpInside)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        // TODO: 考虑「继续遛狗」的情况
+    }
 }
 
 extension PJDogPlayViewController {

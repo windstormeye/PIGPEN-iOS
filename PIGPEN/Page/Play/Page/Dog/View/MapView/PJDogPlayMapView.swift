@@ -97,7 +97,9 @@ extension PJDogPlayMapView {
         
         mapView.takeSnapshot(in: CGRect(x: screenshotViewModel.left, y: screenshotViewModel.top, width: screenshotViewModel.right - screenshotViewModel.left, height: screenshotViewModel.bottom - screenshotViewModel.top - 30)) { (resultImage, status) in
             if status == 1 {
-                self.stopLocation?(resultImage!)
+                if resultImage != nil {
+                    self.stopLocation?(resultImage!)
+                }
             }
         }
     }
