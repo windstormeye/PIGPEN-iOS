@@ -123,6 +123,8 @@
 		0CA1411522BA19B000698BD6 /* MASmoothPathTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CA1411422BA19B000698BD6 /* MASmoothPathTool.m */; };
 		0CA1411722BA308700698BD6 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA1411622BA308700698BD6 /* Double.swift */; };
 		0CA365F821B26CF300E7D2F7 /* PJAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA365F721B26CF300E7D2F7 /* PJAlbumViewController.swift */; };
+		0CACDABD22C121DD00E767AB /* PJPetAboutScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CACDABC22C121DD00E767AB /* PJPetAboutScoreView.swift */; };
+		0CACDABF22C121E300E767AB /* PJPetAboutScoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CACDABE22C121E300E767AB /* PJPetAboutScoreView.xib */; };
 		0CB5E8DA2262D6F200CBE217 /* PJUserSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB5E8D82262D6F200CBE217 /* PJUserSearchViewController.swift */; };
 		0CB5E8DD2262D80F00CBE217 /* PJSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB5E8DC2262D80F00CBE217 /* PJSearchBar.swift */; };
 		0CB5E8E02262D82300CBE217 /* PJSearchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0CB5E8DF2262D82300CBE217 /* PJSearchBar.xib */; };
@@ -305,6 +307,8 @@
 		0CA1411422BA19B000698BD6 /* MASmoothPathTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASmoothPathTool.m; sourceTree = "<group>"; };
 		0CA1411622BA308700698BD6 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		0CA365F721B26CF300E7D2F7 /* PJAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJAlbumViewController.swift; sourceTree = "<group>"; };
+		0CACDABC22C121DD00E767AB /* PJPetAboutScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJPetAboutScoreView.swift; sourceTree = "<group>"; };
+		0CACDABE22C121E300E767AB /* PJPetAboutScoreView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJPetAboutScoreView.xib; sourceTree = "<group>"; };
 		0CB5E8D82262D6F200CBE217 /* PJUserSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJUserSearchViewController.swift; sourceTree = "<group>"; };
 		0CB5E8DC2262D80F00CBE217 /* PJSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJSearchBar.swift; sourceTree = "<group>"; };
 		0CB5E8DF2262D82300CBE217 /* PJSearchBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJSearchBar.xib; sourceTree = "<group>"; };
@@ -1084,6 +1088,7 @@
 		0C5E63502165AB9300A90762 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				0C770C6722C121B20099A0FB /* PetAboutScoreView */,
 				0C28FDDC22C102FB002B4A78 /* BottomSelectButtonView */,
 				0C4F627522BA195F00BDF799 /* MASmoothPathTool */,
 				0C24258E22B540CD00B23DC2 /* PlayDetailsView */,
@@ -1213,6 +1218,15 @@
 				0C2B055922BE77E90077200D /* PJDogPlayFinishDetailsView.swift */,
 			);
 			path = About;
+			sourceTree = "<group>";
+		};
+		0C770C6722C121B20099A0FB /* PetAboutScoreView */ = {
+			isa = PBXGroup;
+			children = (
+				0CACDABC22C121DD00E767AB /* PJPetAboutScoreView.swift */,
+				0CACDABE22C121E300E767AB /* PJPetAboutScoreView.xib */,
+			);
+			path = PetAboutScoreView;
 			sourceTree = "<group>";
 		};
 		0C7E5B6922B3D9F60063C125 /* Footer */ = {
@@ -1835,6 +1849,7 @@
 				0C5B5D07225DBF1500392E21 /* PJIMMessageHomeTableViewCell.xib in Resources */,
 				0C28FDDB22BF651F002B4A78 /* PJDogPlayEditTableViewCell.xib in Resources */,
 				0C55E2F3215D2D76000D8815 /* PJUserInfoViewController.xib in Resources */,
+				0CACDABF22C121E300E767AB /* PJPetAboutScoreView.xib in Resources */,
 				0CB5E8E52262DDF500CBE217 /* PJSearchTableViewCell.xib in Resources */,
 				0CDB0C8F216705B000669331 /* PJUserSelfTableViewCell.xib in Resources */,
 				0C201A072288EDCE00AE8C2B /* PJPetCreateAvatarViewController.storyboard in Resources */,
@@ -2034,6 +2049,7 @@
 				0C55E2ED215B7DB0000D8815 /* PJUserForgetViewController.swift in Sources */,
 				0C6A985C22729353003E4AA5 /* PJUserService.swift in Sources */,
 				0CE2618221C5420A00740582 /* PJAlbumCollectionFocusView.swift in Sources */,
+				0CACDABD22C121DD00E767AB /* PJPetAboutScoreView.swift in Sources */,
 				0CDB3E5722B4D9CD0075A3AF /* PJPetPlayDetailsView.swift in Sources */,
 				0C5D72D622B3D8D600670100 /* PJPetPlayCollectionFooterView.swift in Sources */,
 				0CDB0C972167299A00669331 /* PJUserCenterTableView.swift in Sources */,
