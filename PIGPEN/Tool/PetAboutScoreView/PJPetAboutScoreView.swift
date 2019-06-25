@@ -16,7 +16,6 @@ class PJPetAboutScoreView: UIView {
         }
     }
     
-    @IBOutlet private weak var dogImageView: UIImageView!
     @IBOutlet private weak var firstValue: UILabel!
     @IBOutlet private weak var firstTextLabel: UILabel!
     @IBOutlet private weak var secondValue: UILabel!
@@ -29,54 +28,9 @@ class PJPetAboutScoreView: UIView {
     }
     
     private func initView() {
-//        UIImageView *line = [[UIImageView alloc] initWithFrame:CGRectMake(20, 100, self.view.frame.size.width - 40, 1)];
-//        [self.view addSubview:line];
-//        //绘制虚线
-//        CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-//        [shapeLayer setBounds:line.bounds];
-//        [shapeLayer setPosition:CGPointMake(line.frame.size.width / 2.0,line.frame.size.height)];
-//        [shapeLayer setFillColor:[UIColor clearColor].CGColor];
-//        //设置虚线颜色
-//        [shapeLayer setStrokeColor:[UIColor blackColor].CGColor];
-//        //设置虚线宽度
-//        [shapeLayer setLineWidth:0.5];
-//        [shapeLayer setLineJoin:kCALineJoinRound];
-//        //设置虚线的线宽及间距
-//        [shapeLayer setLineDashPattern:[NSArray arrayWithObjects:[NSNumber numberWithInt:5], [NSNumber numberWithInt:2], nil]];
-//        //创建虚线绘制路径
-//        CGMutablePathRef path = CGPathCreateMutable();
-//        //设置虚线绘制路径起点
-//        CGPathMoveToPoint(path, NULL, 0, 0);
-//        //设置虚线绘制路径终点
-//        CGPathAddLineToPoint(path, NULL, line.frame.size.width, 0);
-//        //设置虚线绘制路径
-//        [shapeLayer setPath:path];
-//        CGPathRelease(path);
-//        //添加虚线
-//        [line.layer addSublayer:shapeLayer];
-        
-//        let shapeLayer = CAShapeLayer()
-//        shapeLayer.bounds = CGRect(x: 0, y: dogImageView.bottom + 5, width: pj_width - 40, height: 5)
-//        shapeLayer.position = CGPoint(x: 0, y: dogImageView.bottom + 7)
-//        shapeLayer.fillColor = UIColor.red.cgColor
-//        //设置虚线颜色
-//        shapeLayer.strokeColor = UIColor.black.cgColor
-//        //设置虚线宽度
-//        shapeLayer.lineWidth = 4
-//        shapeLayer.lineJoin = .round
-//        shapeLayer.lineCap = .round
-//        //设置虚线的线宽及间距
-//        shapeLayer.lineDashPattern = [1, 10]
-//        //创建虚线绘制路径
-//        let path = CGMutablePath()
-//        //设置虚线绘制路径起点
-//        path.move(to: CGPoint(x: 100, y: dogImageView.bottom + 10), transform: .identity)
-//        //设置虚线绘制路径终点
-//        path.addLine(to: CGPoint(x: pj_width, y: dogImageView.bottom + 10), transform: .identity)
-//        //设置虚线绘制路径
-//        shapeLayer.path = path
-//        //添加虚线
-//        layer.addSublayer(shapeLayer)
+        let dogImageView = UIImageView(frame: CGRect(x: 20, y: 10, width: 56, height: 30))
+        addSubview(dogImageView)
+        dogImageView.image = UIImage(named: "pet_play_about_dog")
         
         let backLineView = UIView(frame: CGRect(x: 20, y: dogImageView.bottom + 7, width: pj_width - 40, height: 3))
         addSubview(backLineView)
@@ -111,14 +65,24 @@ class PJPetAboutScoreView: UIView {
         foreShapeLayer.lineJoin = .round
         foreShapeLayer.lineCap = .round
         
-        foreShapeLayer.lineDashPattern = [2, 7]
+        foreShapeLayer.lineDashPattern = [1, 6]
         
         let forePath = CGMutablePath()
         forePath.move(to: CGPoint(x: 40, y: dogImageView.bottom + 7))
-        forePath.addLine(to: CGPoint(x: foreLineView.pj_width - 90, y: dogImageView.bottom + 7))
+        forePath.addLine(to: CGPoint(x: updateScore(), y: dogImageView.bottom + 7))
+        
+        dogImageView.centerX = updateScore() - 5
         
         foreShapeLayer.path = forePath
         layer.addSublayer(foreShapeLayer)
+    }
+}
+
+extension PJPetAboutScoreView {
+    private func updateScore() -> CGFloat {
+        let totalWidth = pj_width - 40
+        let itemWidth = totalWidth / 100
+        return itemWidth * viewModel.score * 10
     }
 }
 

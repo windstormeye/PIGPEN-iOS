@@ -20,7 +20,11 @@ class PJHomeViewController: PJBaseViewController {
         v.centerX = view.centerX
         v.pj_width = view.pj_width - 30
         v.pj_height = 102
-        v.viewModel = PJPetAboutScoreView.ViewModel()
+        
+        var viewModel = PJPetAboutScoreView.ViewModel()
+        viewModel.score = 5.2
+        
+        v.viewModel = viewModel
         view.addSubview(v)
         
         if PJUser.shared.userModel.token == nil {

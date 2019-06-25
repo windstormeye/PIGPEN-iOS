@@ -21,7 +21,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Dfl-xU-4jO">
-                    <rect key="frame" x="20" y="52" width="306" height="40"/>
+                    <rect key="frame" x="20" y="57" width="306" height="40"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="yqo-N1-Qpn">
                             <rect key="frame" x="0.0" y="0.0" width="102" height="40"/>
@@ -79,26 +79,16 @@
                         <constraint firstAttribute="height" constant="40" id="kci-p8-Ogj"/>
                     </constraints>
                 </stackView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pet_play_about_dog" translatesAutoresizingMaskIntoConstraints="NO" id="fGH-Pf-SyB">
-                    <rect key="frame" x="20" y="10" width="56" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="2hW-XT-DvF"/>
-                        <constraint firstAttribute="width" constant="56" id="Euf-Vq-JXs"/>
-                    </constraints>
-                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Dfl-xU-4jO" secondAttribute="trailing" constant="20" id="3DE-0E-BRP"/>
                 <constraint firstItem="Dfl-xU-4jO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="DZf-n9-LvB"/>
-                <constraint firstItem="fGH-Pf-SyB" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="DzC-cV-NDf"/>
-                <constraint firstItem="Dfl-xU-4jO" firstAttribute="top" secondItem="fGH-Pf-SyB" secondAttribute="bottom" constant="12" id="J8W-D7-Uuk"/>
-                <constraint firstItem="fGH-Pf-SyB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="OLX-5P-iTG"/>
+                <constraint firstItem="Dfl-xU-4jO" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="57" id="KR4-p1-aff"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="dogImageView" destination="fGH-Pf-SyB" id="OAi-aT-yv7"/>
                 <outlet property="firstTextLabel" destination="rhl-yS-pam" id="tfW-tG-Pmt"/>
                 <outlet property="firstValue" destination="YIl-Se-H6U" id="5r1-65-c5R"/>
                 <outlet property="secondTextLabel" destination="n8T-o6-ZWl" id="2NV-vK-Mcu"/>
@@ -110,6 +100,5 @@
     </objects>
     <resources>
         <image name="pet_play_about_bg" width="346" height="102"/>
-        <image name="pet_play_about_dog" width="57" height="31"/>
     </resources>
 </document>
