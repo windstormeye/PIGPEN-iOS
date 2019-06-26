@@ -12,8 +12,8 @@ import Schedule
 
 
 class PJDogPlayMapView: UIView {
-    var stopLocation: ((UIImage) -> Void)?
-    var updateMsg: ((Int, Double) -> Void)?
+    var stopLocation: ((UIImage, Int, CGFloat) -> Void)?
+    var updateMsg: ((Int, CGFloat) -> Void)?
     /// 遛狗完成缩略图
     var mapImage: UIImage?
     
@@ -29,7 +29,7 @@ class PJDogPlayMapView: UIView {
     // 初始轨迹点集合
     private var origTracePoints = [MALonLatPoint]()
     // 狗狗运动的总距离
-    private var finalDistance = 0.0
+    private var finalDistance: CGFloat = 0.0
     private var nowTimestamp = 0
     /// 地图是否加载完成
     private var isMapviewInit = false
@@ -78,7 +78,7 @@ class PJDogPlayMapView: UIView {
         mapView.setCustomMapStyleOptions(mapOptions)
         
         locationManager.delegate = self
-        locationManager.distanceFilter = 5
+        locationManager.distanceFilter = 2
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.locatingWithReGeocode = true
         locationManager.startUpdatingLocation()
@@ -93,15 +93,17 @@ extension PJDogPlayMapView {
     func stopLocating() {
         locationManager.stopUpdatingLocation()
         // 主动停止时，调用一次保障时间的完整性
-        updateMsg?(Int(Date().timeIntervalSince1970) - nowTimestamp, finalDistance)
+        updateMsg?(Int(Date().timeIntervalSince1970) - nowTimestamp, formatterDistance())
         
         mapView.takeSnapshot(in: CGRect(x: screenshotViewModel.left, y: screenshotViewModel.top, width: screenshotViewModel.right - screenshotViewModel.left, height: screenshotViewModel.bottom - screenshotViewModel.top - 30)) { (resultImage, status) in
             if status == 1 {
-                if resultImage != nil {
-                    self.stopLocation?(resultImage!)
-                }
+                self.stopLocation?(resultImage ?? UIImage(), Int(Date().timeIntervalSince1970) - self.nowTimestamp, self.formatterDistance())
             }
         }
+    }
+    
+    private func formatterDistance() -> CGFloat {
+        return CGFloat(Int(finalDistance)) * 0.001
     }
     
     private func updateScreenShotPoint(point: CGPoint) {
@@ -191,9 +193,9 @@ extension PJDogPlayMapView: AMapLocationManagerDelegate {
             let point1 = MAMapPointForCoordinate(CLLocationCoordinate2D(latitude: smoothedTracePoints.last!.lat,longitude: smoothedTracePoints.last!.lon))
             let point2 = MAMapPointForCoordinate(CLLocationCoordinate2D(latitude: smoothedTracePoints[smoothedTracePoints.count - 2].lat, longitude: smoothedTracePoints[smoothedTracePoints.count - 2].lon))
 
-            finalDistance += MAMetersBetweenMapPoints(point1,point2)
+            finalDistance += CGFloat(MAMetersBetweenMapPoints(point1,point2))
             
-            updateMsg?(Int(Date().timeIntervalSince1970) - nowTimestamp, finalDistance)
+            updateMsg?(Int(Date().timeIntervalSince1970) - nowTimestamp, formatterDistance())
         }
         
         updateScreenShotPoint(point: mapView.convert(coords, toPointTo: mapView))

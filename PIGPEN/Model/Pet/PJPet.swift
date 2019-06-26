@@ -172,12 +172,14 @@ class PJPet {
     /// 上传遛狗数据
     func dogPlaUpload(pet: PJPet.Pet,
                       distance: Int,
+                      durations: Int,
                       complateHandler: @escaping (() -> Void),
                       failedHandler: @escaping ((PJNetwork.Error) -> Void)) {
         let parameters = [
-            "kcal": distanceToKcal(distance: distance),
-            "pet_id": pet.pet_id,
-            "pet_type": 1
+            "kcal": String(Int(distanceToKcal(distance: CGFloat(distance)))),
+            "pet_id": String(pet.pet_id),
+            "pet_type": String(1),
+            "durations": String(durations)
         ]
         
         PJNetwork.shared.requstWithPost(path: Url.dogPlayUpload.rawValue,

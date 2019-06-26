@@ -11,7 +11,35 @@ import UIKit
 class PJDogPlayFinishDetailsView: UIView {
     var backSelected: (() -> Void)?
     var finishSelected: (() -> Void)?
-    var viewModel = ViewModel()
+    
+    var viewModel = ViewModel() {
+        didSet {
+            var viewModel = PJPetAboutScoreView.ViewModel()
+            
+            var minString = "\(self.viewModel.durations / 60) min"
+            var hourString = ""
+            
+            if self.viewModel.durations / 60 > 60 {
+                let hours = self.viewModel.durations / 3600
+                hourString = "\(hours) h "
+                
+                let mins = (self.viewModel.durations - hours * 3600) / 60
+                minString = "\(mins) min"
+            }
+            
+            viewModel.firstValue = hourString + minString
+            viewModel.secondValue = String(format: "%.2f km", self.viewModel.distance)
+            viewModel.thirdValue = "\(self.viewModel.kcal * 0.01) kcal"
+            viewModel.score = self.viewModel.score * 0.01
+            
+            mapImageView.image = self.viewModel.mapImage
+            
+            detailsView.viewModel = viewModel
+        }
+    }
+    
+    private var detailsView = PJPetAboutScoreView()
+    private var mapImageView = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,14 +51,18 @@ class PJDogPlayFinishDetailsView: UIView {
     
     convenience init(frame: CGRect, viewModel: ViewModel) {
         self.init(frame: frame)
-        self.viewModel = viewModel
         initView()
+        self.viewModel = viewModel
     }
     
     private func initView() {
-        let mapImageView = UIImageView(frame: CGRect(x: 15, y: 0, width: pj_width - 30, height: pj_width - 30))
+        mapImageView = UIImageView(frame: CGRect(x: 15, y: 0, width: pj_width - 30, height: pj_width - 30))
         addSubview(mapImageView)
-        mapImageView.image = viewModel.mapImage
+        
+        detailsView = PJPetAboutScoreView.newInstance()
+        detailsView.frame = CGRect(x: (pj_width - 346) / 2, y: mapImageView.bottom + 20, width: 346, height: 102)
+        detailsView.top = mapImageView.bottom + 20
+        addSubview(detailsView)
         
         var bottomViewModel = PJBottomSelectedButtonView.ViewModel()
         bottomViewModel.firstValue = "继续遛狗"
@@ -52,12 +84,14 @@ extension PJDogPlayFinishDetailsView {
         var mapImage: UIImage
         var durations: Int
         var distance: CGFloat
-        var kcal: Int
+        var kcal: CGFloat
+        var score: CGFloat
         
         init() {
             durations = 0
             distance = 0
             kcal = 0
+            score = 0
             mapImage = UIImage()
         }
     }

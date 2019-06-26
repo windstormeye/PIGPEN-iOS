@@ -63,6 +63,10 @@ class PJPetPlayHomeDetailsView: UIView {
         msgDetailsView.x = 15
         timeMsgView.backgroundColor = msgDetailsView.backgroundColor
         
+        if viewModel.pet.pet_type.rawValue == 1 {
+            msgDetailsView.updateLabel(firstString: "每日目标", secondString: "今日次数", thirdString: "今日总量")
+        }
+        
         timeMsgView.addSubview(msgDetailsView)
         addSubview(timeMsgView)
         

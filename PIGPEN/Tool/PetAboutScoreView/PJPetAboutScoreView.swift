@@ -16,6 +16,8 @@ class PJPetAboutScoreView: UIView {
         }
     }
     
+    lazy var scoreX = (pj_width - 40) / 100 * viewModel.score * 10
+    
     @IBOutlet private weak var firstValue: UILabel!
     @IBOutlet private weak var firstTextLabel: UILabel!
     @IBOutlet private weak var secondValue: UILabel!
@@ -28,6 +30,10 @@ class PJPetAboutScoreView: UIView {
     }
     
     private func initView() {
+        firstValue.text = viewModel.firstValue
+        secondValue.text = viewModel.secondValue
+        thirdValue.text = viewModel.thirdValue
+        
         let dogImageView = UIImageView(frame: CGRect(x: 20, y: 10, width: 56, height: 30))
         addSubview(dogImageView)
         dogImageView.image = UIImage(named: "pet_play_about_dog")
@@ -39,12 +45,10 @@ class PJPetAboutScoreView: UIView {
         backLineShapeLayer.bounds = backLineView.bounds
         backLineShapeLayer.anchorPoint = CGPoint(x: 0, y: 0)
         backLineShapeLayer.strokeColor = UIColor.white.cgColor
-        
         backLineShapeLayer.lineWidth = backLineView.pj_height
         backLineShapeLayer.lineJoin = .round
         backLineShapeLayer.lineCap = .round
-        
-        backLineShapeLayer.lineDashPattern = [2, 7]
+        backLineShapeLayer.lineDashPattern = [1, 6]
         
         let bakLinePath = CGMutablePath()
         bakLinePath.move(to: CGPoint(x: 40, y: dogImageView.bottom + 7))
@@ -60,29 +64,23 @@ class PJPetAboutScoreView: UIView {
         foreShapeLayer.bounds = foreLineView.bounds
         foreShapeLayer.anchorPoint = CGPoint(x: 0, y: 0)
         foreShapeLayer.strokeColor = PJRGB(255, 85, 67).cgColor
-        
         foreShapeLayer.lineWidth = backLineView.frame.size.height
         foreShapeLayer.lineJoin = .round
         foreShapeLayer.lineCap = .round
-        
         foreShapeLayer.lineDashPattern = [1, 6]
         
         let forePath = CGMutablePath()
         forePath.move(to: CGPoint(x: 40, y: dogImageView.bottom + 7))
-        forePath.addLine(to: CGPoint(x: updateScore(), y: dogImageView.bottom + 7))
+        forePath.addLine(to: CGPoint(x: 40 + scoreX, y: dogImageView.bottom + 7))
         
-        dogImageView.centerX = updateScore() - 5
+        if scoreX - 5 < 40 {
+            dogImageView.x = 40
+        } else {
+            dogImageView.centerX = scoreX - 5
+        }
         
         foreShapeLayer.path = forePath
         layer.addSublayer(foreShapeLayer)
-    }
-}
-
-extension PJPetAboutScoreView {
-    private func updateScore() -> CGFloat {
-        let totalWidth = pj_width - 40
-        let itemWidth = totalWidth / 100
-        return itemWidth * viewModel.score * 10
     }
 }
 

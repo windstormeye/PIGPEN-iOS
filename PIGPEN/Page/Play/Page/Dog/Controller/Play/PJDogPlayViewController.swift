@@ -124,6 +124,9 @@ extension PJDogPlayViewController {
                 
                 var detailsViewModel = PJDogPlayFinishDetailsView.ViewModel()
                 detailsViewModel.mapImage = $0
+                detailsViewModel.durations = $1
+                detailsViewModel.distance = $2
+                detailsViewModel.kcal = CGFloat(Int(distanceToKcal(distance: $2) * 100))
                 vm.details = detailsViewModel
                 
                 viewModels.append(vm)

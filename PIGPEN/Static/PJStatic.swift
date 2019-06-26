@@ -109,6 +109,6 @@ public func delay(by delayTime: TimeInterval, qosClass: DispatchQoS.QoSClass? = 
 
 
 /// 遛狗距离转化为千卡
-func distanceToKcal(distance: Int) -> Int {
+func distanceToKcal(distance: CGFloat) -> CGFloat {
     return distance * 3
 }

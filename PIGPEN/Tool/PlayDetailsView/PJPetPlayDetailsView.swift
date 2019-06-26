@@ -15,23 +15,28 @@ class PJPetPlayDetailsView: UIView {
             firstLabel.text = viewModel.firstString
             secondLabel.text = viewModel.secondString
             thirdLabel.text = viewModel.thirdString
-            
             circleOfDots(view: circleView, score: 8.5)
         }
     }
     
-    @IBOutlet weak var firstLabel: UILabel!
-    @IBOutlet weak var secondLabel: UILabel!
-    @IBOutlet weak var thirdLabel: UILabel!
-    @IBOutlet weak var circleView: UIView!
-    @IBOutlet weak var firstTextLabel: UILabel!
-    @IBOutlet weak var secondTextLabel: UILabel!
-    @IBOutlet weak var thirdTextLabel: UILabel!
+    @IBOutlet private weak var firstLabel: UILabel!
+    @IBOutlet private weak var secondLabel: UILabel!
+    @IBOutlet private weak var thirdLabel: UILabel!
+    @IBOutlet private weak var circleView: UIView!
+    @IBOutlet private weak var firstTextLabel: UILabel!
+    @IBOutlet private weak var secondTextLabel: UILabel!
+    @IBOutlet private weak var thirdTextLabel: UILabel!
     
     class func newInstance() -> PJPetPlayDetailsView {
         return Bundle.main.loadNibNamed("PJPetPlayDetailsView",
                                         owner: self,
                                         options: nil)?.first! as! PJPetPlayDetailsView
+    }
+    
+    func updateLabel(firstString: String, secondString: String, thirdString: String) {
+        firstTextLabel.text = firstString
+        secondTextLabel.text = secondString
+        thirdTextLabel.text = thirdString
     }
     
     private func circleOfDots(view: UIView, score: CGFloat) {

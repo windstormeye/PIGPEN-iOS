@@ -29,8 +29,8 @@ class PJDogPlayDetailsHeaderView: UIView {
             }
             
             timeLabel.text = finalTiemString
-            distanceLabel.text = "\(Double(viewModel.distance * 0.001).roundTo(places: 2)) KM"
-            remainingDistanceLabel.text = "\(viewModel.remainningDistance) KM"
+            distanceLabel.text = String(format: "%.2f km", self.viewModel.distance)
+            remainingDistanceLabel.text = "\(viewModel.remainningDistance) km"
         }
     }
     
@@ -50,7 +50,7 @@ class PJDogPlayDetailsHeaderView: UIView {
 extension PJDogPlayDetailsHeaderView {
     struct ViewModel {
         var time: Int
-        var distance: Double
+        var distance: CGFloat
         var remainningDistance: Int
         var pet: PJPet.Pet
         

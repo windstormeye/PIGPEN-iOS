@@ -21,6 +21,7 @@ class PJDogPlayFinishViewController: UIViewController, PJBaseViewControllerDeleg
     
     private var pets = [PJPet.Pet]()
     private var avatarView = PJPetAvatarView()
+    private var detailsViews = [PJDogPlayFinishDetailsView]()
     
     private func initView() {
         view.backgroundColor = .white
@@ -41,45 +42,59 @@ class PJDogPlayFinishViewController: UIViewController, PJBaseViewControllerDeleg
         
         for (index, vm) in viewModels.enumerated() {
             let detailsViewWidth = scrollView.pj_width
-            let detailsView = PJDogPlayFinishDetailsView(frame: CGRect(x: CGFloat(index) * detailsViewWidth, y: 0, width: detailsViewWidth, height: view.pj_height - avatarView.bottom), viewModel: vm.details)
+            let detailsView = PJDogPlayFinishDetailsView(frame: CGRect(x: CGFloat(index) * detailsViewWidth, y: 0, width: detailsViewWidth, height: view.pj_height - avatarView.bottom - bottomSafeAreaHeight), viewModel: vm.details)
             scrollView.addSubview(detailsView)
+            detailsViews.append(detailsView)
+            
             detailsView.backSelected = {
                 self.navigationController?.popViewController(animated: true)
             }
             detailsView.finishSelected = {
-                self.finish()
+                self.uploadData()
             }
             
             scrollView.contentSize = CGSize(width: detailsView.right, height: 0)
         }
+        
+        requestData(at: 0)
     }
 }
 
 extension PJDogPlayFinishViewController {
-    func finish() {
-        
-    }
-    
-    func requestData(at page: Int) {
-        
+    /// 请求当前狗狗的卡路里数据
+    func requestData(at index: Int) {
+        PJPet.shared.getDogPlayDetails(pet: pets[index], complateHandler: { dogPlay in
+            
+            var viewModel = PJDogPlayFinishDetailsView.ViewModel()
+            viewModel.kcal = self.viewModels[index].details.kcal
+            viewModel.distance = self.viewModels[index].details.distance
+            viewModel.durations = self.viewModels[index].details.durations
+            viewModel.score = CGFloat(Int(CGFloat(Int(self.viewModels[index].details.kcal) + dogPlay.kcal_today) / CGFloat(dogPlay.kcal_target_today) * 100))
+            viewModel.mapImage = self.viewModels[index].details.mapImage
+            
+            self.detailsViews[index].viewModel = viewModel
+            
+        }, failedHandler: {
+            PJHUD.shared.showError(view: self.view, text: $0.errorMsg)
+        })
     }
     
     func uploadData() {
         var petIndex = 0
         
-        //        for (index, pet) in viewModels.enumerated() {
-        //            let viewModel = self.detailsViews[index].viewModel
-        //            PJPet.shared.dogPlaUpload(pet: pet, distance: Int(viewModel.distance), complateHandler: {
-        //                petIndex += 1
-        //
-        //                if petIndex == self.detailsViews.count {
-        //                    PJHUD.shared.dismiss()
-        //                    self.navigationController?.popViewController(animated: true)
-        //                }
-        //            }) {
-        //                PJHUD.shared.showError(view: self.view, text: $0.errorMsg)
-        //            }
-        //        }
+        for (index, vm) in viewModels.enumerated() {
+            let viewModel = self.detailsViews[index].viewModel
+            PJPet.shared.dogPlaUpload(pet: vm.pet, distance: Int(viewModel.distance), durations: detailsViews[index].viewModel.durations, complateHandler: {
+                petIndex += 1
+
+                if petIndex == self.detailsViews.count {
+                    PJHUD.shared.dismiss()
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+            }) {
+                PJHUD.shared.showError(view: self.view, text: $0.errorMsg)
+            }
+        }
         
     }
 }
@@ -91,8 +106,7 @@ extension PJDogPlayFinishViewController: UIScrollViewDelegate {
         
         
         avatarView.scrollToButton(at: page)
-//        bottomView.updateDot(at: page)
-//        requestData(at: page)
+        requestData(at: page)
     }
 }
 
