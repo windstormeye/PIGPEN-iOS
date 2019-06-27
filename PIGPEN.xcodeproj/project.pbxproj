@@ -117,6 +117,8 @@
 		0C6A986822729C21003E4AA5 /* PJFriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C6A986622729C21003E4AA5 /* PJFriendTableViewCell.xib */; };
 		0C6A986D22729E6A003E4AA5 /* PJFriendTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6A986C22729E6A003E4AA5 /* PJFriendTableView.swift */; };
 		0C770C6322C103370099A0FB /* PJBottomSelectedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C770C6222C103370099A0FB /* PJBottomSelectedButtonView.swift */; };
+		0C7EA9DC22C49D65008C4E4E /* PJDogPlayEditOldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7EA9DA22C49D65008C4E4E /* PJDogPlayEditOldTableViewCell.swift */; };
+		0C7EA9DD22C49D65008C4E4E /* PJDogPlayEditOldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C7EA9DB22C49D65008C4E4E /* PJDogPlayEditOldTableViewCell.xib */; };
 		0C8B75592196934000353842 /* PJMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8B75582196934000353842 /* PJMessageViewController.swift */; };
 		0C8B755D2196FF8B00353842 /* PJBreedsSideSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8B755C2196FF8B00353842 /* PJBreedsSideSliderView.swift */; };
 		0C8B75622198126D00353842 /* PJPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8B75612198126D00353842 /* PJPickerView.swift */; };
@@ -300,6 +302,8 @@
 		0C6A986622729C21003E4AA5 /* PJFriendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJFriendTableViewCell.xib; sourceTree = "<group>"; };
 		0C6A986C22729E6A003E4AA5 /* PJFriendTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJFriendTableView.swift; sourceTree = "<group>"; };
 		0C770C6222C103370099A0FB /* PJBottomSelectedButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBottomSelectedButtonView.swift; sourceTree = "<group>"; };
+		0C7EA9DA22C49D65008C4E4E /* PJDogPlayEditOldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJDogPlayEditOldTableViewCell.swift; sourceTree = "<group>"; };
+		0C7EA9DB22C49D65008C4E4E /* PJDogPlayEditOldTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJDogPlayEditOldTableViewCell.xib; sourceTree = "<group>"; };
 		0C8B75582196934000353842 /* PJMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJMessageViewController.swift; sourceTree = "<group>"; };
 		0C8B755C2196FF8B00353842 /* PJBreedsSideSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBreedsSideSliderView.swift; sourceTree = "<group>"; };
 		0C8B75612198126D00353842 /* PJPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PJPickerView.swift; sourceTree = "<group>"; };
@@ -628,6 +632,7 @@
 		0C28FDD722BF6513002B4A78 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				0C950EFC22C49D120034DA59 /* Old */,
 				0C28FDD822BF651F002B4A78 /* PJDogPlayEditTableViewCell.swift */,
 				0C28FDD922BF651F002B4A78 /* PJDogPlayEditTableViewCell.xib */,
 			);
@@ -1273,6 +1278,15 @@
 			path = Picker;
 			sourceTree = "<group>";
 		};
+		0C950EFC22C49D120034DA59 /* Old */ = {
+			isa = PBXGroup;
+			children = (
+				0C7EA9DA22C49D65008C4E4E /* PJDogPlayEditOldTableViewCell.swift */,
+				0C7EA9DB22C49D65008C4E4E /* PJDogPlayEditOldTableViewCell.xib */,
+			);
+			path = Old;
+			sourceTree = "<group>";
+		};
 		0CA1411822BB8E1900698BD6 /* Play */ = {
 			isa = PBXGroup;
 			children = (
@@ -1837,6 +1851,7 @@
 				0C55E2F8215F570D000D8815 /* PJUserRegisterViewController.xib in Resources */,
 				0C1F6FAB21B3924400304CD8 /* PJAlbumDetailCollectionViewCell.xib in Resources */,
 				0C55E2EE215B7DB0000D8815 /* PJUserForgetViewController.xib in Resources */,
+				0C7EA9DD22C49D65008C4E4E /* PJDogPlayEditOldTableViewCell.xib in Resources */,
 				0C5B5D3A2262C73F00392E21 /* CustomIncomingTextCell.xib in Resources */,
 				0C1F6FB021B3925E00304CD8 /* PJAlbumTableViewCell.xib in Resources */,
 				0C201A02228867B200AE8C2B /* PJPetCreateNameViewController.storyboard in Resources */,
@@ -2067,6 +2082,7 @@
 				0C5D72C422B1E7CF00670100 /* PJDogPlayMapView.swift in Sources */,
 				0C1F6FA621B3920500304CD8 /* PJAlbumDetailCollectionView.swift in Sources */,
 				0C55E2C5215A61E3000D8815 /* PJHomeViewController.swift in Sources */,
+				0C7EA9DC22C49D65008C4E4E /* PJDogPlayEditOldTableViewCell.swift in Sources */,
 				0C5E6337216241CF00A90762 /* PJBaseTipsView.swift in Sources */,
 				0C24258D22B540BC00B23DC2 /* PJPetPlayHomeDetailsView.swift in Sources */,
 				0CE2617F21C5346800740582 /* PJAlbumDetailsViewController.swift in Sources */,

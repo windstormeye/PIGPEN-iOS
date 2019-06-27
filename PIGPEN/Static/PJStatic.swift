@@ -112,3 +112,35 @@ public func delay(by delayTime: TimeInterval, qosClass: DispatchQoS.QoSClass? = 
 func distanceToKcal(distance: CGFloat) -> CGFloat {
     return distance * 3
 }
+
+/// 将时间戳转换为时间。格式：1 h 23 min
+func convertTimestampToDateString0(_ timestamp: Int) -> String {
+    var minString = "\(timestamp / 60)min"
+    var hourString = ""
+    
+    if timestamp / 60 > 60 {
+        let hours = timestamp / 3600
+        hourString = "\(hours)h"
+        
+        let mins = (timestamp - hours * 3600) / 60
+        minString = "\(mins)min"
+    }
+    
+    return hourString + minString
+}
+
+/// 时间戳转换为时间。格式：2019.5.09
+func convertTimestampToDateString1(_ timestamp: Int) -> String {
+    let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy.MM.dd"
+    return dateFormatter.string(from: date)
+}
+
+/// 时间戳转换天数
+func convertTimestampToDateInt(_ timestamp: Int) -> Int {
+    let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "dd"
+    return Int(dateFormatter.string(from: date))!
+}

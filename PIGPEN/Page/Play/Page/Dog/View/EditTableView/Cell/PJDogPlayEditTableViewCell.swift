@@ -13,6 +13,7 @@ class PJDogPlayEditTableViewCell: UITableViewCell {
     @IBOutlet private weak var secondTextLabel: UILabel!
     @IBOutlet private weak var firstValueLabel: UILabel!
     @IBOutlet private weak var firstTextLabel: UILabel!
+    @IBOutlet private weak var bgImageView: UIImageView!
     
     var viewModel = ViewModel() {
         didSet {
@@ -44,6 +45,11 @@ class PJDogPlayEditTableViewCell: UITableViewCell {
     
     @IBAction func editButtonAction(_ sender: Any) {
         
+    }
+    
+    /// 更新 cell 背景图片
+    func updateBackgroundImage(_ imageName: String) {
+        bgImageView.image = UIImage(named: imageName)
     }
 }
 

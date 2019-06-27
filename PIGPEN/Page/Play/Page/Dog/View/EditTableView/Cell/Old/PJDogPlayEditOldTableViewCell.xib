@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="PJDogPlayEditOldTableViewCell" customModule="PIGPEN" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pet_play_edit_side_cell2" translatesAutoresizingMaskIntoConstraints="NO" id="GNl-BU-4Hi">
+                        <rect key="frame" x="74" y="2" width="236" height="39.5"/>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="jud-7y-QDL">
+                        <rect key="frame" x="84" y="10" width="216" height="23.5"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="IUz-WO-He8">
+                                <rect key="frame" x="0.0" y="0.0" width="108" height="23.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="遛狗时间" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24r-Z7-u3Q">
+                                        <rect key="frame" x="0.0" y="0.0" width="54" height="23.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3sF-JT-YTK">
+                                        <rect key="frame" x="54" y="0.0" width="54" height="23.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7jT-y8-Ixr">
+                                <rect key="frame" x="108" y="0.0" width="108" height="23.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="消耗热量" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cm-GO-0gN">
+                                        <rect key="frame" x="0.0" y="0.0" width="54" height="23.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" red="0.72156862749999995" green="0.70588235290000001" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOg-tH-3hK">
+                                        <rect key="frame" x="54" y="0.0" width="54" height="23.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="GNl-BU-4Hi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="41e-0S-SsT"/>
+                    <constraint firstAttribute="trailing" secondItem="GNl-BU-4Hi" secondAttribute="trailing" constant="10" id="94v-QJ-73W"/>
+                    <constraint firstAttribute="bottom" secondItem="GNl-BU-4Hi" secondAttribute="bottom" constant="2" id="E5L-rL-DWr"/>
+                    <constraint firstAttribute="trailing" secondItem="jud-7y-QDL" secondAttribute="trailing" constant="20" id="EtK-XV-Aii"/>
+                    <constraint firstItem="jud-7y-QDL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="84" id="cBH-94-4uq"/>
+                    <constraint firstItem="GNl-BU-4Hi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="74" id="gVt-8P-WzH"/>
+                    <constraint firstItem="jud-7y-QDL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="i1D-9E-4zm"/>
+                    <constraint firstAttribute="bottom" secondItem="jud-7y-QDL" secondAttribute="bottom" constant="10" id="kas-E5-DkQ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="firstValueLabel" destination="3sF-JT-YTK" id="CvH-aq-5bs"/>
+                <outlet property="secondValueLabel" destination="lOg-tH-3hK" id="oP0-jN-rFf"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="pet_play_edit_side_cell2" width="286" height="32"/>
+    </resources>
+</document>

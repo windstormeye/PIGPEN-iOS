@@ -78,7 +78,7 @@ class PJDogPlayMapView: UIView {
         mapView.setCustomMapStyleOptions(mapOptions)
         
         locationManager.delegate = self
-        locationManager.distanceFilter = 2
+        locationManager.distanceFilter = 10
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.locatingWithReGeocode = true
         locationManager.startUpdatingLocation()

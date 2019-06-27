@@ -83,6 +83,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="bgImageView" destination="0gP-Ea-vgN" id="oyX-kj-QoF"/>
                 <outlet property="firstTextLabel" destination="iV7-nH-K7C" id="yde-H2-oIl"/>
                 <outlet property="firstValueLabel" destination="sWp-Xe-IfR" id="Pu3-lz-eG2"/>
                 <outlet property="secondTextLabel" destination="JBE-oz-Lye" id="5j5-yz-bi4"/>

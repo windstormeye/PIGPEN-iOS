@@ -14,6 +14,7 @@ class PJDogPlayEditViewController: UIViewController, PJBaseViewControllerDelegat
     var tableViews = [PJDogPlayEditTableView]()
     
     private var avatarView = PJPetAvatarView()
+    private var scrollView = UIScrollView()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nil, bundle: nil)
@@ -40,9 +41,10 @@ class PJDogPlayEditViewController: UIViewController, PJBaseViewControllerDelegat
         view.addSubview(avatarView)
         avatarView.itemSelected = {
             self.requestData(at: $0, page: 1)
+            self.scrollView.setContentOffset(CGPoint(x: CGFloat($0) * self.view.pj_width, y: 0), animated: true)
         }
         
-        let scrollView = UIScrollView(frame: CGRect(x: 0, y: avatarView.bottom + 5, width: view.pj_width, height: view.pj_height - avatarView.pj_height))
+        scrollView = UIScrollView(frame: CGRect(x: 0, y: avatarView.bottom + 5, width: view.pj_width, height: view.pj_height - avatarView.pj_height))
         view.addSubview(scrollView)
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.isPagingEnabled = true
@@ -62,30 +64,11 @@ class PJDogPlayEditViewController: UIViewController, PJBaseViewControllerDelegat
 
 extension PJDogPlayEditViewController {
     func requestData(at index: Int, page: Int) {
+        
+        guard tableViews[index].viewModels.count == 0 else { return }
+        
         PJPet.shared.dogPlayHistory(pet: viewModels[index], page: page, complateHandler: {
-            
-            var vms = [PJDogPlayEditTableViewCell.ViewModel]()
-            for vm in $0 {
-                var viewModel = PJDogPlayEditTableViewCell.ViewModel()
-                viewModel.secondValue = String(vm.kcals)
-                
-                var minString = "\(vm.durations / 60) min"
-                var hourString = ""
-                
-                if vm.durations / 60 > 60 {
-                    let hours = vm.durations / 3600
-                    hourString = "\(hours) h "
-                    
-                    let mins = (vm.durations - hours * 3600) / 60
-                    minString = "\(mins) min"
-                }
-                
-                viewModel.firstValue = hourString + minString
-                
-                vms.append(viewModel)
-            }
-            self.tableViews[index].viewModels = vms
-            
+            self.tableViews[index].convertData(datas: $0)
         }) {
             PJHUD.shared.show(view: self.view, text: $0.errorMsg)
         }

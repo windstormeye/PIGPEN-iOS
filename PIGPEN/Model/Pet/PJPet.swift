@@ -359,12 +359,22 @@ extension PJPet {
     
     /// 遛狗历史数据
     struct DogPlayHistory: Codable {
-        var kcals: Int
-        var durations: Int
+        struct Play: Codable {
+            var kcals: Int
+            var durations: Int
+            
+            init() {
+                kcals = 0
+                durations = 0
+            }
+        }
 
+        var plays: [Play]
+        var date: Int
+        
         init() {
-            kcals = 0
-            durations = 0
+            plays = [Play]()
+            date = 0
         }
     }
 }
