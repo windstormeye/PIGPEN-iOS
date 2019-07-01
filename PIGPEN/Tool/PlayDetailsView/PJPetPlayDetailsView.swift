@@ -15,7 +15,7 @@ class PJPetPlayDetailsView: UIView {
             firstLabel.text = viewModel.firstString
             secondLabel.text = viewModel.secondString
             thirdLabel.text = viewModel.thirdString
-            circleOfDots(view: circleView, score: 8.5)
+            circleOfDots(view: circleView, score: viewModel.score)
         }
     }
     

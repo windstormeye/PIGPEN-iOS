@@ -28,8 +28,7 @@ class PJDogPlayEditOldTableViewCell: UITableViewCell {
         
         let redDotImageView = UIImageView(frame: CGRect(x: 46.5, y: topLine.bottom + 2, width: 4, height: 4))
         addSubview(redDotImageView)
-        redDotImageView.image = UIImage(named: "pet_play_edit_side_redDot")
-        
+        redDotImageView.image = UIImage(named: "pet_play_edit_side_ blackDot")
         
         let bottomLine = UIView(frame: CGRect(x: 48, y: redDotImageView.bottom + 2, width: 1, height: pj_height - redDotImageView.bottom - 2))
         addSubview(bottomLine)

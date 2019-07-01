@@ -17,7 +17,7 @@ class PJHUD {
         DispatchQueue.main.async {
             self.hud.textLabel.text = text
             self.hud.show(in: view)
-            self.hud.dismiss(afterDelay: 1.5)
+            self.hud.dismiss(afterDelay: 2)
         }
     }
     

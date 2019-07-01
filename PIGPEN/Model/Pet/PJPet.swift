@@ -218,6 +218,40 @@ class PJPet {
             failedHandler(error)
         }
     }
+    
+    /// 获取宠物今日喝水数据
+    func petTodayDrink(pet: PJPet.Pet, complateHandler: @escaping ((PetDrink) -> Void), failedHandler: @escaping ((PJNetwork.Error) -> Void)) {
+        let parameters = [
+            "pet_id": String(pet.pet_id),
+        ]
+        
+        PJNetwork.shared.requstWithGet(path: Url.petDrink.rawValue, parameters: parameters, complement: { (resDict) in
+            if resDict["msgCode"]?.intValue == 0 {
+                let viewModel = dataConvertToModel(PetDrink(), from: try! (resDict["msg"]?.rawData())!)
+                complateHandler(viewModel!)
+            }
+        }) { (errorString) in
+            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
+            failedHandler(error)
+        }
+    }
+    
+    /// 上传宠物喝水数据
+    func petDrinkUpload(pet: PJPet.Pet, waters: Int, complateHandler: @escaping (() -> Void), failedHandler: @escaping ((PJNetwork.Error) -> Void)) {
+        let parameters = [
+            "pet_id": String(pet.pet_id),
+            "waters": String(waters)
+        ]
+        
+        PJNetwork.shared.requstWithPost(path: Url.uploadWater.rawValue, parameters: parameters, complement: { (resDict) in
+            if resDict["msgCode"]?.intValue == 0 {
+                complateHandler()
+            }
+        }) { (errorString) in
+            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
+            failedHandler(error)
+        }
+    }
 }
 
 extension PJPet {
@@ -238,6 +272,10 @@ extension PJPet {
         case dogPlay = "play/dogTodayPlay"
         /// 获取历史遛狗数据
         case dogPlayHistory = "play/dog"
+        /// 获取今日喝水看板数据
+        case petDrink = "drink/day"
+        /// 提交宠物喝水数据
+        case uploadWater = "drink/create"
     }
 }
 
@@ -375,6 +413,21 @@ extension PJPet {
         init() {
             plays = [Play]()
             date = 0
+        }
+    }
+    
+    /// 喝水看板数据
+    struct PetDrink: Codable {
+        var times: Int
+        var water_today: Int
+        var water_target_today: Int
+        var score: Float
+        
+        init() {
+            times = 0
+            water_today = 0
+            water_target_today = 0
+            score = 0
         }
     }
 }

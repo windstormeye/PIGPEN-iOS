@@ -14,7 +14,11 @@ class PJManualAddKcalView: UIView {
             rulerView.pickCount = pickCount
         }
     }
+    
+    var itemSelected: ((Int) -> Void)?
+    
     private var rulerView = PJRulerPickerView()
+    private var tipsString = ""
     
     
     override init(frame: CGRect) {
@@ -25,9 +29,10 @@ class PJManualAddKcalView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(frame: CGRect, pickCount: Int) {
+    convenience init(frame: CGRect, pickCount: Int, tipsText: String) {
         self.init(frame: frame)
         self.pickCount = pickCount
+        self.tipsString = tipsText
         initView()
     }
     
@@ -41,7 +46,7 @@ class PJManualAddKcalView: UIView {
         kcalLabel.textAlignment = .center
         kcalLabel.centerX = centerX
         
-        let kcalString = " kcal"
+        let kcalString = " " + tipsString
         let kcalAttribute = [NSAttributedString.Key.foregroundColor: UIColor.black]
         let kcalAttrString = NSAttributedString(string: kcalString, attributes: kcalAttribute)
         
@@ -55,7 +60,9 @@ class PJManualAddKcalView: UIView {
         rulerView = PJRulerPickerView(frame: CGRect(x: 0, y: kcalLabel.bottom, width: pj_width, height: pj_height / 2), pickCount: pickCount)
         addSubview(rulerView)
         rulerView.moved = {
-            let kcalString = " kcal"
+            self.itemSelected?($0)
+            
+            let kcalString = " " + self.tipsString
             let kcalAttribute = [NSAttributedString.Key.foregroundColor: UIColor.black]
             let kcalAttrString = NSAttributedString(string: kcalString, attributes: kcalAttribute)
             

@@ -77,7 +77,13 @@ class PJPlayViewController: UIViewController, PJBaseViewControllerDelegate {
             case 0:
                 break
             case 1:
-                break
+                var pets = [PJPet.Pet]()
+                for item in self.collectionView!.selectedPets {
+                    pets.append((self.collectionView?.viewModels[item].pet)!)
+                }
+                let vc = PJPetDrinkViewController(viewModels: pets)
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
             case 2:
                 if self.petTypes.contains(.cat) && !self.petTypes.contains(.dog) {
                     var pets = [PJPet.Pet]()
