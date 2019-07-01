@@ -252,6 +252,29 @@ class PJPet {
             failedHandler(error)
         }
     }
+    
+    /// 获取宠物历史喝水数据
+    func petDrinkHistory(pet: PJPet.Pet, complateHandler: @escaping (([PetDrinkHistory]) -> Void), failedHandler: @escaping ((PJNetwork.Error) -> Void)) {
+        let parameters = [
+            "pet_id": String(pet.pet_id),
+        ]
+        
+        PJNetwork.shared.requstWithGet(path: Url.petDrinkHistory.rawValue, parameters: parameters, complement: { (resDict) in
+            if resDict["msgCode"]?.intValue == 0 {
+                var viewModels = [PetDrinkHistory]()
+                let drinkDicts = resDict["msg"]!.arrayValue
+
+                for p in drinkDicts {
+                    let drinkModel = dataConvertToModel(PetDrinkHistory(), from: try! p.rawData())
+                    viewModels.append(drinkModel!)
+                }
+                complateHandler(viewModels)
+            }
+        }) { (errorString) in
+            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
+            failedHandler(error)
+        }
+    }
 }
 
 extension PJPet {
@@ -276,6 +299,8 @@ extension PJPet {
         case petDrink = "drink/day"
         /// 提交宠物喝水数据
         case uploadWater = "drink/create"
+        /// 获取宠物历史喝水数据
+        case petDrinkHistory = "drink/all"
     }
 }
 
@@ -428,6 +453,27 @@ extension PJPet {
             water_today = 0
             water_target_today = 0
             score = 0
+        }
+    }
+    
+    /// 喝水历史数据
+    struct PetDrinkHistory: Codable {
+        struct Drink: Codable {
+            var waters: Int
+            var created_time: Int
+            
+            init() {
+                waters = 0
+                created_time = 0
+            }
+        }
+        
+        var waters: [Drink]
+        var date: Int
+        
+        init() {
+            waters = [Drink]()
+            date = 0
         }
     }
 }

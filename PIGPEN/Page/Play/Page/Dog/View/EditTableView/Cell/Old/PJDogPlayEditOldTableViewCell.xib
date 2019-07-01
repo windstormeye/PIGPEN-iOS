@@ -75,7 +75,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="firstTextLabel" destination="24r-Z7-u3Q" id="1Mf-3m-uUa"/>
                 <outlet property="firstValueLabel" destination="3sF-JT-YTK" id="CvH-aq-5bs"/>
+                <outlet property="secondTextLabel" destination="4cm-GO-0gN" id="eJs-yt-DDP"/>
                 <outlet property="secondValueLabel" destination="lOg-tH-3hK" id="oP0-jN-rFf"/>
             </connections>
         </tableViewCell>

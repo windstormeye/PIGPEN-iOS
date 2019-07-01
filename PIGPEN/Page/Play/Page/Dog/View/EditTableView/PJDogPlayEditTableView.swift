@@ -12,6 +12,7 @@ class PJDogPlayEditTableView: UITableView {
     /// 判断是否为今天
     private var cellCurrentDay = 0
     private var sectionCurrentDay = 0
+    private var tableViewType: TableViewType = .play
     
     var viewModels = [PJDogPlayEditTableView.ViewModel]() {
         didSet { reloadData() }
@@ -19,11 +20,16 @@ class PJDogPlayEditTableView: UITableView {
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
-        initView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    convenience init(frame: CGRect, style: UITableView.Style, type: TableViewType) {
+        self.init(frame: frame, style: style)
+        self.tableViewType = type
+        initView()
     }
     
     private func initView() {
@@ -39,7 +45,7 @@ class PJDogPlayEditTableView: UITableView {
 }
 
 extension PJDogPlayEditTableView {
-    func convertData(datas: [PJPet.DogPlayHistory]) {
+    func convertPlayData(datas: [PJPet.DogPlayHistory]) {
         var viewModels = [PJDogPlayEditTableView.ViewModel]()
         
         for data in datas {
@@ -49,6 +55,25 @@ extension PJDogPlayEditTableView {
                 var vm = PJDogPlayEditTableViewCell.ViewModel()
                 vm.firstValue = convertTimestampToDateString0(d.durations)
                 vm.secondValue = "\(d.kcals)kcal"
+                
+                viewModel.sectionCells.append(vm)
+            }
+            viewModels.append(viewModel)
+        }
+        
+        self.viewModels = viewModels
+    }
+    
+    func convertDrinkData(datas: [PJPet.PetDrinkHistory]) {
+        var viewModels = [PJDogPlayEditTableView.ViewModel]()
+        
+        for data in datas {
+            var viewModel = PJDogPlayEditTableView.ViewModel()
+            viewModel.sectionTitle = "\(data.date)"
+            for d in data.waters {
+                var vm = PJDogPlayEditTableViewCell.ViewModel()
+                vm.firstValue = convertTimestampToDateString2(d.created_time)
+                vm.secondValue = "\(d.waters)ml"
                 
                 viewModel.sectionCells.append(vm)
             }
@@ -115,6 +140,7 @@ extension PJDogPlayEditTableView: UITableViewDataSource {
                                                      for: indexPath) as! PJDogPlayEditTableViewCell
             cell.updateBackgroundImage("pet_play_edit_side_cell0")
             cell.viewModel = viewModels[indexPath.section].sectionCells[indexPath.row]
+            cell.cellType = tableViewType
             return cell
         } else {
             let tempDay = convertTimestampToDateInt(Int(viewModels[indexPath.section].sectionTitle)!)
@@ -124,22 +150,26 @@ extension PJDogPlayEditTableView: UITableViewDataSource {
                                                          for: indexPath) as! PJDogPlayEditTableViewCell
                 cell.updateBackgroundImage("pet_play_edit_side_cell0")
                 cell.viewModel = viewModels[indexPath.section].sectionCells[indexPath.row]
+                cell.cellType = tableViewType
                 return cell
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "PJDogPlayEditTableViewCell",
                                                          for: indexPath) as! PJDogPlayEditTableViewCell
                 cell.updateBackgroundImage("pet_play_edit_side_cell1")
                 cell.viewModel = viewModels[indexPath.section].sectionCells[indexPath.row]
+                cell.cellType = tableViewType
                 return cell
             case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "PJDogPlayEditTableViewCell",
                                                          for: indexPath) as! PJDogPlayEditTableViewCell
                 cell.updateBackgroundImage("pet_play_edit_side_cell1")
                 cell.viewModel = viewModels[indexPath.section].sectionCells[indexPath.row]
+                cell.cellType = tableViewType
                 return cell
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "PJDogPlayEditOldTableViewCell", for: indexPath) as! PJDogPlayEditOldTableViewCell
                 cell.viewModel = viewModels[indexPath.section].sectionCells[indexPath.row]
+                cell.cellType = tableViewType
                 return cell
             }
         }
@@ -155,5 +185,10 @@ extension PJDogPlayEditTableView {
             sectionTitle = ""
             sectionCells = [PJDogPlayEditTableViewCell.ViewModel]()
         }
+    }
+    
+    enum TableViewType {
+        case play
+        case drink
     }
 }

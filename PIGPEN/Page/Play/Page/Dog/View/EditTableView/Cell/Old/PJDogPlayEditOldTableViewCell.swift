@@ -16,8 +16,23 @@ class PJDogPlayEditOldTableViewCell: UITableViewCell {
         }
     }
     
+    var cellType: PJDogPlayEditTableView.TableViewType = .play {
+        didSet {
+            switch cellType {
+            case .play:
+                firstTextLabel.text = "遛狗时间"
+                secondTextLabel.text = "消耗热量"
+            case .drink:
+                firstTextLabel.text = "喝水时间"
+                secondTextLabel.text = "喝水毫升"
+            }
+        }
+    }
+    
     @IBOutlet private weak var firstValueLabel: UILabel!
     @IBOutlet private weak var secondValueLabel: UILabel!
+    @IBOutlet private weak var firstTextLabel: UILabel!
+    @IBOutlet private weak var secondTextLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

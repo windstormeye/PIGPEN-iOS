@@ -8,10 +8,11 @@
 
 import UIKit
 
-class PJDogPlayEditViewController: UIViewController, PJBaseViewControllerDelegate {
+class PJPetDataEditViewController: UIViewController, PJBaseViewControllerDelegate {
 
     var viewModels = [PJPet.Pet]()
     var tableViews = [PJDogPlayEditTableView]()
+    var type: PJDogPlayEditTableView.TableViewType = .play
     
     private var avatarView = PJPetAvatarView()
     private var scrollView = UIScrollView()
@@ -24,9 +25,10 @@ class PJDogPlayEditViewController: UIViewController, PJBaseViewControllerDelegat
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(viewModels: [PJPet.Pet]) {
+    convenience init(viewModels: [PJPet.Pet], type: PJDogPlayEditTableView.TableViewType) {
         self.init(nibName: nil, bundle: nil)
         self.viewModels = viewModels
+        self.type = type
         initView()
     }
     
@@ -51,7 +53,7 @@ class PJDogPlayEditViewController: UIViewController, PJBaseViewControllerDelegat
         scrollView.delegate = self
         
         for index in 0..<viewModels.count {
-            let tableView = PJDogPlayEditTableView(frame: CGRect(x: CGFloat(index) * scrollView.pj_width, y: 0, width: scrollView.pj_width, height: scrollView.pj_height), style: .plain)
+            let tableView = PJDogPlayEditTableView(frame: CGRect(x: CGFloat(index) * scrollView.pj_width, y: 0, width: scrollView.pj_width, height: scrollView.pj_height), style: .plain, type: type)
             scrollView.addSubview(tableView)
             tableViews.append(tableView)
             
@@ -62,20 +64,29 @@ class PJDogPlayEditViewController: UIViewController, PJBaseViewControllerDelegat
     }
 }
 
-extension PJDogPlayEditViewController {
+extension PJPetDataEditViewController {
     func requestData(at index: Int, page: Int) {
         
         guard tableViews[index].viewModels.count == 0 else { return }
         
-        PJPet.shared.dogPlayHistory(pet: viewModels[index], page: page, complateHandler: {
-            self.tableViews[index].convertData(datas: $0)
-        }) {
-            PJHUD.shared.show(view: self.view, text: $0.errorMsg)
+        switch type {
+        case .play:
+            PJPet.shared.dogPlayHistory(pet: viewModels[index], page: page, complateHandler: {
+                self.tableViews[index].convertPlayData(datas: $0)
+            }) {
+                PJHUD.shared.show(view: self.view, text: $0.errorMsg)
+            }
+        case .drink:
+            PJPet.shared.petDrinkHistory(pet: viewModels[index], complateHandler: {
+                self.tableViews[index].convertDrinkData(datas: $0)
+            }) {
+                PJHUD.shared.show(view: self.view, text: $0.errorMsg)
+            }
         }
     }
 }
 
-extension PJDogPlayEditViewController: UIScrollViewDelegate {
+extension PJPetDataEditViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let offsetX = scrollView.contentOffset.x
         let page = Int(offsetX / view.pj_width)
@@ -85,7 +96,7 @@ extension PJDogPlayEditViewController: UIScrollViewDelegate {
     }
 }
 
-extension PJDogPlayEditViewController {
+extension PJPetDataEditViewController {
     @objc
     fileprivate func back() {
         popBack()
@@ -93,5 +104,5 @@ extension PJDogPlayEditViewController {
 }
 
 private extension Selector {
-    static let back = #selector(PJDogPlayEditViewController.back)
+    static let back = #selector(PJPetDataEditViewController.back)
 }

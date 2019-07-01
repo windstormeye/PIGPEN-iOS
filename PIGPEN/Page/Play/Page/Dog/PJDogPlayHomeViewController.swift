@@ -56,7 +56,7 @@ class PJDogPlayHomeViewController: UIViewController, PJBaseViewControllerDelegat
             scrollView.addSubview(detailsView)
             
             detailsView.editSelected = {
-                let vc = PJDogPlayEditViewController(viewModels: self.viewModels)
+                let vc = PJPetDataEditViewController(viewModels: self.viewModels, type: .play)
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             

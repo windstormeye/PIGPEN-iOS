@@ -77,8 +77,8 @@ class PJPetDrinkViewController: UIViewController, PJBaseViewControllerDelegate {
             scrollView.addSubview(detailsView)
             
             detailsView.editSelected = {
-//                let vc = PJDogPlayEditViewController(viewModels: self.viewModels)
-//                self.navigationController?.pushViewController(vc, animated: true)
+                let vc = PJPetDataEditViewController(viewModels: self.pets, type: .drink)
+                self.navigationController?.pushViewController(vc, animated: true)
             }
             detailsView.manualSelected = {
                 self.waters = $0
@@ -114,8 +114,9 @@ extension PJPetDrinkViewController {
     func uploadWaters(index: Int, waters: Int) {
         guard waters != 0 else { return }
         
+        PJHUD.shared.showLoading(view: self.view)
         PJPet.shared.petDrinkUpload(pet: pets[index], waters: waters, complateHandler: {
-            PJHUD.shared.show(view: self.view, text: "提交成功")
+            PJHUD.shared.dismiss()
             self.requestData(at: index)
         }) {
             PJHUD.shared.showError(view: self.view, text: $0.errorMsg)
