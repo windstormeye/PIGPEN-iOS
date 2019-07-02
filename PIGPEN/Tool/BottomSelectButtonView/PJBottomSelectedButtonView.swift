@@ -39,6 +39,7 @@ class PJBottomSelectedButtonView: UIView {
         firstButton.setTitleColor(.black, for: .normal)
         firstButton.addTarget(self, action: .firstAction, for: .touchUpInside)
         firstButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        firstButton.adjustsImageWhenHighlighted = false
         
         let secondButton = UIButton(frame: CGRect(x: 0, y: 0, width: firstButton.pj_width, height: firstButton.pj_height))
         addSubview(secondButton)
@@ -47,6 +48,7 @@ class PJBottomSelectedButtonView: UIView {
         secondButton.setTitleColor(.white, for: .normal)
         secondButton.addTarget(self, action: .secondAction, for: .touchUpInside)
         secondButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        secondButton.adjustsImageWhenHighlighted = false
         
         let innerWidth = (pj_width - firstButton.pj_width * 2) / 3
         firstButton.left = innerWidth

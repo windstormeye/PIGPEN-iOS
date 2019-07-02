@@ -57,8 +57,20 @@ class PJPetDrinkViewController: UIViewController, PJBaseViewControllerDelegate {
         view.addSubview(bottomView)
         
         bottomView.startSelected = {
-            self.detailsViews[self.currentIndex].itemSelectedViewHidded = true
-            self.uploadWaters(index: self.currentIndex, waters: self.waters)
+            PJAlertSheet.showAlertSheet(viewModel: {
+                $0.firstButtonValue = "取消"
+                $0.secondButtonValue = "确认"
+                $0.title = "同时喂食 2 只宠物\n为食量将会按需求分配给每只宠物"
+            }) {
+                switch $0 {
+                case 0:
+                    break
+                case 1:
+                    self.detailsViews[self.currentIndex].itemSelectedViewHidded = true
+                    self.uploadWaters(waters: self.waters)
+                default: break
+                }
+            }
         }
         
         let scrollView = UIScrollView(frame: CGRect(x: 0, y: navigationBarHeight, width: view.pj_width, height: view.pj_height - navigationBarHeight - (view.pj_height - bottomView.top)))
@@ -86,11 +98,9 @@ class PJPetDrinkViewController: UIViewController, PJBaseViewControllerDelegate {
             
             self.detailsViews.append(detailsView)
             scrollView.contentSize = CGSize(width: detailsView.right, height: 0)
+            
+            requestData(at: index)
         }
-        
-
-        
-        requestData(at: 0)
     }
 }
 
@@ -105,21 +115,53 @@ extension PJPetDrinkViewController {
             viewModel.drink = $0
             viewModel.pet = self.pets[index]
             dV.viewModel = viewModel
+            
+            self.viewModels.append($0)
         }) {
             PJHUD.shared.showError(view: self.view, text: $0.errorMsg)
         }
     }
     
+    func update() {
+        for index in 0..<pets.count {
+            requestData(at: index)
+        }
+    }
+    
     /// 提交喝水信息
-    func uploadWaters(index: Int, waters: Int) {
+    func uploadWaters(waters: Int) {
         guard waters != 0 else { return }
         
+        var petWaters = [Int]()
+        if pets.count > 1 {
+            // 按比例分配宠物进水量
+            var totalWaters = 0
+            for drink in viewModels {
+                totalWaters += drink.water_target_today
+            }
+            
+            for drink in viewModels {
+                var petDrink = drink.water_target_today
+                // 巧妙的除法
+                if petDrink < totalWaters {
+                    petDrink *= 10
+                    petWaters.append(Int(CGFloat(petDrink / totalWaters * waters) * 0.1))
+                } else {
+                    petWaters.append(petDrink / totalWaters * waters)
+                }
+            }
+        }
+        
         PJHUD.shared.showLoading(view: self.view)
-        PJPet.shared.petDrinkUpload(pet: pets[index], waters: waters, complateHandler: {
-            PJHUD.shared.dismiss()
-            self.requestData(at: index)
-        }) {
-            PJHUD.shared.showError(view: self.view, text: $0.errorMsg)
+        for (index, pet) in pets.enumerated() {
+            PJPet.shared.petDrinkUpload(pet: pet, waters: petWaters[index], complateHandler: {
+                if index == self.pets.count - 1 {
+                    PJHUD.shared.dismiss()
+                    self.update()
+                }
+            }) {
+                PJHUD.shared.showError(view: self.view, text: $0.errorMsg)
+            }
         }
     }
 }
@@ -144,7 +186,6 @@ extension PJPetDrinkViewController: UIScrollViewDelegate {
         
         avatarView.scrollToButton(at: page)
         bottomView.updateDot(at: page)
-        requestData(at: page)
         self.currentIndex = page
     }
 }

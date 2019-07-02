@@ -9,6 +9,7 @@
 import UIKit
 
 extension UIView {
+    /// 自定义圆角
     public func roundingCorners(corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: bounds,
                                 byRoundingCorners: corners,

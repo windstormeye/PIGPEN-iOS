@@ -19,6 +19,9 @@ class PJPetPlayDetailsView: UIView {
         }
     }
     
+    private var shapeLayer = CAShapeLayer()
+    private var backShapeLayer = CAShapeLayer()
+    
     @IBOutlet private weak var firstLabel: UILabel!
     @IBOutlet private weak var secondLabel: UILabel!
     @IBOutlet private weak var thirdLabel: UILabel!
@@ -31,6 +34,24 @@ class PJPetPlayDetailsView: UIView {
         return Bundle.main.loadNibNamed("PJPetPlayDetailsView",
                                         owner: self,
                                         options: nil)?.first! as! PJPetPlayDetailsView
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        backShapeLayer.fillColor = UIColor.clear.cgColor
+        backShapeLayer.strokeColor = UIColor.white.cgColor
+        backShapeLayer.lineWidth = 4
+        backShapeLayer.lineDashPattern = [1, 6]
+        backShapeLayer.lineCap = CAShapeLayerLineCap.round
+        circleView.layer.addSublayer(backShapeLayer)
+        
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.strokeColor = PJRGB(255, 85, 67).cgColor
+        shapeLayer.lineWidth = 4
+        shapeLayer.lineDashPattern = [1, 6]
+        shapeLayer.lineCap = CAShapeLayerLineCap.round
+        circleView.layer.addSublayer(shapeLayer)
     }
     
     func updateLabel(firstString: String, secondString: String, thirdString: String) {
@@ -49,31 +70,16 @@ class PJPetPlayDetailsView: UIView {
                                           startAngle: endAngle,
                                           endAngle: startAngle,
                                           clockwise: false)
-        let backShapeLayer = CAShapeLayer()
         backShapeLayer.path = backCirclePath.cgPath
         backShapeLayer.position = CGPoint(x: view.bounds.midX ,y: view.bounds.midY)
-        backShapeLayer.fillColor = UIColor.clear.cgColor
-        backShapeLayer.strokeColor = UIColor.white.cgColor
-        backShapeLayer.lineWidth = 4
-        backShapeLayer.lineDashPattern = [1, 6]
-        backShapeLayer.lineCap = CAShapeLayerLineCap.round
-        view.layer.addSublayer(backShapeLayer)
         
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: 0,y: 0),
                                       radius: radius,
                                       startAngle: startAngle,
                                       endAngle: endAngle,
                                       clockwise: false)
-        let shapeLayer = CAShapeLayer()
         shapeLayer.path = circlePath.cgPath
         shapeLayer.position = CGPoint(x: view.bounds.midX ,y: view.bounds.midY)
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.strokeColor = PJRGB(255, 85, 67).cgColor
-        //you can change the line width
-        shapeLayer.lineWidth = 4
-        shapeLayer.lineDashPattern = [1, 6]
-        shapeLayer.lineCap = CAShapeLayerLineCap.round
-        view.layer.addSublayer(shapeLayer)
     }
 }
 
