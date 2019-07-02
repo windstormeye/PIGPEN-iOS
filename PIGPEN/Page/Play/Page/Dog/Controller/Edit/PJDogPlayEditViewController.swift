@@ -82,6 +82,12 @@ extension PJPetDataEditViewController {
             }) {
                 PJHUD.shared.show(view: self.view, text: $0.errorMsg)
             }
+        case .eat:
+            PJPet.shared.petEatHistory(pet: viewModels[index], complateHandler: {
+                self.tableViews[index].convertEatData(datas: $0)
+            }) {
+                PJHUD.shared.show(view: self.view, text: $0.errorMsg)
+            }
         }
     }
 }

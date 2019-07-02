@@ -1,25 +1,24 @@
 //
-//  PJPetDrinkViewController.swift
+//  PJPetEatViewController.swift
 //  PIGPEN
 //
-//  Created by 翁培钧 on 2019/7/1.
+//  Created by 翁培钧 on 2019/7/2.
 //  Copyright © 2019 PJHubs. All rights reserved.
 //
 
 import UIKit
 
-class PJPetDrinkViewController: UIViewController, PJBaseViewControllerDelegate {
-
-    var viewModels = [PJPet.PetDrink]()
+class PJPetEatViewController: UIViewController, PJBaseViewControllerDelegate {
+    var viewModels = [PJPet.PetEat]()
     var pets = [PJPet.Pet]()
     
-    private var waters = 0
+    private var foods = 0
     private var currentIndex = 0
     
     var bottomView = PJBottomDotButtonView()
     var avatarView = PJPetAvatarView()
     
-    private var detailsViews = [PJPetDrinkDetailsView]()
+    private var detailsViews = [PJPetEatDetailsView]()
     private var scrollView = UIScrollView()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -35,12 +34,12 @@ class PJPetDrinkViewController: UIViewController, PJBaseViewControllerDelegate {
         self.pets = viewModels
         initView()
     }
-
+    
     private func initView() {
         view.backgroundColor = .white
         
         initBaseView()
-        titleString = "喝水"
+        titleString = "吃饭"
         backButtonTapped(backSel: .back, imageName: nil)
         
         avatarView = PJPetAvatarView(frame: CGRect(x: 20, y: navigationBarHeight, width: view.pj_width - 40, height: 36 * 1.385), viewModel: pets)
@@ -53,7 +52,7 @@ class PJPetDrinkViewController: UIViewController, PJBaseViewControllerDelegate {
             self.scrollView.setContentOffset(CGPoint(x: self.scrollView.pj_width * CGFloat($0), y: 0), animated: true)
         }
         
-        bottomView = PJBottomDotButtonView(frame: CGRect(x: 0, y: view.pj_height - bottomSafeAreaHeight - 36 - 20, width: view.pj_width, height: 36), pageCount: pets.count - 1, centerButtonText: "开始喝水")
+        bottomView = PJBottomDotButtonView(frame: CGRect(x: 0, y: view.pj_height - bottomSafeAreaHeight - 36 - 20, width: view.pj_width, height: 36), pageCount: pets.count - 1, centerButtonText: "开始吃饭")
         view.addSubview(bottomView)
         
         bottomView.startSelected = {
@@ -68,13 +67,13 @@ class PJPetDrinkViewController: UIViewController, PJBaseViewControllerDelegate {
                         break
                     case 1:
                         self.detailsViews[self.currentIndex].itemSelectedViewHidded = true
-                        self.uploadWaters(waters: self.waters)
+                        self.uploadFoods(foods: self.foods)
                     default: break
                     }
                 }
             } else {
                 self.detailsViews[self.currentIndex].itemSelectedViewHidded = true
-                self.uploadWaters(waters: self.waters)
+                self.uploadFoods(foods: self.foods)
             }
         }
         
@@ -87,18 +86,18 @@ class PJPetDrinkViewController: UIViewController, PJBaseViewControllerDelegate {
         view.sendSubviewToBack(scrollView)
         
         for index in 0..<pets.count {
-            var detailsViewModel = PJPetDrinkDetailsView.ViewModel()
+            var detailsViewModel = PJPetEatDetailsView.ViewModel()
             detailsViewModel.pet = pets[index]
             
-            let detailsView = PJPetDrinkDetailsView(frame: CGRect(x: CGFloat(index) * scrollView.pj_width, y: 0, width: view.pj_width, height: scrollView.pj_height), viewModel: detailsViewModel)
+            let detailsView = PJPetEatDetailsView(frame: CGRect(x: CGFloat(index) * scrollView.pj_width, y: 0, width: view.pj_width, height: scrollView.pj_height), viewModel: detailsViewModel)
             scrollView.addSubview(detailsView)
             
             detailsView.editSelected = {
-                let vc = PJPetDataEditViewController(viewModels: self.pets, type: .drink)
+                let vc = PJPetDataEditViewController(viewModels: self.pets, type: .eat)
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             detailsView.manualSelected = {
-                self.waters = $0
+                self.foods = $0
             }
             
             self.detailsViews.append(detailsView)
@@ -109,15 +108,15 @@ class PJPetDrinkViewController: UIViewController, PJBaseViewControllerDelegate {
     }
 }
 
-extension PJPetDrinkViewController {
+extension PJPetEatViewController {
     /// 请求当前索引的遛狗看板页面数据
     func requestData(at index: Int) {
         // TODO: 获取过数据就不要在拉取了
         
-        PJPet.shared.petTodayDrink(pet: pets[index], complateHandler: {
+        PJPet.shared.petTodayEat(pet: pets[index], complateHandler: {
             let dV = self.detailsViews[index]
-            var viewModel = PJPetDrinkDetailsView.ViewModel()
-            viewModel.drink = $0
+            var viewModel = PJPetEatDetailsView.ViewModel()
+            viewModel.eat = $0
             viewModel.pet = self.pets[index]
             dV.viewModel = viewModel
             
@@ -134,34 +133,34 @@ extension PJPetDrinkViewController {
     }
     
     /// 提交喝水信息
-    func uploadWaters(waters: Int) {
-        guard waters != 0 else { return }
+    func uploadFoods(foods: Int) {
+        guard foods != 0 else { return }
         
-        var petWaters = [Int]()
+        var petFoods = [Int]()
         if pets.count > 1 {
             // 按比例分配宠物进水量
-            var totalWaters = 0
-            for drink in viewModels {
-                totalWaters += drink.water_target_today
+            var totalFoods = 0
+            for eat in viewModels {
+                totalFoods += eat.food_target_today
             }
             
-            for drink in viewModels {
-                var petDrink = drink.water_target_today
+            for eat in viewModels {
+                var petEat = eat.food_target_today
                 // 巧妙的除法
-                if petDrink < totalWaters {
-                    petDrink *= 10
-                    petWaters.append(Int(CGFloat(petDrink / totalWaters * waters) * 0.1))
+                if petEat < totalFoods {
+                    petEat *= 10
+                    petFoods.append(Int(CGFloat(petEat / totalFoods * foods) * 0.1))
                 } else {
-                    petWaters.append(petDrink / totalWaters * waters)
+                    petFoods.append(petEat / totalFoods * foods)
                 }
             }
         } else {
-            petWaters = [waters]
+            petFoods = [foods]
         }
         
         PJHUD.shared.showLoading(view: self.view)
         for (index, pet) in pets.enumerated() {
-            PJPet.shared.petDrinkUpload(pet: pet, waters: petWaters[index], complateHandler: {
+            PJPet.shared.petEatUpload(pet: pet, foods: petFoods[index], complateHandler: {
                 if index == self.pets.count - 1 {
                     PJHUD.shared.dismiss()
                     self.update()
@@ -173,7 +172,7 @@ extension PJPetDrinkViewController {
     }
 }
 
-extension PJPetDrinkViewController {
+extension PJPetEatViewController {
     @objc
     fileprivate func back() {
         popBack()
@@ -181,11 +180,11 @@ extension PJPetDrinkViewController {
 }
 
 private extension Selector {
-    static let back = #selector(PJPetDrinkViewController.back)
+    static let back = #selector(PJPetEatViewController.back)
 }
 
 
-extension PJPetDrinkViewController: UIScrollViewDelegate {
+extension PJPetEatViewController: UIScrollViewDelegate {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let offsetX = scrollView.contentOffset.x

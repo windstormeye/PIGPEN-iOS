@@ -275,6 +275,63 @@ class PJPet {
             failedHandler(error)
         }
     }
+    
+    /// 获取宠物今日吃饭数据
+    func petTodayEat(pet: PJPet.Pet, complateHandler: @escaping ((PetEat) -> Void), failedHandler: @escaping ((PJNetwork.Error) -> Void)) {
+        let parameters = [
+            "pet_id": String(pet.pet_id),
+        ]
+        
+        PJNetwork.shared.requstWithGet(path: Url.petEat.rawValue, parameters: parameters, complement: { (resDict) in
+            if resDict["msgCode"]?.intValue == 0 {
+                let viewModel = dataConvertToModel(PetEat(), from: try! (resDict["msg"]?.rawData())!)
+                complateHandler(viewModel!)
+            }
+        }) { (errorString) in
+            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
+            failedHandler(error)
+        }
+    }
+    
+    /// 上传宠物喝水数据
+    func petEatUpload(pet: PJPet.Pet, foods: Int, complateHandler: @escaping (() -> Void), failedHandler: @escaping ((PJNetwork.Error) -> Void)) {
+        let parameters = [
+            "pet_id": String(pet.pet_id),
+            "foods": String(foods)
+        ]
+        
+        PJNetwork.shared.requstWithPost(path: Url.uploadFood.rawValue, parameters: parameters, complement: { (resDict) in
+            if resDict["msgCode"]?.intValue == 0 {
+                complateHandler()
+            }
+        }) { (errorString) in
+            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
+            failedHandler(error)
+        }
+    }
+    
+    /// 获取宠物历史喝水数据
+    func petEatHistory(pet: PJPet.Pet, complateHandler: @escaping (([PetEatHistory]) -> Void), failedHandler: @escaping ((PJNetwork.Error) -> Void)) {
+        let parameters = [
+            "pet_id": String(pet.pet_id),
+        ]
+        
+        PJNetwork.shared.requstWithGet(path: Url.petEatHistory.rawValue, parameters: parameters, complement: { (resDict) in
+            if resDict["msgCode"]?.intValue == 0 {
+                var viewModels = [PetEatHistory]()
+                let eatDicts = resDict["msg"]!.arrayValue
+                
+                for p in eatDicts {
+                    let drinkModel = dataConvertToModel(PetEatHistory(), from: try! p.rawData())
+                    viewModels.append(drinkModel!)
+                }
+                complateHandler(viewModels)
+            }
+        }) { (errorString) in
+            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
+            failedHandler(error)
+        }
+    }
 }
 
 extension PJPet {
@@ -301,6 +358,12 @@ extension PJPet {
         case uploadWater = "drink/create"
         /// 获取宠物历史喝水数据
         case petDrinkHistory = "drink/all"
+        /// 获取今日吃饭看板数据
+        case petEat = "eat/day"
+        /// 提交宠物吃饭数据
+        case uploadFood = "eat/create"
+        /// 获取宠物历史吃饭数据
+        case petEatHistory = "eat/all"
     }
 }
 
@@ -473,6 +536,42 @@ extension PJPet {
         
         init() {
             waters = [Drink]()
+            date = 0
+        }
+    }
+    
+    /// 吃饭看板数据
+    struct PetEat: Codable {
+        var times: Int
+        var foods_today: Int
+        var food_target_today: Int
+        var score: Float
+        
+        init() {
+            times = 0
+            foods_today = 0
+            food_target_today = 0
+            score = 0
+        }
+    }
+    
+    /// 吃饭历史数据
+    struct PetEatHistory: Codable {
+        struct Eat: Codable {
+            var foods: Int
+            var created_time: Int
+            
+            init() {
+                foods = 0
+                created_time = 0
+            }
+        }
+        
+        var foods: [Eat]
+        var date: Int
+        
+        init() {
+            foods = [Eat]()
             date = 0
         }
     }

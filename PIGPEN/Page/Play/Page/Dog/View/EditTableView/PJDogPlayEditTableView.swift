@@ -82,6 +82,25 @@ extension PJDogPlayEditTableView {
         
         self.viewModels = viewModels
     }
+    
+    func convertEatData(datas: [PJPet.PetEatHistory]) {
+        var viewModels = [PJDogPlayEditTableView.ViewModel]()
+        
+        for data in datas {
+            var viewModel = PJDogPlayEditTableView.ViewModel()
+            viewModel.sectionTitle = "\(data.date)"
+            for d in data.foods {
+                var vm = PJDogPlayEditTableViewCell.ViewModel()
+                vm.firstValue = convertTimestampToDateString2(d.created_time)
+                vm.secondValue = "\(d.foods)g"
+                
+                viewModel.sectionCells.append(vm)
+            }
+            viewModels.append(viewModel)
+        }
+        
+        self.viewModels = viewModels
+    }
 }
 
 extension PJDogPlayEditTableView: UITableViewDelegate {
@@ -190,5 +209,6 @@ extension PJDogPlayEditTableView {
     enum TableViewType {
         case play
         case drink
+        case eat
     }
 }

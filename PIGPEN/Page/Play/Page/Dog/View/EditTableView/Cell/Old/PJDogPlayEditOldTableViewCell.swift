@@ -25,6 +25,9 @@ class PJDogPlayEditOldTableViewCell: UITableViewCell {
             case .drink:
                 firstTextLabel.text = "喝水时间"
                 secondTextLabel.text = "喝水毫升"
+            case .eat:
+                firstTextLabel.text = "喂食时间"
+                secondTextLabel.text = "喂食克数"
             }
         }
     }

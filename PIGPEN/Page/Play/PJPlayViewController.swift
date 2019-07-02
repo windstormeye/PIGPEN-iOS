@@ -73,34 +73,27 @@ class PJPlayViewController: UIViewController, PJBaseViewControllerDelegate {
         }
         
         collectionView?.footerSelected = {
+            var pets = [PJPet.Pet]()
+            for item in self.collectionView!.selectedPets {
+                pets.append((self.collectionView?.viewModels[item].pet)!)
+            }
             switch $0 {
             case 0:
-                break
+                let vc = PJPetEatViewController(viewModels: pets)
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
             case 1:
-                var pets = [PJPet.Pet]()
-                for item in self.collectionView!.selectedPets {
-                    pets.append((self.collectionView?.viewModels[item].pet)!)
-                }
                 let vc = PJPetDrinkViewController(viewModels: pets)
                 vc.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(vc, animated: true)
             case 2:
                 if self.petTypes.contains(.cat) && !self.petTypes.contains(.dog) {
-                    var pets = [PJPet.Pet]()
-                    for item in self.collectionView!.selectedPets {
-                        pets.append((self.collectionView?.viewModels[item].pet)!)
-                    }
                     let vc = PJCatPlayHomeViewController(viewModels: pets)
                     vc.hidesBottomBarWhenPushed = true
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
-                if self.petTypes.contains(.dog) && !self.petTypes.contains(.cat) {
-                    var viewModels = [PJPet.Pet]()
-                    for item in self.collectionView!.selectedPets {
-                        viewModels.append((self.collectionView?.viewModels[item].pet)!)
-                    }
-                    
-                    let vc = PJDogPlayHomeViewController(viewModels: viewModels)
+                if self.petTypes.contains(.dog) && !self.petTypes.contains(.cat) {    
+                    let vc = PJDogPlayHomeViewController(viewModels: pets)
                     vc.hidesBottomBarWhenPushed = true
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
