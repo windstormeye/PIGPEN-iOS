@@ -83,7 +83,7 @@ extension AppDelegate {
         homeNav.tabBarItem.image = UIImage(named: "tab_home")?.withRenderingMode(.alwaysOriginal)
         homeNav.tabBarItem.selectedImage = UIImage(named: "tab_home_selected")?.withRenderingMode(.alwaysOriginal)
         
-        let chatPage = PJMessageViewController()
+        let chatPage = PJChatViewController()
         let chatNav = UINavigationController(rootViewController: chatPage)
         chatNav.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0,
                                                       bottom: -5, right: 0)
@@ -97,7 +97,7 @@ extension AppDelegate {
         playNav.tabBarItem.image = UIImage(named: "tab_play")?.withRenderingMode(.alwaysOriginal)
         playNav.tabBarItem.selectedImage = UIImage(named: "tab_play_selected")?.withRenderingMode(.alwaysOriginal)
         
-        let messagePage = PJInfoViewController()
+        let messagePage = PJMessageViewController()
         let messageNav = UINavigationController(rootViewController: messagePage)
         messageNav.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0,
                                                          bottom: -5, right: 0)

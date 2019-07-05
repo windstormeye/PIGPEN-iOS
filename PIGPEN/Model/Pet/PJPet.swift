@@ -332,6 +332,58 @@ class PJPet {
             failedHandler(error)
         }
     }
+    
+    /// 删除宠物历史某个喝水记录
+    func deletePetDrink(pet: PJPet.Pet, drinkId: Int,complateHandler: @escaping (() -> Void), failedHandler: @escaping ((PJNetwork.Error) -> Void)) {
+        let parameters = [
+            "pet_id": String(pet.pet_id),
+            "drink_id": String(drinkId)
+        ]
+        
+        PJNetwork.shared.requstWithPost(path: Url.deletePetDrink.rawValue, parameters: parameters, complement: { (resDict) in
+            if resDict["msgCode"]?.intValue == 0 {
+                complateHandler()
+            }
+        }) { (errorString) in
+            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
+            failedHandler(error)
+        }
+    }
+    
+    /// 删除宠物历史某个吃饭记录
+    func deletePetEat(pet: PJPet.Pet, eatId: Int,complateHandler: @escaping (() -> Void), failedHandler: @escaping ((PJNetwork.Error) -> Void)) {
+        let parameters = [
+            "pet_id": String(pet.pet_id),
+            "eat_id": String(eatId)
+        ]
+        
+        PJNetwork.shared.requstWithPost(path: Url.deletePetEat.rawValue, parameters: parameters, complement: { (resDict) in
+            if resDict["msgCode"]?.intValue == 0 {
+                complateHandler()
+            }
+        }) { (errorString) in
+            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
+            failedHandler(error)
+        }
+    }
+    
+    /// 删除宠物历史某个「玩」记录
+    func deletePetPlay(pet: PJPet.Pet, playId: Int,complateHandler: @escaping (() -> Void), failedHandler: @escaping ((PJNetwork.Error) -> Void)) {
+        let parameters = [
+            "pet_id": String(pet.pet_id),
+            "play_id": String(playId),
+            "pet_type": String(pet.pet_type.rawValue)
+        ]
+        
+        PJNetwork.shared.requstWithPost(path: Url.deletePetPlay.rawValue, parameters: parameters, complement: { (resDict) in
+            if resDict["msgCode"]?.intValue == 0 {
+                complateHandler()
+            }
+        }) { (errorString) in
+            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
+            failedHandler(error)
+        }
+    }
 }
 
 extension PJPet {
@@ -364,6 +416,12 @@ extension PJPet {
         case uploadFood = "eat/create"
         /// 获取宠物历史吃饭数据
         case petEatHistory = "eat/all"
+        /// 删除宠物喝水历史数据
+        case deletePetDrink = "drink/delete"
+        /// 删除宠物吃饭历史数据
+        case deletePetEat = "eat/delete"
+        /// 删除宠物「玩」历史数据
+        case deletePetPlay = "play/delete"
     }
 }
 
@@ -486,10 +544,12 @@ extension PJPet {
     /// 遛狗历史数据
     struct DogPlayHistory: Codable {
         struct Play: Codable {
+            var id: Int
             var kcals: Int
             var durations: Int
             
             init() {
+                id = 0
                 kcals = 0
                 durations = 0
             }
@@ -522,10 +582,12 @@ extension PJPet {
     /// 喝水历史数据
     struct PetDrinkHistory: Codable {
         struct Drink: Codable {
+            var id: Int
             var waters: Int
             var created_time: Int
             
             init() {
+                id = 0
                 waters = 0
                 created_time = 0
             }
@@ -558,10 +620,12 @@ extension PJPet {
     /// 吃饭历史数据
     struct PetEatHistory: Codable {
         struct Eat: Codable {
+            var id: Int
             var foods: Int
             var created_time: Int
             
             init() {
+                id = 0
                 foods = 0
                 created_time = 0
             }

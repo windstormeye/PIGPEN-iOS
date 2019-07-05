@@ -18,6 +18,7 @@ target 'PIGPEN' do
     pod 'Kingfisher'
     pod 'NVActivityIndicatorView'
     pod 'SwiftGifOrigin', '~> 1.7.0'
+    
     pod 'AMap3DMap' # 2D 地图 SDK
     pod 'AMapLocation' # 定位 SDK
     pod 'AMapSearch' # 搜索（天气等）SDK

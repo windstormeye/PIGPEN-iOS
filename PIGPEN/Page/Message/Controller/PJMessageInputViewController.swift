@@ -1,20 +1,18 @@
 //
-//  PJInfoViewController.swift
+//  PJMessageInputViewController.swift
 //  PIGPEN
 //
-//  Created by PJHubs on 2019/6/10.
+//  Created by 翁培钧 on 2019/7/5.
 //  Copyright © 2019 PJHubs. All rights reserved.
 //
 
 import UIKit
 
-class PJInfoViewController: UIViewController {
+class PJMessageInputViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let bgImg = UIImageView(frame: CGRect(x: 0, y: 0, width: view.pj_width, height: view.pj_height))
-        bgImg.image = UIImage(named: "friend")
-        view.addSubview(bgImg)
+
         // Do any additional setup after loading the view.
     }
     

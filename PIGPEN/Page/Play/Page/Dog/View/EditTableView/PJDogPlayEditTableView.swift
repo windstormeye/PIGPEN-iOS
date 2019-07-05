@@ -9,13 +9,24 @@
 import UIKit
 
 class PJDogPlayEditTableView: UITableView {
+    /// cell 删除事件
+    var cellDeleted: (() -> Void)?
+    /// 当前用户选择删除的 section
+    var selectedSectionIndex = 0
+    /// 当前用户选择删除的 cell
+    var selectedRowIndex = 0
+    
     /// 判断是否为今天
     private var cellCurrentDay = 0
     private var sectionCurrentDay = 0
     private var tableViewType: TableViewType = .play
+    /// 执行了侧滑的 Cell
+    private var swipedCell = PJDogPlayEditTableViewCell()
     
     var viewModels = [PJDogPlayEditTableView.ViewModel]() {
-        didSet { reloadData() }
+        didSet {
+            reloadData()
+        }
     }
     
     override init(frame: CGRect, style: UITableView.Style) {
@@ -160,6 +171,17 @@ extension PJDogPlayEditTableView: UITableViewDataSource {
             cell.updateBackgroundImage("pet_play_edit_side_cell0")
             cell.viewModel = viewModels[indexPath.section].sectionCells[indexPath.row]
             cell.cellType = tableViewType
+            cell.selectionStyle = .none
+            
+            cell.deleteSeleted = {
+                self.selectedSectionIndex = indexPath.section
+                self.selectedRowIndex = indexPath.row
+                
+                self.cellDeleted?()
+            }
+            cell.swiping = {
+                self.swipedCell = cell
+            }
             return cell
         } else {
             let tempDay = convertTimestampToDateInt(Int(viewModels[indexPath.section].sectionTitle)!)
@@ -170,6 +192,17 @@ extension PJDogPlayEditTableView: UITableViewDataSource {
                 cell.updateBackgroundImage("pet_play_edit_side_cell0")
                 cell.viewModel = viewModels[indexPath.section].sectionCells[indexPath.row]
                 cell.cellType = tableViewType
+                cell.selectionStyle = .none
+                
+                cell.deleteSeleted = {
+                    self.selectedSectionIndex = indexPath.section
+                    self.selectedRowIndex = indexPath.row
+                    
+                    self.cellDeleted?()
+                }
+                cell.swiping = {
+                    self.swipedCell = cell
+                }
                 return cell
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "PJDogPlayEditTableViewCell",
@@ -177,6 +210,16 @@ extension PJDogPlayEditTableView: UITableViewDataSource {
                 cell.updateBackgroundImage("pet_play_edit_side_cell1")
                 cell.viewModel = viewModels[indexPath.section].sectionCells[indexPath.row]
                 cell.cellType = tableViewType
+                cell.selectionStyle = .none
+                cell.deleteSeleted = {
+                    self.selectedSectionIndex = indexPath.section
+                    self.selectedRowIndex = indexPath.row
+                    
+                    self.cellDeleted?()
+                }
+                cell.swiping = {
+                    self.swipedCell = cell
+                }
                 return cell
             case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "PJDogPlayEditTableViewCell",
@@ -184,11 +227,22 @@ extension PJDogPlayEditTableView: UITableViewDataSource {
                 cell.updateBackgroundImage("pet_play_edit_side_cell1")
                 cell.viewModel = viewModels[indexPath.section].sectionCells[indexPath.row]
                 cell.cellType = tableViewType
+                cell.selectionStyle = .none
+                cell.deleteSeleted = {
+                    self.selectedSectionIndex = indexPath.section
+                    self.selectedRowIndex = indexPath.row
+                    
+                    self.cellDeleted?()
+                }
+                cell.swiping = {
+                    self.swipedCell = cell
+                }
                 return cell
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "PJDogPlayEditOldTableViewCell", for: indexPath) as! PJDogPlayEditOldTableViewCell
                 cell.viewModel = viewModels[indexPath.section].sectionCells[indexPath.row]
                 cell.cellType = tableViewType
+                cell.selectionStyle = .none
                 return cell
             }
         }
