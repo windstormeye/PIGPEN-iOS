@@ -12,9 +12,7 @@ import Qiniu
 
 class PJImageUploader {
     /// 上传图片
-    class func upload(assets: [PHAsset],
-                      complateHandler: @escaping (([String], [String]) -> Void),
-                      falierHandler: @escaping ((PJNetwork.Error) -> Void)) {
+    class func upload(assets: [PHAsset], complateHandler: @escaping (([String], [String]) -> Void), falierHandler: @escaping ((PJNetwork.Error) -> Void)) {
         PJNetwork.shared.requstWithGet(path: URL.upload.rawValue, parameters: ["imageCount": String(assets.count)], complement: { (dataDict) in
             if dataDict["msgCode"]?.intValue == 0 {
                 var dataDict = dataDict["msg"]!

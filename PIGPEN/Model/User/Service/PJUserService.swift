@@ -206,6 +206,7 @@ extension PJUser {
         })
     }
     
+    /// 检测手机号是否存在
     func checkPhone(phoneString: String,
                     completeHandler: @escaping () -> Void,
                     failedHandler: @escaping (PJNetwork.Error) -> Void) {
@@ -246,6 +247,8 @@ extension PJUser {
                     let model = dataConvertToModel(PJPet.Pet(), from: try! dict.rawData())
                     petModels.append(model!)
                 }
+                
+                self.pets = petModels
                 
                 complateHandler(petModels)
             } else {

@@ -14,6 +14,8 @@ extension UIColor {
     static let boderColor = PJRGB(230, 230, 230)
     static let pinkColor = PJRGB(249, 162, 162)
     static let backgroundColor = PJRGBA(0, 0, 0, 0.4)
+    static let backgrounGrayColor = PJRGB(240, 240, 240)
+    static let selectedPinkColor = PJRGB(255, 85, 67)
     /// 评分组件-波浪前景色
     static let gradeForegroundColor = PJRGB(203, 235, 255)
     /// 评分组件-波浪后景色

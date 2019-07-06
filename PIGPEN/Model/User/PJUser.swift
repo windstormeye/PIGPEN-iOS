@@ -13,7 +13,10 @@ import CryptoSwift
 class PJUser {
     // MARK: - Public Properties
     static let shared = PJUser()
+    
     var userModel = UserModel()
+    /// 用户宠物列表
+    var pets = [PJPet.Pet]()
     /// 是否已经拉起登录
     var isLogin = false
     /// 用户好友列表

@@ -97,7 +97,7 @@ extension AppDelegate {
         playNav.tabBarItem.image = UIImage(named: "tab_play")?.withRenderingMode(.alwaysOriginal)
         playNav.tabBarItem.selectedImage = UIImage(named: "tab_play_selected")?.withRenderingMode(.alwaysOriginal)
         
-        let messagePage = PJMessageViewController()
+        let messagePage = PJMessageInputViewController()
         let messageNav = UINavigationController(rootViewController: messagePage)
         messageNav.tabBarItem.imageInsets = UIEdgeInsets(top: 5, left: 0,
                                                          bottom: -5, right: 0)

@@ -11,6 +11,7 @@ import Foundation
 class PJPet {
     static let shared = PJPet()
     
+    /// 宠物品种列表
     func breedList(petType: PetType,
                    complationHandler: @escaping ([PetBreedGroupModel]) -> Void,
                    failedHandler: @escaping (PJNetwork.Error) -> Void) {

@@ -10,6 +10,7 @@ import UIKit
 
 class PJInputSelectView: PJBaseAlertViewController {
     
+    static let shared = PJInputSelectView()
     var complateHandler: ((Int) -> Void)?
     
     private var selectButtonView = PJInputSelectButtonView()
@@ -38,6 +39,7 @@ class PJInputSelectView: PJBaseAlertViewController {
         selectButtonView.frame = CGRect(x: 0, y: view.pj_height, width: 100, height: 110)
         selectButtonView.right = view.pj_width - 20
         selectButtonView.selected = {
+            self.dismissView()
             self.complateHandler?($0)
         }
     }
@@ -52,7 +54,6 @@ class PJInputSelectView: PJBaseAlertViewController {
             
         }
     }
-
 }
 
 extension PJInputSelectView {

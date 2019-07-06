@@ -184,6 +184,7 @@
 		0CE4F40021592C7D003AD0F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CE4F3FE21592C7D003AD0F5 /* LaunchScreen.storyboard */; };
 		0CE5C07821C00D7400A98566 /* PIGPENTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE5C07721C00D7400A98566 /* PIGPENTests.swift */; };
 		0CE5C07F21C00D8800A98566 /* PJAlbumDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1F6FB321B392EF00304CD8 /* PJAlbumDataController.swift */; };
+		0CE741D122D072B90047E84D /* PJPetSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE741D022D072B90047E84D /* PJPetSelectView.swift */; };
 		0CEC156E225CCF2D001F1533 /* PJIM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEC156D225CCF2D001F1533 /* PJIM.swift */; };
 		0CED02E2219D45AC00294033 /* PJPetCreateDogFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CED02E0219D45AC00294033 /* PJPetCreateDogFoodViewController.swift */; };
 		0CED02E6219D510F00294033 /* PJBaseAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CED02E5219D510F00294033 /* PJBaseAlertViewController.swift */; };
@@ -388,6 +389,7 @@
 		0CE5C07521C00D7400A98566 /* PIGPENTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PIGPENTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CE5C07721C00D7400A98566 /* PIGPENTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIGPENTests.swift; sourceTree = "<group>"; };
 		0CE5C07921C00D7400A98566 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CE741D022D072B90047E84D /* PJPetSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJPetSelectView.swift; sourceTree = "<group>"; };
 		0CEC156D225CCF2D001F1533 /* PJIM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJIM.swift; sourceTree = "<group>"; };
 		0CED02E0219D45AC00294033 /* PJPetCreateDogFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJPetCreateDogFoodViewController.swift; sourceTree = "<group>"; };
 		0CED02E5219D510F00294033 /* PJBaseAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBaseAlertViewController.swift; sourceTree = "<group>"; };
@@ -1220,6 +1222,7 @@
 		0C5E63502165AB9300A90762 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				0C79A94722D0728200805B2E /* PetSelect */,
 				0C18CE7F22CF547C00C5CEFA /* InputSelect */,
 				0C7EA9DE22C74EBD008C4E4E /* AlertSheet */,
 				0C770C6722C121B20099A0FB /* PetAboutScoreView */,
@@ -1361,6 +1364,14 @@
 				0CACDABE22C121E300E767AB /* PJPetAboutScoreView.xib */,
 			);
 			path = PetAboutScoreView;
+			sourceTree = "<group>";
+		};
+		0C79A94722D0728200805B2E /* PetSelect */ = {
+			isa = PBXGroup;
+			children = (
+				0CE741D022D072B90047E84D /* PJPetSelectView.swift */,
+			);
+			path = PetSelect;
 			sourceTree = "<group>";
 		};
 		0C7E5B6922B3D9F60063C125 /* Footer */ = {
@@ -2117,6 +2128,7 @@
 				0CF11D5D22B4B50E00D92F0C /* PJCatPlayHomeViewController.swift in Sources */,
 				0CCE317F22C9DA580089BA0C /* PJPetDrinkDetailsView.swift in Sources */,
 				0C201A0A22896DDC00AE8C2B /* PJCreatePetDetailsViewController.swift in Sources */,
+				0CE741D122D072B90047E84D /* PJPetSelectView.swift in Sources */,
 				0C201A00228867A800AE8C2B /* PJPetCreateNameViewController.swift in Sources */,
 				0C28FDDA22BF651F002B4A78 /* PJDogPlayEditTableViewCell.swift in Sources */,
 				0C55E2E8215B703C000D8815 /* PJUserLoginViewController.swift in Sources */,
