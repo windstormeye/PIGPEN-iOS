@@ -17,26 +17,40 @@ class PIGBlog {
 }
 
 extension PIGBlog {
-    struct Blog {
+    struct BlogContent: Codable {
+        var blog: Blog
+        var pet: PJPet.Pet
+        
+        init() {
+            blog = Blog()
+            pet = PJPet.Pet()
+        }
+    }
+    
+    struct Blog: Codable {
         /// 文本内容
         var content: String
-        /// 图片 URL 地址数组
-        var imgs: [String]
+        /// 图片 URL
+        var imgs: String
         /// 点赞数
-        var likes: Int
+        var likeCount: Int
+        /// 阅读数
+        var readCount: Int
+        // TODO: 记得做
         /// 当前是否收藏过
-        var is_collectd: Int
+//        var isCollectd: Int
         
-        var created_time: Int
-        var updated_time: Int
+        var createdTime: Int
+        var updatedTime: Int
         
         init() {
             content = ""
-            imgs = []
-            likes = 0
-            is_collectd = 0
-            created_time = 0
-            updated_time = 0
+            imgs = ""
+            likeCount = 0
+//            isCollectd = 0
+            readCount = 0
+            createdTime = 0
+            updatedTime = 0
         }
     }
 }

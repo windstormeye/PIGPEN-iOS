@@ -11,9 +11,10 @@ import CryptoSwift
 
 
 class PJUser {
-    // MARK: - Public Properties
     static let shared = PJUser()
+    static let userAccountPath =  NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first!
     
+    /// 用户数据模型
     var userModel = UserModel()
     /// 用户宠物列表
     var pets = [PJPet.Pet]()
@@ -22,21 +23,8 @@ class PJUser {
     /// 用户好友列表
     var friends = [UserModel]()
     
-    // MARK: - Private Methods
-    static let userAccountPath =  NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first!
-    
-    // MARK: - Life Cycle
     init() {
-        let u = self.readBySandBox()
-        if u != nil {
-            userModel = u!
-        } else {
-            userModel = UserModel(nick_name: "",
-                                  gender: 0,
-                                  avatar: -1,
-                                  token: nil,
-                                  uid: -1,
-                                  rcToken: nil)
-        }
+        userModel = readBySandBox() ?? UserModel()
+        pets = readPetDataBySandBox() ?? [PJPet.Pet]()
     }
 }

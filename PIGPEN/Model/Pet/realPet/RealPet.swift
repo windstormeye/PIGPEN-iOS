@@ -66,9 +66,8 @@ class PJRealPet {
                                                                                   from: try! (resDict["msg"]?.rawData())!)
                                                 complateHandler(petModel!)
                                             }
-        }) { (errorString) in
-            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
-            failureHandler(error)
+        }) {
+            failureHandler($0)
         }
     }
 }

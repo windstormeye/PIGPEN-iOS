@@ -46,8 +46,8 @@ class PJImageUploader {
                 let error = PJNetwork.Error(errorCode: dataDict["msgCode"]?.intValue ?? 0, errorMsg: dataDict["msg"]?.string ?? "未知错误")
                 falierHandler(error)
             }
-        }) { (errorString) in
-            falierHandler(PJNetwork.Error(errorCode: 0, errorMsg: errorString))
+        }) {
+            falierHandler($0)
         }
     }
     
@@ -69,9 +69,8 @@ class PJImageUploader {
                                                     complateHandler(k)
                                                 }
                                             }
-        }) { (errorString) in
-            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
-            failuredHandler(error)
+        }) {
+            failuredHandler($0)
         }
     }
 }

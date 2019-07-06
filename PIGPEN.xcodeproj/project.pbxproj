@@ -27,6 +27,7 @@
 		0C1F6FAF21B3925E00304CD8 /* PJAlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1F6FAD21B3925E00304CD8 /* PJAlbumTableViewCell.swift */; };
 		0C1F6FB021B3925E00304CD8 /* PJAlbumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C1F6FAE21B3925E00304CD8 /* PJAlbumTableViewCell.xib */; };
 		0C1F6FB421B392EF00304CD8 /* PJAlbumDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1F6FB321B392EF00304CD8 /* PJAlbumDataController.swift */; };
+		0C1FF69422D0DE0C00369CED /* PIGBlogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1FF69322D0DE0C00369CED /* PIGBlogService.swift */; };
 		0C2019B9227F1EE800AE8C2B /* PJSideMenuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2019B8227F1EE800AE8C2B /* PJSideMenuTableView.swift */; };
 		0C2019C1227F228700AE8C2B /* PJSlideMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C2019BF227F228700AE8C2B /* PJSlideMenuTableViewCell.xib */; };
 		0C2019C2227F228700AE8C2B /* PJSlideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2019C0227F228700AE8C2B /* PJSlideMenuTableViewCell.swift */; };
@@ -224,6 +225,7 @@
 		0C1F6FAD21B3925E00304CD8 /* PJAlbumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJAlbumTableViewCell.swift; sourceTree = "<group>"; };
 		0C1F6FAE21B3925E00304CD8 /* PJAlbumTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PJAlbumTableViewCell.xib; sourceTree = "<group>"; };
 		0C1F6FB321B392EF00304CD8 /* PJAlbumDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJAlbumDataController.swift; sourceTree = "<group>"; };
+		0C1FF69322D0DE0C00369CED /* PIGBlogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIGBlogService.swift; sourceTree = "<group>"; };
 		0C2019B8227F1EE800AE8C2B /* PJSideMenuTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJSideMenuTableView.swift; sourceTree = "<group>"; };
 		0C2019BF227F228700AE8C2B /* PJSlideMenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PJSlideMenuTableViewCell.xib; sourceTree = "<group>"; };
 		0C2019C0227F228700AE8C2B /* PJSlideMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PJSlideMenuTableViewCell.swift; sourceTree = "<group>"; };
@@ -475,6 +477,7 @@
 			isa = PBXGroup;
 			children = (
 				0C18CE7D22CF242700C5CEFA /* PIGBlog.swift */,
+				0CE741D422D0DDEE0047E84D /* Service */,
 			);
 			path = Blog;
 			sourceTree = "<group>";
@@ -1841,6 +1844,14 @@
 			path = PIGPENTests;
 			sourceTree = "<group>";
 		};
+		0CE741D422D0DDEE0047E84D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				0C1FF69322D0DE0C00369CED /* PIGBlogService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		0CEC156C225CCF11001F1533 /* IM */ = {
 			isa = PBXGroup;
 			children = (
@@ -2175,6 +2186,7 @@
 				0C55E3082161BAB6000D8815 /* PJBaseViewController.swift in Sources */,
 				0C067E0B22CF00B600FD2A05 /* PJMessageInputView.swift in Sources */,
 				0CB5E8EF2264BDBF00CBE217 /* PJDetailTableView.swift in Sources */,
+				0C1FF69422D0DE0C00369CED /* PIGBlogService.swift in Sources */,
 				0C5B5D2E2262226000392E21 /* PJIMChatViewController.swift in Sources */,
 				0C55E2DD215A8055000D8815 /* TabBar.swift in Sources */,
 				0C5E634D2165A5F800A90762 /* PJSmallHUD.swift in Sources */,

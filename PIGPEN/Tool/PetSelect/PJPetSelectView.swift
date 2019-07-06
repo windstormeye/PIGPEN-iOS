@@ -55,6 +55,7 @@ class PJPetSelectView: UIView {
             bgView.addSubview(avatarImageView)
             avatarImageView.layer.cornerRadius = 13
             avatarImageView.layer.masksToBounds = true
+            avatarImageView.contentMode = .scaleAspectFill
             avatarImageView.kf.setImage(with: URL(string: pet.avatar_url))
             avatarImageView.layer.cornerRadius = avatarImageView.pj_height / 2
             

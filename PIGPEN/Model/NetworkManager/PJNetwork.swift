@@ -14,14 +14,14 @@ class PJNetwork {
     static let shared = PJNetwork()
     
 //    let hostName = "http://127.0.0.1:8000/"
-    let hostName = "http://192.168.0.104:8000/"
-//    let hostName = "http://pigpen.pjhubs.com/"
+//    let hostName = "http://192.168.0.104:8000/"
+    let hostName = "http://pigpen.pjhubs.com/"
     
     
     func requstWithGet(path: String,
                        parameters: [String: String],
                        complement: @escaping ([String: JSON]) -> Void,
-                       failed: @escaping (String) -> Void) {
+                       failed: @escaping (Error) -> Void) {
         var parameters = parameters
         if parameters["nick_name"] == nil {
             parameters["nick_name"] = PJUser.shared.userModel.nick_name
@@ -49,7 +49,11 @@ class PJNetwork {
                             case .success(_):
                                 complement(self.handleSuccess(response.data))
                             case .failure(_):
-                                failed(response.result.error?.localizedDescription ?? "发生错误")
+                                let errorString = response.result.error?.localizedDescription ?? "发生错误"
+                                debugOnly {
+                                    print(errorString)
+                                }
+                                failed(Error(errorCode: -1, errorMsg: errorString))
                             }
         }
     }
@@ -58,7 +62,7 @@ class PJNetwork {
     func requstWithPost(path: String,
                         parameters: [String: Any],
                         complement: @escaping ([String: JSON]) -> Void,
-                        failed: @escaping (String) -> Void) {
+                        failed: @escaping (Error) -> Void) {
         var parameters = parameters
         if parameters["nick_name"] == nil {
             parameters["nick_name"] = PJUser.shared.userModel.nick_name
@@ -90,7 +94,7 @@ class PJNetwork {
                                 debugOnly {
                                     print(errorString)
                                 }
-                                failed(errorString)
+                                failed(Error(errorCode: -1, errorMsg: errorString))
                             }
         }
     }

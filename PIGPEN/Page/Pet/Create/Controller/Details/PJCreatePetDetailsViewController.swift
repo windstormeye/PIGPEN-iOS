@@ -104,7 +104,7 @@ extension PJCreatePetDetailsViewController {
     @objc
     fileprivate func choiceRelation() {
         let vc = PJPetCreateRelationViewController()
-        vc.selectedIndex = pet.relationship == -1 ? 0 : pet.relationship
+        vc.selectedIndex = pet.relationship == -1 ? 0 : pet.relationship!
         vc.selected = {
             self.pet.relationship = $0
             

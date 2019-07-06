@@ -10,6 +10,12 @@ import UIKit
 
 class PJMessageTableView: UITableView {
 
+    var viewModels = [PIGBlog.BlogContent]() {
+        didSet {
+            reloadData()
+        }
+    }
+    
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         initView()
@@ -46,11 +52,12 @@ extension PJMessageTableView: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PJMessageTableViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PJMessageTableViewCell", for: indexPath) as! PJMessageTableViewCell
+        cell.viewModel = viewModels[indexPath.row]
         return cell
     }
 }

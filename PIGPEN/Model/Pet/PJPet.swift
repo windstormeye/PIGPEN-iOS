@@ -67,9 +67,8 @@ class PJPet {
                                                 let petModel = dataConvertToModel(Pet(), from: try! (resDict["msg"]?.rawData())!)
                                                 complateHandler(petModel!)
                                             }
-        }) { (errorString) in
-            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
-            failureHandler(error)
+        }) {
+            failureHandler($0)
         }
     }
     
@@ -97,9 +96,8 @@ class PJPet {
                                             
                                             complateHandler(viewModels)
                                         }
-        }) { (errorString) in
-            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
-            failedHandler(error)
+        }) {
+            failedHandler($0)
         }
     }
     
@@ -119,9 +117,8 @@ class PJPet {
                                                 let catPlayModel = dataConvertToModel(CatPlay(), from: try! (resDict["msg"]?.rawData())!)
                                                 complateHandler(catPlayModel!)
                                             }
-        }) { (errorString) in
-            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
-            failedHandler(error)
+        }) {
+            failedHandler($0)
         }
     }
     
@@ -143,9 +140,8 @@ class PJPet {
                                             if resDict["msgCode"]?.intValue == 0 {
                                                 complateHandler()
                                             }
-        }) { (errorString) in
-            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
-            failedHandler(error)
+        }) {
+            failedHandler($0)
         }
     }
     
@@ -164,9 +160,8 @@ class PJPet {
                                             let catPlayModel = dataConvertToModel(DogPlay(), from: try! (resDict["msg"]?.rawData())!)
                                             complateHandler(catPlayModel!)
                                         }
-        }) { (errorString) in
-            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
-            failedHandler(error)
+        }) {
+            failedHandler($0)
         }
     }
     
@@ -189,9 +184,8 @@ class PJPet {
                                             if resDict["msgCode"]?.intValue == 0 {
                                                 complateHandler()
                                             }
-        }) { (errorString) in
-            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
-            failedHandler(error)
+        }) {
+            failedHandler($0)
         }
     }
     
@@ -214,9 +208,8 @@ class PJPet {
                 
                 complateHandler(viewModels)
             }
-        }) { (errorString) in
-            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
-            failedHandler(error)
+        }) {
+            failedHandler($0)
         }
     }
     
@@ -231,9 +224,8 @@ class PJPet {
                 let viewModel = dataConvertToModel(PetDrink(), from: try! (resDict["msg"]?.rawData())!)
                 complateHandler(viewModel!)
             }
-        }) { (errorString) in
-            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
-            failedHandler(error)
+        }) {
+            failedHandler($0)
         }
     }
     
@@ -248,9 +240,8 @@ class PJPet {
             if resDict["msgCode"]?.intValue == 0 {
                 complateHandler()
             }
-        }) { (errorString) in
-            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
-            failedHandler(error)
+        }) {
+            failedHandler($0)
         }
     }
     
@@ -271,9 +262,8 @@ class PJPet {
                 }
                 complateHandler(viewModels)
             }
-        }) { (errorString) in
-            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
-            failedHandler(error)
+        }) {
+            failedHandler($0)
         }
     }
     
@@ -288,9 +278,8 @@ class PJPet {
                 let viewModel = dataConvertToModel(PetEat(), from: try! (resDict["msg"]?.rawData())!)
                 complateHandler(viewModel!)
             }
-        }) { (errorString) in
-            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
-            failedHandler(error)
+        }) {
+            failedHandler($0)
         }
     }
     
@@ -305,9 +294,8 @@ class PJPet {
             if resDict["msgCode"]?.intValue == 0 {
                 complateHandler()
             }
-        }) { (errorString) in
-            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
-            failedHandler(error)
+        }) {
+            failedHandler($0)
         }
     }
     
@@ -328,9 +316,8 @@ class PJPet {
                 }
                 complateHandler(viewModels)
             }
-        }) { (errorString) in
-            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
-            failedHandler(error)
+        }) {
+            failedHandler($0)
         }
     }
     
@@ -345,9 +332,8 @@ class PJPet {
             if resDict["msgCode"]?.intValue == 0 {
                 complateHandler()
             }
-        }) { (errorString) in
-            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
-            failedHandler(error)
+        }) {
+            failedHandler($0)
         }
     }
     
@@ -362,9 +348,8 @@ class PJPet {
             if resDict["msgCode"]?.intValue == 0 {
                 complateHandler()
             }
-        }) { (errorString) in
-            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
-            failedHandler(error)
+        }) {
+            failedHandler($0)
         }
     }
     
@@ -380,9 +365,8 @@ class PJPet {
             if resDict["msgCode"]?.intValue == 0 {
                 complateHandler()
             }
-        }) { (errorString) in
-            let error = PJNetwork.Error(errorCode: 0, errorMsg: errorString)
-            failedHandler(error)
+        }) {
+            failedHandler($0)
         }
     }
 }
@@ -456,11 +440,11 @@ extension PJPet {
         /// 宠物活跃程度
         var activity: Int = 0
         /// 创建时间
-        var created_time: Int
+        var created_time: Int	
         /// 宠物头像
         var avatar_url: String
         /// 宠物关系
-        var relationship: Int
+        var relationship: Int? = -1
         
         init() {
             self.pet_id = -1

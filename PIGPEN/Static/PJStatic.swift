@@ -137,12 +137,19 @@ func convertTimestampToDateString1(_ timestamp: Int) -> String {
     return dateFormatter.string(from: date)
 }
 
-
 /// 时间戳转换为时间。格式：12:24
 func convertTimestampToDateString2(_ timestamp: Int) -> String {
     let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "HH:mm"
+    return dateFormatter.string(from: date)
+}
+
+/// 时间戳转换为时间。格式：2019.5.09 18:58
+func convertTimestampToDateString3(_ timestamp: Int) -> String {
+    let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy.MM.dd HH:mm"
     return dateFormatter.string(from: date)
 }
 

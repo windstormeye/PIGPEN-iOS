@@ -12,11 +12,22 @@ import Foundation
 extension PJUser {
     func saveToSandBox() {
         let encoder = JSONEncoder()
-        if let BeerData = try? encoder.encode(self.userModel) {
+        if let userData = try? encoder.encode(self.userModel) {
             let url = URL.init(fileURLWithPath: PJUser.userAccountPath).appendingPathComponent("userData.data")
             do {
-                try BeerData.write(to: url)
-                print("完成了对数据的二进制化归档")
+                try userData.write(to: url)
+                print("完成了对用户数据的二进制化归档")
+            } catch {
+                print("saveToSandBox \(error.localizedDescription)")
+                assert(true, "saveToSandBox \(error.localizedDescription)")
+            }
+        }
+        
+        if let petData = try? encoder.encode(self.pets) {
+            let url = URL.init(fileURLWithPath: PJUser.userAccountPath).appendingPathComponent("petData.data")
+            do {
+                try petData.write(to: url)
+                print("完成了对宠物数据的二进制化归档")
             } catch {
                 print("saveToSandBox \(error.localizedDescription)")
                 assert(true, "saveToSandBox \(error.localizedDescription)")
@@ -36,6 +47,21 @@ extension PJUser {
             }
         } catch {
             assert(true, "readBySandBox \(error.localizedDescription)")
+        }
+        return nil
+    }
+    
+    func readPetDataBySandBox() -> [PJPet.Pet]? {
+        let url = URL.init(fileURLWithPath: PJUser.userAccountPath).appendingPathComponent("petData.data")
+        do {
+            let data = try FileHandle.init(forReadingFrom: url)
+            do {
+                return try JSONDecoder().decode([PJPet.Pet].self, from: data.readDataToEndOfFile())
+            } catch {
+                assert(true, "readPetDataBySandBox JSONDecoder \(error.localizedDescription)")
+            }
+        } catch {
+            assert(true, "readPetDataBySandBox \(error.localizedDescription)")
         }
         return nil
     }
@@ -202,7 +228,7 @@ extension PJUser {
                 failedHandler(error)
             }
         }, failed: {
-            failedHandler(PJNetwork.Error(errorCode: -1, errorMsg: $0))
+            failedHandler($0)
         })
     }
     
@@ -249,14 +275,15 @@ extension PJUser {
                 }
                 
                 self.pets = petModels
+                self.saveToSandBox()
                 
                 complateHandler(petModels)
             } else {
                 let error = PJNetwork.Error(errorCode: dataDict["msgCode"]?.intValue ?? 0, errorMsg: dataDict["msg"]?.string ?? "未知错误")
                 failedHandler(error)
             }
-        }) { (errorString) in
-            failedHandler(PJNetwork.Error(errorCode: -1, errorMsg: errorString))
+        }) {
+            failedHandler($0)
         }
     }
     
@@ -273,7 +300,7 @@ extension PJUser {
                                             failedHandler(error)
                                         }
         }) {
-            failedHandler(PJNetwork.Error(errorCode: -1, errorMsg: $0))
+            failedHandler($0)
         }
     }
     
@@ -317,8 +344,8 @@ extension PJUser {
                 let error = PJNetwork.Error(errorCode: dataDict["msgCode"]?.intValue ?? 0,errorMsg: dataDict["msg"]?.string ?? "未知错误")
                 failedHandler(error)
             }
-        }) { (errorString) in
-            failedHandler(PJNetwork.Error(errorCode: -1, errorMsg: errorString))
+        }) {
+            failedHandler($0)
         }
     }
     
@@ -353,8 +380,8 @@ extension PJUser {
                 let error = PJNetwork.Error(errorCode: dataDict["msgCode"]?.intValue ?? 00,errorMsg: dataDict["msg"]?.string ?? "未知错误")
                 failedHandler(error)
             }
-        }) { (errorString) in
-            failedHandler(PJNetwork.Error(errorCode: -1, errorMsg: errorString))
+        }) {
+            failedHandler($0)
         }
     }
 }
