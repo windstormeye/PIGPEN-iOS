@@ -100,6 +100,11 @@ class PJPlayViewController: UIViewController, PJBaseViewControllerDelegate {
             default: break
             }
         }
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: .gotoLogin,
+                                               name: .gotoLogin(),
+                                               object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -123,4 +128,15 @@ class PJPlayViewController: UIViewController, PJBaseViewControllerDelegate {
             PJHUD.shared.show(view: self.view, text: $0.errorMsg)
         }
     }
+}
+
+extension PJPlayViewController {
+    @objc fileprivate func gotoLoginPage() {
+        let navVC = UINavigationController(rootViewController: PJUserLoginViewController())
+        present(navVC, animated: true, completion: nil)
+    }
+}
+
+private extension Selector {
+    static let gotoLogin = #selector(PJPlayViewController.gotoLoginPage)
 }

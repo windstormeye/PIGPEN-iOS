@@ -57,6 +57,11 @@ class PJChatViewController: UIViewController, PJBaseViewControllerDelegate {
             case .audio: break
             }
         }
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: .gotoLogin,
+                                               name: .gotoLogin(),
+                                               object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -88,6 +93,11 @@ class PJChatViewController: UIViewController, PJBaseViewControllerDelegate {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    @objc fileprivate func gotoLoginPage() {
+        let navVC = UINavigationController(rootViewController: PJUserLoginViewController())
+        present(navVC, animated: true, completion: nil)
+    }
+    
     private func requestPush() {
         UNUserNotificationCenter.current().getNotificationSettings {
             if $0.authorizationStatus != .authorized {
@@ -114,4 +124,5 @@ class PJChatViewController: UIViewController, PJBaseViewControllerDelegate {
 private extension Selector {
     static let addressBook = #selector(PJChatViewController.addressBook)
     static let search = #selector(PJChatViewController.search)
+    static let gotoLogin = #selector(PJChatViewController.gotoLoginPage)
 }

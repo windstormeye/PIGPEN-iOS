@@ -59,7 +59,6 @@ class PJBaseViewController: UIViewController {
                                                object: nil)
     }
     
-    
     // MARK: Action
     func leftBarButtonItemTapped(leftTapped: Selector, imageName: String) {
         let leftButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40,

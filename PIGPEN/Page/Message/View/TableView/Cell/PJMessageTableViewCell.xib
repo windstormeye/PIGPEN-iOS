@@ -68,6 +68,10 @@
                             <constraint firstAttribute="width" constant="28" id="jGk-aO-oUr"/>
                         </constraints>
                         <state key="normal" image="like"/>
+                        <state key="selected" image="like_select"/>
+                        <connections>
+                            <action selector="likeAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="UX2-Tj-fCo"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d00-lw-zR8">
                         <rect key="frame" x="277" y="391" width="28" height="28"/>
@@ -76,6 +80,10 @@
                             <constraint firstAttribute="height" constant="28" id="kKT-b2-efZ"/>
                         </constraints>
                         <state key="normal" image="collect"/>
+                        <state key="selected" image="collect_select"/>
+                        <connections>
+                            <action selector="collectAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="0Se-zJ-Xju"/>
+                        </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tle-1Q-ib2">
                         <rect key="frame" x="15" y="428" width="290" height="0.5"/>
@@ -111,6 +119,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="avatarImageView" destination="68M-Vh-wRH" id="bco-xP-H0B"/>
+                <outlet property="bottomLineView" destination="tle-1Q-ib2" id="RSA-89-Sp0"/>
                 <outlet property="collectButton" destination="d00-lw-zR8" id="AI5-M2-Csw"/>
                 <outlet property="contentImageView" destination="MxR-Te-Qj3" id="0l1-jJ-bfT"/>
                 <outlet property="likeButton" destination="Ddz-G1-FnL" id="ox7-OU-kvn"/>
@@ -124,7 +133,9 @@
     </objects>
     <resources>
         <image name="collect" width="18" height="20"/>
+        <image name="collect_select" width="18" height="20"/>
         <image name="like" width="20" height="20"/>
+        <image name="like_select" width="20" height="20"/>
         <image name="message_pet" width="375" height="375"/>
         <image name="more" width="24" height="6"/>
         <image name="pet_avatar" width="90" height="90"/>

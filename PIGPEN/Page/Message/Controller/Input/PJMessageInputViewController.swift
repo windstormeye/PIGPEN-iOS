@@ -97,6 +97,9 @@ extension PJMessageInputViewController {
     
     @objc
     fileprivate func ok() {
+        // 这部分只有客户端做限制了 240 个字符，API 是长文本
+        guard textView.text.count <= 240 else { return }
+        
         var blog = PIGBlog.Blog()
         blog.content = textView.text
         blog.imgs = pet.avatar_url

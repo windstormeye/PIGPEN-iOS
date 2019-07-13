@@ -81,6 +81,10 @@ class PJUserCenterViewController: UIViewController, PJBaseViewControllerDelegate
                                                selector: .loginSuccess,
                                                name: .loginSuccess(),
                                                object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: .gotoLogin,
+                                               name: .gotoLogin(),
+                                               object: nil)
     }
 }
 
@@ -89,6 +93,7 @@ fileprivate extension Selector {
     static let loginSuccess = #selector(PJUserCenterViewController.loginSuccess)
     static let menu = #selector(PJUserCenterViewController.menu)
     static let vistors = #selector(PJUserCenterViewController.vistors)
+    static let gotoLogin = #selector(PJUserCenterViewController.gotoLoginPage)
 }
 
 extension PJUserCenterViewController {
@@ -100,6 +105,11 @@ extension PJUserCenterViewController {
     @objc
     fileprivate func vistors() {
         
+    }
+    
+    @objc fileprivate func gotoLoginPage() {
+        let navVC = UINavigationController(rootViewController: PJUserLoginViewController())
+        present(navVC, animated: true, completion: nil)
     }
     
     @objc

@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-//import IQKeyboardManagerSwift
+import IQKeyboardManagerSwift
 import UserNotifications
 
 @UIApplicationMain
@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         initTabBarControler()
-//        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enable = true
         requestPushNotification(application)
         Bugly.start(withAppId: "i1400197107")
         AMapServices.shared().apiKey = "613ec57d63c2ff0b1025088a4ddbe1e0"

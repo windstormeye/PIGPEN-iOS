@@ -14,7 +14,7 @@ class PJNetwork {
     static let shared = PJNetwork()
     
 //    let hostName = "http://127.0.0.1:8000/"
-//    let hostName = "http://192.168.0.104:8000/"
+//    let hostName = "http://192.168.0.108:8000/"
     let hostName = "http://pigpen.pjhubs.com/"
     
     

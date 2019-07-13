@@ -10,11 +10,15 @@ import UIKit
 
 class PJMessageTableView: UITableView {
 
-    var viewModels = [PIGBlog.BlogContent]() {
-        didSet {
-            reloadData()
-        }
-    }
+    var cellSelected: ((Int) -> Void)?
+    var cellLikeSelected: ((Bool) -> Void)?
+    var cellCollectSelected: ((Bool) -> Void)?
+    var cellMoreSelected: (() -> Void)?
+    
+    var viewModels = [PIGBlog.BlogContent]()
+    
+    var selectedIndex = 0
+    
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -42,8 +46,18 @@ class PJMessageTableView: UITableView {
     }
 }
 
+extension PJMessageTableView {
+    func reloadCell(blogContent: PIGBlog.BlogContent) {
+        let cell = self.cellForRow(at: IndexPath(row: selectedIndex, section: 0)) as! PJMessageTableViewCell
+        cell.viewModel = blogContent
+    }
+}
+
 extension PJMessageTableView: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedIndex = indexPath.row
+        cellSelected?(indexPath.row)
+    }
 }
 
 extension PJMessageTableView: UITableViewDataSource {
@@ -58,6 +72,22 @@ extension PJMessageTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PJMessageTableViewCell", for: indexPath) as! PJMessageTableViewCell
         cell.viewModel = viewModels[indexPath.row]
+        
+        cell.likeSelected = {
+            self.selectedIndex = self.indexPath(for: cell)!.row
+            self.cellLikeSelected?($0)
+        }
+        
+        cell.moreSelected = {
+            self.selectedIndex = self.indexPath(for: cell)!.row
+            self.cellMoreSelected?()
+        }
+        
+        cell.collectSelected = {
+            self.selectedIndex = self.indexPath(for: cell)!.row
+            self.cellCollectSelected?($0)
+        }
+        
         return cell
     }
 }

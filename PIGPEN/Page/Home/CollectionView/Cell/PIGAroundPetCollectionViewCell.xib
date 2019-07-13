@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PIGAroundPetCollectionViewCell" customModule="PIGPEN" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fr8-bR-erT">
+                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="message_pet" translatesAutoresizingMaskIntoConstraints="NO" id="BFx-eC-cdt">
+                                <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryj-DN-Qlz">
+                                <rect key="frame" x="89" y="5" width="26" height="13"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="13" id="i2P-qs-0nE"/>
+                                    <constraint firstAttribute="width" constant="26" id="pY8-Gk-yqh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="BFx-eC-cdt" firstAttribute="top" secondItem="fr8-bR-erT" secondAttribute="top" id="37e-vX-TEo"/>
+                            <constraint firstAttribute="trailing" secondItem="BFx-eC-cdt" secondAttribute="trailing" id="F5r-r7-Maj"/>
+                            <constraint firstItem="BFx-eC-cdt" firstAttribute="leading" secondItem="fr8-bR-erT" secondAttribute="leading" id="Np4-y9-1Ny"/>
+                            <constraint firstItem="ryj-DN-Qlz" firstAttribute="top" secondItem="fr8-bR-erT" secondAttribute="top" constant="5" id="OOO-8o-kwc"/>
+                            <constraint firstAttribute="trailing" secondItem="ryj-DN-Qlz" secondAttribute="trailing" constant="5" id="Uhc-1i-SCs"/>
+                            <constraint firstAttribute="bottom" secondItem="BFx-eC-cdt" secondAttribute="bottom" id="muM-IS-ren"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="fr8-bR-erT" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="IaH-Sg-uaO"/>
+                <constraint firstAttribute="trailing" secondItem="fr8-bR-erT" secondAttribute="trailing" id="Kg8-Wo-NCT"/>
+                <constraint firstItem="fr8-bR-erT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="aNa-uW-hbr"/>
+                <constraint firstAttribute="bottom" secondItem="fr8-bR-erT" secondAttribute="bottom" id="nQp-mt-f0Z"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="avatarImageView" destination="BFx-eC-cdt" id="lXU-yI-V5A"/>
+                <outlet property="distanceLabel" destination="ryj-DN-Qlz" id="Jig-d0-y8a"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="141.96428571428569"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="message_pet" width="375" height="375"/>
+    </resources>
+</document>
