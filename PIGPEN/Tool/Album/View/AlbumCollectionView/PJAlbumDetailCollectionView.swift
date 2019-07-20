@@ -70,7 +70,7 @@ extension PJAlbumDetailCollectionView: UICollectionViewDelegate, UICollectionVie
 }
 
 extension PJAlbumDetailCollectionView {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let offset_y = scrollView.contentOffset.y
         print(offset_y)
         scrollDidScroll?(offset_y)

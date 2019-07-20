@@ -43,6 +43,8 @@
 		0C201A072288EDCE00AE8C2B /* PJPetCreateAvatarViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C201A062288EDCE00AE8C2B /* PJPetCreateAvatarViewController.storyboard */; };
 		0C201A0A22896DDC00AE8C2B /* PJCreatePetDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C201A0922896DDC00AE8C2B /* PJCreatePetDetailsViewController.swift */; };
 		0C201A0C22896DE600AE8C2B /* PJCreatePetDetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C201A0B22896DE600AE8C2B /* PJCreatePetDetailsViewController.storyboard */; };
+		0C22278522E3765900A36CAF /* PJSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C22278422E3765900A36CAF /* PJSpace.swift */; };
+		0C22278722E376BE00A36CAF /* PJSpace+UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C22278622E376BE00A36CAF /* PJSpace+UIScrollView.swift */; };
 		0C24258B22B52A4300B23DC2 /* PJBottomDotButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C24258A22B52A4300B23DC2 /* PJBottomDotButtonView.swift */; };
 		0C24258D22B540BC00B23DC2 /* PJPetPlayHomeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C24258C22B540BC00B23DC2 /* PJPetPlayHomeDetailsView.swift */; };
 		0C28FDD322BF63D5002B4A78 /* PJDogPlayEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C28FDD222BF63D5002B4A78 /* PJDogPlayEditViewController.swift */; };
@@ -245,6 +247,8 @@
 		0C201A062288EDCE00AE8C2B /* PJPetCreateAvatarViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PJPetCreateAvatarViewController.storyboard; sourceTree = "<group>"; };
 		0C201A0922896DDC00AE8C2B /* PJCreatePetDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJCreatePetDetailsViewController.swift; sourceTree = "<group>"; };
 		0C201A0B22896DE600AE8C2B /* PJCreatePetDetailsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PJCreatePetDetailsViewController.storyboard; sourceTree = "<group>"; };
+		0C22278422E3765900A36CAF /* PJSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJSpace.swift; sourceTree = "<group>"; };
+		0C22278622E376BE00A36CAF /* PJSpace+UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PJSpace+UIScrollView.swift"; sourceTree = "<group>"; };
 		0C24258A22B52A4300B23DC2 /* PJBottomDotButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJBottomDotButtonView.swift; sourceTree = "<group>"; };
 		0C24258C22B540BC00B23DC2 /* PJPetPlayHomeDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJPetPlayHomeDetailsView.swift; sourceTree = "<group>"; };
 		0C28FDD222BF63D5002B4A78 /* PJDogPlayEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PJDogPlayEditViewController.swift; sourceTree = "<group>"; };
@@ -836,6 +840,7 @@
 		0C55E2C3215A61AD000D8815 /* Page */ = {
 			isa = PBXGroup;
 			children = (
+				0C55E2C6215A61E8000D8815 /* Home */,
 				0C34B86B22CEFDBA00C776A0 /* Message */,
 				0CDD0CA922CB9CD500BCA859 /* Eat */,
 				0C46065322C9D97A00B1C0C0 /* Drink */,
@@ -847,7 +852,6 @@
 				0C55E3052161BA9C000D8815 /* Base */,
 				0C55E2CA215A62A0000D8815 /* User */,
 				0C55E2C8215A61F5000D8815 /* Play */,
-				0C55E2C6215A61E8000D8815 /* Home */,
 			);
 			path = Page;
 			sourceTree = "<group>";
@@ -928,6 +932,8 @@
 				0CC35DCF21DD0BC8002244DA /* Date.swift */,
 				0C2019D62283C1A200AE8C2B /* UIButton.swift */,
 				0CA1411622BA308700698BD6 /* Double.swift */,
+				0C22278622E376BE00A36CAF /* PJSpace+UIScrollView.swift */,
+				0C22278422E3765900A36CAF /* PJSpace.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -2242,6 +2248,7 @@
 				0C6A986022729BFE003E4AA5 /* PJFriendViewController.swift in Sources */,
 				0CED02E2219D45AC00294033 /* PJPetCreateDogFoodViewController.swift in Sources */,
 				0C5E633E216309C300A90762 /* PJNetwork.swift in Sources */,
+				0C22278522E3765900A36CAF /* PJSpace.swift in Sources */,
 				0CC35DDD21E637E8002244DA /* PJCalloutView.swift in Sources */,
 				0CB5E8F32264BDF700CBE217 /* PJDetailUserTableViewCell.swift in Sources */,
 				0C5D72CB22B1F6A000670100 /* PJDogPlayDetailsHeaderView.swift in Sources */,
@@ -2254,6 +2261,7 @@
 				0C46065222C74F1200B1C0C0 /* PJAlertSheet.swift in Sources */,
 				0C6A98592270AFE5003E4AA5 /* PJImagePickerConfigue.swift in Sources */,
 				0C2019F02287FE1D00AE8C2B /* PJVistorsViewController.swift in Sources */,
+				0C22278722E376BE00A36CAF /* PJSpace+UIScrollView.swift in Sources */,
 				0C5AD135228A4B9100326E63 /* PJPetCreateBreedsViewController.swift in Sources */,
 				0CB5E8EC2264BD7E00CBE217 /* PJDetailViewController.swift in Sources */,
 				0CC35DD921DF7025002244DA /* PJWaveView.swift in Sources */,
