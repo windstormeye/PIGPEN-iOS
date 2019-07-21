@@ -47,13 +47,15 @@ extension PIGAroundPetCollectionView: UICollectionViewDelegate {
 }
 
 extension PIGAroundPetCollectionView: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModels.count
+//        return viewModels.count
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PIGAroundPetCollectionViewCell", for: indexPath) as! PIGAroundPetCollectionViewCell
-        cell.viewModel = viewModels[indexPath.row]
+//        cell.viewModel = viewModels[indexPath.row]
         return cell
     }
     

@@ -54,6 +54,7 @@ class PJHomeViewController: UIViewController, PJBaseViewControllerDelegate {
         view.addSubview(collectionView)
         collectionView.itemSelected = {
             let vc = PIGPetDetailViewController(pet: $0, avatarImage: $1)
+            vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
