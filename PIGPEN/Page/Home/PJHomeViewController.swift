@@ -52,6 +52,10 @@ class PJHomeViewController: UIViewController, PJBaseViewControllerDelegate {
         collectionView.backgroundColor = .clear
         collectionView.refreshControl = refresher
         view.addSubview(collectionView)
+        collectionView.itemSelected = {
+            let vc = PIGPetDetailViewController(pet: $0, avatarImage: $1)
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
         
         collectionView.es.addInfiniteScrolling { [weak self] in
             guard let `self` = self else { return }

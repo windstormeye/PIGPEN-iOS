@@ -62,7 +62,7 @@ extension PJBaseViewControllerDelegate {
         navigationItem.setRightBarButton(rightBarButtonItem, animated: true)
     }
     
-    func backButtonTapped(backSel: Selector, imageName: String?) {
+    func backButtonTapped(backSel: Selector, imageName: String? = nil) {
         let leftButton = UIButton(frame: CGRect(x: 0, y: 0,
                                                 width: 40,
                                                 height: 40))
