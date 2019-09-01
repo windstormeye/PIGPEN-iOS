@@ -9,16 +9,11 @@
 import UIKit
 
 class PJUserCenterPetTableViewCell: UITableViewCell {
-    
-    var clickType: ClickType = .none {
-        didSet {
-            
-        }
-    }
+
     var pet = PJPet.Pet() {
         didSet {
             avatarImageView.kf.setImage(with: URL(string: pet.avatar_url))
-            titleLabel.text = pet.nick_name
+            nicknameLabel.text = pet.nick_name
             if pet.gender == 0 {
                 genderImageView.image = UIImage(named: "gender_female")
             } else {
@@ -28,34 +23,33 @@ class PJUserCenterPetTableViewCell: UITableViewCell {
     }
     
     @IBOutlet weak var avatarImageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var genderImageView: UIImageView!
     @IBOutlet weak var editButton: UIImageView!
+    @IBOutlet weak var fensStackView: UIStackView!
+    @IBOutlet weak var idStackView: UIStackView!
+    @IBOutlet weak var fensLLabel: UILabel!
+    
+    @IBOutlet weak var avatarWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var avatarHeightConstrain: NSLayoutConstraint!
     
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        avatarImageView.layer.cornerRadius = avatarImageView.pj_height / 2
-    }
-    
-    private func updateUI() {
-        // TODO： 写界面显示隐藏的b逻辑
-        switch clickType {
-        case .small: break
-        case .big: break
-        case .none: break
+    func updateUI(_ isClick: Bool) {
+        if isClick {
+            
+        } else {
+            
         }
-    }
-}
-
-extension PJUserCenterPetTableViewCell {
-    enum ClickType {
-        /// 缩小
-        case small
-        /// 放大
-        case big
-        /// 没动过
-        case none
+        
+        fensLLabel.isHidden = isClick
+        genderImageView.isHidden = isClick
+        
+        fensStackView.isHidden = !isClick
+        idStackView.isHidden = !isClick
+        
+        let avatarWidth: CGFloat = isClick ? 58 : 36
+        avatarHeightConstrain.constant = avatarWidth
+        avatarWidthConstraint.constant = avatarWidth
+        avatarImageView.layer.cornerRadius = avatarWidth / 2
     }
 }

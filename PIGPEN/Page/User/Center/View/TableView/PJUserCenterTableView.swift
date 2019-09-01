@@ -139,6 +139,7 @@ extension PJUserCenterTableView: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: PJUserCenterTableView.petIdentifier, for: indexPath) as! PJUserCenterPetTableViewCell
             cell.selectionStyle = .none
             cell.pet = pets[indexPath.row]
+            cell.updateUI(cellHeights[indexPath.row] == 70 ? false : true)
             return cell
         default:
             return UITableViewCell()
@@ -146,21 +147,10 @@ extension PJUserCenterTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! PJUserCenterPetTableViewCell
-        if cellHeights[indexPath.row] != 70 {
+        if cellHeights[indexPath.row] == 70 {
             cellHeights[indexPath.row] += 50
         } else {
             cellHeights[indexPath.row] -= 50
-        }
-        
-        
-        switch cell.clickType {
-        case .none:
-            cell.clickType = .big
-        case .big:
-            cell.clickType = .small
-        case .small:
-            cell.clickType = .big
         }
         
         tableView.reloadRows(at: [indexPath], with: .none)
