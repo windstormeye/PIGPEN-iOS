@@ -30,7 +30,6 @@ class PJHomeViewController: UIViewController, PJBaseViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = .white
         
         initBaseView()
@@ -84,6 +83,7 @@ class PJHomeViewController: UIViewController, PJBaseViewControllerDelegate {
         
         if PJUser.shared.userModel.token == nil {
             let navVC = UINavigationController(rootViewController: PJWelcomeViewController())
+            navVC.modalPresentationStyle = .fullScreen
             present(navVC, animated: true, completion: nil)
         }
         
@@ -132,6 +132,7 @@ extension PJHomeViewController {
     
     @objc fileprivate func gotoLoginPage() {
         let navVC = UINavigationController(rootViewController: PJUserLoginViewController())
+        navVC.modalPresentationStyle = .fullScreen
         present(navVC, animated: true, completion: nil)
     }
 }

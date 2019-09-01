@@ -9,7 +9,12 @@
 import UIKit
 
 class PJUserCenterPetTableViewCell: UITableViewCell {
-
+    
+    var clickType: ClickType = .none {
+        didSet {
+            
+        }
+    }
     var pet = PJPet.Pet() {
         didSet {
             avatarImageView.kf.setImage(with: URL(string: pet.avatar_url))
@@ -32,5 +37,25 @@ class PJUserCenterPetTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         avatarImageView.layer.cornerRadius = avatarImageView.pj_height / 2
+    }
+    
+    private func updateUI() {
+        // TODO： 写界面显示隐藏的b逻辑
+        switch clickType {
+        case .small: break
+        case .big: break
+        case .none: break
+        }
+    }
+}
+
+extension PJUserCenterPetTableViewCell {
+    enum ClickType {
+        /// 缩小
+        case small
+        /// 放大
+        case big
+        /// 没动过
+        case none
     }
 }

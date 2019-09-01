@@ -68,7 +68,7 @@ class PIGPetDetailViewController: UIViewController, PJBaseViewControllerDelegate
         }
         
         collectionView.addSubview(headerView)
-        collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+        collectionView.contentInset = UIEdgeInsets(top: 300, left: 0, bottom: 0, right: 0)
     }
 }
 

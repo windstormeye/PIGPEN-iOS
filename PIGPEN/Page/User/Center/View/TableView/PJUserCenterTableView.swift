@@ -14,11 +14,15 @@ class PJUserCenterTableView: UITableView {
     var userDetailsModel: PJUser.UserModel?
     
     var pets = [PJPet.Pet]() {
-        didSet { reloadData() }
+        didSet {
+            cellHeights = Array(repeating: 70, count: pets.count)
+            reloadData()
+        }
     }
     
     private var addButton = UIButton()
     private var createButton = UIButton()
+    private var cellHeights = [CGFloat]()
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -113,11 +117,15 @@ extension PJUserCenterTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        // 用户
+        guard indexPath.section == 1 else {
+            return 70
+        }
+        // 宠物
+        return cellHeights[indexPath.row]
     }
     
-    func tableView(_ tableView: UITableView,
-                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: PJUserCenterTableView.userIdentifier,
@@ -136,4 +144,26 @@ extension PJUserCenterTableView: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! PJUserCenterPetTableViewCell
+        if cellHeights[indexPath.row] != 70 {
+            cellHeights[indexPath.row] += 50
+        } else {
+            cellHeights[indexPath.row] -= 50
+        }
+        
+        
+        switch cell.clickType {
+        case .none:
+            cell.clickType = .big
+        case .big:
+            cell.clickType = .small
+        case .small:
+            cell.clickType = .big
+        }
+        
+        tableView.reloadRows(at: [indexPath], with: .none)
+    }
+    
 }

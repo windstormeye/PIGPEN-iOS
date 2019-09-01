@@ -97,6 +97,7 @@ class PJBaseViewController: UIViewController {
     
     @objc fileprivate func gotoLoginPage() {
         let navVC = UINavigationController(rootViewController: PJUserLoginViewController())
+        navVC.modalPresentationStyle = .fullScreen
         present(navVC, animated: true, completion: nil)
     }
     
