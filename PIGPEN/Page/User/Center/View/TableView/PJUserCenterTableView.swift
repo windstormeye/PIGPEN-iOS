@@ -148,9 +148,9 @@ extension PJUserCenterTableView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if cellHeights[indexPath.row] == 70 {
-            cellHeights[indexPath.row] += 50
+            cellHeights[indexPath.row] += 90
         } else {
-            cellHeights[indexPath.row] -= 50
+            cellHeights[indexPath.row] -= 90
         }
         
         tableView.reloadRows(at: [indexPath], with: .none)

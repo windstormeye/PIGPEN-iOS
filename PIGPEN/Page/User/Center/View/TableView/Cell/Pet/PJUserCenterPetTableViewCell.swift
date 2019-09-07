@@ -32,7 +32,17 @@ class PJUserCenterPetTableViewCell: UITableViewCell {
     
     @IBOutlet weak var avatarWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var avatarHeightConstrain: NSLayoutConstraint!
+    @IBOutlet weak var infoStackView: UIStackView!
+    @IBOutlet weak var scoreStackView: UIStackView!
+    @IBOutlet weak var scoreBgView: UIView!
     
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        scoreBgView.layer.cornerRadius = scoreStackView.pj_height / 2
+        scoreBgView.layer.masksToBounds = true
+    }
     
     func updateUI(_ isClick: Bool) {
         if isClick {
@@ -46,6 +56,9 @@ class PJUserCenterPetTableViewCell: UITableViewCell {
         
         fensStackView.isHidden = !isClick
         idStackView.isHidden = !isClick
+        infoStackView.isHidden = !isClick
+        scoreStackView.isHidden = !isClick
+        scoreBgView.isHidden = !isClick
         
         let avatarWidth: CGFloat = isClick ? 58 : 36
         avatarHeightConstrain.constant = avatarWidth
