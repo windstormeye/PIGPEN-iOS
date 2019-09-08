@@ -312,7 +312,12 @@
                 <outlet property="fensStackView" destination="8AU-wG-UGL" id="auF-xZ-Vrf"/>
                 <outlet property="genderImageView" destination="eg8-XH-lzt" id="Kgr-e3-xYr"/>
                 <outlet property="idStackView" destination="MxT-tM-IwL" id="bOg-f3-Npe"/>
+                <outlet property="infoAgeLabel" destination="cHS-4S-kss" id="6UG-0g-jhM"/>
+                <outlet property="infoBreedLabel" destination="NU1-Ba-BDa" id="iMh-9v-hJV"/>
+                <outlet property="infoGenderImageView" destination="8D0-bl-9PT" id="gpE-Ah-fMh"/>
+                <outlet property="infoPPPImageView" destination="hgf-qR-xz4" id="pwK-0y-0ai"/>
                 <outlet property="infoStackView" destination="hZM-rO-U4o" id="g3w-Uq-mSH"/>
+                <outlet property="infoWeightLabel" destination="p4p-aF-6kH" id="Cfh-ZI-SXH"/>
                 <outlet property="nicknameLabel" destination="j3P-1c-S2m" id="GEb-8D-Ym0"/>
                 <outlet property="scoreBgView" destination="iT6-xq-3Uw" id="6uX-Z7-64d"/>
                 <outlet property="scoreStackView" destination="lWt-kx-Trs" id="7qm-Tf-KI4"/>

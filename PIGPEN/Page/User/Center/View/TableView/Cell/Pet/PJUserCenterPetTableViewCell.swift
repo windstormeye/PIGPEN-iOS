@@ -14,11 +14,18 @@ class PJUserCenterPetTableViewCell: UITableViewCell {
         didSet {
             avatarImageView.kf.setImage(with: URL(string: pet.avatar_url))
             nicknameLabel.text = pet.nick_name
-            if pet.gender == 0 {
-                genderImageView.image = UIImage(named: "gender_female")
-            } else {
-                genderImageView.image = UIImage(named: "gender_male")
-            }
+            genderImageView.image = pet.gender == 0 ? UIImage(named: "gender_female") : UIImage(named: "gender_male")
+            infoGenderImageView.image = pet.gender == 0 ? UIImage(named: "gender_female") : UIImage(named: "gender_male")
+            infoPPPImageView.image = UIImage(named: "gender_\(pet.love_status)")
+            infoBreedLabel.text = pet.breed_type
+            
+            let ageTimestamp = Int(Date().timeIntervalSince1970) - pet.birth_time
+            let monthTimestamp = 3600 * 24 * 30
+            let ageMonth = ageTimestamp / monthTimestamp / 6
+            let age = ageMonth / 2 + ageMonth % 2
+            infoAgeLabel.text = "\(age)岁"
+            
+            infoWeightLabel.text = "\(pet.weight)kg"
         }
     }
     
@@ -35,6 +42,11 @@ class PJUserCenterPetTableViewCell: UITableViewCell {
     @IBOutlet weak var infoStackView: UIStackView!
     @IBOutlet weak var scoreStackView: UIStackView!
     @IBOutlet weak var scoreBgView: UIView!
+    @IBOutlet weak var infoGenderImageView: UIImageView!
+    @IBOutlet weak var infoPPPImageView: UIImageView!
+    @IBOutlet weak var infoBreedLabel: UILabel!
+    @IBOutlet weak var infoAgeLabel: UILabel!
+    @IBOutlet weak var infoWeightLabel: UILabel!
     
     
     override func awakeFromNib() {
