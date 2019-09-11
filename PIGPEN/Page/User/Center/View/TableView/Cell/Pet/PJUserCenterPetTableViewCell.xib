@@ -310,7 +310,9 @@
                 <outlet property="editButton" destination="hxq-rN-XN0" id="pKg-BU-5sg"/>
                 <outlet property="fensLLabel" destination="k1b-qs-0wl" id="dYO-4n-7pL"/>
                 <outlet property="fensStackView" destination="8AU-wG-UGL" id="auF-xZ-Vrf"/>
+                <outlet property="food_sLabel" destination="FAn-RI-F0j" id="xMq-F8-WCi"/>
                 <outlet property="genderImageView" destination="eg8-XH-lzt" id="Kgr-e3-xYr"/>
+                <outlet property="happy_sLabel" destination="zul-rF-TiD" id="5yd-5O-pj4"/>
                 <outlet property="idStackView" destination="MxT-tM-IwL" id="bOg-f3-Npe"/>
                 <outlet property="infoAgeLabel" destination="cHS-4S-kss" id="6UG-0g-jhM"/>
                 <outlet property="infoBreedLabel" destination="NU1-Ba-BDa" id="iMh-9v-hJV"/>
@@ -319,8 +321,10 @@
                 <outlet property="infoStackView" destination="hZM-rO-U4o" id="g3w-Uq-mSH"/>
                 <outlet property="infoWeightLabel" destination="p4p-aF-6kH" id="Cfh-ZI-SXH"/>
                 <outlet property="nicknameLabel" destination="j3P-1c-S2m" id="GEb-8D-Ym0"/>
+                <outlet property="play_sLabel" destination="NGJ-r0-fZu" id="tZz-gU-Gnc"/>
                 <outlet property="scoreBgView" destination="iT6-xq-3Uw" id="6uX-Z7-64d"/>
                 <outlet property="scoreStackView" destination="lWt-kx-Trs" id="7qm-Tf-KI4"/>
+                <outlet property="water_sLabel" destination="uhI-Ij-5ML" id="GUf-Nn-uC7"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="136.60714285714286"/>
         </tableViewCell>

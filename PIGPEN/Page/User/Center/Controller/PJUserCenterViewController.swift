@@ -41,7 +41,7 @@ class PJUserCenterViewController: UIViewController, PJBaseViewControllerDelegate
         
         
         tableView = PJUserCenterTableView(frame: CGRect(x: 0, y: 0, width: view.pj_width , height: view.pj_height - PJTABBAR_HEIGHT), style: .plain)
-        tableView.frame = view.bounds
+//        tableView.frame = view.bounds
 //        tableView?.viewDelegate = self
         view.addSubview(tableView)
         tableView.createPet = {

@@ -26,6 +26,12 @@ class PJUserCenterPetTableViewCell: UITableViewCell {
             infoAgeLabel.text = "\(age)岁"
             
             infoWeightLabel.text = "\(pet.weight)kg"
+            
+            food_sLabel.text = "\(pet.score?.food_s ?? 0)"
+            water_sLabel.text = "\(pet.score?.water_s ?? 0)"
+            play_sLabel.text = "\(pet.score?.play_s ?? 0)"
+            happy_sLabel.text = "\(pet.score?.happy_s ?? 0)"
+            
         }
     }
     
@@ -47,6 +53,11 @@ class PJUserCenterPetTableViewCell: UITableViewCell {
     @IBOutlet weak var infoBreedLabel: UILabel!
     @IBOutlet weak var infoAgeLabel: UILabel!
     @IBOutlet weak var infoWeightLabel: UILabel!
+    
+    @IBOutlet weak var food_sLabel: UILabel!
+    @IBOutlet weak var water_sLabel: UILabel!
+    @IBOutlet weak var play_sLabel: UILabel!
+    @IBOutlet weak var happy_sLabel: UILabel!
     
     
     override func awakeFromNib() {

@@ -417,7 +417,7 @@ extension PJPet {
     }
     
     struct Pet: Codable {
-        /// 宠物标识符
+        /// 宠物标识符s
         var pet_id: Int
         /// 宠物昵称
         var nick_name: String
@@ -445,6 +445,9 @@ extension PJPet {
         var avatar_url: String
         /// 宠物关系
         var relationship: Int? = -1
+        /// 宠物分数
+        var score: PetScore?
+
         
         init() {
             self.pet_id = -1
